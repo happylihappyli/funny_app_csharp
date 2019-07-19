@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_String
+</name>
+</assembly>
+<members>
+<member name="M:B_String.Funny.S_Strings.ContainEnglish(System.String)">
+	<summary>
+ 是否包含英语
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.ContainNumber(System.String)">
+	<summary>
+ 是否包含数字
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.Blank_Chinese(System.String)">
+	<summary>
+ 在汉字前面后面加空格,以及在数字符号前后加空格
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.DeCrypt_Unicode(System.String,System.String)">
+	<summary>
+ 加密成unicode的
+ </summary>
+	<param name="mStr"></param>
+	<param name="MyKey"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

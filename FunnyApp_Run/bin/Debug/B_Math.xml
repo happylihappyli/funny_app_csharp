@@ -1,0 +1,279 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_Math
+</name>
+</assembly>
+<members>
+<member name="T:B_Math.My.Resources.Resources">
+<summary>
+  一个强类型的资源类，用于查找本地化的字符串等。
+</summary>
+</member>
+<member name="P:B_Math.My.Resources.Resources.ResourceManager">
+<summary>
+  返回此类使用的缓存的 ResourceManager 实例。
+</summary>
+</member>
+<member name="P:B_Math.My.Resources.Resources.Culture">
+<summary>
+  使用此强类型资源类，为所有资源查找
+  重写当前线程的 CurrentUICulture 属性。
+</summary>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator">
+ <summary>
+ 表达式计算类:
+    表达式示例: 2+3*EXP(3.3*X, 5)/3-2*(3+2/2*X)/2-3
+ 说明:
+    为简化算法,表达式中无正、负号,要得到负号的作用请用 (1-2)*? 来表示
+    表达式中的元素(现区分大小写)有:
+    数值常数(包括小数点): 如: 3.2 8.3
+    运算符: 如: + - * / ^
+    括号: ( )
+    变量: 运算时将实际值代入其中,用一单词(字符串,原则上不应包括数字)来表示, 赋值时用类的索引器表示 如: X Y Delta
+    用户自定义函数: 函数的操作要用括号()括起来,里面的表达式用递归来求 如: EXP(2+3*X, 2), 但是函数里的表达式不能再有函数(即用户自定义函数不允许递归)
+    分隔符: 空格(不会放入符号栈中) 逗号(用于用户自定义函数中,分隔各参数,要放入栈中), 各运算符默认已是分隔符
+   .算法中要用到的:
+    单词解析函数: 将表达式中的各元素解析放到一字符串数组中(其中的每一字符串表示一个元素)
+    单词表(数组): 存放单词解析函数解析的元素
+    符号栈: 运算时存放符号
+    数值栈: 运算时存放数值(及中间值)
+    解析函数: 核心,对表达式作运算并求出最终结果
+ </summary>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator.ValStack">
+ <summary>
+ 数值栈
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.ValStack.Pop">
+ <summary>
+ 弹出栈顶值
+ </summary>
+ <returns>栈为空则抛异常</returns>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.ValStack.Push(System.Double)">
+ <summary>
+ 向栈中压入值
+ </summary>
+ <param name="val"></param>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.ValStack.Peek">
+ <summary>
+ 取栈顶值,但不弹出
+ </summary>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.ValStack.Count">
+ <summary>
+ 栈中数值个数
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.ValStack.Clear">
+ <summary>
+ 清空栈
+ </summary>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator.SignStack">
+ <summary>
+ 符号栈
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.SignStack.Pop">
+ <summary>
+ 弹出栈顶值
+ </summary>
+ <returns>栈为空则抛异常</returns>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.SignStack.Push(System.String)">
+ <summary>
+ 向栈中压入值
+ </summary>
+ <param name="val"></param>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.SignStack.Peek">
+ <summary>
+ 取栈顶值,但不弹出
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.SignStack.Count">
+ <summary>
+ 栈中字符串个数
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.SignStack.Clear">
+ <summary>
+ 清空栈
+ </summary>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator.WordAnalysis">
+ <summary>
+ 单词解析
+ </summary>
+</member>
+<member name="F:B_Math.FunnyAI.Evaluator.WordAnalysis.Seperator">
+ <summary>
+ 默认分隔符(有分隔单词功能的符号,因此包括一些运算符), 用户可以自定义这些分隔符
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.WordAnalysis.IsSeperator(System.String)">
+ <summary>
+ 指定字符是否为分隔符
+ </summary>
+ <param name="s">字符</param>
+ <returns></returns>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.WordAnalysis.Analysis(System.String)">
+ <summary>
+ 单词分析
+ 空格, TAB, 回车 一定是分隔符
+ 如果分隔符由多个字符组成, 则分隔符的第一个字符前要有空格,TAB或回车符
+ </summary>
+ <param name="str">字符串</param>
+ <returns></returns>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator.Variable">
+ <summary>
+ 变量操作结构
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.Variable.#ctor(System.Int32)">
+ <summary>
+ 初始化
+ </summary>
+ <param name="size">允许的最大变量个数变量</param>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.Variable.Item(System.String)">
+ <summary>
+ 获取或设置指定变量的值
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.Variable.IndexOf(System.String)">
+ <summary>
+ 返回变量在数组中的索引(位置)
+ </summary>
+ <param name="key__1">变量名</param>
+ <returns>不存在返回-1, 否则返回>=0的整数</returns>
+ <remarks></remarks>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.Variable.Count">
+ <summary>
+ 返回已声明变量个数
+ </summary>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.Variable.Length">
+ <summary>
+ 变量数组最大容量
+ </summary>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator.MyFunction">
+ <summary>
+ 用户自定义函数代理
+ </summary>
+</member>
+<member name="T:B_Math.FunnyAI.Evaluator.FunctionList">
+ <summary>
+ 用户自定义函数列表
+ </summary>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.FunctionList.Count">
+ <summary>
+ 获取自定义函数个数
+ </summary>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.FunctionList.Length">
+ <summary>
+  获取允许的自定义函数最大个数
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.FunctionList.#ctor(System.Int32)">
+ <summary>
+ 初始化
+ </summary>
+ <param name="size">自定义函数最大个数</param>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.FunctionList.IndexOf(System.String)">
+ <summary>
+ 获取指定函数别名在列表中的索引(位置)
+ </summary>
+ <param name="funcName__1">函数别名</param>
+ <returns>不存在返回-1, 否则返回>=0的整数</returns>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.FunctionList.Add(System.String,System.Int32,B_Math.FunnyAI.Evaluator.MyFunction)">
+ <summary>
+ 设置指定函数别名的执行体代理
+ </summary>
+ <param name="funcName__1">表达式中对应的函数名</param>
+ <param name="paramCount__2">参数个数</param>
+ <param name="func__3">函数体</param>
+</member>
+<member name="P:B_Math.FunnyAI.Evaluator.FunctionList.Item(System.String)">
+ <summary>
+ 获取指定函数的执行体代理
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.FunctionList.ParameterCount(System.String)">
+ <summary>
+ 获取自定义函数的参数个数
+ </summary>
+ <param name="func">函数名</param>
+ <returns></returns>
+</member>
+<member name="F:B_Math.FunnyAI.Evaluator.Var">
+ <summary>
+ 变量列表
+ </summary>
+</member>
+<member name="F:B_Math.FunnyAI.Evaluator.Func">
+ <summary>
+ 函数执行体列表
+ </summary>
+</member>
+<member name="F:B_Math.FunnyAI.Evaluator.DefFunction">
+ <summary>
+ 以本实例表达式作为自定义函数
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.#ctor(System.String)">
+ <summary>
+ 初始化
+ </summary>
+ <param name="strExpression">要计算的表达式</param>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.GetVariables">
+ <summary>
+ 获取表达式中的变量
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.InitExpression">
+ <summary>
+ 对每次更改计算表达式时进行类初始化
+ </summary>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.Compute(System.String,System.Double,System.Double)">
+ <summary>
+ 计算sign(+-*/等)的a,b值
+ </summary>
+ <param name="sign">符号</param>
+ <param name="a">每一个值(符号左边的值)</param>
+ <param name="b">每二个值(符号右边的值)</param>
+ <returns></returns>
+</member>
+<member name="M:B_Math.FunnyAI.Evaluator.Calculate">
+ <summary>
+ 计算表达式的值
+ UNDONE: 用户自定义函数有错...
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:B_Math.FunnyAI.FunctionLib.AssignFunctionLib(B_Math.FunnyAI.Evaluator.FunctionList@)">
+ <summary>
+ 表达式默认支持的函数
+ </summary>
+ <param name="list"></param>
+</member>
+</members>
+</doc>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="A_TreapVB">
+</Property><Property Name="解决方案文件" Value="D:\HappyWork\DotNet\TreapVB\A_TreapVB.sln">
+</Property><Property Name="Date" Value="2006年12月20日">
+</Property><Property Name="Time" Value="10:20:05">
+</Property><Property Name="日志号" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="A_TreapVB" Source="A_TreapVB.vbproj" Description="项目文件已成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\A_TreapVB.vbproj">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="A_TreapVB.vbproj.user" Description="项目用户文件成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\A_TreapVB.vbproj.user">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="AssemblyInfo.vb" Description="文件已成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="Treap.vb" Description="文件已成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\Treap.vb">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="TreapEnumerator.vb" Description="文件已成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\TreapEnumerator.vb">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="TreapException.vb" Description="文件已成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\TreapException.vb">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="TreapNode.vb" Description="文件已成功备份为 D:\HappyWork\DotNet\TreapVB\Backup1\TreapNode.vb">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="A_TreapVB.vbproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="A_TreapVB" Source="A_TreapVB.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="A_TreapVB" Source="A_TreapVB.vbproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>
