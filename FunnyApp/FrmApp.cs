@@ -1,4 +1,5 @@
-﻿using B_File.Funny;
+﻿using AutoIt;
+using B_File.Funny;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Quobject.SocketIoClientDotNet.Client;
@@ -34,6 +35,8 @@ namespace FunnyApp
                 String strCode = S_File_Text.Read(File);
                 JS.Run_Code(this,strCode);
             }
+
+            //AutoItX.Run("cmd.exe", "");// "C:\\Windows\\System32\\");
         }
 
         delegate void d_Call_Event(string str1, string str2);//创建一个代理
@@ -67,8 +70,28 @@ namespace FunnyApp
             }
         }
 
+        delegate void d_Call_Au3_Run(string program, string dir);//创建一个代理
+        public void Au3_Run(string program, string dir){
+            if (!this.InvokeRequired) {
+                AutoItX.Run(program, dir);
+            } else {
+                d_Call_Au3_Run a1 = new d_Call_Au3_Run(Call_Notifiction);
+                Invoke(a1, new object[] { program, dir });
+            }
+        }
 
 
+
+
+        delegate void d_Call_JS_Function(string function, string data);//创建一个代理
+        public void JS_Function(string function, string data) {
+            if (!this.InvokeRequired) {
+                JS.jint.Invoke(function, data);
+            } else {
+                d_Call_JS_Function a1 = new d_Call_JS_Function(JS_Function);
+                Invoke(a1, new object[] { function, data });
+            }
+        }
 
         private void Notification(string title,string message) {
             var popupNotifier = new PopupNotifier();
@@ -104,6 +127,11 @@ namespace FunnyApp
         private void button1_Click(object sender, EventArgs e)
         {
             JS.jint.Invoke("event_connected");
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) {
+            Proxies.SetProxy("127.0.0.1:1316");
+
         }
     }
 }

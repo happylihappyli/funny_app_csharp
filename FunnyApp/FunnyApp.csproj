@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,8 +37,9 @@
     <StartupObject>FunnyApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoItX3.Assembly">
-      <HintPath>D:\Develop\Autoit\AutoItX\AutoItX3.Assembly.dll</HintPath>
+    <Reference Include="AutoItX3.Assembly, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a646454c8d475470, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FunnyApp_Run\bin\Debug\AutoItX3.Assembly.dll</HintPath>
     </Reference>
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\EngineIoClientDotNet.0.9.22\lib\net45\EngineIoClientDotNet.dll</HintPath>
@@ -47,11 +49,17 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="SocketIoClientDotNet, Version=0.9.13.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SocketIoClientDotNet.0.9.13\lib\net45\SocketIoClientDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Management.Automation_PowerShell_3.0.6.3.9600.17400\lib\net40\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -84,8 +92,12 @@
     <Compile Include="Msg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools.cs" />
-    <Compile Include="Tools_Au3.cs" />
+    <Compile Include="Proxies.cs" />
+    <Compile Include="SecureTransfer.cs" />
+    <Compile Include="TOOLS\Tools.cs" />
+    <Compile Include="TOOLS\Tools_Au3.cs" />
+    <Compile Include="TOOLS\Tools_Control.cs" />
+    <Compile Include="TOOLS\Tools_Net.cs" />
     <EmbeddedResource Include="FrmApp.resx">
       <DependentUpon>FrmApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,10 +133,21 @@
       <Project>{b06d4729-2fa4-48d0-b9fc-d871a42027d8}</Project>
       <Name>B_Math</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FunnyDoctor\auto_learn_sys2016\ScriptDemo.csproj">
+    <ProjectReference Include="..\Common\ScriptDemo\ScriptDemo.csproj">
       <Project>{660a13e3-6480-4fd6-8aa5-3d6d39487ebd}</Project>
       <Name>ScriptDemo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AutoItX3Lib">
+      <Guid>{F8937E53-D444-4E71-9275-35B64210CC3B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{660A13E3-6480-4FD6-8AA5-3D6D39487EBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScriptDemo</RootNamespace>
+    <AssemblyName>ScriptDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Release_autoteacher\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release_autoteacher\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptCode\DeclarationBindingType.cs" />
+    <Compile Include="ScriptCode\Engine.cs" />
+    <Compile Include="ScriptCode\EvalCodeScope.cs" />
+    <Compile Include="ScriptCode\Native\Argument\ArgumentsObject.cs" />
+    <Compile Include="ScriptCode\Native\Array\ArrayConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Array\ArrayInstance.cs" />
+    <Compile Include="ScriptCode\Native\Array\ArrayPrototype.cs" />
+    <Compile Include="ScriptCode\Native\Boolean\BooleanConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Boolean\BooleanInstance.cs" />
+    <Compile Include="ScriptCode\Native\Boolean\BooleanPrototype.cs" />
+    <Compile Include="ScriptCode\Native\Date\DateConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Date\DateInstance.cs" />
+    <Compile Include="ScriptCode\Native\Date\DatePrototype.cs" />
+    <Compile Include="ScriptCode\Native\Error\ErrorConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Error\ErrorInstance.cs" />
+    <Compile Include="ScriptCode\Native\Error\ErrorPrototype.cs" />
+    <Compile Include="ScriptCode\Native\Function\BindFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Native\Function\EvalFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Native\Function\FunctionConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Function\FunctionInstance.cs" />
+    <Compile Include="ScriptCode\Native\Function\FunctionPrototype.cs" />
+    <Compile Include="ScriptCode\Native\Function\FunctionShim.cs" />
+    <Compile Include="ScriptCode\Native\Function\ScriptFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Native\Function\ThrowTypeError.cs" />
+    <Compile Include="ScriptCode\Native\Global\GlobalObject.cs" />
+    <Compile Include="ScriptCode\Native\ICallable.cs" />
+    <Compile Include="ScriptCode\Native\IConstructor.cs" />
+    <Compile Include="ScriptCode\Native\IPrimitiveInstance.cs" />
+    <Compile Include="ScriptCode\Native\Json\JsonInstance.cs" />
+    <Compile Include="ScriptCode\Native\Json\JsonParser.cs" />
+    <Compile Include="ScriptCode\Native\Json\JsonSerializer.cs" />
+    <Compile Include="ScriptCode\Native\JsValue.cs" />
+    <Compile Include="ScriptCode\Native\Math\MathInstance.cs" />
+    <Compile Include="ScriptCode\Native\Null.cs" />
+    <Compile Include="ScriptCode\Native\Number\Dtoa\CachePowers.cs" />
+    <Compile Include="ScriptCode\Native\Number\Dtoa\DiyFp.cs" />
+    <Compile Include="ScriptCode\Native\Number\Dtoa\DoubleHelper.cs" />
+    <Compile Include="ScriptCode\Native\Number\Dtoa\FastDtoa.cs" />
+    <Compile Include="ScriptCode\Native\Number\Dtoa\FastDtoaBuilder.cs" />
+    <Compile Include="ScriptCode\Native\Number\Dtoa\NumberExtensions.cs" />
+    <Compile Include="ScriptCode\Native\Number\NumberConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Number\NumberInstance.cs" />
+    <Compile Include="ScriptCode\Native\Number\NumberPrototype.cs" />
+    <Compile Include="ScriptCode\Native\Object\ObjectConstructor.cs" />
+    <Compile Include="ScriptCode\Native\Object\ObjectInstance.cs" />
+    <Compile Include="ScriptCode\Native\Object\ObjectPrototype.cs" />
+    <Compile Include="ScriptCode\Native\RegExp\RegExpConstructor.cs" />
+    <Compile Include="ScriptCode\Native\RegExp\RegExpInstance.cs" />
+    <Compile Include="ScriptCode\Native\RegExp\RegExpPrototype.cs" />
+    <Compile Include="ScriptCode\Native\String\StringConstructor.cs" />
+    <Compile Include="ScriptCode\Native\String\StringInstance.cs" />
+    <Compile Include="ScriptCode\Native\String\StringPrototype.cs" />
+    <Compile Include="ScriptCode\Native\Undefined.cs" />
+    <Compile Include="ScriptCode\Options.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ArrayExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\AssignmentExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\BinaryExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\BlockStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\BreakStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\CallExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\CatchClause.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ConditionalExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ContinueStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\DebuggerStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\DoWhileStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\EmptyStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\Expression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ExpressionStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ForInStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ForStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\FunctionDeclaration.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\FunctionExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\Identifier.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\IfStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\IPropertyKeyExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\LabeledStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\Literal.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\LogicalExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\MemberExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\NewExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ObjectExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\Program.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\Property.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\RegExpLiteral.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ReturnStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\SequenceExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\Statement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\SwitchCase.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\SwitchStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\SyntaxNode.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\SyntaxNodes.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ThisExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\ThrowStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\TryStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\UnaryExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\UpdateExpression.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\VariableDeclaration.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\VariableDeclarator.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\WhileStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Ast\WithStatement.cs" />
+    <Compile Include="ScriptCode\Parser\Comment.cs" />
+    <Compile Include="ScriptCode\Parser\IFunctionDeclaration.cs" />
+    <Compile Include="ScriptCode\Parser\IFunctionScope.cs" />
+    <Compile Include="ScriptCode\Parser\IVariableScope.cs" />
+    <Compile Include="ScriptCode\Parser\JavascriptParser.cs" />
+    <Compile Include="ScriptCode\Parser\Loc.cs" />
+    <Compile Include="ScriptCode\Parser\Messages.cs" />
+    <Compile Include="ScriptCode\Parser\ParserException.cs" />
+    <Compile Include="ScriptCode\Parser\ParserExtensions.cs" />
+    <Compile Include="ScriptCode\Parser\ParserOptions.cs" />
+    <Compile Include="ScriptCode\Parser\Position.cs" />
+    <Compile Include="ScriptCode\Parser\State.cs" />
+    <Compile Include="ScriptCode\Parser\Token.cs" />
+    <Compile Include="ScriptCode\Runtime\Arguments.cs" />
+    <Compile Include="ScriptCode\Runtime\Completion.cs" />
+    <Compile Include="ScriptCode\Runtime\Descriptors\PropertyDescriptor.cs" />
+    <Compile Include="ScriptCode\Runtime\Descriptors\Specialized\ClrAccessDescriptor.cs" />
+    <Compile Include="ScriptCode\Runtime\Descriptors\Specialized\ClrDataDescriptor.cs" />
+    <Compile Include="ScriptCode\Runtime\Environments\Binding.cs" />
+    <Compile Include="ScriptCode\Runtime\Environments\DeclarativeEnvironmentRecord.cs" />
+    <Compile Include="ScriptCode\Runtime\Environments\EnvironmentRecord.cs" />
+    <Compile Include="ScriptCode\Runtime\Environments\ExecutionContext.cs" />
+    <Compile Include="ScriptCode\Runtime\Environments\LexicalEnvironment.cs" />
+    <Compile Include="ScriptCode\Runtime\Environments\ObjectEnvironmentRecord.cs" />
+    <Compile Include="ScriptCode\Runtime\ExpressionIntepreter.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\ClrFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\DefaultTypeConverter.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\DelegateWrapper.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\GetterFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\IObjectWrapper.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\ITypeConverter.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\MethodInfoFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\NamespaceReference.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\ObjectWrapper .cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\SetterFunctionInstance.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\TypeReference.cs" />
+    <Compile Include="ScriptCode\Runtime\Interop\TypeReferencePrototype.cs" />
+    <Compile Include="ScriptCode\Runtime\JavaScriptException.cs" />
+    <Compile Include="ScriptCode\Runtime\References\Reference.cs" />
+    <Compile Include="ScriptCode\Runtime\StatementInterpreter.cs" />
+    <Compile Include="ScriptCode\Runtime\StatementsCountOverflowException.cs" />
+    <Compile Include="ScriptCode\Runtime\TypeConverter.cs" />
+    <Compile Include="ScriptCode\StrictModeScope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ScriptCode\Jint.nuspec" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

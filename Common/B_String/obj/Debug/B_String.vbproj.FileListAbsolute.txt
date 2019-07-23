@@ -1,0 +1,14 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\bin\Debug\B_String.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\bin\Debug\B_String.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\bin\Debug\B_String.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\bin\Debug\B_Array.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\bin\Debug\B_Array.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\bin\Debug\B_Array.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.vbprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.vbproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.vbproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.vbproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_String\obj\Debug\B_String.pdb

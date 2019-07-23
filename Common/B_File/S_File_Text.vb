@@ -130,12 +130,12 @@ Namespace Funny
             Return strReturn
         End Function
 
-        Public Shared Function Write( _
-            ByVal strFile As String, _
-            ByVal strContent As String, _
-            ByVal bAppend As Boolean, _
-            Optional ByVal WithBOM As Boolean = True, _
-            Optional ByRef pEncoding As System.Text.Encoding = Nothing) As String
+        Public Shared Function Write(
+            ByVal strFile As String,
+            ByVal strContent As String,
+            ByVal bAppend As Boolean,
+            Optional ByVal WithBOM As Boolean = True,
+            Optional ByVal pEncoding As System.Text.Encoding = Nothing) As String
 
             Dim pSW As StreamWriter
             Dim pFS As FileStream, strReturn As String = ""
