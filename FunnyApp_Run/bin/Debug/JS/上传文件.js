@@ -1,8 +1,12 @@
-//全局变量
-var input="";
+
 //按钮点击
 function upload_click(data){
-    sys.Net_Upload("robot5.funnyai.com","root","ts38411T","22","E:\\happyli\\Jar\\line_java\\Line_Java.jar","/root/happyli/Line_Java.jar","set_status");
+    var password=sys.Get_Text("txt1");
+    var file=sys.Get_Text("txt_upload_file");
+    var path=sys.Get_Text("txt_ftp_path")+"/"+sys.File_Short_Name(file);
+    //"/root/happyli/Line_Java.jar"
+    var hosts=sys.Get_Text("txt_host");
+    sys.Net_Upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
 
 function set_status(data){
@@ -10,14 +14,75 @@ function set_status(data){
     sys.Show_ProgressBar("progress1",strSplit[1],strSplit[0]);
 }
 
-//计算器界面
-//sys.Add_Button(按钮名称,按钮文字,x,y,width,height,event,event_data);
-sys.Add_Button("b4_1","upload",10,350,200,30,"upload_click","");
+var log_error="";
+function show_error(data){
+    log_error+=data+"\n";
+    sys.Show_Text("txt_error",log_error);
+}
 
-sys.Add_Progress("progress1",10,400,300,30);
 
-sys.Show_Form(300,300);
-sys.Form_Title("计算器");
+//保存密码
+function save_password(data){
+    var strPassword=sys.Get_Text("txt1");
+    var strLine=sys.encrypt_public_key("D:/Net/Web/id_rsa.pem.pub",strPassword);
+    sys.File_Save("D:/Net/Web/password_upload_1.txt",strLine);
+    
+}
+
+//读取密码
+function read_password(data){
+    var strLine=sys.File_Read("D:/Net/Web/password_upload_1.txt");
+    var strPassword=sys.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
+    sys.Show_Text("txt1",strPassword);
+}
+
+function file_open(){
+    var strLine=sys.File_Open();
+    sys.Show_Text("txt_upload_file",strLine);
+}
+
+
+
+sys.Add_Text("txt_host","robot3.funnyai.com",100,10,500,30);
+
+
+sys.Add_Label("lb_password","FTP密码：",10,70);
+
+sys.Add_Password("txt1","",100,65,100,30,"");
+
+
+sys.Add_Button("b2_2","读取密码",250,60,100,30,"read_password","");
+sys.Add_Button("b2_1","保存密码",350,60,100,30,"save_password","");
+
+
+
+sys.Add_Label("lb_upload","上传文件：",10,100);
+
+sys.Add_Text("txt_upload_file","E:\\happyli\\Jar\\line_java\\Line_Java.jar",100,100,500,30);
+
+
+sys.Add_Button("b2_1","选择文件",100,150,200,30,"file_open","");
+
+
+
+
+sys.Add_Label("lb_ftp_path","路径：",10,200);
+
+sys.Add_Text("txt_ftp_path","/root/happyli",100,200,500,30);
+
+
+
+sys.Add_Button("b3_1","upload",100,250,200,30,"upload_click","");
+
+
+sys.Add_Text_Multi("txt_error","错误信息：",100,300,500,200);
+
+
+sys.Add_Progress("progress1",100,500,300,30);
+
+sys.Show_Form(800,600);
+
+sys.Form_Title("上传文件");
 
 
 

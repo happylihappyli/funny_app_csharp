@@ -9,8 +9,6 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\FunnyApp.p
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\FunnyApp.csproj.CopyComplete
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\FunnyApp.exe
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\FunnyApp.pdb
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\Interop.AutoItX3Lib.dll
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\FunnyApp.csproj.ResolveComReference.cache
 E:\happyli\http_over_ssh\FunnyApp.exe.config
 E:\happyli\http_over_ssh\FunnyApp.exe
 E:\happyli\http_over_ssh\FunnyApp.pdb

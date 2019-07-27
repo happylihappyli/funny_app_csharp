@@ -19,11 +19,11 @@ namespace FunnyApp
             Application.SetCompatibleTextRenderingDefault(false);
             FrmApp pApp = new FrmApp();
             if (args.Length > 0) { 
-                pApp.File = args[0];
+                pApp.strFile = args[0];
             } else {
                 string strFile = Application.StartupPath + "/main.js";
                 if (S_File.Exists(strFile)) {
-                    pApp.File = strFile;
+                    pApp.strFile = strFile;
                 }
             }
             Application.Run(pApp);

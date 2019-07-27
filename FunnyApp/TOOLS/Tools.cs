@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Management.Automation;
@@ -20,16 +21,18 @@ namespace FunnyApp {
 
         SecureTransfer st = null;
 
-        public delegate void Init_Delegate(string url,
+        public delegate void Init_Delegate(
+            string url,
             string callback_Connect,
             string callback_chat_event);
 
 
-        private static void Call_Init(string url,
-            string callback_Connect,
-            string callback_chat_event, Init_Delegate pFunction) {
-            pFunction(url, callback_Connect, callback_chat_event);
-        }
+        //private static void Call_Init(string url,
+        //    string callback_Connect,
+        //    string callback_chat_event, 
+        //    Init_Delegate pFunction) {
+        //    pFunction(url, callback_Connect, callback_chat_event);
+        //}
 
 
         public void Msg(string strLine) {
@@ -38,23 +41,6 @@ namespace FunnyApp {
 
         public void TTS(string strLine) {
             baidu_tts.tts(strLine);
-        }
-
-        public string Get_Text(string strName) {
-            TextBox pControl = (TextBox)pFrmApp.Controls[strName];
-            return pControl.Text;
-        }
-
-        public void Send_Msg(string data) {
-
-            JObject jObject = JObject.Parse(JsonConvert.SerializeObject(new {
-                from = "csharp",
-                to = "*",
-                message = data,
-                user = "0",
-                msg_id = "0",
-            }));
-            pFrmApp.socket.Emit("chat_event", jObject);
         }
 
         public double Math_Cal(string strLine) {
@@ -213,6 +199,10 @@ namespace FunnyApp {
         }
 
 
+        public string Run_JS(string args) {
+            string strPath = Application.StartupPath + "\\FunnyApp.exe";
+            return Run_App(strPath, Application.StartupPath +"\\JS\\"+ args);
+        }
 
         /// <summary>
         /// 运行CMD命令
@@ -220,15 +210,31 @@ namespace FunnyApp {
         /// <param name="cmd">命令</param>
         /// <returns></returns>
         public string Run_App(string cmds,string args) {
+            string error = "";
+            string output = Run(cmds, args, out error);
+
+            return output;
+        }
+
+        public string Run(string path, string args, out string error) {
             try {
-                // 创建进程
-                System.Diagnostics.Process process = new System.Diagnostics.Process();
-                process.StartInfo.FileName = cmds;
-                process.StartInfo.Arguments = args;
-                process.Start();
-                return "";
-            } catch (Exception ex) {
-                return ex.ToString();
+                using (Process process = new Process()) {
+                    process.StartInfo.FileName = path;
+                    process.StartInfo.Arguments = args;
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.Start();
+                    process.WaitForExit();
+                    error = process.StandardError.ReadToEnd();
+                    if (process.ExitCode != 0) {
+                        return string.Empty;
+                    }
+                    return process.StandardOutput.ReadToEnd().Trim().Replace(@"\\", @"\");
+                }
+            } catch (Exception exception) {
+                error = string.Format("Calling {0} caused an exception: {1}.", path, exception.Message);
+                return string.Empty;
             }
         }
 
@@ -242,9 +248,6 @@ namespace FunnyApp {
             return filePath;
         }
 
-        public void Save_File(string strFile,string content) {
-            S_File_Text.Write(strFile, content, false, false);
-        }
 
         /// <summary>
         /// 运行CMD命令

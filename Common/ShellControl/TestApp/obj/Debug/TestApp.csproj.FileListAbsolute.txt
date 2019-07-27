@@ -1,0 +1,11 @@
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\bin\Debug\TestApp.exe
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\bin\Debug\TestApp.pdb
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\bin\Debug\ShellControl.dll
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\bin\Debug\ShellControl.pdb
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\obj\Debug\TestApp.csprojResolveAssemblyReference.cache
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\obj\Debug\TestApp.Form1.resources
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\obj\Debug\TestApp.csproj.GenerateResource.Cache
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\obj\Debug\TestApp.exe
+D:\我的资料库\Downloads\ShellControl_src\ShellControl\TestApp\obj\Debug\TestApp.pdb
+D:\Data\Dropbox\Project\Common\ShellControl\TestApp\obj\Debug\TestApp.exe
+D:\Data\Dropbox\Project\Common\ShellControl\TestApp\obj\Debug\TestApp.pdb

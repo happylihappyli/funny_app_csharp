@@ -1,0 +1,48 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_String
+</name>
+</assembly>
+<members>
+<member name="P:B_String.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:B_String.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:B_String.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:B_String.Funny.S_Strings.Get_Site_FromURL(System.String)">
+	<summary>
+ 通过URL获取网站地址
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.ContainEnglish(System.String)">
+	<summary>
+ 是否包含英语
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.ContainNumber(System.String)">
+	<summary>
+ 是否包含数字
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.Blank_Chinese(System.String)">
+	<summary>
+ 在汉字前面后面加空格,以及在数字符号前后加空格
+ </summary>
+</member><member name="M:B_String.Funny.S_Strings.DeCrypt_Unicode(System.String,System.String)">
+	<summary>
+ 加密成unicode的
+ </summary>
+	<param name="mStr"></param>
+	<param name="MyKey"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

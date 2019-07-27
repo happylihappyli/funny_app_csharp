@@ -1,0 +1,5 @@
+E:\Data_Dropbox\Dropbox\Project\Common\bin\Release\Tamir.SharpSSH.dll
+E:\Data_Dropbox\Dropbox\Project\Common\SharpSSH\obj\Release\SharpSSH_happyli.csprojResolveAssemblyReference.cache
+E:\Data_Dropbox\Dropbox\Project\Common\SharpSSH\obj\Release\Tamir.SharpSsh.jsch.examples.InputForm.resources
+E:\Data_Dropbox\Dropbox\Project\Common\SharpSSH\obj\Release\SharpSSH_happyli.csproj.GenerateResource.Cache
+E:\Data_Dropbox\Dropbox\Project\Common\SharpSSH\obj\Release\Tamir.SharpSSH.dll

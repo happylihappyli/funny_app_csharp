@@ -1,0 +1,208 @@
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.dll
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.dll
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.pdb
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_String.xml
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\bin\Debug\B_File.xml
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Happy\Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\GenerateResource.read.1.tlog
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Debug\obj\Debug\GenerateResource.write.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_String.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_String.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_String.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\GenerateResource.read.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\GenerateResource.write.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_String.dll
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_String.pdb
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_String.xml
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\GenerateResource.read.1.tlog
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\GenerateResource.write.1.tlog
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_String.dll
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_String.pdb
+D:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_String.xml
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\ResolveAssemblyReference.cache
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\GenerateResource.read.1.tlog
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\GenerateResource.write.1.tlog
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+D:\Happy\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_Array.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_Array.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Debug\bin\Debug\B_Array.xml
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Array.dll
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Array.pdb
+E:\Happy\Dropbox\Project\Common\B_Debug\bin\Debug\B_Array.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+E:\Data_Dropbox\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbprojResolveAssemblyReference.cache
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.dll
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+D:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.pdb
+D:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbprojResolveAssemblyReference.cache
+D:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+D:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+D:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+D:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+D:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.dll
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+I:\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.pdb
+I:\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbprojResolveAssemblyReference.cache
+I:\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+I:\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+I:\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+I:\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+I:\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.dll
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+F:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.pdb
+F:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbprojResolveAssemblyReference.cache
+F:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+F:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+F:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+F:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+F:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.dll
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.dll
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.pdb
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\B_File.xml
+E:\Data\Dropbox\Project\Common\B_Debug\bin\Debug\ShellControl.pdb
+E:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbprojResolveAssemblyReference.cache
+E:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.Cache
+E:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\Data\Dropbox\Project\Common\B_Debug\obj\Debug\B_Debug.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\B_Debug.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\B_Debug.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\B_Debug.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\B_File.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\ShellControl.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\B_File.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\B_File.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\bin\Debug\ShellControl.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.vbprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.vbproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.vbproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.vbproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Debug\obj\Debug\B_Debug.pdb

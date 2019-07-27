@@ -74,20 +74,63 @@ namespace FunnyApp {
         }
 
 
-
-        public void Add_Text(string name, string text,
+        public void Add_Password(string name, string text,
             int x, int y,
             int width, int height,
             string call_back) {
             Point p = new Point(x, y);//定义一个具体的位置  
-            TextBox pControl = new TextBox();//实例化一个button  
+            TextBox pControl = new TextBox();//实例化一个button 
+            pControl.PasswordChar = '*';
             pControl.Name = name;
             pControl.Text = text;
             pControl.Tag = call_back;//tag是控件留给用户自己定义的一个数据项,
             pControl.Location = p;
+            pControl.Multiline = false;
+            pControl.ScrollBars = ScrollBars.Vertical;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
+        }
+
+        public void Add_Text(string name, string text,
+            int x, int y,
+            int width, int height) {
+            Point p = new Point(x, y);//定义一个具体的位置  
+            TextBox pControl = new TextBox();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            pControl.Location = p;
+            pControl.Multiline = false;
+            pControl.ScrollBars = ScrollBars.Vertical;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
+        }
+
+
+
+        public void Add_Text_Multi(string name, string text,
+            int x, int y,
+            int width, int height) {
+            Point p = new Point(x, y);//定义一个具体的位置  
+            TextBox pControl = new TextBox();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            pControl.Location = p;
             pControl.Multiline = true;
             pControl.ScrollBars = ScrollBars.Vertical;
             pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
+        }
+
+
+        public void Add_Label(string name, string text,
+            int x, int y) {
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            Label pControl = new Label();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            pControl.Location = p;
+            pControl.AutoSize = true;
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
         }
 
@@ -96,6 +139,14 @@ namespace FunnyApp {
             if (pControl != null) pControl.Text = text;
         }
 
+        public string Get_Text(string control_name) {
+            TextBox pControl = (TextBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                return pControl.Text;// = text;
+            } else {
+                return "";
+            }
+        }
 
         private void my_button_Click(object sender, EventArgs e) {
             Button button = (Button)sender;
@@ -116,9 +167,11 @@ namespace FunnyApp {
         public void Connect_Socket(
             string url,
             string callback_Connect,
-            string callback_chat_event) {
-            Call_Init(url, callback_Connect, callback_chat_event, pFrmApp.Init);
-
+            string callback_chat_event,
+            string callback_system_event) {
+            // 
+            //Call_Init(url, callback_Connect, callback_chat_event, pFrmApp.Init);
+            pFrmApp.Init(url, callback_Connect, callback_chat_event, callback_system_event);
         }
 
         public void Notification(string title, string message) {

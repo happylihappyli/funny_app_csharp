@@ -1,0 +1,77 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_Net
+</name>
+</assembly>
+<members>
+<member name="T:B_Net.My.Resources.Resources">
+<summary>
+  一个强类型的资源类，用于查找本地化的字符串等。
+</summary>
+</member>
+<member name="P:B_Net.My.Resources.Resources.ResourceManager">
+<summary>
+  返回此类使用的缓存的 ResourceManager 实例。
+</summary>
+</member>
+<member name="P:B_Net.My.Resources.Resources.Culture">
+<summary>
+  使用此强类型资源类，为所有资源查找
+  重写当前线程的 CurrentUICulture 属性。
+</summary>
+</member>
+<member name="M:B_Net.Funny.C_Net.GetFileType(System.String)">
+ <summary>
+ 获取文件类型后缀，如 gif,png,....
+ </summary>
+ <param name="strURL"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="F:B_Net.Funny.ShellHelp.waitMark">
+ <summary>
+ 命令等待标识
+ </summary>
+</member>
+<member name="M:B_Net.Funny.ShellHelp.OpenShell(System.String,System.Int32,System.String,System.String)">
+ <summary>
+ 打开连接
+ </summary>
+ <param name="host"></param>
+ <param name="username"></param>
+ <param name="pwd"></param>
+</member>
+<member name="M:B_Net.Funny.ShellHelp.Shell(System.String,System.Text.Encoding)">
+ <summary>
+ 执行命令
+ </summary>
+ <param name="cmd"></param>
+</member>
+<member name="M:B_Net.Funny.ShellHelp.GetAllString(System.Text.Encoding)">
+ <summary>
+ 获取输出信息
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:B_Net.Funny.ShellHelp.Close">
+ <summary>
+ 关闭连接
+ </summary>
+</member>
+<member name="M:B_Net.Funny.S_Net.postData_return_XML(System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ 返回XML字符串
+ </summary>
+ <param name="strEmail"></param>
+ <param name="strURL"></param>
+ <param name="HttpData"></param>
+ <param name="strMethod"></param>
+ <param name="strEncode"></param>
+ <param name="strRefererURL"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

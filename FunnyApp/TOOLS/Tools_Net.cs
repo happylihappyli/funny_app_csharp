@@ -1,4 +1,7 @@
-﻿using System;
+﻿using B_Net.Funny;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,15 +13,24 @@ namespace FunnyApp {
     public partial class Tools {
 
 
+        public enum MessageClass {
+            DebugMsg = 0,
+            InformationMsg = 1,
+            WarningMsg = 2,
+            ErrorMsg = 3,
+        }
 
         public string callback_status = "";
+        public string callback_error = "";
         public void Net_Upload(
             string hosts, string user,
             string password, string port,
             string local_file, string remotefile,
-            string callback_status) {
+            string callback_status,
+            string callback_error) {
 
             this.callback_status = callback_status;
+            this.callback_error = callback_error;
             SecureTransfer.SSHTransferProtocol Protocol = SecureTransfer.SSHTransferProtocol.SFTP;
 
             try {
@@ -43,6 +55,7 @@ namespace FunnyApp {
                 t.IsBackground = true;
                 t.Start();
             } catch (Exception ex) {
+                pFrmApp.JS_Function(this.callback_error, ex.ToString());
                 //txMsg.Text = ex.ToString();
                 //Runtime.MessageCollector.AddExceptionStackTrace(Language.strSSHTransferFailed, ex);
                 st?.Disconnect();
@@ -53,6 +66,8 @@ namespace FunnyApp {
 
 
         private void AsyncCallback(IAsyncResult ar) {
+            
+            pFrmApp.JS_Function(this.callback_error, ar.ToString());
             //Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, $"SFTP AsyncCallback completed.", true);
         }
 
@@ -81,11 +96,13 @@ namespace FunnyApp {
                     }
                 }
 
+                pFrmApp.JS_Function(this.callback_error,"传输完毕");
                 //Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg,
                 //                                    $"Transfer of {Path.GetFileName(st.SrcFile)} completed.", true);
                 st.Disconnect();
                 st.Dispose();
             } catch (Exception ex) {
+                pFrmApp.JS_Function(this.callback_error, ex.ToString());
                 //Runtime.MessageCollector.AddExceptionStackTrace(Language.strSSHStartTransferBG, ex,
                 //                                                MessageClass.ErrorMsg, false);
                 st?.Disconnect();
@@ -111,6 +128,26 @@ namespace FunnyApp {
             curVal = transferredBytes;
 
             SetStatus();
+        }
+
+
+
+        public void Send_Msg(string Type,string strFrom,string strTo,string data) {
+
+            JObject jObject = JObject.Parse(JsonConvert.SerializeObject(new {
+                from = strFrom,
+                to = strTo,
+                message = data,
+                user = "0",
+                msg_id = "0",
+            }));
+            //"chat_event"
+            pFrmApp.socket.Emit(Type, jObject);
+        }
+
+
+        public string Net_Http_GET(string url) {
+            return S_Net.Get_URL(url);
         }
     }
 }

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_Data
+</name>
+</assembly>
+<members>
+<member name="M:B_Data.Funny.C_TimeChina.#ctor(System.DateTime)">
+	<summary>
+ 从指定的阳历日期创建中国日历信息实体类
+ </summary>
+	<param name="date">指定的阳历日期</param>
+</member><member name="P:B_Data.Funny.C_TimeChina.SolarDate">
+	<summary>
+ 阳历日期
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.SolarWeekText">
+	<summary>
+ 星期几
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.SolarConstellation">
+	<summary>
+ 阳历星座
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.SolarBirthStone">
+	<summary>
+ 阳历诞生石
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarYear">
+	<summary>
+ 阴历年份
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarMonth">
+	<summary>
+ 阴历月份
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.IsLeapMonth">
+	<summary>
+ 是否阴历闰月
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarDay">
+	<summary>
+ 阴历月中日期
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarYearSexagenary">
+	<summary>
+ 阴历年干支
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarYearAnimal">
+	<summary>
+ 阴历年生肖
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarYearText">
+	<summary>
+ 阴历年文本
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarMonthText">
+	<summary>
+ 阴历月文本
+ </summary>
+</member><member name="P:B_Data.Funny.C_TimeChina.LunarDayText">
+	<summary>
+ 阴历月中日期文本
+ </summary>
+</member><member name="M:B_Data.Funny.C_TimeChina.CalcConstellation(System.DateTime,System.String@,System.String@)">
+	<summary>
+ 根据指定阳历日期计算星座＆诞生石
+ </summary>
+	<param name="date">指定阳历日期</param>
+	<param name="constellation">星座</param>
+	<param name="birthstone">诞生石</param>
+</member><member name="M:B_Data.Funny.C_TimeChina.GetLunarNewYearDate(System.Int32)">
+	<summary>
+ 获取指定年份春节当日（正月初一）的阳历日期
+ </summary>
+	<param name="year">指定的年份</param>
+</member><member name="M:B_Data.Funny.C_TimeChina.ConvertTime_FromChina(System.Int32,System.Int32,System.Int32,System.Boolean)">
+	<summary>
+ 阴历转阳历
+ </summary>
+	<param name="year">阴历年</param>
+	<param name="month">阴历月</param>
+	<param name="day">阴历日</param>
+	<param name="IsLeapMonth">是否闰月</param>
+</member><member name="M:B_Data.Funny.C_TimeChina.ConvertTime_FromChina(System.DateTime,System.Boolean)">
+	<summary>
+ 阴历转阳历
+ </summary>
+	<param name="date">阴历日期</param>
+	<param name="IsLeapMonth">是否闰月</param>
+</member><member name="M:B_Data.Funny.C_TimeChina.FromLunarDate(System.Int32,System.Int32,System.Int32,System.Boolean)">
+	<summary>
+ 从阴历创建日历实体
+ </summary>
+	<param name="year">阴历年</param>
+	<param name="month">阴历月</param>
+	<param name="day">阴历日</param>
+	<param name="IsLeapMonth">是否闰月</param>
+</member><member name="M:B_Data.Funny.C_TimeChina.FromLunarDate(System.DateTime,System.Boolean)">
+	<summary>
+ 从阴历创建日历实体
+ </summary>
+	<param name="date">阴历日期</param>
+	<param name="IsLeapMonth">是否闰月</param>
+</member><member name="M:B_Data.Funny.C_TimeChina.FromLunarDate(System.String,System.Boolean)">
+	<summary>
+ 从阴历创建日历实体
+ </summary>
+	<param name="date">表示阴历日期的8位数字，例如：20070209</param>
+	<param name="IsLeapMonth">是否闰月</param>
+</member><member name="T:B_Data.Funny.C_TimeChina">
+	<summary>
+ 中国日历信息实体类
+ cncxz（虫虫） 2007-2-9
+ </summary>
+</member><member name="P:B_Data.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:B_Data.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:B_Data.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

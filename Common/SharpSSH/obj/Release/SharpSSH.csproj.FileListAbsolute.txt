@@ -1,0 +1,4 @@
+E:\项目\SvnProject\Code\BASECOMMON\SharpSSH-1.1.1.13.src\SharpSSH-1.1.1.13.src\bin\Release\Tamir.SharpSSH.dll
+E:\项目\SvnProject\Code\BASECOMMON\SharpSSH-1.1.1.13.src\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\ResolveAssemblyReference.cache
+E:\项目\SvnProject\Code\BASECOMMON\SharpSSH-1.1.1.13.src\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\Tamir.SharpSsh.jsch.examples.InputForm.resources
+E:\项目\SvnProject\Code\BASECOMMON\SharpSSH-1.1.1.13.src\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\Tamir.SharpSSH.dll

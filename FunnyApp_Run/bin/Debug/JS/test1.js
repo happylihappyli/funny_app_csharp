@@ -20,7 +20,7 @@ var tools=new Tools();
 
 sys.Add_Button("b1","Test",10,50,200,30,"show_distance","");
 
-sys.Add_Text("txt1","输入信息",10,10,200,30,"");
+sys.Add_Text("txt1","输入信息",10,10,200,30);
 
 function show_distance(){
     sys.Show_Text("txt1","distance=:"+tools.distance(p1, p2));

@@ -9,18 +9,22 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
+//using Chromely.Core;
+//using Chromely.Core.Host;
+//using Chromely.Core.Infrastructure;
 
 namespace FunnyApp
 {
     public partial class FrmApp : Form
     {
 
-        public string File = "";
+        public string strFile = "";
         public Socket socket = null;
         public FrmApp()
         {
@@ -29,10 +33,10 @@ namespace FunnyApp
 
         private void FrmApp_Load(object sender, EventArgs e)
         {
-            if ("".Equals(File)) {
+            if ("".Equals(strFile)) {
                 MessageBox.Show("没有设置启动参数");
             } else { 
-                String strCode = S_File_Text.Read(File);
+                String strCode = S_File_Text.Read(strFile);
                 JS.Run_Code(this,strCode);
             }
 
@@ -100,9 +104,12 @@ namespace FunnyApp
             popupNotifier.IsRightToLeft = false;
             popupNotifier.Popup();
         }
+
+
         public void Init(string url,
             string callback_Connect,
-            string callback_chat_event)
+            string callback_chat_event,
+            string callback_system_event)
         {
 
             socket = IO.Socket(url);
@@ -118,6 +125,12 @@ namespace FunnyApp
                 Call_Event(callback_chat_event,data.ToString());//, data.ToString());
 
             });
+
+
+            socket.On("sys_event", (data) => {
+                Call_Event(callback_system_event, data.ToString());//, data.ToString());
+
+            });
         }
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -131,6 +144,14 @@ namespace FunnyApp
 
         private void button1_Click_1(object sender, EventArgs e) {
             Proxies.SetProxy("127.0.0.1:1316");
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e) {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
 
         }
     }

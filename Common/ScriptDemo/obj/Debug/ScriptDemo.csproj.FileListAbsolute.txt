@@ -1,6 +1,6 @@
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ScriptDemo\obj\Debug\ScriptDemo.csprojAssemblyReference.cache
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ScriptDemo\obj\Debug\ScriptDemo.csproj.CoreCompileInputs.cache
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Release_autoteacher\ScriptDemo.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Release_autoteacher\ScriptDemo.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ScriptDemo\obj\Debug\ScriptDemo.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ScriptDemo\obj\Debug\ScriptDemo.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ScriptDemo\obj\Debug\ScriptDemo.csprojAssemblyReference.cache
