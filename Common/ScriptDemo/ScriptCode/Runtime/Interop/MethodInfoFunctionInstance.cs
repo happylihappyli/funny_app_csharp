@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Jint.Native;
@@ -45,8 +46,9 @@ namespace Jint.Runtime.Interop
 
                     return result;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Console.Write(ex.ToString());
                     // ignore method
                 }
             }

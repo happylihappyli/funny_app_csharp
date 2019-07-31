@@ -1,0 +1,5 @@
+E:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\ResolveAssemblyReference.cache
+E:\Happy_Project\dotNET\VB\Common\IniFile\bin\B_IniFile.dll
+E:\Happy_Project\dotNET\VB\Common\IniFile\bin\B_IniFile.xml
+E:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\B_IniFile.dll
+E:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\B_IniFile.xml

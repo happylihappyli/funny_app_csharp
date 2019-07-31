@@ -1,5 +1,6 @@
 ﻿using AutoIt;
 using B_File.Funny;
+using B_IniFile;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Quobject.SocketIoClientDotNet.Client;
@@ -26,6 +27,8 @@ namespace FunnyApp
 
         public string strFile = "";
         public Socket socket = null;
+        public JS pJS = new JS();
+
         public FrmApp()
         {
             InitializeComponent();
@@ -36,8 +39,8 @@ namespace FunnyApp
             if ("".Equals(strFile)) {
                 MessageBox.Show("没有设置启动参数");
             } else { 
-                String strCode = S_File_Text.Read(strFile);
-                JS.Run_Code(this,strCode);
+                string strCode = S_File_Text.Read(strFile);
+                pJS.Run_Code(this,strCode);
             }
 
             //AutoItX.Run("cmd.exe", "");// "C:\\Windows\\System32\\");
@@ -49,7 +52,7 @@ namespace FunnyApp
 
             if (!this.InvokeRequired){
                 try { 
-                    JS.jint.Invoke(str1, str2);
+                    pJS.jint.Invoke(str1, str2);
                 }
                 catch(Exception ex) {
                     Debug.Print(ex.ToString());
@@ -90,7 +93,7 @@ namespace FunnyApp
         delegate void d_Call_JS_Function(string function, string data);//创建一个代理
         public void JS_Function(string function, string data) {
             if (!this.InvokeRequired) {
-                JS.jint.Invoke(function, data);
+                pJS.jint.Invoke(function, data);
             } else {
                 d_Call_JS_Function a1 = new d_Call_JS_Function(JS_Function);
                 Invoke(a1, new object[] { function, data });
@@ -139,7 +142,7 @@ namespace FunnyApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            JS.jint.Invoke("event_connected");
+            pJS.jint.Invoke("event_connected");
         }
 
         private void button1_Click_1(object sender, EventArgs e) {
@@ -153,6 +156,22 @@ namespace FunnyApp
 
         private void label1_Click(object sender, EventArgs e) {
 
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Return) {
+                MessageBox.Show("test");
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void button1_Click_3(object sender, EventArgs e) {
+            IniFile pIni = new IniFile(Application.StartupPath + "\\config\\friend.ini");
+            string strCount=pIni.Read_Item("items", "count");
+            Console.Write(strCount);
         }
     }
 }

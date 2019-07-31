@@ -199,9 +199,13 @@ namespace FunnyApp {
         }
 
 
-        public string Run_JS(string args) {
+        public void Run_JS(string args) {
             string strPath = Application.StartupPath + "\\FunnyApp.exe";
-            return Run_App(strPath, Application.StartupPath +"\\JS\\"+ args);
+            using (Process process = new Process()) {
+                process.StartInfo.FileName = strPath;
+                process.StartInfo.Arguments = Application.StartupPath + "\\JS\\" + args;
+                process.Start();
+            }
         }
 
         /// <summary>
@@ -209,12 +213,23 @@ namespace FunnyApp {
         /// </summary>
         /// <param name="cmd">命令</param>
         /// <returns></returns>
-        public string Run_App(string cmds,string args) {
+        public string Run_App_Return(string cmds,string args) {
             string error = "";
             string output = Run(cmds, args, out error);
 
             return output;
         }
+
+
+        public void Run_App(string cmds, string args) {
+            string strPath = cmds;
+            using (Process process = new Process()) {
+                process.StartInfo.FileName = strPath;
+                process.StartInfo.Arguments = args;
+                process.Start();
+            }
+        }
+
 
         public string Run(string path, string args, out string error) {
             try {
@@ -282,23 +297,6 @@ namespace FunnyApp {
             }
         }
 
-
-        public string Set_Proxy(string ip,string port) {
-            if (Proxies.SetProxy(ip + ":" + port)) {
-                return "已设置代理：" + ip + ":" + port;
-            } else {
-                return "设置代理失败. 原因：无效IP和端口.";
-            }
-        }
-
-
-        public string UnSet_Proxy() {
-            if (Proxies.UnsetProxy()) {
-                return "已取消代理.";
-            } else {
-                return "取消代理失败.";
-            }
-        }
 
 
     }

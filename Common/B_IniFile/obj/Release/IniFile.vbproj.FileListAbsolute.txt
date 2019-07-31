@@ -1,0 +1,10 @@
+E:\Happy_Project\dotNET\VB\Common\IniFile\bin\IniFile.dll
+E:\Happy_Project\dotNET\VB\Common\IniFile\bin\IniFile.xml
+E:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\ResolveAssemblyReference.cache
+E:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\IniFile.dll
+E:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\IniFile.xml
+J:\Happy_Project\dotNET\VB\Common\IniFile\bin\IniFile.dll
+J:\Happy_Project\dotNET\VB\Common\IniFile\bin\IniFile.xml
+J:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\ResolveAssemblyReference.cache
+J:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\IniFile.dll
+J:\Happy_Project\dotNET\VB\Common\IniFile\obj\Release\IniFile.xml

@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSSH_happyli", "..\Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellControl", "..\Common\ShellControl\ShellControl\ShellControl.csproj", "{5338B18B-1781-418F-A1CC-9BD95A65A3BA}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "B_IniFile", "..\Common\B_IniFile\B_IniFile.vbproj", "{CBDE9274-9D0B-4200-AACD-FC544B313675}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -211,6 +213,18 @@ Global
 		{5338B18B-1781-418F-A1CC-9BD95A65A3BA}.Release|Mixed Platforms.Build.0 = Release|x86
 		{5338B18B-1781-418F-A1CC-9BD95A65A3BA}.Release|x86.ActiveCfg = Release|x86
 		{5338B18B-1781-418F-A1CC-9BD95A65A3BA}.Release|x86.Build.0 = Release|x86
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Debug|x86.Build.0 = Debug|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|x86.ActiveCfg = Release|Any CPU
+		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -227,6 +241,7 @@ Global
 		{8C8FFB12-99C8-4C62-8FFC-E754720D0D26} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
 		{60E60144-6F67-4F37-9EB0-B8C43A391C5C} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
 		{5338B18B-1781-418F-A1CC-9BD95A65A3BA} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
+		{CBDE9274-9D0B-4200-AACD-FC544B313675} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E072F8F-E85A-47E9-9EC9-552EC278EC70}

@@ -49,10 +49,76 @@ namespace FunnyApp {
             string control_name, string strMax, string strValue) {
             ProgressBar pControl = (ProgressBar)pFrmApp.Controls[control_name];
             if (pControl != null) {
-                pControl.Maximum = Int32.Parse(strMax);
-                pControl.Value = Int32.Parse(strValue); ;
+                double dbMaximum = Double.Parse(strMax);
+                pControl.Maximum = (int)dbMaximum;
+                double dbValue = Double.Parse(strValue);
+                pControl.Value = (int)dbValue; ;
             }
         }
+
+        public void Add_ListBox(string name, string text,
+            int x, int y,
+            int width, int height) {
+            Point p = new Point(x, y);//定义一个具体的位置  
+            ListBox pControl = new ListBox();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            //tag是控件留给用户自己定义的一个数据项,
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+
+        }
+
+
+        public void ListBox_Add(string control_name, string text) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Items.Add(text);
+            }
+        }
+
+
+        public int ListBox_Length(string control_name) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                return pControl.Items.Count;
+            }
+            return 0;
+        }
+
+        
+
+        public void ListBox_Item_Selected(string control_name, string strIndex) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                int index = Int32.Parse(strIndex);
+                pControl.SelectedIndex = index;//[index].
+            }
+        }
+
+        public string ListBox_Item(string control_name, string strIndex) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                int index = Int32.Parse(strIndex);
+                return pControl.Items[index].ToString();
+            }
+            return "";
+        }
+
+
+        public void ListBox_Add_Bat(string control_name, string strTexts) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                strTexts = strTexts.Replace("\r\n", "\n");
+                strTexts = strTexts.Replace("\r", "\n");
+                string[] strSplit = strTexts.Split('\n');
+                for (int i = 0; i < strSplit.Length; i++) {
+                    pControl.Items.Add(strSplit[i]);
+                }
+            }
+        }
+
 
 
 
@@ -122,6 +188,29 @@ namespace FunnyApp {
         }
 
 
+        public void Text_KeyDown(
+            string control_name,
+            string function_name) {
+            TextBox pControl = (TextBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Tag =new Function_Callback(function_name,"");
+                pControl.KeyDown += new KeyEventHandler(this.my_textBox_KeyDown);
+            }
+        }
+
+        public void Acception_Button(string control_name) {
+            Button pControl = (Button)pFrmApp.Controls[control_name];
+            pFrmApp.AcceptButton = pControl;
+        }
+
+        private void my_textBox_KeyDown(object sender, KeyEventArgs e) {
+            TextBox textbox1 = (TextBox)sender;
+            Function_Callback p = (Function_Callback)textbox1.Tag;
+            pFrmApp.pJS.jint.Invoke(p.Name, e.KeyCode);
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+        }
+
         public void Add_Label(string name, string text,
             int x, int y) {
 
@@ -133,6 +222,49 @@ namespace FunnyApp {
             pControl.AutoSize = true;
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
         }
+
+
+        public void Add_Combox(string name, string text,
+            int x, int y,
+            int width, int height) {
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            ComboBox pControl = new ComboBox();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+
+        }
+
+
+        public void Combox_Add(string control_name, string text) {
+            ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Items.Add(text);
+            }
+        }
+
+
+
+        public string Combox_Text(string control_name) {
+            ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                return pControl.Text;
+            }
+            return "";
+        }
+
+
+        public int Combox_Index(string control_name) {
+            ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                return pControl.SelectedIndex;
+            }
+            return -1;
+        }
+
 
         public void Show_Text(string control_name, string text) {
             TextBox pControl = (TextBox)pFrmApp.Controls[control_name];
@@ -151,7 +283,7 @@ namespace FunnyApp {
         private void my_button_Click(object sender, EventArgs e) {
             Button button = (Button)sender;
             Function_Callback p = (Function_Callback)button.Tag;
-            JS.jint.Invoke(p.Name, p.Data);
+            pFrmApp.pJS.jint.Invoke(p.Name, p.Data);
         }
 
         public void Show_Form(int width, int height) {

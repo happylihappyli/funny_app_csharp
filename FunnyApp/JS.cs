@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace FunnyApp
 {
-    class JS
+    public class JS
     {
          
-        public static Jint.Engine jint;
+        public Jint.Engine jint;
 
-        public static void Run_Code(FrmApp pApp,string run_codestr1)
+        public void Run_Code(FrmApp pApp,string run_codestr1)
         {
             Tools tools = new Tools(pApp);
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\JS\start.js</StartArguments>
+    <StartArguments>E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\JS\加密聊天.js</StartArguments>
   </PropertyGroup>
 </Project>

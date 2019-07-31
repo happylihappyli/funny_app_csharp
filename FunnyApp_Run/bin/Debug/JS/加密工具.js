@@ -13,14 +13,14 @@ function file_open(){
 
 function file_pem(){
     var file_key="C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe";
-    var txt_file=sys.Get_Text("txt_file");
+    var txt_file=sys.Get_Text("txt_file_public");
     var txt_file2=txt_file.replace(".pub",".pem.pub");
     var param="-f "+txt_file+" -e -m PKCS8";// > "+txt_file2;
     
     show_error(file_key);
     show_error(param);
     
-    var result=sys.Run_App(file_key,param);
+    var result=sys.Run_App_Return(file_key,param);
     sys.File_Save(txt_file2,result);
     
     show_error(result);
@@ -48,13 +48,24 @@ function copy_click(){
 
 function decrypt_click(){
     var strMsg=sys.Get_Text("txt_input");
-    var strLine=sys.decrypt_private_key("D:/Net/Web/id_rsa",strMsg);
+    var strFile=sys.Get_Text("txt_file_private");
+    var strLine=sys.decrypt_private_key(strFile,strMsg);
     sys.Show_Text("txt_input2",strLine);
+}
+
+function key_click(data){
+    //sys.Show_Text("txt1","test11111");
+    //sys.Au3_Run("ssh-keygen.exe -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa","C:\\Windows\\System32\\OpenSSH\\");
+    sys.Msg("一会打开程序，请按两个回车，自动关闭窗口");
+    sys.Run_App("C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe"," -m PEM -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa");
+    sys.Show_Text("txt1","把这个文件 D:\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
 }
 
 
 
-sys.Add_Label("lb_upload","文件：",10,10);
+sys.Add_Button("b1","创建key",650,10,100,30,"key_click","0");
+
+sys.Add_Label("lb_file","文件：",10,10);
 
 sys.Add_Text("txt_file_public","D:/Net/Web/public/id_rsa_happyli.pub",100,10,500,30);
 sys.Add_Button("b2_1","选择文件",100,50,200,30,"file_open","");
@@ -62,20 +73,26 @@ sys.Add_Button("b2_1","选择文件",100,50,200,30,"file_open","");
 
 sys.Add_Button("b2_2","转为pem格式",300,50,200,30,"file_pem","");
 
+
+
+sys.Add_Label("lb_upload","加密公钥文件：",10,110);
+
 sys.Add_Text("txt_file_public_pem","D:/Net/Web/public/pem/id_rsa_happyli.pem.pub",100,110,500,30);
 
 
+sys.Add_Label("lb_upload","解密私钥文件：",10,150);
+sys.Add_Text("txt_file_private","D:/Net/Web/id_rsa",100,150,500,30);
 
 
-sys.Add_Text("txt_input","hello，你好",100,150,500,30);
-sys.Add_Button("b3_1","加密",100,200,100,30,"encrypt_click","");
-sys.Add_Button("b3_1","复制",300,200,100,30,"copy_click","");
-sys.Add_Button("b3_1","解密",500,200,100,30,"decrypt_click","");
-sys.Add_Text("txt_input2","",100,250,500,30);
+sys.Add_Text("txt_input","hello，你好",100,200,500,30);
+sys.Add_Button("b3_1","加密",100,250,100,30,"encrypt_click","");
+sys.Add_Button("b3_1","复制",300,250,100,30,"copy_click","");
+sys.Add_Button("b3_1","解密",500,250,100,30,"decrypt_click","");
+sys.Add_Text("txt_input2","",100,300,500,30);
 
 
 
-sys.Add_Text_Multi("txt_error","错误信息：",100,300,500,200);
+sys.Add_Text_Multi("txt_error","错误信息：",100,350,500,200);
 
 
 

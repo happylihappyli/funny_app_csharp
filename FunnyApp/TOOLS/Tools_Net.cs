@@ -149,5 +149,24 @@ namespace FunnyApp {
         public string Net_Http_GET(string url) {
             return S_Net.Get_URL(url);
         }
+
+
+
+        public string Set_Proxy(string ip, string port) {
+            if (Proxies.SetProxy(ip + ":" + port)) {
+                return "已设置代理：" + ip + ":" + port;
+            } else {
+                return "设置代理失败. 原因：无效IP和端口.";
+            }
+        }
+
+
+        public string UnSet_Proxy() {
+            if (Proxies.UnsetProxy()) {
+                return "已取消代理.";
+            } else {
+                return "取消代理失败.";
+            }
+        }
     }
 }

@@ -16,9 +16,23 @@ namespace FunnyApp {
         }
 
         public string decrypt_private_key(string file, string strLine){
-            string bbb = PemKeyUtils.RSADecrypt(file, strLine);
-            //@"D:\Net\Web\id_rsa", "DMYKcU4QQadIKJzhFEFWCFXDa6NebyTP1FKgy89ZXgQRWisNydq9/5FS1wJyfyZVmKg1paIYKW+N5AdMvRCc4boq4TGDpe9tpJJ6OrOiyImbqREYtReS5U5atTP/CCdDNJh26PBlB67M/mYgibBlKRS0aaEQq8vLpw8wIOOh6gZDA+A45+3km/ok4ySV17ugq1LLui5HQ7geMnD4aa9b1HvPKKjMTXCdMgCYyIcgxlKGcdj2LBsfuoNpVUe+NI+M7kfaMOXOoN+bnWRj+uFcBVfmQYMzHcVh4qzqtV3Fydk2t/RzZdGwDnmPgZIefcsWgHxSnhVPovGCNhXsxotKUg==");
-            return bbb;
+            try {
+                string bbb = PemKeyUtils.RSADecrypt(file, strLine);
+                return bbb;
+            } catch(Exception ex) {
+                return ex.ToString();
+            }
+        }
+
+        public string Time_Now() {
+            //
+            return DateTime.Now.ToLongTimeString();
+        }
+
+
+        public string Date_Now() {
+            //
+            return DateTime.Now.ToLongDateString();
         }
     }
 }
