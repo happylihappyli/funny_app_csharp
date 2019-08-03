@@ -1,7 +1,6 @@
 ﻿
 using B_File.Funny;
 using B_Math;
-using FunnyApp.Baidu;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -39,9 +38,6 @@ namespace FunnyApp {
             MessageBox.Show(strLine);
         }
 
-        public void TTS(string strLine) {
-            baidu_tts.tts(strLine);
-        }
 
         public double Math_Cal(string strLine) {
             C_Math pMath = new C_Math();

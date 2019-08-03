@@ -1,0 +1,13 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\Hosting.exe.config
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\Hosting.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\Hosting.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Funny_App_Design.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Hosting.frmMain.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Funny_App_Design.csproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Funny_App_Design.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Hosting.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Hosting.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\B_File.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\B_File.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\B_File.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Funny_App_Design.csproj.CopyComplete

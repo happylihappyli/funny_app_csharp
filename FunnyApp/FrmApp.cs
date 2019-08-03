@@ -1,6 +1,7 @@
 ﻿using AutoIt;
 using B_File.Funny;
 using B_IniFile;
+using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Quobject.SocketIoClientDotNet.Client;
@@ -36,13 +37,13 @@ namespace FunnyApp
 
         private void FrmApp_Load(object sender, EventArgs e)
         {
+
             if ("".Equals(strFile)) {
                 MessageBox.Show("没有设置启动参数");
-            } else { 
+            } else {
                 string strCode = S_File_Text.Read(strFile);
-                pJS.Run_Code(this,strCode);
+                pJS.Run_Code(this, strCode);
             }
-
             //AutoItX.Run("cmd.exe", "");// "C:\\Windows\\System32\\");
         }
 
@@ -139,39 +140,6 @@ namespace FunnyApp
         {
             
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pJS.jint.Invoke("event_connected");
-        }
-
-        private void button1_Click_1(object sender, EventArgs e) {
-            Proxies.SetProxy("127.0.0.1:1316");
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e) {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e) {
-
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Return) {
-                MessageBox.Show("test");
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void button1_Click_3(object sender, EventArgs e) {
-            IniFile pIni = new IniFile(Application.StartupPath + "\\config\\friend.ini");
-            string strCount=pIni.Read_Item("items", "count");
-            Console.Write(strCount);
-        }
+         
     }
 }

@@ -2,9 +2,9 @@
 //按钮点击
 function upload_click(data){
     var password=sys.Get_Text("txt1");
-    var file=sys.Get_Text("txt_upload_file");
+    var file=sys.ListBox_Item_Text("list_upload");
     var path=sys.Get_Text("txt_ftp_path")+"/"+sys.File_Short_Name(file);
-    //"/root/happyli/Line_Java.jar"
+
     var hosts=sys.Get_Text("txt_host");
     sys.Net_Upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
@@ -38,12 +38,15 @@ function read_password(data){
 
 function file_open(){
     var strLine=sys.File_Open();
-    sys.Show_Text("txt_upload_file",strLine);
+    
+    sys.ListBox_Add("list_upload",strLine);
+    sys.ListBox_Item_Selected("list_upload",sys.ListBox_Item_Size()-1);
+    
 }
 
 
 
-sys.Add_Text("txt_host","robot3.funnyai.com",100,10,500,30);
+sys.Add_Text("txt_host","robot6.funnyai.com",100,10,500,30);
 
 
 sys.Add_Label("lb_password","FTP密码：",10,70);
@@ -58,18 +61,18 @@ sys.Add_Button("b2_1","保存密码",350,60,100,30,"save_password","");
 
 sys.Add_Label("lb_upload","上传文件：",10,100);
 
-sys.Add_Text("txt_upload_file","E:\\happyli\\Jar\\line_java\\Line_Java.jar",100,100,500,30);
-
+sys.Add_ListBox("list_upload","E:\\happyli\\Jar\\line_java\\Line_Java.jar",100,100,500,100);
+sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\line_java\\Line_Java.jar");
+sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\sync_struct\\mv_sync_struct.jar");
+sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\sync_seg\\mv_sync_seg.jar");
+sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\sync_subset\\mv_sync_subset.jar");
 
 sys.Add_Button("b2_1","选择文件",100,150,200,30,"file_open","");
-
-
 
 
 sys.Add_Label("lb_ftp_path","路径：",10,200);
 
 sys.Add_Text("txt_ftp_path","/root/happyli",100,200,500,30);
-
 
 
 sys.Add_Button("b3_1","upload",100,250,200,30,"upload_click","");
@@ -78,13 +81,13 @@ sys.Add_Button("b3_1","upload",100,250,200,30,"upload_click","");
 sys.Add_Text_Multi("txt_error","错误信息：",100,300,500,200);
 
 
-sys.Add_Progress("progress1",100,500,300,30);
+sys.Add_Progress("progress1",100,500,500,30);
 
-sys.Show_Form(800,600);
+sys.Show_Form(700,600);
 
 sys.Form_Title("上传文件");
 
-
+read_password("");
 
 
 

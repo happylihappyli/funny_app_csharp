@@ -202,11 +202,11 @@ Namespace Funny
 
 
 
-        Public Shared Function Write_Begin( _
-            ByVal strFile As String, _
-            ByVal bAppend As Boolean, _
-            Optional ByVal WithBOM As Boolean = True, _
-            Optional ByRef pEncoding As System.Text.Encoding = Nothing) As StreamWriter
+        Public Shared Function Write_Begin(
+            ByVal strFile As String,
+            ByVal bAppend As Boolean,
+            Optional ByVal WithBOM As Boolean = True,
+            Optional ByVal pEncoding As System.Text.Encoding = Nothing) As StreamWriter
 
             Dim pSW As StreamWriter
             Dim pFS As FileStream, strReturn As String = ""

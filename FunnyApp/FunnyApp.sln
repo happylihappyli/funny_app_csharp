@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellControl", "..\Common\S
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "B_IniFile", "..\Common\B_IniFile\B_IniFile.vbproj", "{CBDE9274-9D0B-4200-AACD-FC544B313675}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funny_App_Design", "..\FunnyApp_Design\Funny_App_Design.csproj", "{E637CBC9-C665-4042-BEE8-EA26F474EA14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,18 @@ Global
 		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|x86.ActiveCfg = Release|Any CPU
 		{CBDE9274-9D0B-4200-AACD-FC544B313675}.Release|x86.Build.0 = Release|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Debug|x86.Build.0 = Debug|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|x86.ActiveCfg = Release|Any CPU
+		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

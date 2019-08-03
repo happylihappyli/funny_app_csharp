@@ -18,7 +18,7 @@ namespace FunnyApp
     using System.Threading.Tasks;
     using System.Web;
 
-    namespace Baidu
+    namespace FunnyApp
     {
 
         class baidu_tts

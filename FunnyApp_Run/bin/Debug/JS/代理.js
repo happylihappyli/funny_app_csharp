@@ -1,6 +1,4 @@
 function key_click(data){
-    //sys.Show_Text("txt1","test11111");
-    //sys.Au3_Run("ssh-keygen.exe -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa","C:\\Windows\\System32\\OpenSSH\\");
     sys.Msg("一会打开程序，请按两个回车，自动关闭窗口");
     sys.Run_App("C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe"," -m PEM -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa");
     sys.Show_Text("txt1","把这个文件 D:\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
@@ -58,7 +56,7 @@ function unset_proxy_click(data){
 
 
 
-sys.Add_Text_Multi("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,600,100);
+sys.Add_Text_Multi("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,600,90);
 sys.Add_Combox("cb_hosts","149.248.37.214",10,110,200,30);
 sys.Combox_Add("cb_hosts","149.248.37.214");
 sys.Combox_Add("cb_hosts","45.63.52.243");

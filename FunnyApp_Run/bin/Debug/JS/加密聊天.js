@@ -7,12 +7,15 @@ function send_msg_click(){
     var strMsg=userName+":"+sys.Get_Text("txt_send");
     var friend=sys.Combox_Text("cb_friend");
     var index=sys.Combox_Index("cb_friend");
+    if (index<0){
+        sys.Msg("请选择好友！");
+        return ;
+    }
     
     var path=sys.AppPath();
     var file=sys.Ini_Read(path+"\\config\\friend.ini","item"+index,"file");
     
     
-    //var file=sys.Combox_Text("cb_file_public");
     var strLine=sys.encrypt_public_key(file,strMsg);
     sys.Show_Text("txt_send_en",strLine);
     var friend=sys.Combox_Text("cb_friend");

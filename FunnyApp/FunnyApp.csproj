@@ -47,14 +47,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AipSdk, Version=3.6.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Baidu.AI.3.6.13\lib\net45\AipSdk.dll</HintPath>
+    </Reference>
     <Reference Include="AutoItX3.Assembly">
       <HintPath>D:\Develop\Autoit\AutoItX\AutoItX3.Assembly.dll</HintPath>
     </Reference>
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\EngineIoClientDotNet.0.9.22\lib\net45\EngineIoClientDotNet.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.1.9.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -103,8 +109,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxies.cs" />
     <Compile Include="SecureTransfer.cs" />
+    <Compile Include="TOOLS\Audio\ISpeechRecorder.cs" />
+    <Compile Include="TOOLS\Audio\NAudioRecorder.cs" />
     <Compile Include="TOOLS\PemKeyUtils.cs" />
     <Compile Include="TOOLS\Tools.cs" />
+    <Compile Include="TOOLS\Tools_AI.cs" />
     <Compile Include="TOOLS\Tools_Au3.cs" />
     <Compile Include="TOOLS\Tools_Control.cs" />
     <Compile Include="TOOLS\Tools_File.cs" />
@@ -158,6 +167,15 @@
       <Project>{660a13e3-6480-4fd6-8aa5-3d6d39487ebd}</Project>
       <Name>ScriptDemo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\read.png" />
+    <Content Include="Resources\read_pause.png" />
+    <Content Include="Resources\read_stop.png" />
+    <Content Include="Resources\recognize.png" />
+    <Content Include="Resources\recording.png" />
+    <Content Include="Resources\record_stop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

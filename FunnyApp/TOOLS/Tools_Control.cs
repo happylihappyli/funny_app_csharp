@@ -1,7 +1,6 @@
 ﻿
 using B_File.Funny;
 using B_Math;
-using FunnyApp.Baidu;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -79,7 +78,7 @@ namespace FunnyApp {
         }
 
 
-        public int ListBox_Length(string control_name) {
+        public int ListBox_Item_Size(string control_name) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
             if (pControl != null) {
                 return pControl.Items.Count;
@@ -95,6 +94,14 @@ namespace FunnyApp {
                 int index = Int32.Parse(strIndex);
                 pControl.SelectedIndex = index;//[index].
             }
+        }
+
+        public string ListBox_Item_Text(string control_name) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null && pControl.SelectedItem!=null) {
+                return pControl.SelectedItem.ToString();
+            }
+            return "";
         }
 
         public string ListBox_Item(string control_name, string strIndex) {
@@ -139,6 +146,20 @@ namespace FunnyApp {
 
         }
 
+        public void Button_Backgound(string control_name, string file) {
+            Button pControl = (Button)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                if (file.StartsWith("@")) {
+                    //"recording"
+                    string key = file.Substring(1);
+                    pControl.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject(key);
+                } else {
+                    Image myimage = new Bitmap(file);
+                    pControl.BackgroundImage = myimage;
+                }
+                pControl.BackgroundImageLayout=ImageLayout.Center;
+            }
+        }
 
         public void Add_Password(string name, string text,
             int x, int y,
@@ -265,6 +286,9 @@ namespace FunnyApp {
             return -1;
         }
 
+        public void Set_Text(string control_name, string text) {
+            Show_Text(control_name, text);
+        }
 
         public void Show_Text(string control_name, string text) {
             TextBox pControl = (TextBox)pFrmApp.Controls[control_name];

@@ -20,7 +20,11 @@ namespace FunnyApp {
         }
 
         public string File_Read(string strFile) {
-            return File.ReadAllText(strFile);
+            if (S_File.Exists(strFile)) { 
+                return File.ReadAllText(strFile);
+            } else {
+                return "";
+            }
         }
 
         public string File_Open() {
