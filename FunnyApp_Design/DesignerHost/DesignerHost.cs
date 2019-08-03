@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.ComponentModel.Design.Serialization;
 
-namespace Hosting
+namespace FunnyApp
 {
 	[ProvideProperty("Name", typeof(IComponent))]
 	internal class DesignerHost : IDesignerHost, IContainer, IComponentChangeService, IExtenderProvider, ITypeDescriptorFilterService, IExtenderListService, IExtenderProviderService

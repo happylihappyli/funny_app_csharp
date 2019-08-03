@@ -13,7 +13,7 @@ using B_File.Funny;
 using System.IO;
 using System.Xml;
 
-namespace Hosting
+namespace FunnyApp
 {
 	public class frmMain : System.Windows.Forms.Form
 	{
@@ -78,7 +78,7 @@ namespace Hosting
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menu_save = new System.Windows.Forms.MenuItem();
-            this.lstToolbox = new Hosting.ToolboxService();
+            this.lstToolbox = new FunnyApp.ToolboxService();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 

@@ -2,8 +2,7 @@
 using System;
 using System.ComponentModel.Design.Serialization;
 
-namespace Hosting
-{
+namespace FunnyApp {
 	internal class NameCreationService : INameCreationService
 	{
 		public string CreateName(System.ComponentModel.IContainer container, System.Type dataType)

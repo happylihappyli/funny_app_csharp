@@ -5,8 +5,7 @@ using System.ComponentModel.Design;
 using System.ComponentModel.Design.Serialization;
 using System.Collections;
 
-namespace Hosting
-{
+namespace FunnyApp {
 	internal class DesignSite : ISite, IServiceProvider, IDictionaryService
 	{
 		private IDesignerHost host = null;

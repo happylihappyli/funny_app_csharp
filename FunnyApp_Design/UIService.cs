@@ -5,8 +5,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using System.Collections;
 
-namespace Hosting
-{
+namespace FunnyApp {
 	public class UIService : IUIService
 	{
 		frmMain mainForm = null;

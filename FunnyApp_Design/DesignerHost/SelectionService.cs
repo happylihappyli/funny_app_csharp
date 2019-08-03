@@ -4,8 +4,7 @@ using System.Collections;
 using System.ComponentModel.Design;
 using System.Windows.Forms;
 
-namespace Hosting
-{
+namespace FunnyApp {
 	public class SelectionService : ISelectionService
 	{
 		IDesignerHost host = null;

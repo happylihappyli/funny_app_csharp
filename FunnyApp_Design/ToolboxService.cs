@@ -3,8 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing.Design;
 
-namespace Hosting
-{
+namespace FunnyApp {
 	internal class ToolboxService : ListBox, IToolboxService
 	{
 		internal Control designPanel = null;

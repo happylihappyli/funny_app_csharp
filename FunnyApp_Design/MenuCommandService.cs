@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.Design;
 using System.Collections;
 
-namespace Hosting
+namespace FunnyApp
 {
 	internal class MenuCommandService : IMenuCommandService
 	{

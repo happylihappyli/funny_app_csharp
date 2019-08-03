@@ -2,8 +2,7 @@
 using System;
 using System.ComponentModel.Design;
 
-namespace Hosting
-{
+namespace FunnyApp {
 	internal class MegaDesignerTransaction : DesignerTransaction
 	{
 		private DesignerHost host = null;
