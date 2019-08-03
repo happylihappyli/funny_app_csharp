@@ -27,6 +27,8 @@ namespace FunnyApp {
             }
         }
 
+
+
         public string File_Open() {
             OpenFileDialog p = new OpenFileDialog();
             p.ShowDialog();

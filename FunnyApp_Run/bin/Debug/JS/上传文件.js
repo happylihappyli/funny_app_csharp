@@ -48,7 +48,6 @@ function file_open(){
 
 sys.Add_Text("txt_host","robot6.funnyai.com",100,10,500,30);
 
-
 sys.Add_Label("lb_password","FTP密码：",10,70);
 
 sys.Add_Password("txt1","",100,65,100,30,"");
@@ -62,10 +61,7 @@ sys.Add_Button("b2_1","保存密码",350,60,100,30,"save_password","");
 sys.Add_Label("lb_upload","上传文件：",10,100);
 
 sys.Add_ListBox("list_upload","E:\\happyli\\Jar\\line_java\\Line_Java.jar",100,100,500,100);
-sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\line_java\\Line_Java.jar");
-sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\sync_struct\\mv_sync_struct.jar");
-sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\sync_seg\\mv_sync_seg.jar");
-sys.ListBox_Add("list_upload","E:\\happyli\\Jar\\sync_subset\\mv_sync_subset.jar");
+sys.ListBox_From_File("list_upload",sys.App_Path()+"\\config\\upload.txt");
 
 sys.Add_Button("b2_1","选择文件",100,150,200,30,"file_open","");
 

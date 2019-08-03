@@ -77,6 +77,23 @@ namespace FunnyApp {
             }
         }
 
+        /// <summary>
+        /// 从文件读取信息到ListBox
+        /// </summary>
+        /// <param name="control_name"></param>
+        /// <param name="file"></param>
+        public void ListBox_From_File(string control_name, string file) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                StreamReader pFile=S_File_Text.Read_Begin(file);
+                string strLine=S_File_Text.Read_Line(ref pFile);
+                while (strLine != null) {
+                    pControl.Items.Add(strLine);
+                    strLine = S_File_Text.Read_Line(ref pFile);
+                }
+                S_File_Text.Read_End(ref pFile);
+            }
+        }
 
         public int ListBox_Item_Size(string control_name) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
@@ -87,7 +104,6 @@ namespace FunnyApp {
         }
 
         
-
         public void ListBox_Item_Selected(string control_name, string strIndex) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
             if (pControl != null) {

@@ -196,6 +196,15 @@ namespace FunnyApp {
 
 
         public void Run_JS(string args) {
+            FrmApp pApp = new FrmApp();
+            string strFile = Application.StartupPath + "\\JS\\" + args;
+            if (S_File.Exists(strFile)) {
+                pApp.strFile = strFile;
+            }
+            Application.Run(pApp);
+        }
+
+        public void Run_JS_Out(string args) {
             string strPath = Application.StartupPath + "\\FunnyApp.exe";
             using (Process process = new Process()) {
                 process.StartInfo.FileName = strPath;
@@ -205,7 +214,7 @@ namespace FunnyApp {
         }
 
         /// <summary>
-        /// 运行CMD命令
+        /// 运行exe，并且访问运行结果
         /// </summary>
         /// <param name="cmd">命令</param>
         /// <returns></returns>
@@ -249,7 +258,21 @@ namespace FunnyApp {
             }
         }
 
+
+        /// <summary>
+        /// AppPath() is Obsolete,Use App_Path()
+        /// </summary>
+        /// <returns></returns>
+        [Obsolete("AppPath() is Obsolete,Use App_Path()")]
         public string AppPath() {
+            return App_Path();
+        }
+
+        /// <summary>
+        /// 程序启动路径
+        /// </summary>
+        /// <returns></returns>
+        public string App_Path() {
             return Application.StartupPath;
         }
 

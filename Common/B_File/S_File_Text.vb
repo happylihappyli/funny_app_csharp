@@ -46,7 +46,7 @@ Namespace Funny
 
         Public Shared Function Read_Begin(
              ByVal strFile As String,
-             Optional ByRef pEncoding As System.Text.Encoding = Nothing) As StreamReader
+             Optional ByVal pEncoding As System.Text.Encoding = Nothing) As StreamReader
 
             '从Txt文件中读取内容
             Dim strReturn As String = ""
