@@ -9,14 +9,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <AssemblyKeyContainerName />
-    <AssemblyName>Hosting</AssemblyName>
+    <AssemblyName>Funny_Design</AssemblyName>
     <AssemblyOriginatorKeyFile />
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Hosting</RootNamespace>
+    <RootNamespace>FunnyApp</RootNamespace>
     <StartupObject />
     <FileUpgradeFlags>
     </FileUpgradeFlags>

@@ -22,13 +22,14 @@ function b_stop_click(data){
 function b_recognize_click(data){
     var a=sys.SR_Recognize("D:\\123.wav");//,"result");//err_msg
     var obj = JSON.parse(a);
-    sys.Set_Text("txt1",obj.result[0]);
+    var msg = obj.result[0];
+    sys.Set_Text("txt1",msg);
     
-    var url="http://www.funnyai.com/funnyscript/fs_run_line_shell.php?id="+id+"&user="
-+encodeURIComponent(userName)+"&param="+encodeURIComponent(param);
-    show_error(url);
+    var url="https://www.funnyai.com/funnyai/fs_ai_reply.php?id=1&web=0&key="+encodeURIComponent(msg);
+    //sys.Set_Text("txt1",url);
     var result=sys.Net_Http_GET(url);
-    show_error(result);
+    sys.TTS(result);
+    sys.Set_Text("txt2",result);
 }
 
 function init(){

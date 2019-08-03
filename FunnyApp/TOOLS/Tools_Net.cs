@@ -147,7 +147,7 @@ namespace FunnyApp {
 
 
         public string Net_Http_GET(string url) {
-            return S_Net.Get_URL(url);
+            return S_Net.Http(url,"GET","","utf-8");
         }
 
 

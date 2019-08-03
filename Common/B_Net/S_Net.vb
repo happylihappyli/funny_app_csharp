@@ -639,7 +639,7 @@ Namespace Funny
             Return respHTML '这就是向网络服务器post后返回的信息
         End Function
 
-        Public Function Get_URL(ByVal strURL As String) As String
+        Public Function Get_URL_XML(ByVal strURL As String) As String
 
             Dim strReturn As String = ""
             Dim pXML As XmlDocument = New XmlDocument
