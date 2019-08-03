@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 namespace FunnyApp {
     public partial class Tools {
 
+        SecureTransfer st = null;
+
 
         public enum MessageClass {
             DebugMsg = 0,
@@ -68,17 +70,12 @@ namespace FunnyApp {
         private void AsyncCallback(IAsyncResult ar) {
             
             pFrmApp.JS_Function(this.callback_error, ar.ToString());
-            //Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, $"SFTP AsyncCallback completed.", true);
         }
 
 
 
         private void StartTransferBG() {
-            try {
-                //DisableButtons();
-                //Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg,
-                //                                    $"Transfer of {Path.GetFileName(st.SrcFile)} started.", true);
-                st.Upload();
+            try {st.Upload();
 
                 // SftpClient is Asynchronous, so we need to wait here after the upload and handle the status directly since no status events are raised.
                 if (st.Protocol == SecureTransfer.SSHTransferProtocol.SFTP) {
@@ -97,14 +94,10 @@ namespace FunnyApp {
                 }
 
                 pFrmApp.JS_Function(this.callback_error,"传输完毕");
-                //Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg,
-                //                                    $"Transfer of {Path.GetFileName(st.SrcFile)} completed.", true);
                 st.Disconnect();
                 st.Dispose();
             } catch (Exception ex) {
                 pFrmApp.JS_Function(this.callback_error, ex.ToString());
-                //Runtime.MessageCollector.AddExceptionStackTrace(Language.strSSHStartTransferBG, ex,
-                //                                                MessageClass.ErrorMsg, false);
                 st?.Disconnect();
                 st?.Dispose();
             }
@@ -118,8 +111,6 @@ namespace FunnyApp {
         private void SetStatus() {
             int a = 100 * curVal / maxVal;
             pFrmApp.JS_Function(this.callback_status, curVal + ","+ maxVal);
-            //JS.jint.Invoke(this.callback_status, 100*curVal/maxVal);
-            
         }
 
 
@@ -141,7 +132,6 @@ namespace FunnyApp {
                 user = "0",
                 msg_id = "0",
             }));
-            //"chat_event"
             pFrmApp.socket.Emit(Type, jObject);
         }
 

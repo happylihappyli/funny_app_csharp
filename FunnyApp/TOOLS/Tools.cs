@@ -18,8 +18,6 @@ using System.Windows.Forms;
 namespace FunnyApp {
     public partial class Tools {
 
-        SecureTransfer st = null;
-
         public delegate void Init_Delegate(
             string url,
             string callback_Connect,
