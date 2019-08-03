@@ -3,4 +3,6 @@ E:\happyli\Jar\sync_struct\mv_sync_struct.jar
 E:\happyli\Jar\sync_seg\mv_sync_seg.jar
 E:\happyli\Jar\sync_subset\mv_sync_subset.jar
 E:\happyli\Jar\train_ai\funnyarticle_train_one_from_web.jar
-E:\happyli\Jar\train_ai\funnyarticle_train_one_from_web.jar
+E:\happyli\Jar\funny_app\funny_app.jar
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\ks.js
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\sync_seg.js

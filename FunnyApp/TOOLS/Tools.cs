@@ -304,19 +304,35 @@ namespace FunnyApp {
                 for (int i = 0; i < cmd.Length; i++) {
                     process.StandardInput.WriteLine(cmd[i]);
                 }
-                //Thread.Sleep(1000);
-                //process.StandardInput.WriteLine("exit");
+                Thread.Sleep(6000);
+                process.StandardInput.WriteLine("exit");
                 // 执行进程
-                //string standardOutput = process.StandardOutput.ReadToEnd();
-                //process.WaitForExit();
-                //process.Close();
-                return "";// standardOutput;
+                string standardOutput = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+                process.Close();
+                return standardOutput;
             } catch (Exception ex) {
                 return ex.ToString();
             }
         }
 
+        public void Run_Shell(string cmds) {
 
-
+            Process p = new Process();
+            p.StartInfo.FileName = "PowerShell.exe";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.Verb = "runas";
+            p.StartInfo.CreateNoWindow = false;
+            p.Start();
+            p.StandardInput.WriteLine("set-ExecutionPolicy RemoteSigned");
+            p.StandardInput.WriteLine("y");
+            p.StandardInput.WriteLine("cd SVC_Tool_1.0.0.0_Master_Test");
+            p.StandardInput.WriteLine(".\\Add-AppDevPackage.ps1");
+            p.StandardInput.AutoFlush = true;
+            p.WaitForExit();
+            p.Close();
+        }
     }
 }
