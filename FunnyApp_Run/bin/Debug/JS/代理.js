@@ -75,4 +75,4 @@ sys.Add_Button("b3_1","不用代理",10,300,200,30,"unset_proxy_click","");
 
 sys.Show_Form(700,500);
 
-
+sys.Form_Title("代理");

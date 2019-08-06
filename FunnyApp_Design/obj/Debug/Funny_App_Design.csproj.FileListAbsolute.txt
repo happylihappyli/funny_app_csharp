@@ -11,3 +11,6 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\bin\Debug\Funny_D
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Funny_Design.exe
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\Funny_Design.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Design\obj\Debug\FunnyApp.frmMain.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\Funny_Design.exe.config
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\Funny_Design.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\Funny_Design.pdb

@@ -1,6 +1,8 @@
 ﻿using AutoIt;
+using B_Data.Funny;
 using B_File.Funny;
 using B_IniFile;
+using CommonTreapVB.TreapVB;
 using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -25,14 +27,18 @@ namespace FunnyApp
 {
     public partial class FrmApp : Form
     {
+        public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
 
+        public FrmApp pParent = null;
         public string strFile = "";
         public Socket socket = null;
         public JS pJS = new JS();
+        public Tools tools = null;
 
         public FrmApp()
         {
             InitializeComponent();
+            tools = new Tools(this);
         }
 
         private void FrmApp_Load(object sender, EventArgs e)
@@ -44,7 +50,6 @@ namespace FunnyApp
                 string strCode = S_File_Text.Read(strFile);
                 pJS.Run_Code(this, strCode);
             }
-            //AutoItX.Run("cmd.exe", "");// "C:\\Windows\\System32\\");
         }
 
         delegate void d_Call_Event(string str1, string str2);//创建一个代理
@@ -140,6 +145,12 @@ namespace FunnyApp
         {
             
         }
-         
+
+        public string time_function = "";
+        private void timer1_Tick(object sender, EventArgs e) {
+            if ("".Equals(time_function)==false){
+                JS_Function(time_function, "");
+            }
+        }
     }
 }

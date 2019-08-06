@@ -13,7 +13,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "B_Math", "..\Common\B_Math\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B90DD973-DEF2-4803-8EC0-899DB257AA6E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CommonTreapVB", "..\Common\CommonTreapVB\CommonTreapVB.vbproj", "{C29DE218-7553-4124-A831-8ADC683FE2D2}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "B_TreapVB", "..\Common\CommonTreapVB\B_TreapVB.vbproj", "{C29DE218-7553-4124-A831-8ADC683FE2D2}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "B_Data", "..\Common\B_Data\B_Data.vbproj", "{755FA603-FB1E-41E0-AAF9-961A58A91B81}"
 EndProject

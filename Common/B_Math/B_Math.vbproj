@@ -113,9 +113,9 @@
       <Project>{755fa603-fb1e-41e0-aaf9-961a58a91b81}</Project>
       <Name>B_Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CommonTreapVB\CommonTreapVB.vbproj">
+    <ProjectReference Include="..\CommonTreapVB\B_TreapVB.vbproj">
       <Project>{c29de218-7553-4124-a831-8adc683fe2d2}</Project>
-      <Name>CommonTreapVB</Name>
+      <Name>B_TreapVB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

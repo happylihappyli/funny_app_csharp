@@ -1,4 +1,5 @@
-﻿using B_File.Funny;
+﻿using B_Data.Funny;
+using B_File.Funny;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,16 @@ namespace FunnyApp
                     strFile = Application.StartupPath + "\\JS\\" + strFile.Substring(1);
                 }
                 pApp.strFile = strFile;
+                IComparable pKey = new C_K_Str(strFile);
+                FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp);
+
             } else {
                 string strFile = Application.StartupPath + "/main.js";
                 if (S_File.Exists(strFile)) {
                     pApp.strFile = strFile;
                 }
+                IComparable pKey = new C_K_Str(strFile);
+                FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp);
             }
             Application.Run(pApp);
 

@@ -1,4 +1,5 @@
 ﻿
+using B_Data.Funny;
 using B_File.Funny;
 using B_Math;
 using Newtonsoft.Json;
@@ -24,18 +25,15 @@ namespace FunnyApp {
             string callback_chat_event);
 
 
-        //private static void Call_Init(string url,
-        //    string callback_Connect,
-        //    string callback_chat_event, 
-        //    Init_Delegate pFunction) {
-        //    pFunction(url, callback_Connect, callback_chat_event);
-        //}
-
-
         public void Msg(string strLine) {
             MessageBox.Show(strLine);
         }
 
+
+        public void set_time_function(string strFunction) {
+            pFrmApp.time_function = strFunction;
+            pFrmApp.timer1.Enabled = true;
+        }
 
         public double Math_Cal(string strLine) {
             C_Math pMath = new C_Math();
@@ -199,7 +197,12 @@ namespace FunnyApp {
             if (S_File.Exists(strFile)) {
                 pApp.strFile = strFile;
             }
-            Application.Run(pApp);
+
+            IComparable pKey = new C_K_Str(strFile);
+            FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp);
+
+            pApp.pParent = pFrmApp;
+            pApp.Show();
         }
 
         public void Run_JS_Out(string args) {

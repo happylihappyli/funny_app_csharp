@@ -140,9 +140,9 @@
       <Project>{8c8ffb12-99c8-4c62-8ffc-e754720d0d26}</Project>
       <Name>B_XML</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CommonTreapVB\CommonTreapVB.vbproj">
+    <ProjectReference Include="..\CommonTreapVB\B_TreapVB.vbproj">
       <Project>{c29de218-7553-4124-a831-8adc683fe2d2}</Project>
-      <Name>CommonTreapVB</Name>
+      <Name>B_TreapVB</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpSSH\SharpSSH_happyli.csproj">
       <Project>{60e60144-6f67-4f37-9eb0-b8c43a391c5c}</Project>

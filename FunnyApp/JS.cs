@@ -9,15 +9,12 @@ namespace FunnyApp
 {
     public class JS
     {
-         
         public Jint.Engine jint;
 
         public void Run_Code(FrmApp pApp,string run_codestr1)
         {
-            Tools tools = new Tools(pApp);
-
-
-            jint = new Jint.Engine().SetValue("sys", tools);
+            //pApp.tools = new Tools(pApp);
+            jint = new Jint.Engine().SetValue("sys", pApp.tools);
 
             try
             {
@@ -26,7 +23,6 @@ namespace FunnyApp
             catch (Exception eee)
             {
                 MessageBox.Show("error in script run:" + eee.Message + eee.StackTrace);
-
             }
         }
     }
