@@ -17,6 +17,7 @@ function event_chat(data){
 }
 
 function event_system(data){
+    
 }
 
 

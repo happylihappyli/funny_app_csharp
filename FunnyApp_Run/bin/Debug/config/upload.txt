@@ -8,3 +8,4 @@ E:\happyli\Jar\file_watch\FunnyWatch.jar
 E:\happyli\Jar\funny_app\funny_app.jar
 E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\ks.js
 E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\sync_seg.js
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\remind.js

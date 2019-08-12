@@ -129,6 +129,9 @@
   <ItemGroup>
     <Compile Include="baidu_tts.cs" />
     <Compile Include="Class\Alarm_Job.cs" />
+    <Compile Include="Class\RSA.cs" />
+    <Compile Include="Class\RSA_PEM.cs" />
+    <Compile Include="Class\RSA_Unit.cs" />
     <Compile Include="FrmApp.cs">
       <SubType>Form</SubType>
     </Compile>

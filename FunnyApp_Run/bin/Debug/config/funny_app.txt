@@ -1,0 +1,5 @@
+ks.js E:/Test/5442.data 0 1 2
+sync_seg.js E:/Data/class_funnyai.ini
+sync_struct.js E:/Data/class_funnyai.ini
+map_db.js E:/Data/class_funnyai.ini
+ssh_test.js E:/Data/class_funnyai.ini

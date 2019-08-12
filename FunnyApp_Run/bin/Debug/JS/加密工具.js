@@ -25,9 +25,26 @@ function file_pem(){
     
     show_error(result);
     
-    sys.Run_App("explorer.exe","D:\\Net\\Web\\public\\");
-    
+    //sys.Run_App("explorer.exe","D:\\Net\\Web\\public\\");
 }
+
+function file_pem_private(){
+    var file_key="C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe";
+    var txt_file="D:\\Net\\Web\\id_rsa";
+    var txt_file2="D:\\Net\\Web\\id_rsa.pem";//txt_file.replace(".pub",".pem.pub");
+    var param="pkcs8 -topk8 -inform PEM -outform DER -in "+txt_file+" -nocrypt > "+txt_file2;
+    //pkcs8 -topk8 -inform PEM -outform DER -in private_key_file  -nocrypt > pkcs8_key
+    show_error(file_key);
+    show_error(param);
+    
+    var result=sys.Run_App_Return(file_key,param);
+    sys.File_Save(txt_file2,result);
+    
+    show_error(result);
+    
+    //sys.Run_App("explorer.exe","D:\\Net\\Web\\public\\");
+}
+
 
 function encrypt_click(data){
     
@@ -54,8 +71,6 @@ function decrypt_click(){
 }
 
 function key_click(data){
-    //sys.Show_Text("txt1","test11111");
-    //sys.Au3_Run("ssh-keygen.exe -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa","C:\\Windows\\System32\\OpenSSH\\");
     sys.Msg("一会打开程序，请按两个回车，自动关闭窗口");
     sys.Run_App("C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe"," -m PEM -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa");
     sys.Show_Text("txt1","把这个文件 D:\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
@@ -72,6 +87,7 @@ sys.Add_Button("b2_1","选择文件",100,50,200,30,"file_open","");
 
 
 sys.Add_Button("b2_2","转为pem格式",300,50,200,30,"file_pem","");
+sys.Add_Button("b2_3","转为pem格式(p)",500,50,200,30,"file_pem_private","");
 
 
 

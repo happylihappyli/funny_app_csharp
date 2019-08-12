@@ -2,18 +2,39 @@
 
 function run_click(data){
 
-    sys.create_alarm_daily("job1","tr1",16,46);//写日记
+    sys.create_alarm_daily("日记","tr1",16,18);//写日记
+    sys.create_alarm_daily("日报","tr2",17,45);//写日报
+    sys.create_alarm_daily("整点报时","tr3_11",11,0);
+    sys.create_alarm_daily("整点报时","tr3_12",12,0);
+    sys.create_alarm_daily("整点报时","tr3_14",14,0);
+    sys.create_alarm_daily("整点报时","tr3_16",16,0);
+    sys.create_alarm_daily("整点报时","tr3_18",18,0);
+    
+    sys.create_alarm_daily("参考消息","tr4",11,45);
+    
     sys.Show_Text("txt1","启动闹钟！");
 }
 
 function sys_event_alarm(data){
     switch(data){
-        case "job1":
+        case "日记":
+            sys.Notification("提醒","可以写日记了");
             open_web("https://www.funnyai.com/funnyai/list_diary.php");
             break;
-            
+        case "日报":
+            sys.Notification("提醒","可以写日报了");
+            open_web("http://pms.jiangrongxin.com:11006/pms/index.html");
+            break;
+        case "参考消息":
+            sys.Notification("提醒","参考消息");
+            open_web("http://www.ckxxbao.com/");
+            break;
+        case "整点报时":
+            sys.Notification("提醒","整点报时");
+            var a=get_hour_minute();
+            sys.TTS(a);
+            break;
     }
-    sys.Notification("test",data);
 }
 
 function init(){
@@ -35,6 +56,14 @@ function get_now() {
   var s = addZero(d.getSeconds());
   return h + ":" + m + ":" + s;
 }
+
+
+function get_hour_minute() {
+  var d = new Date();
+  return d.getHours() + "点" + d.getMinutes() + "分";
+}
+
+
 
 
 function tickle(){

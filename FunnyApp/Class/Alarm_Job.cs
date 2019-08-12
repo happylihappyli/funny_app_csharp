@@ -15,6 +15,7 @@ namespace FunnyApp {
             JobDataMap dataMap = context.JobDetail.JobDataMap;
             string file = dataMap.GetString("file");
 
+
             pFrmApp = FrmApp.pTreapFrmApp.find(new C_K_Str(file));
             if (pFrmApp != null) {
                 pFrmApp.JS_Function("sys_event_alarm", context.JobDetail.Key.Name);
