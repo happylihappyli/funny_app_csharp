@@ -19,6 +19,7 @@ namespace FunnyApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             FrmApp pApp = new FrmApp();
+            pApp.args = args;
             if (args.Length > 0) { 
                 string strFile= args[0];
                 if (strFile.StartsWith("@")) {

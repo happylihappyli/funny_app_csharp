@@ -15,3 +15,7 @@ E:\happyli\http_over_ssh\FunnyApp.pdb
 E:\CloudStation\Robot5\happyli\Tools\http_over_ssh\FunnyApp.exe.config
 E:\CloudStation\Robot5\happyli\Tools\http_over_ssh\FunnyApp.exe
 E:\CloudStation\Robot5\happyli\Tools\http_over_ssh\FunnyApp.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\FunnyApp.exe.manifest
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\bin\Debug\FunnyApp.application
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\FunnyApp.exe.manifest
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp\obj\Debug\FunnyApp.application

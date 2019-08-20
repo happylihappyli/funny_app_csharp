@@ -17,7 +17,7 @@ function stop_click(data){
 }
 
 function run_next(){
-    var count=sys.ListBox_Length("list_param");
+    var count=sys.ListBox_Item_Size("list_param");
     if (index<count){
         sys.Show_ProgressBar("progress0",count+"",index+"");
         sys.ListBox_Item_Selected("list_param",index);
@@ -67,48 +67,54 @@ function event_chat(data1){
 }
 
 function event_system(data1){
+    //sys.Msg(data1);
     var data=JSON.parse(data1);
-    switch(data.from){
-        case "C_Command":
-            log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
-            sys.Show_Text("txt_error",log_error);
-            //output('<span class="username-msg">' + data.from + ':</span> ' + data.message);
-            run_next();
+    //sys.Msg(data.type);
+    switch(data.type){
+        case "30s:session":
+            session_id=data.message;
+            sys.Show_Text("txt_session",session_id);  
+            sys.Show_Text("txt_user_name",userName);
+            var line="{\"from\":\""+userName+"\","
+                +"\"type\":\"session\",\"to\":\"\",\"message\":\""+session_id+"\"}";
+            sys.Send_Msg("sys_event",line); //服务器会记录用户名
             break;
-        case "C_Command.Output":
-        
-            log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
-            sys.Show_Text("txt_error",log_error);
-            //$("#result").html( converter.makeHtml(data.message)+"<hr>"+$("#result").html());
-            break;
-        case "C_Command.Error":
-        
-            log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
-            sys.Show_Text("txt_error",log_error);
-            //$("#error").html( converter.makeHtml(data.message) +"<hr>"+$("#error").html());
-            break;
+        default:
+            switch(data.from){
+                case "C_Command":
+                    log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
+                    sys.Show_Text("txt_error",log_error);
+                    //output('<span class="username-msg">' + data.from + ':</span> ' + data.message);
+                    run_next();
+                    break;
+                case "C_Command.Output":
+                    log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
+                    sys.Show_Text("txt_error",log_error);
+                    //$("#result").html( converter.makeHtml(data.message)+"<hr>"+$("#result").html());
+                    break;
+                case "C_Command.Error":
+                    log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
+                    sys.Show_Text("txt_error",log_error);
+                    //$("#error").html( converter.makeHtml(data.message) +"<hr>"+$("#error").html());
+                    break;
 
-        case "system":
-        
-            log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
-            sys.Show_Text("txt_error",log_error);
-            if (data.to=="30s:session"){
-                session_id=data.message;
-                sys.Show_Text("txt_session",session_id);  
-                sys.Show_Text("txt_user_name",userName);
-                sys.Send_Msg("sys_event",userName, "*_session", session_id); //服务器会记录用户名
+                case "system":
+                    log_error="sys:"+data.from+"="+data.message+"\r\n"+log_error;
+                    sys.Show_Text("txt_error",log_error);
+                    
+                    break;
+                case "progress1":
+                    var strSplit=data.message.split(":");
+                    sys.Show_ProgressBar("progress1","100",strSplit[0]);
+                    sys.Show_ProgressBar("progress2","100","100");
+                    break;
+                case "progress2":
+                    //log_error="progress2\r\n"+log_error;
+                    //sys.Show_Text("txt_error",log_error);
+                    var strSplit=data.message.split(":");
+                    sys.Show_ProgressBar('progress2', "100",strSplit[0]);
+                    break;
             }
-            break;
-        case "progress1":
-            var strSplit=data.message.split(":");
-            sys.Show_ProgressBar("progress1","100",strSplit[0]);
-            sys.Show_ProgressBar("progress2","100","100");
-            break;
-        case "progress2":
-            //log_error="progress2\r\n"+log_error;
-            //sys.Show_Text("txt_error",log_error);
-            var strSplit=data.message.split(":");
-            sys.Show_ProgressBar('progress2', "100",strSplit[0]);
             break;
     }
 }
@@ -123,7 +129,9 @@ function add_bat(data){
     sys.ListBox_Add_Bat("list_param",text);
 }
 
-
+function param_click(data){
+    sys.Run_JS("run_bat_param.js");
+}
 sys.Add_Text_Multi("txt_param","参数",350,10,600,150);
 sys.Add_ListBox("list_param","参数",10,10,300,400);
 sys.Add_Text_Multi("txt_error","错误信息：",350,200,300,210);
@@ -138,6 +146,7 @@ sys.Add_Button("b2_1","批量运行",10,500,100,30,"run_click","");
 
 sys.Add_Button("b2_2","停止",150,500,100,30,"stop_click","");
 
+sys.Add_Button("b2_3","参数",250,500,100,30,"param_click","");
 
 sys.Add_Progress("progress0",10,550,700,30);
 sys.Add_Progress("progress1",10,600,700,30);
@@ -147,7 +156,8 @@ sys.Show_Form(1000,800);
 
 sys.Form_Title("Run_Bat");
 
-sys.Connect_Socket("http://robot3.funnyai.com:7777","event_connected","event_chat","event_system");
+var url="http://robot6.funnyai.com:8000";
+sys.Connect_Socket(url,"event_connected","event_chat","event_system");
 
 
 

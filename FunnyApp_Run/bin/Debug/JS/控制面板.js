@@ -45,8 +45,17 @@ function uninstall_click(){
 }
 
 
+function start_click(){
+    //sys.Open_Fold("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp");
+    sys.Run_Cmd("explorer \"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp\"");
+}
+
 sys.Add_Button("b1_1","电源",100,50,200,30,"power_click","");
 sys.Add_Button("b1_2","卸载软件",300,50,200,30,"uninstall_click","");
+
+
+sys.Add_Button("b2_1","启动目录",300,150,200,30,"start_click","");
+
 
 
 sys.Add_Text_Multi("txt_error","错误信息：",100,300,500,200);

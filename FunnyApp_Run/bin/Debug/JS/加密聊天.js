@@ -15,11 +15,16 @@ function send_msg_click(){
     var path=sys.AppPath();
     var file=sys.Ini_Read(path+"\\config\\friend.ini","item"+index,"file");
     
-    
+    if (sys.File_Exists(file)==false){
+        sys.Msg("公钥不存在:"+file);
+        return ;
+    }
     var strLine=sys.encrypt_public_key(file,strMsg);
     sys.Show_Text("txt_send_en",strLine);
     var friend=sys.Combox_Text("cb_friend");
-    sys.Send_Msg("chat_event","encrypt",friend,strLine);
+    var strLine="{\"from\":\""+userName+"\",\"type\":\"encrypt\",\"to\":\""
+    +friend+"\",\"message\":\""+strLine+"\"}";
+    sys.Send_Msg("chat_event",strLine);
     
     
     log_msg=sys.Time_Now()+" "+strMsg+"\r\n\r\n"+log_msg;
@@ -52,14 +57,18 @@ function event_chat(data){
     var friend=sys.Combox_Text("cb_friend");
     var obj=JSON.parse(data);
     
-    if (obj.from=="encrypt"){
-        var strMsg=sys.Time_Now()+" "+sys.decrypt_private_key("D:/Net/Web/id_rsa",obj.message);
-        sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
-        log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
+    if (obj.type=="encrypt"){
+        if (obj.to==userName){
+            var strMsg=sys.Time_Now()+" "+sys.decrypt_private_key("D:/Net/Web/id_rsa",obj.message);
+            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
+            log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
+        }else{
+            //log_msg="to="+obj.to+"\r\n"+"\r\n"+log_msg;
+        }
     }else{
-        var strMsg=sys.Time_Now()+" "+obj.message;
-        sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
-        log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
+        //var strMsg=sys.Time_Now()+" "+obj.message;
+        //sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
+        //log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
     }
     
     sys.Show_Text("txt1",log_msg);
@@ -71,9 +80,9 @@ function event_system(data){
     var obj=JSON.parse(data);
     log_msg+=obj.from+"："+obj.message+"\r\n";
     sys.Show_Text("txt1",log_msg);
-    switch(obj.from){
-        case "system":
-            if (obj.to=="30s:session"){
+    switch(obj.type){
+        case "30s:session":
+            if (obj.from=="system"){
                 session_id=obj.message;
                 sys.Show_Text("txt_session",session_id);  
                 sys.Show_Text("txt_user_name",userName); 
@@ -93,17 +102,25 @@ function read_ini(){
         var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
         sys.Combox_Add("cb_friend",strName);
     }
+    if (count>0){
+        sys.Combox_Select("cb_friend",0);
+    }
 }
 
 
 function connect_click(data){
-    var url="http://robot3.funnyai.com:7777";
+    var url="http://robot6.funnyai.com:8000";
     sys.Connect_Socket(url,"event_connected","event_chat","event_system");
     read_ini();
 }
 
 function log_click(data){
     sys.Run_App("D:\\Net\\Web\\log","");
+}
+
+
+function switch_click(){
+    sys.Run_JS("加密聊天_login.js");
 }
 
 sys.Add_Text_Multi("txt1","接收到信息",10,10,300,300);

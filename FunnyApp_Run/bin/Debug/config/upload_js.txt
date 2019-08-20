@@ -1,0 +1,4 @@
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\ks.js
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\sync_seg.js
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\remind.js
+E:\CloudStation\Robot5\GitHub\funny_app_java\funny_app\mkdir.js

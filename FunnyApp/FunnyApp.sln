@@ -37,6 +37,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "B_IniFile", "..\Common\B_In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funny_App_Design", "..\FunnyApp_Design\Funny_App_Design.csproj", "{E637CBC9-C665-4042-BEE8-EA26F474EA14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketIOClient2", "..\SocketIOClient2\SocketIOClient2.csproj", "{04B406FE-F45A-4463-A567-D947688DD28F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,18 @@ Global
 		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|x86.ActiveCfg = Release|Any CPU
 		{E637CBC9-C665-4042-BEE8-EA26F474EA14}.Release|x86.Build.0 = Release|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Debug|x86.Build.0 = Debug|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|x86.ActiveCfg = Release|Any CPU
+		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

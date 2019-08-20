@@ -1,0 +1,9 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\obj\Debug\SocketIOClient2.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\obj\Debug\SocketIOClient2.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\bin\Debug\SocketIOClient2.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\bin\Debug\SocketIOClient2.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\bin\Debug\Newtonsoft.Json.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\bin\Debug\Newtonsoft.Json.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\obj\Debug\SocketIOClient2.csproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\obj\Debug\SocketIOClient2.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\SocketIOClient2\obj\Debug\SocketIOClient2.pdb

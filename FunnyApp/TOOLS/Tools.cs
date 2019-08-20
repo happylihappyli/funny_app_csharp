@@ -30,6 +30,11 @@ namespace FunnyApp {
         }
 
 
+        public void Log(string strLine) {
+            Console.WriteLine(strLine);
+        }
+
+
         public void set_time_function(string strFunction) {
             pFrmApp.time_function = strFunction;
             pFrmApp.timer1.Enabled = true;

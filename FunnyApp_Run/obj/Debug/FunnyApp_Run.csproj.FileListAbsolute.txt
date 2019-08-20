@@ -11,3 +11,4 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\obj\Debug\FunnyApp_R
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\obj\Debug\FunnyApp_Run.csproj.CopyComplete
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\obj\Debug\FunnyApp_Run.exe
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\obj\Debug\FunnyApp_Run.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyApp_Run\obj\Debug\FunnyApp_Run.csprojAssemblyReference.cache

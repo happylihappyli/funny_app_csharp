@@ -11,6 +11,10 @@ using System.Windows.Forms;
 namespace FunnyApp {
     public partial class Tools {
 
+        public bool File_Exists(string strFile) {
+            return S_File.Exists(strFile);
+        }
+
         public void File_Save(string strFile, string content) {
             S_File_Text.Write(strFile, content, false, false);
         }
@@ -47,6 +51,14 @@ namespace FunnyApp {
             IniFile pIni = new IniFile(file);
             pIni.AddSection(section);
             pIni.AddKey(key, value,section);
+        }
+
+        public void Open_Fold(String strPath) {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo() {
+                FileName = strPath,
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

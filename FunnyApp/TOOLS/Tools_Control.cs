@@ -68,12 +68,32 @@ namespace FunnyApp {
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
 
         }
+        
 
+        public void ListBox_Clear(string control_name) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Items.Clear();
+            }
+        }
 
         public void ListBox_Add(string control_name, string text) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
             if (pControl != null) {
                 pControl.Items.Add(text);
+            }
+        }
+
+
+        public void ListBox_Add_Bat(string control_name, string strTexts) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                strTexts = strTexts.Replace("\r\n", "\n");
+                strTexts = strTexts.Replace("\r", "\n");
+                string[] strSplit = strTexts.Split('\n');
+                for (int i = 0; i < strSplit.Length; i++) {
+                    pControl.Items.Add(strSplit[i]);
+                }
             }
         }
 
@@ -130,18 +150,6 @@ namespace FunnyApp {
         }
 
 
-        public void ListBox_Add_Bat(string control_name, string strTexts) {
-            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
-            if (pControl != null) {
-                strTexts = strTexts.Replace("\r\n", "\n");
-                strTexts = strTexts.Replace("\r", "\n");
-                string[] strSplit = strTexts.Split('\n');
-                for (int i = 0; i < strSplit.Length; i++) {
-                    pControl.Items.Add(strSplit[i]);
-                }
-            }
-        }
-
 
 
 
@@ -174,6 +182,20 @@ namespace FunnyApp {
                     pControl.BackgroundImage = myimage;
                 }
                 pControl.BackgroundImageLayout=ImageLayout.Center;
+            }
+        }
+
+
+
+        public void Button_Enable(string control_name, string strEnable) {
+            Button pControl = (Button)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                if (strEnable=="1") {
+                    //"recording"
+                    pControl.Enabled = true;
+                } else {
+                    pControl.Enabled = false;
+                }
             }
         }
 
@@ -302,6 +324,15 @@ namespace FunnyApp {
             return -1;
         }
 
+
+        public void Combox_Select(string control_name,int index) {
+            ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.SelectedIndex = index;
+            }
+        }
+
+
         public void Set_Text(string control_name, string text) {
             Show_Text(control_name, text);
         }
@@ -348,6 +379,11 @@ namespace FunnyApp {
 
         public void Notification(string title, string message) {
             pFrmApp.Call_Notifiction(title, message);
+        }
+
+
+        public void ShowInTask(string value) {
+            pFrmApp.ShowInTaskbar = (value == "1");
         }
 
     }

@@ -6,7 +6,7 @@ using CommonTreapVB.TreapVB;
 using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Quobject.SocketIoClientDotNet.Client;
+using SocketIOClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,8 @@ namespace FunnyApp
 
         public FrmApp pParent = null;
         public string strFile = "";
-        public Socket socket = null;
+        //public Socket socket = null;
+        //public SocketIO socket = null;
         public JS pJS = new JS();
         public Tools tools = null;
 
@@ -114,39 +115,87 @@ namespace FunnyApp
             popupNotifier.Popup();
         }
 
-
+        public string callback_Connect = "";
+        public SocketIO client = null;
         public void Init(string url,
             string callback_Connect,
             string callback_chat_event,
             string callback_system_event)
         {
+            this.callback_Connect = callback_Connect;
 
-            socket = IO.Socket(url);
-            socket.On(Socket.EVENT_CONNECT, () =>
+            //url = "ws://robot6.funnyai.com:8000/socket.io/?EIO=2&transport=websocket";
+            client = new SocketIO(url); // url to nodejs 
+
+            client.OnConnected += Client_OnConnectedAsync;
+            client.OnClosed += Client_OnClosedAsync;
+            //socket.Message += SocketMessage;
+            //socket.SocketConnectionClosed += SocketConnectionClosed;
+            //socket.Error += SocketError;
+
+            //socket.op
+            // register for 'connect' event with io server
+            client.On("connect", (fn) =>
             {
+                Console.WriteLine("\r\nConnected event...\r\n");
+                Console.WriteLine("Emit Part object");
+
                 Console.Write("test");
-                Call_Event(callback_Connect,"");
+                Call_Event(callback_Connect, "");
 
+                //// emit Json Serializable object, anonymous types, or strings
+                //Part newPart = new Part() { PartNumber = "K4P2G324EC", Code = "DDR2", Level = 1 };
+                //socket.Emit("partInfo", newPart);
             });
 
-            socket.On("chat_event", (data) =>
+            // register for 'update' events - message is a json 'Part' object
+            client.On("chat_event", (data) =>
             {
-                Call_Event(callback_chat_event,data.ToString());//, data.ToString());
+                Call_Event(callback_chat_event, data.Text);
 
             });
 
+            client.On("sys_event", (data) => {
+                Call_Event(callback_system_event, data.Text);//, data.ToString());
 
-            socket.On("sys_event", (data) => {
-                Call_Event(callback_system_event, data.ToString());//, data.ToString());
+            });
+
+            // make the socket.io connection
+            Task.Run(async () => {
+                await client.ConnectAsync();
+            });
+
+        }
+
+        private void Client_OnClosedAsync(ServerCloseReason obj) {
+
+            Console.WriteLine("Disconnect to server");
+
+            Task.Run(async () => {
+                await client.ConnectAsync();
+            });
+        }
+
+        public void Client_OnConnectedAsync() {
+            Console.WriteLine("Connected to server");
+            Call_Event(callback_Connect, "");
+
+            Task.Run(async () => {
+                await client.EmitAsync("chat_event",
+                    new { from = "a",type="", to = "", message = "test .net" });
 
             });
         }
+
+
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
             
         }
 
         public string time_function = "";
+        public string[] args;
+
         private void timer1_Tick(object sender, EventArgs e) {
             if ("".Equals(time_function)==false){
                 JS_Function(time_function, "");

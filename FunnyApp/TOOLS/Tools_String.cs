@@ -34,5 +34,9 @@ namespace FunnyApp {
             //
             return DateTime.Now.ToLongDateString();
         }
+
+        public string args(int i) {
+            return pFrmApp.args[i];
+        }
     }
 }

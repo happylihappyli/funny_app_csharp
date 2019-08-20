@@ -4,15 +4,23 @@ function run_click(data){
 
     sys.create_alarm_daily("日记","tr1",16,18);//写日记
     sys.create_alarm_daily("日报","tr2",17,45);//写日报
+    sys.create_alarm_daily("整点报时","tr3_10",10,0);
     sys.create_alarm_daily("整点报时","tr3_11",11,0);
     sys.create_alarm_daily("整点报时","tr3_12",12,0);
     sys.create_alarm_daily("整点报时","tr3_14",14,0);
     sys.create_alarm_daily("整点报时","tr3_16",16,0);
     sys.create_alarm_daily("整点报时","tr3_18",18,0);
     
+    sys.create_alarm_daily("整点报时","tr3_18_10",18,10);
+    sys.create_alarm_daily("整点报时","tr3_18_30",18,30);
+    
     sys.create_alarm_daily("参考消息","tr4",11,45);
     
+    sys.create_alarm_daily("午饭","tr5_1",11,55);
+    
     sys.Show_Text("txt1","启动闹钟！");
+    
+    sys.Button_Enable("b1_1","0");
 }
 
 function sys_event_alarm(data){
@@ -33,6 +41,10 @@ function sys_event_alarm(data){
             sys.Notification("提醒","整点报时");
             var a=get_hour_minute();
             sys.TTS(a);
+            break;
+        case "午饭":
+            sys.Notification("提醒","准备吃午饭");
+            sys.TTS("准备吃午饭");
             break;
     }
 }
@@ -94,8 +106,7 @@ sys.Form_Title("闹钟");
 
 init();
 
+run_click("");
 
-
-
-
+sys.ShowInTask(0);
 

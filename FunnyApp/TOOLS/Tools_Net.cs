@@ -123,16 +123,28 @@ namespace FunnyApp {
 
 
 
+        public void Send_Msg(string Type, string strJSON) {
+
+            JObject jObject = JObject.Parse(strJSON);
+            Task.Run(async () => {
+                //await pFrmApp.socket.EmitAsync(Type, jObject);
+                await pFrmApp.client.EmitAsync("chat_event", jObject);
+            });
+        }
+
         public void Send_Msg(string Type,string strFrom,string strTo,string data) {
 
-            JObject jObject = JObject.Parse(JsonConvert.SerializeObject(new {
+            var pObj = new {
+                type = "",
                 from = strFrom,
                 to = strTo,
-                message = data,
-                user = "0",
-                msg_id = "0",
-            }));
-            pFrmApp.socket.Emit(Type, jObject);
+                message = data
+            };
+            Task.Run(async () => {
+                await pFrmApp.client.EmitAsync("chat_event", pObj);
+            });
+
+
         }
 
 
