@@ -12,18 +12,10 @@ function send_msg_click(){
         return ;
     }
     
-    var path=sys.AppPath();
-    var file=sys.Ini_Read(path+"\\config\\friend.ini","item"+index,"file");
-    
-    if (sys.File_Exists(file)==false){
-        sys.Msg("公钥不存在:"+file);
-        return ;
-    }
-    var strLine=sys.encrypt_public_key(file,strMsg);
-    sys.Show_Text("txt_send_en",strLine);
-    var friend=sys.Combox_Text("cb_friend");
+
+    var friend="*";
     var strLine="{\"from\":\""+userName+"\",\"type\":\"encrypt\",\"to\":\""
-    +friend+"\",\"message\":\""+strLine+"\"}";
+    +friend+"\",\"message\":\""+strMsg+"\"}";
     sys.Send_Msg("chat_event",strLine);
     
     
@@ -43,8 +35,12 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    log_msg+="connected\r\n";
-    sys.Show_Text("txt1",log_msg);
+    sys.Show_Text("event_disconnected","event_connected");
+}
+
+function event_disconnected(data){
+    sys.Show_Text("txt_info","event_disconnected");
+    sys.Socket_Connect();
 }
 
 function clear_click(data){
@@ -103,7 +99,7 @@ function read_ini(){
 
 function connect_click(data){
     var url="http://robot6.funnyai.com:8000";
-    sys.Connect_Socket(url,"event_connected","event_chat","event_system");
+    sys.Init_Socket(url,"event_connected","event_disconnected","event_chat","event_system");
     read_ini();
 }
 
@@ -112,8 +108,12 @@ function log_click(data){
 }
 
 
-function switch_click(){
+function switch_click(data){
     sys.Run_JS("加密聊天_login.js");
+}
+
+function chat2(data){
+    sys.Run_JS("加密聊天.js");
 }
 
 sys.Add_Text_Multi("txt1","接收到信息",10,10,300,300);
@@ -130,12 +130,18 @@ sys.Add_Button("b2","clear",200,400,100,30,"clear_click","");
 
 sys.Add_Text("txt_user_name","000",350,250,100,30);
 sys.Add_Button("btn_connect","连服务器",480,240,100,30,"connect_click","");
-sys.Add_Button("btn_connect","log",600,240,100,30,"log_click","");
+sys.Add_Button("btn_log","log",600,240,100,30,"log_click","");
 sys.Add_Text("txt_session","000",350,300,300,30);
+
+sys.Add_Button("btn_chat2","加密聊天",480,350,100,30,"chat2","");
+
+
 
 sys.Add_Button("b1_send","发送",10,400,100,30,"send_msg_click","");
 sys.Acception_Button("b1_send");
-sys.Add_Text_Multi("txt_send_en","",350,10,300,150);
+sys.Add_Text_Multi("txt_info","",350,10,300,150);
 
 sys.Show_Form(800,600);
 sys.Form_Title("聊天");
+
+sys.ShowInTask(0);

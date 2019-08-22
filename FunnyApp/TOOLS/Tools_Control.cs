@@ -12,6 +12,7 @@ using System.Management.Automation.Runspaces;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FunnyApp {
@@ -283,6 +284,65 @@ namespace FunnyApp {
         }
 
 
+        public void Add_PictureBox(string name,
+            int x, int y,
+            int width, int height) {
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            PictureBox pControl = new PictureBox();//实例化一个button  
+            pControl.Name = name;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+
+        }
+
+        public void PictureBox_Draw_Ellipse(
+                string control_name,
+                int x,int y,int width,int height,
+                string strColor,
+                int iPen_Size) {
+            PictureBox pControl = (PictureBox)pFrmApp.Controls[control_name];
+            
+            if (pControl != null) {
+                pControl.BorderStyle = BorderStyle.FixedSingle;
+                Graphics g2;
+                Image b;
+                if (pControl.Image != null) {
+                    b = pControl.Image;
+                } else {
+                    b= new Bitmap(pControl.Width, pControl.Height);
+                }
+                g2 = Graphics.FromImage(b);
+                Brush pBrush = new SolidBrush(Color.FromName(strColor));
+                g2.FillEllipse(pBrush, x, y, width, height);
+                //g2.FillEllipse()
+                //g2.DrawEllipse
+                pControl.Image = b;
+            }
+        }
+
+
+        public void PictureBox_Event(
+                string control_name,
+                string mouse_up_event) {
+            PictureBox pControl = (PictureBox)pFrmApp.Controls[control_name];
+
+            pControl.Tag = mouse_up_event;
+            if (pControl != null) {
+
+                pControl.MouseUp += new MouseEventHandler(my_picturebox_mouse_up);//使用事件函数句柄指向一个具体的函数  
+
+            }
+        }
+
+        private void my_picturebox_mouse_up(object sender, MouseEventArgs e) {
+            PictureBox pBox = (PictureBox)sender;
+            pFrmApp.pJS.jint.Invoke(pBox.Tag.ToString(), new[] { e.X,e.Y});
+        }
+
+
+
         public void Add_Combox(string name, string text,
             int x, int y,
             int width, int height) {
@@ -367,14 +427,21 @@ namespace FunnyApp {
         }
 
 
-        public void Connect_Socket(
+        public void Init_Socket(
             string url,
             string callback_Connect,
+            string callback_DisConnect,
             string callback_chat_event,
             string callback_system_event) {
-            // 
-            //Call_Init(url, callback_Connect, callback_chat_event, pFrmApp.Init);
-            pFrmApp.Init(url, callback_Connect, callback_chat_event, callback_system_event);
+
+            pFrmApp.Init(url, callback_Connect, callback_DisConnect, callback_chat_event, callback_system_event);
+        }
+
+        public void Socket_Connect() {
+
+            Task.Run(async () => {
+                await pFrmApp.client.ConnectAsync();
+            });
         }
 
         public void Notification(string title, string message) {

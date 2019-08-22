@@ -116,13 +116,16 @@ namespace FunnyApp
         }
 
         public string callback_Connect = "";
+        public string callback_DisConnect = "";
         public SocketIO client = null;
         public void Init(string url,
             string callback_Connect,
+            string callback_DisConnect,
             string callback_chat_event,
             string callback_system_event)
         {
             this.callback_Connect = callback_Connect;
+            this.callback_DisConnect = callback_DisConnect;
 
             //url = "ws://robot6.funnyai.com:8000/socket.io/?EIO=2&transport=websocket";
             client = new SocketIO(url); // url to nodejs 
@@ -171,20 +174,19 @@ namespace FunnyApp
 
             Console.WriteLine("Disconnect to server");
 
-            Task.Run(async () => {
-                await client.ConnectAsync();
-            });
+            Call_Event(this.callback_DisConnect, "");
+
         }
 
         public void Client_OnConnectedAsync() {
             Console.WriteLine("Connected to server");
             Call_Event(callback_Connect, "");
 
-            Task.Run(async () => {
-                await client.EmitAsync("chat_event",
-                    new { from = "a",type="", to = "", message = "test .net" });
+            //Task.Run(async () => {
+            //    await client.EmitAsync("chat_event",
+            //        new { from = "a",type="", to = "", message = "test .net" });
 
-            });
+            //});
         }
 
 
