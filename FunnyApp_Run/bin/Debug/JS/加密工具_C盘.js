@@ -1,124 +1,194 @@
 
-var log_error="";
-function show_error(data){
-    log_error+=data+"\r\n";
-    sys.Show_Text("txt_error",log_error);
-}
+var userName="none";
+var log_msg="";
 
-
-function file_open(){
-    var strLine=sys.File_Open();
-    sys.Show_Text("txt_file_public",strLine);
-}
-
-function file_pem(){
-    var file_key="C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe";
-    var txt_file=sys.Get_Text("txt_file_public");
-    var txt_file2=txt_file.replace(".pub",".pem.pub");
-    var param="-f "+txt_file+" -e -m PKCS8";// > "+txt_file2;
+function send_msg_click(){
     
-    show_error(file_key);
-    show_error(param);
+    var strMsg=userName+":"+sys.Get_Text("txt_send");
+    var friend=sys.ListBox_Text("list_friend");
+    var index=sys.ListBox_Index("list_friend");
+    if (index<0){
+        sys.Msg("请选择好友！");
+        return ;
+    }
     
-    var result=sys.Run_App_Return(file_key,param);
-    sys.File_Save(txt_file2,result);
+    var path=sys.AppPath();
+    var count=parseInt(sys.Ini_Read(path+"\\config\\friend.ini","items","count"));
+    var file="";
+    var name="";
+    var iFind=0;
+    for (var i=0;i<count;i++){
+        name=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        file=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"file");
+        if (name==friend){
+            iFind=1;
+            break;
+        }
+    }
     
-    show_error(result);
-    
-    //sys.Run_App("explorer.exe","C:\\Net\\Web\\public\\");
-}
-
-function file_pem_private(){
-    var file_key="C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe";
-    var txt_file="C:\\Net\\Web\\id_rsa";
-    var txt_file2="C:\\Net\\Web\\id_rsa.pem";//txt_file.replace(".pub",".pem.pub");
-    var param="pkcs8 -topk8 -inform PEM -outform DER -in "+txt_file+" -nocrypt > "+txt_file2;
-    //pkcs8 -topk8 -inform PEM -outform DER -in private_key_file  -nocrypt > pkcs8_key
-    show_error(file_key);
-    show_error(param);
-    
-    var result=sys.Run_App_Return(file_key,param);
-    sys.File_Save(txt_file2,result);
-    
-    show_error(result);
-    
-    //sys.Run_App("explorer.exe","C:\\Net\\Web\\public\\");
-}
-
-
-function encrypt_click(data){
-    
-    var file=sys.Get_Text("txt_file_public_pem");
-    var strMsg=sys.Get_Text("txt_input");
+    if (iFind==0 || sys.File_Exists(file)==false){
+        sys.Msg("公钥不存在:"+file);
+        return ;
+    }
     var strLine=sys.encrypt_public_key(file,strMsg);
-    sys.Show_Text("txt_input2",strLine);
+    sys.Show_Text("txt_send_en",strLine);
+    var friend=sys.ListBox_Text("list_friend");
+    var strLine="{\"from\":\""+userName+"\",\"type\":\"encrypt\",\"to\":\""
+    +friend+"\",\"message\":\""+strLine+"\"}";
+    sys.Send_Msg("chat_event",strLine);
     
-}
-
-function copy_click(){
     
-    var strMsg=sys.Get_Text("txt_input2");
-    sys.Show_Text("txt_input",strMsg);
-    sys.Show_Text("txt_input2","");
+    log_msg=sys.Time_Now()+" "+strMsg+"\r\n\r\n"+log_msg;
+    sys.File_Append("C:\\Net\\Web\\log\\"+friend+".txt",
+        sys.Date_Now()+" "+sys.Time_Now()+" "+strMsg+"\r\n");
+    sys.Show_Text("txt1",log_msg);
+    sys.Show_Text("txt_send","");
 }
 
 
-function decrypt_click(){
-    var strMsg=sys.Get_Text("txt_input");
-    var strFile=sys.Get_Text("txt_file_private");
-    var strLine=sys.decrypt_private_key(strFile,strMsg);
-    sys.Show_Text("txt_input2",strLine);
-}
-
-function key_click(data){
-    sys.Msg("一会打开程序，请按两个回车，自动关闭窗口");
-    sys.Run_App("C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe"," -m PEM -t rsa -b 2048 -C test -f C:/Net/Web/id_rsa");
-    sys.Show_Text("txt1","把这个文件 C:\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
+function text_keydown(data){
+    if (data==13){
+        send_msg_click();
+    }
 }
 
 
+function event_connected(data){
+    sys.Show_Text("txt_info","event_connected");
+    friend_list();
+}
 
-sys.Button_Init("b1","创建key",650,10,100,30,"key_click","0");
-
-sys.Label_Init("lb_file","文件：",10,10);
-
-sys.Add_Text("txt_file_public","C:/Net/Web/public/id_rsa_happyli.pub",100,10,500,30);
-sys.Button_Init("b2_1","选择文件",100,50,200,30,"file_open","");
-
-
-sys.Button_Init("b2_2","转为pem格式",300,50,200,30,"file_pem","");
-sys.Button_Init("b2_3","转为pem格式(p)",500,50,200,30,"file_pem_private","");
+function event_disconnected(data){
+    sys.Show_Text("txt_info","event_disconnected");
+    sys.Socket_Connect();
+}
 
 
-
-sys.Label_Init("lb_upload","加密公钥文件：",10,110);
-
-sys.Add_Text("txt_file_public_pem","C:/Net/Web/public/pem/id_rsa_happyli.pem.pub",100,110,500,30);
-
-
-sys.Label_Init("lb_upload","解密私钥文件：",10,150);
-sys.Add_Text("txt_file_private","C:/Net/Web/id_rsa",100,150,500,30);
+function clear_click(data){
+    log_msg="clear\r\n";
+    sys.Show_Text("txt1",log_msg);
+}
 
 
-sys.Add_Text("txt_input","hello，你好",100,200,500,30);
-sys.Button_Init("b3_1","加密",100,250,100,30,"encrypt_click","");
-sys.Button_Init("b3_1","复制",300,250,100,30,"copy_click","");
-sys.Button_Init("b3_1","解密",500,250,100,30,"decrypt_click","");
-sys.Add_Text("txt_input2","",100,300,500,30);
+function event_chat(data){
+    var friend=sys.ListBox_Text("list_friend");
+    var obj=JSON.parse(data);
+    
+    if (obj.type=="encrypt"){
+        if (obj.to==userName){
+            var strMsg=sys.Time_Now()+" "+sys.decrypt_private_key("C:/Net/Web/id_rsa",obj.message);
+            sys.File_Append("C:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
+            log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
+        }else{
+            //log_msg="to="+obj.to+"\r\n"+"\r\n"+log_msg;
+        }
+    }else{
+        //var strMsg=sys.Time_Now()+" "+obj.message;
+        //sys.File_Append("C:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
+        //log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
+    }
+    
+    sys.Show_Text("txt1",log_msg);
+    
+    sys.Notification(obj.from,strMsg);
+}
+
+function event_system(data){
+    
+    var obj=JSON.parse(data);
+    var log_msg2=obj.from+"："+obj.message+"\r\n";
+    sys.Show_Text("txt_info",log_msg2);
+    switch(obj.type){
+        case "30s:session":
+            if (obj.from=="system"){
+                session_id=obj.message;
+                sys.Show_Text("txt_session",session_id);  
+                sys.Show_Text("txt_user_name",userName); 
+                //$("#user_name").html(userName);
+                var friend="*";
+                var strLine="{\"from\":\""+userName+"\",\"type\":\"session\",\"to\":\".\",\"message\":\""+session_id+"\"}";
+                sys.Send_Msg("sys_event",strLine); //服务器会记录用户名
+            }
+            break;
+        case "list.all":
+            sys.ListBox_Add("list_friend",obj.message);
+            break;
+    }
+}
+
+function read_ini(){
+    var path=sys.AppPath();
+    var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
+    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account");
+    
+    var count=parseInt(strCount);
+    for (var i=0;i<count;i++){
+        var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        //sys.Combox_Add("cb_friend",strName);
+    }
+    if (count>0){
+        //sys.Combox_Select("cb_friend",0);
+    }
+}
+
+
+function connect_click(data){
+    var url="http://robot6.funnyai.com:8000";
+    sys.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
+    read_ini();
+    sys.Button_Enable("btn_connect",0);
+}
+
+function log_click(data){
+    sys.Run_App("C:\\Net\\Web\\log","");
+}
+
+
+function switch_click(){
+    sys.Run_JS("加密聊天_login.js");
+}
+
+
+function friend_list(data){
+    sys.ListBox_Clear("list_friend");
+    var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
+    sys.Send_Msg("sys_event",strLine);
+}
+
+sys.Button_Init("btn_friend","刷新好友列表",10,30,200,30,"friend_list","");
+sys.ListBox_Init("list_friend",10,60,200,380);
+
+
+sys.Button_Init("b_clear","清空聊天记录",250,30,450,30,"clear_click","");
+sys.TextBox_Init("txt1","接收到信息",250,60,450,200);
+
+sys.Add_Text("txt_send","hi",250,350,450,30);
+
+sys.Button_Init("b_send","发送",450,400,100,30,"send_msg_click","");
 
 
 
-sys.TextBox_Init("txt_error","错误信息：",100,350,500,200);
-
-
-
-sys.Show_Form(800,600);
-
-sys.Form_Title("加密工具");
+sys.Add_Text("txt_user_name","000",10,450,100,30);
+sys.Button_Init("btn_connect","连服务器",120,450,100,30,"connect_click","");
+sys.Add_Text("txt_session","000",10,500,200,30);
 
 
 
 
+sys.TextBox_Init("txt_send_en","",750,60,300,150);
+
+sys.TextBox_Init("txt_info","",250,450,450,80);
 
 
+//菜单
+sys.Menu_Init("Menu1",0,0,800,25);
+sys.Menu_Add("Menu1","File","&File");
+sys.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
+sys.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
 
+//窗口
+sys.Acception_Button("b1_send");
+sys.Show_Form(750,600);
+sys.Form_Title("加密聊天");
+
+connect_click("");

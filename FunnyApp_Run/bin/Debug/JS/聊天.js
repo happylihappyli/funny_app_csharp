@@ -90,7 +90,7 @@ function event_system(data){
 }
 
 function read_ini(){
-    sys.Combox_Clear("cb_friend");
+    //sys.Combox_Clear("cb_friend");
     var path=sys.AppPath();
     var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account");
@@ -108,7 +108,7 @@ function read_ini(){
 
 function connect_click(data){
     var url="http://robot6.funnyai.com:8000";
-    sys.Init_Socket(url,"event_connected","event_disconnected","event_chat","event_system");
+    sys.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
     read_ini();
     sys.Button_Enable("btn_connect",0);
 }

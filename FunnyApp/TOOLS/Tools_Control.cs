@@ -495,7 +495,7 @@ namespace FunnyApp {
         }
 
 
-        public void Init_Socket(
+        public void Socket_Init(
             string url,
             string callback_Connect,
             string callback_DisConnect,
