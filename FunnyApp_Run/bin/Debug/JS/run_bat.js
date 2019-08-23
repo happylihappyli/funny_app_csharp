@@ -132,21 +132,21 @@ function add_bat(data){
 function param_click(data){
     sys.Run_JS("run_bat_param.js");
 }
-sys.Add_Text_Multi("txt_param","参数",350,10,600,150);
+sys.TextBox_Init("txt_param","参数",350,10,600,150);
 sys.Add_ListBox("list_param","参数",10,10,300,400);
-sys.Add_Text_Multi("txt_error","错误信息：",350,200,300,210);
-sys.Add_Text_Multi("txt_output","output：",660,200,300,210);
+sys.TextBox_Init("txt_error","错误信息：",350,200,300,210);
+sys.TextBox_Init("txt_output","output：",660,200,300,210);
 
-sys.Add_Button("b1_1","生成list",10,450,100,30,"add_bat","");
+sys.Button_Init("b1_1","生成list",10,450,100,30,"add_bat","");
 
 sys.Add_Text("txt_user_name","000",150,450,100,30);
 sys.Add_Text("txt_session","000",350,450,300,30);
 
-sys.Add_Button("b2_1","批量运行",10,500,100,30,"run_click","");
+sys.Button_Init("b2_1","批量运行",10,500,100,30,"run_click","");
 
-sys.Add_Button("b2_2","停止",150,500,100,30,"stop_click","");
+sys.Button_Init("b2_2","停止",150,500,100,30,"stop_click","");
 
-sys.Add_Button("b2_3","参数",250,500,100,30,"param_click","");
+sys.Button_Init("b2_3","参数",250,500,100,30,"param_click","");
 
 sys.Add_Progress("progress0",10,550,700,30);
 sys.Add_Progress("progress1",10,600,700,30);

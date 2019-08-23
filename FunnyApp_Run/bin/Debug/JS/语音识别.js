@@ -45,11 +45,11 @@ function b_read_click(data){
     sys.TTS(a);
 }
 
-sys.Add_Button("b_record","",100,100,49,46,"b_record_click","");
-sys.Add_Button("b_read","阅读",200,100,49,46,"b_read_click","");
+sys.Button_Init("b_record","",100,100,49,46,"b_record_click","");
+sys.Button_Init("b_read","阅读",200,100,49,46,"b_read_click","");
 
-sys.Add_Text_Multi("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
-sys.Add_Text_Multi("txt2","AI回复：",100,300,300,100);
+sys.TextBox_Init("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
+sys.TextBox_Init("txt2","AI回复：",100,300,300,100);
 
 sys.Show_Form(500,500);
 sys.Form_Title("语音识别");

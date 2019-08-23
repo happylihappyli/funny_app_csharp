@@ -18,7 +18,7 @@ var p2 = new Point(10, 10);
 
 var tools=new Tools();
 
-sys.Add_Button("b1","Test",10,50,200,30,"show_distance","");
+sys.Button_Init("b1","Test",10,50,200,30,"show_distance","");
 
 sys.Add_Text("txt1","输入信息",10,10,200,30);
 

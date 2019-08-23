@@ -56,13 +56,66 @@ namespace FunnyApp {
             }
         }
 
-        public void Add_ListBox(string name, string text,
+        public void Menu_Init(
+            string name,
+            int x, int y,
+            int width, int height) {
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            MenuStrip pControl = new MenuStrip();//实例化一个button  
+            pControl.Name = name;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+        }
+
+        public void Menu_Add(
+            string control_name,
+            string item,
+            string text) {
+            MenuStrip pControl = (MenuStrip)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                ToolStripMenuItem pControl2 = new ToolStripMenuItem();//实例化一个button  
+                pControl2.Name = item;
+                pControl2.Text = text;
+                pControl.Items.Add(pControl2);//向具体的控件中添加
+            }
+        }
+
+        public void Menu_Item_Add(
+            string menu_name,
+            string control_name,
+            string item,
+            string text,
+            string menu_event,
+            string menu_data) {
+            MenuStrip pMenu = (MenuStrip)pFrmApp.Controls[menu_name];
+            ToolStripMenuItem pControl = (ToolStripMenuItem)pMenu.Items[control_name];
+            if (pControl != null) {
+                ToolStripMenuItem pControl2 = new ToolStripMenuItem();//实例化一个button  
+                pControl2.Name = item;
+                pControl2.Text = text;
+                pControl2.Tag = new Function_Callback(menu_event,menu_data);
+                pControl2.Click += new System.EventHandler(MyMenuItem_Click);
+
+                pControl.DropDownItems.Add(pControl2);//向具体的控件中添加
+            }
+        }
+
+        private void MyMenuItem_Click(object sender, EventArgs e) {
+            ToolStripMenuItem pControl2 = (ToolStripMenuItem)sender;
+            Function_Callback p = (Function_Callback)pControl2.Tag;
+            pFrmApp.pJS.jint.Invoke(p.Name, p.Data);
+
+        }
+
+        public void ListBox_Init(string name,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
             ListBox pControl = new ListBox();//实例化一个button  
             pControl.Name = name;
-            pControl.Text = text;
+            //pControl.Text = text;
             //tag是控件留给用户自己定义的一个数据项,
             pControl.Location = p;
             pControl.Size = new Size(width, height);
@@ -125,7 +178,7 @@ namespace FunnyApp {
         }
 
         
-        public void ListBox_Item_Selected(string control_name, string strIndex) {
+        public void ListBox_Selected(string control_name, string strIndex) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
             if (pControl != null) {
                 int index = Int32.Parse(strIndex);
@@ -133,12 +186,21 @@ namespace FunnyApp {
             }
         }
 
-        public string ListBox_Item_Text(string control_name) {
+        public string ListBox_Text(string control_name) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
             if (pControl != null && pControl.SelectedItem!=null) {
                 return pControl.SelectedItem.ToString();
             }
             return "";
+        }
+
+
+        public int ListBox_Index(string control_name) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null && pControl.SelectedItem != null) {
+                return pControl.SelectedIndex;
+            }
+            return -1;
         }
 
         public string ListBox_Item(string control_name, string strIndex) {
@@ -152,9 +214,7 @@ namespace FunnyApp {
 
 
 
-
-
-        public void Add_Button(string name, string text,
+        public void Button_Init(string name, string text,
             int x, int y,
             int width, int height,
             string Function, String Function_data) {
@@ -170,6 +230,8 @@ namespace FunnyApp {
             pControl.Click += new EventHandler(my_button_Click);//使用事件函数句柄指向一个具体的函数  
 
         }
+
+
 
         public void Button_Backgound(string control_name, string file) {
             Button pControl = (Button)pFrmApp.Controls[control_name];
@@ -233,7 +295,7 @@ namespace FunnyApp {
 
 
 
-        public void Add_Text_Multi(string name, string text,
+        public void TextBox_Init(string name, string text,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -271,7 +333,7 @@ namespace FunnyApp {
             e.SuppressKeyPress = true;
         }
 
-        public void Add_Label(string name, string text,
+        public void Label_Init(string name, string text,
             int x, int y) {
 
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -284,7 +346,7 @@ namespace FunnyApp {
         }
 
 
-        public void Add_PictureBox(string name,
+        public void PictureBox_Init(string name,
             int x, int y,
             int width, int height) {
 
@@ -366,6 +428,12 @@ namespace FunnyApp {
         }
 
 
+        public void Combox_Clear(string control_name) {
+            ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Items.Clear();
+            }
+        }
 
         public string Combox_Text(string control_name) {
             ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];

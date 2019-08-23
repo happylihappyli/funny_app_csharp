@@ -90,13 +90,13 @@ function open_web(data){
 
 
 
-sys.Add_Text_Multi("txt1","提示信息",10,10,600,90);
+sys.TextBox_Init("txt1","提示信息",10,10,600,90);
 
 
 sys.Add_Text("txt_timer","00:00",10,150,600,30);
 
-sys.Add_Button("b1_1","运行",10,200,200,30,"run_click","0");
-sys.Add_Button("b2_1","test",10,250,200,30,"open_web","https://www.funnyai.com/funnyai/list_diary.php");
+sys.Button_Init("b1_1","运行",10,200,200,30,"run_click","0");
+sys.Button_Init("b2_1","test",10,250,200,30,"open_web","https://www.funnyai.com/funnyai/list_diary.php");
 
 
 sys.Show_Form(700,500);

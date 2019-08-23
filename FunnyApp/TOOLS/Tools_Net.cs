@@ -127,8 +127,7 @@ namespace FunnyApp {
 
             JObject jObject = JObject.Parse(strJSON);
             Task.Run(async () => {
-                //await pFrmApp.socket.EmitAsync(Type, jObject);
-                await pFrmApp.client.EmitAsync("chat_event", jObject);
+                await pFrmApp.client.EmitAsync(Type, jObject);
             });
         }
 

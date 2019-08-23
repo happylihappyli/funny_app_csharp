@@ -58,36 +58,36 @@ function file_open_config(data){
 
 sys.Add_Text("txt_host","robot6.funnyai.com",100,10,500,30);
 
-sys.Add_Label("lb_password","FTP密码：",10,70);
+sys.Label_Init("lb_password","FTP密码：",10,70);
 
 sys.Add_Password("txt1","",100,65,100,30,"");
 
 
-sys.Add_Button("b2_2","读取密码",250,60,100,30,"read_password","");
-sys.Add_Button("b2_1","保存密码",350,60,100,30,"save_password","");
+sys.Button_Init("b2_2","读取密码",250,60,100,30,"read_password","");
+sys.Button_Init("b2_1","保存密码",350,60,100,30,"save_password","");
 
 
-sys.Add_Label("lb_upload","上传文件：",10,100);
+sys.Label_Init("lb_upload","上传文件：",10,100);
 
 sys.Add_ListBox("list_upload","E:\\happyli\\Jar\\line_java\\Line_Java.jar",100,100,500,100);
 sys.ListBox_From_File("list_upload",sys.App_Path()+"\\config\\upload.txt");
 
-sys.Add_Button("b_read1","jar",610,100,100,30,"read","upload.txt");
-sys.Add_Button("b_read2","js",610,150,100,30,"read","upload_js.txt");
+sys.Button_Init("b_read1","jar",610,100,100,30,"read","upload.txt");
+sys.Button_Init("b_read2","js",610,150,100,30,"read","upload_js.txt");
 
-sys.Add_Button("b_edit_1","e upload",610,200,100,30,"file_open_config","upload.txt");
-sys.Add_Button("b_edit_2","e upload_js",610,250,100,30,"file_open_config","upload_js.txt");
+sys.Button_Init("b_edit_1","e upload",610,200,100,30,"file_open_config","upload.txt");
+sys.Button_Init("b_edit_2","e upload_js",610,250,100,30,"file_open_config","upload_js.txt");
 
-sys.Add_Label("lb_ftp_path","路径：",10,200);
+sys.Label_Init("lb_ftp_path","路径：",10,200);
 
 sys.Add_Combox("txt_ftp_path","/root/happyli",100,200,500,30);
 sys.Combox_Add("txt_ftp_path","/root/happyli/lib/");
 
 
-sys.Add_Button("b3_1","upload",100,250,200,30,"upload_click","");
+sys.Button_Init("b3_1","upload",100,250,200,30,"upload_click","");
 
 
-sys.Add_Text_Multi("txt_error","错误信息：",100,300,500,200);
+sys.TextBox_Init("txt_error","错误信息：",100,300,500,200);
 
 
 sys.Add_Progress("progress1",100,500,500,30);

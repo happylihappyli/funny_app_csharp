@@ -123,26 +123,26 @@ function switch_click(){
     sys.Run_JS("加密聊天_login.js");
 }
 
-sys.Add_Text_Multi("txt1","接收到信息",10,10,300,300);
+sys.TextBox_Init("txt1","接收到信息",10,10,300,300);
 
 
 sys.Add_Text("txt_send","hi",10,350,300,30);
 //sys.Text_KeyDown("txt_send","text_keydown");
 
-sys.Add_Label("lb_txt1","好友：",10,450);
+sys.Label_Init("lb_txt1","好友：",10,450);
 sys.Add_Combox("cb_friend","",100,450,200,30);
 
 
-sys.Add_Button("b2","clear",200,400,100,30,"clear_click","");
+sys.Button_Init("b2","clear",200,400,100,30,"clear_click","");
 
 sys.Add_Text("txt_user_name","000",350,250,100,30);
-sys.Add_Button("btn_connect","连服务器",480,240,100,30,"connect_click","");
-sys.Add_Button("btn_connect","log",600,240,100,30,"log_click","");
+sys.Button_Init("btn_connect","连服务器",480,240,100,30,"connect_click","");
+sys.Button_Init("btn_connect","log",600,240,100,30,"log_click","");
 sys.Add_Text("txt_session","000",350,300,300,30);
 
-sys.Add_Button("b1_send","发送",10,400,100,30,"send_msg_click","");
+sys.Button_Init("b1_send","发送",10,400,100,30,"send_msg_click","");
 sys.Acception_Button("b1_send");
-sys.Add_Text_Multi("txt_send_en","",350,10,300,150);
+sys.TextBox_Init("txt_send_en","",350,10,300,150);
 
 sys.Show_Form(800,600);
 sys.Form_Title("加密聊天");

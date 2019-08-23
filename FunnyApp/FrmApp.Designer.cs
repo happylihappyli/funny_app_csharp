@@ -43,6 +43,7 @@
             this.ClientSize = new System.Drawing.Size(575, 435);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmApp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmApp_Load);
             this.ResumeLayout(false);
 

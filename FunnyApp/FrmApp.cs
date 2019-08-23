@@ -112,7 +112,13 @@ namespace FunnyApp
             popupNotifier.TitleText = title;
             popupNotifier.ContentText = message;
             popupNotifier.IsRightToLeft = false;
+            popupNotifier.Click += new System.EventHandler(Notifer_Click);
             popupNotifier.Popup();
+        }
+
+        private void Notifer_Click(object sender, EventArgs e) {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         public string callback_Connect = "";
@@ -159,7 +165,7 @@ namespace FunnyApp
             });
 
             client.On("sys_event", (data) => {
-                Call_Event(callback_system_event, data.Text);//, data.ToString());
+                 Call_Event(callback_system_event, data.Text);//, data.ToString());
 
             });
 
@@ -202,6 +208,10 @@ namespace FunnyApp
             if ("".Equals(time_function)==false){
                 JS_Function(time_function, "");
             }
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }

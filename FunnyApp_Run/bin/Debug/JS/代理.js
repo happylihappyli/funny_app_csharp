@@ -56,22 +56,22 @@ function unset_proxy_click(data){
 
 
 
-sys.Add_Text_Multi("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,600,90);
+sys.TextBox_Init("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,600,90);
 sys.Add_Combox("cb_hosts","149.248.37.214",10,110,200,30);
 sys.Combox_Add("cb_hosts","149.248.37.214");
 sys.Combox_Add("cb_hosts","45.63.52.243");
 
 
-sys.Add_Button("b1","创建key",10,150,200,30,"key_click","0");
+sys.Button_Init("b1","创建key",10,150,200,30,"key_click","0");
 
-sys.Add_Button("b1_2","生成配置",250,150,200,30,"set_click","0");
+sys.Button_Init("b1_2","生成配置",250,150,200,30,"set_click","0");
 
-sys.Add_Button("b2_1","运行",10,200,200,30,"run_click","0");
+sys.Button_Init("b2_1","运行",10,200,200,30,"run_click","0");
 
-sys.Add_Button("b2_2","设置代理(smart)",10,250,200,30,"proxy1_click","0");
-sys.Add_Button("b2_3","设置代理(normal)",250,250,200,30,"proxy2_click","0");
+sys.Button_Init("b2_2","设置代理(smart)",10,250,200,30,"proxy1_click","0");
+sys.Button_Init("b2_3","设置代理(normal)",250,250,200,30,"proxy2_click","0");
 
-sys.Add_Button("b3_1","不用代理",10,300,200,30,"unset_proxy_click","");
+sys.Button_Init("b3_1","不用代理",10,300,200,30,"unset_proxy_click","");
 
 sys.Show_Form(700,500);
 

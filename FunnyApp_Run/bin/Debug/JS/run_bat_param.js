@@ -56,17 +56,17 @@ function run_join(bLeft){
 }
 
 
-sys.Add_Label("lb1","参数：",10,10);
+sys.Label_Init("lb1","参数：",10,10);
 sys.Add_Text("txt_param","28",100,10,100,150);
-sys.Add_Text_Multi("txt_param1","",100,50,300,300);
-sys.Add_Text_Multi("txt_param2","21\r\n22",500,50,100,300);
-sys.Add_Text_Multi("txt_result","",100,400,300,300);
+sys.TextBox_Init("txt_param1","",100,50,300,300);
+sys.TextBox_Init("txt_param2","21\r\n22",500,50,100,300);
+sys.TextBox_Init("txt_result","",100,400,300,300);
 
-sys.Add_Button("b2_1","生成",500,10,100,30,"generate","");
+sys.Button_Init("b2_1","生成",500,10,100,30,"generate","");
 
-sys.Add_Button("b2_2","Join左右",650,200,100,30,"run_join","1");
+sys.Button_Init("b2_2","Join左右",650,200,100,30,"run_join","1");
 
-sys.Add_Button("b2_3","Join右左",650,250,100,30,"run_join","0");
+sys.Button_Init("b2_3","Join右左",650,250,100,30,"run_join","0");
 
 sys.Show_Form(800,800);
 

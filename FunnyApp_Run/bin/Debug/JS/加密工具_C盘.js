@@ -78,37 +78,37 @@ function key_click(data){
 
 
 
-sys.Add_Button("b1","创建key",650,10,100,30,"key_click","0");
+sys.Button_Init("b1","创建key",650,10,100,30,"key_click","0");
 
-sys.Add_Label("lb_file","文件：",10,10);
+sys.Label_Init("lb_file","文件：",10,10);
 
 sys.Add_Text("txt_file_public","C:/Net/Web/public/id_rsa_happyli.pub",100,10,500,30);
-sys.Add_Button("b2_1","选择文件",100,50,200,30,"file_open","");
+sys.Button_Init("b2_1","选择文件",100,50,200,30,"file_open","");
 
 
-sys.Add_Button("b2_2","转为pem格式",300,50,200,30,"file_pem","");
-sys.Add_Button("b2_3","转为pem格式(p)",500,50,200,30,"file_pem_private","");
+sys.Button_Init("b2_2","转为pem格式",300,50,200,30,"file_pem","");
+sys.Button_Init("b2_3","转为pem格式(p)",500,50,200,30,"file_pem_private","");
 
 
 
-sys.Add_Label("lb_upload","加密公钥文件：",10,110);
+sys.Label_Init("lb_upload","加密公钥文件：",10,110);
 
 sys.Add_Text("txt_file_public_pem","C:/Net/Web/public/pem/id_rsa_happyli.pem.pub",100,110,500,30);
 
 
-sys.Add_Label("lb_upload","解密私钥文件：",10,150);
+sys.Label_Init("lb_upload","解密私钥文件：",10,150);
 sys.Add_Text("txt_file_private","C:/Net/Web/id_rsa",100,150,500,30);
 
 
 sys.Add_Text("txt_input","hello，你好",100,200,500,30);
-sys.Add_Button("b3_1","加密",100,250,100,30,"encrypt_click","");
-sys.Add_Button("b3_1","复制",300,250,100,30,"copy_click","");
-sys.Add_Button("b3_1","解密",500,250,100,30,"decrypt_click","");
+sys.Button_Init("b3_1","加密",100,250,100,30,"encrypt_click","");
+sys.Button_Init("b3_1","复制",300,250,100,30,"copy_click","");
+sys.Button_Init("b3_1","解密",500,250,100,30,"decrypt_click","");
 sys.Add_Text("txt_input2","",100,300,500,30);
 
 
 
-sys.Add_Text_Multi("txt_error","错误信息：",100,350,500,200);
+sys.TextBox_Init("txt_error","错误信息：",100,350,500,200);
 
 
 

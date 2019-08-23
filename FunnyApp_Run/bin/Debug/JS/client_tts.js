@@ -21,7 +21,7 @@ function event_system(data){
 }
 
 
-sys.Add_Button("b1","发送",10,100,200,30,"send_msg_click","");
+sys.Button_Init("b1","发送",10,100,200,30,"send_msg_click","");
 
 sys.Add_Text("txt1","接收到信息",10,10,200,30);
 sys.Add_Text("send_msg","",10,50,200,50);
