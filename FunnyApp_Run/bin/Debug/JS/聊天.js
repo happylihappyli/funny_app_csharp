@@ -93,7 +93,7 @@ function read_ini(){
     //sys.Combox_Clear("cb_friend");
     var path=sys.AppPath();
     var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account");
+    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
     
     var count=parseInt(strCount);
