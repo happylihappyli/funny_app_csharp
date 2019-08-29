@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funny_App_Design", "..\Funn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketIOClient2", "..\SocketIOClient2\SocketIOClient2.csproj", "{04B406FE-F45A-4463-A567-D947688DD28F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyFav", "..\FunnyFav\FunnyFav.csproj", "{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_Encrypt", "..\Common\CS_Encrypt\CS_Encrypt.csproj", "{B3044F21-739C-4715-B897-8DE6536CA3A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -253,6 +257,30 @@ Global
 		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|x86.ActiveCfg = Release|Any CPU
 		{04B406FE-F45A-4463-A567-D947688DD28F}.Release|x86.Build.0 = Release|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Debug|x86.Build.0 = Debug|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Release|x86.ActiveCfg = Release|Any CPU
+		{B90B92FC-7BC0-4EA4-A6CD-FE0FF0CC27E2}.Release|x86.Build.0 = Release|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3044F21-739C-4715-B897-8DE6536CA3A9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -270,6 +298,7 @@ Global
 		{60E60144-6F67-4F37-9EB0-B8C43A391C5C} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
 		{5338B18B-1781-418F-A1CC-9BD95A65A3BA} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
 		{CBDE9274-9D0B-4200-AACD-FC544B313675} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
+		{B3044F21-739C-4715-B897-8DE6536CA3A9} = {B90DD973-DEF2-4803-8EC0-899DB257AA6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E072F8F-E85A-47E9-9EC9-552EC278EC70}

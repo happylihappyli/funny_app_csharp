@@ -187,7 +187,7 @@ sys.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
 sys.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
 
 //窗口
-sys.Acception_Button("b1_send");
+sys.Acception_Button("b_send");
 sys.Show_Form(750,600);
 sys.Form_Title("加密聊天");
 

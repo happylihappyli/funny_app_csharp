@@ -1,0 +1,17 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.Properties.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.csproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\FunnyFav.exe.config
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\FunnyFav.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\FunnyFav.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\B_File.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\B_File.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\B_File.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.FrmLogin.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.csproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\obj\Debug\FunnyFav.FrmMain.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\CS_Encrypt.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyFav\bin\Debug\CS_Encrypt.pdb

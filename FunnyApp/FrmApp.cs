@@ -44,7 +44,6 @@ namespace FunnyApp
 
         private void FrmApp_Load(object sender, EventArgs e)
         {
-
             if ("".Equals(strFile)) {
                 MessageBox.Show("没有设置启动参数");
             } else {
@@ -118,6 +117,7 @@ namespace FunnyApp
 
         private void Notifer_Click(object sender, EventArgs e) {
             this.Show();
+            this.Activate();
             this.WindowState = FormWindowState.Normal;
         }
 
@@ -211,6 +211,10 @@ namespace FunnyApp
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
 
         }
     }

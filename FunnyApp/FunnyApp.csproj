@@ -188,9 +188,6 @@
   <ItemGroup>
     <Compile Include="baidu_tts.cs" />
     <Compile Include="Class\Alarm_Job.cs" />
-    <Compile Include="Class\RSA.cs" />
-    <Compile Include="Class\RSA_PEM.cs" />
-    <Compile Include="Class\RSA_Unit.cs" />
     <Compile Include="FrmApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,7 +203,6 @@
     <Compile Include="SecureTransfer.cs" />
     <Compile Include="TOOLS\Audio\ISpeechRecorder.cs" />
     <Compile Include="TOOLS\Audio\NAudioRecorder.cs" />
-    <Compile Include="TOOLS\PemKeyUtils.cs" />
     <Compile Include="TOOLS\Tools.cs" />
     <Compile Include="TOOLS\Tools_AI.cs" />
     <Compile Include="TOOLS\Tools_Alarm.cs" />
@@ -228,7 +224,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="FunnyApp_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -267,6 +262,10 @@
     <ProjectReference Include="..\Common\CommonTreapVB\B_TreapVB.vbproj">
       <Project>{c29de218-7553-4124-a831-8adc683fe2d2}</Project>
       <Name>B_TreapVB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\CS_Encrypt\CS_Encrypt.csproj">
+      <Project>{b3044f21-739c-4715-b897-8de6536ca3a9}</Project>
+      <Name>CS_Encrypt</Name>
     </ProjectReference>
     <ProjectReference Include="..\Common\ScriptDemo\ScriptDemo.csproj">
       <Project>{660a13e3-6480-4fd6-8aa5-3d6d39487ebd}</Project>

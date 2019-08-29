@@ -109,6 +109,33 @@ namespace FunnyApp {
 
         }
 
+
+        public void Web_Init(string name,
+            int x, int y,
+            int width, int height) {
+            Point p = new Point(x, y);//定义一个具体的位置  
+            WebBrowser pControl = new WebBrowser();//实例化一个button  
+            pControl.Name = name;
+            //pControl.Text = text;
+            //tag是控件留给用户自己定义的一个数据项,
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+
+        }
+
+
+
+        public void Web_Content(string control_name,
+            string content) {
+            WebBrowser pControl = (WebBrowser)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.DocumentText = content;
+            }
+        }
+
+
+
         public void ListBox_Init(string name,
             int x, int y,
             int width, int height) {
@@ -122,7 +149,22 @@ namespace FunnyApp {
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
 
         }
-        
+
+        public int ListBox_Select(
+            string control_name,
+            string Name) {
+            ListBox pControl = (ListBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                for (int i=0;i< pControl.Items.Count; i++) {
+                    string strName = (string)pControl.Items[i];
+                    if (strName == Name) {
+                        pControl.SelectedIndex = i;
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
 
         public void ListBox_Clear(string control_name) {
             ListBox pControl = (ListBox)pFrmApp.Controls[control_name];

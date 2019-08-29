@@ -1,0 +1,10 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\bin\Debug\CS_Encrypt.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\bin\Debug\CS_Encrypt.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\bin\Debug\B_File.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\bin\Debug\B_File.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\bin\Debug\B_File.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\obj\Debug\CS_Encrypt.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\obj\Debug\CS_Encrypt.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\obj\Debug\CS_Encrypt.csproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\obj\Debug\CS_Encrypt.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CS_Encrypt\obj\Debug\CS_Encrypt.pdb

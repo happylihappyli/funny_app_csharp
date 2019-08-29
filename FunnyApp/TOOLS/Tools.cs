@@ -242,6 +242,25 @@ namespace FunnyApp {
         }
 
 
+        public void setTimeout(string strFunction,int iSec) {
+            SetTimeout(1000* iSec, delegate
+            {
+                pFrmApp.Call_Event(strFunction,"");//, data.ToString());
+            });
+        }
+
+
+        public static void SetTimeout(double interval, Action action) {
+            System.Timers.Timer timer = new System.Timers.Timer(interval);
+            timer.Elapsed += delegate (object sender, System.Timers.ElapsedEventArgs e) {
+                timer.Enabled = false;
+                action();
+            };
+            timer.Enabled = true;
+
+        }
+
+
         public string Run(string path, string args, out string error) {
             try {
                 using (Process process = new Process()) {
