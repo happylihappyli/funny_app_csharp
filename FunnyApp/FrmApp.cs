@@ -27,12 +27,11 @@ namespace FunnyApp
 {
     public partial class FrmApp : Form
     {
+        public static Treap<string> pMap = new Treap<string>();
         public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
 
         public FrmApp pParent = null;
         public string strFile = "";
-        //public Socket socket = null;
-        //public SocketIO socket = null;
         public JS pJS = new JS();
         public Tools tools = null;
 
@@ -50,6 +49,8 @@ namespace FunnyApp
                 string strCode = S_File_Text.Read(strFile);
                 pJS.Run_Code(this, strCode);
             }
+
+            //webBrowser1.DocumentText = "<a href='http://www.funnyai.com/' target=_blank>funnyai</a>";
         }
 
         delegate void d_Call_Event(string str1, string str2);//创建一个代理
@@ -216,6 +217,14 @@ namespace FunnyApp
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
 
+        }
+
+        private void webBrowser1_DocumentCompleted_1(object sender, WebBrowserDocumentCompletedEventArgs e) {
+
+        }
+
+        private void webBrowser1_NewWindow(object sender, CancelEventArgs e) {
+            
         }
     }
 }

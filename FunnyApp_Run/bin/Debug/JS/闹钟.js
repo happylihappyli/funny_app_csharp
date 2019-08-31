@@ -93,7 +93,7 @@ function open_web(data){
 sys.TextBox_Init("txt1","提示信息",10,10,600,90);
 
 
-sys.Add_Text("txt_timer","00:00",10,150,600,30);
+sys.Text_Init("txt_timer","00:00",10,150,600,30);
 
 sys.Button_Init("b1_1","运行",10,200,200,30,"run_click","0");
 sys.Button_Init("b2_1","test",10,250,200,30,"open_web","https://www.funnyai.com/funnyai/list_diary.php");

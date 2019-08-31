@@ -7,3 +7,4 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_File\obj\Debug\B_File.vb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_File\obj\Debug\B_File.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_File\obj\Debug\B_File.xml
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_File\obj\Debug\B_File.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_File\obj\Debug\B_File.vbprojAssemblyReference.cache

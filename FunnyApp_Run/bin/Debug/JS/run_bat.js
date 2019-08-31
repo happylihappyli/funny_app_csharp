@@ -133,14 +133,14 @@ function param_click(data){
     sys.Run_JS("run_bat_param.js");
 }
 sys.TextBox_Init("txt_param","参数",350,10,600,150);
-sys.Add_ListBox("list_param","参数",10,10,300,400);
+sys.ListBox_Init("list_param",10,10,300,400);
 sys.TextBox_Init("txt_error","错误信息：",350,200,300,210);
 sys.TextBox_Init("txt_output","output：",660,200,300,210);
 
 sys.Button_Init("b1_1","生成list",10,450,100,30,"add_bat","");
 
-sys.Add_Text("txt_user_name","000",150,450,100,30);
-sys.Add_Text("txt_session","000",350,450,300,30);
+sys.Text_Init("txt_user_name","000",150,450,100,30);
+sys.Text_Init("txt_session","000",350,450,300,30);
 
 sys.Button_Init("b2_1","批量运行",10,500,100,30,"run_click","");
 
@@ -157,7 +157,7 @@ sys.Show_Form(1000,800);
 sys.Form_Title("Run_Bat");
 
 var url="http://robot6.funnyai.com:8000";
-sys.Connect_Socket(url,"event_connected","event_chat","event_system");
+sys.Socket_Init(url,"event_connected","event_chat","event_system","");
 
 
 

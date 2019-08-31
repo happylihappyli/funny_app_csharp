@@ -1,5 +1,6 @@
 ﻿using B_File.Funny;
 using B_IniFile;
+using CS_Encrypt;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +33,6 @@ namespace FunnyApp {
         }
 
 
-
         public string File_Open() {
             OpenFileDialog p = new OpenFileDialog();
             p.ShowDialog();
@@ -44,6 +44,9 @@ namespace FunnyApp {
         }
 
         public string Ini_Read(string file,string section,string key) {
+            if (S_File.Exists(file) == false) {
+                return "";
+            }
             IniFile pIni = new IniFile(file);
             return  pIni.Read_Item(section, key);
         }
@@ -51,6 +54,7 @@ namespace FunnyApp {
             IniFile pIni = new IniFile(file);
             pIni.AddSection(section);
             pIni.AddKey(key, value,section);
+            pIni.Save();
         }
 
         public void Open_Fold(String strPath) {
@@ -59,6 +63,15 @@ namespace FunnyApp {
                 UseShellExecute = true,
                 Verb = "open"
             });
+        }
+
+
+        public string AES_Encrypt(string strLines,string password) {
+            return AES.Encrypt(strLines, password);
+        }
+
+        public string AES_Decrypt(string strLines, string password) {
+            return AES.Decrypt(strLines, password);
         }
     }
 }

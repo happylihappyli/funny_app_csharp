@@ -57,7 +57,7 @@ function run_join(bLeft){
 
 
 sys.Label_Init("lb1","参数：",10,10);
-sys.Add_Text("txt_param","28",100,10,100,150);
+sys.Text_Init("txt_param","28",100,10,100,150);
 sys.TextBox_Init("txt_param1","",100,50,300,300);
 sys.TextBox_Init("txt_param2","21\r\n22",500,50,100,300);
 sys.TextBox_Init("txt_result","",100,400,300,300);

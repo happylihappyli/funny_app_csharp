@@ -33,7 +33,7 @@ sys.Button_Init("b0","0",10,180,70,30,"button_click","0");
 sys.Button_Init("b_dot",".",90,180,30,30,"button_click",".");
 sys.Button_Init("b_cal","=",130,180,30,30,"button_click_cal","=");
 
-sys.Add_Text("txt1","0.0",10,10,200,30);
+sys.Text_Init("txt1","0.0",10,10,200,30);
 
 sys.Show_Form(300,300);
 sys.Form_Title("计算器");

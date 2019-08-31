@@ -544,7 +544,6 @@ Public Class IniFile
     ''' <summary>
     ''' Saves the IniFile to the specified filename.
     ''' </summary>
-    ''' <param name="FileName">The filename to save the inifile to.</param>
     ''' <returns></returns>
     ''' <remarks>
     ''' </remarks>
@@ -552,7 +551,9 @@ Public Class IniFile
     ''' 	[TDavis]	1/19/2004	Created
     ''' </history>
     ''' -----------------------------------------------------------------------------
-    Public Function Save(ByVal FileName As String)
+    Public Function Save()
+        Dim FileName As String = _FileName
+
         If File.Exists(FileName) Then File.Delete(FileName) ' Remove the existing file
 
         'Loop through the arraylist (Content) and write each line to the file

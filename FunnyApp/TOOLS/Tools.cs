@@ -210,6 +210,34 @@ namespace FunnyApp {
             pApp.Show();
         }
 
+        public void Value_Save(string key,string value) {
+            IComparable pKey =new C_K_Str(key);
+            FrmApp.pMap.insert(ref pKey, ref value);
+        }
+
+        public string Value_Read(string key) {
+            IComparable pKey = new C_K_Str(key);
+            return FrmApp.pMap.find(pKey);
+        }
+
+        public void Run_JS_Dialog(string args,string callback_event) {
+            FrmApp pApp2 = new FrmApp();
+            string strFile = Application.StartupPath + "\\JS\\" + args;
+            if (S_File.Exists(strFile)) {
+                pApp2.strFile = strFile;
+            }
+
+            IComparable pKey = new C_K_Str(strFile);
+            FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp2);
+
+            pApp2.pParent = pFrmApp;
+            pApp2.ShowDialog();
+
+            pFrmApp.Call_Event(callback_event, "");
+        }
+
+
+
         public void Run_JS_Out(string args) {
             string strPath = Application.StartupPath + "\\FunnyApp.exe";
             using (Process process = new Process()) {

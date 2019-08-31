@@ -162,15 +162,15 @@ sys.ListBox_Init("list_friend",10,60,200,380);
 sys.Button_Init("b_clear","清空聊天记录",250,30,450,30,"clear_click","");
 sys.TextBox_Init("txt1","接收到信息",250,60,450,200);
 
-sys.Add_Text("txt_send","hi",250,350,450,30);
+sys.Text_Init("txt_send","hi",250,350,450,30);
 
 sys.Button_Init("b_send","发送",450,400,100,30,"send_msg_click","");
 
 
 
-sys.Add_Text("txt_user_name","000",10,450,100,30);
+sys.Text_Init("txt_user_name","000",10,450,100,30);
 sys.Button_Init("btn_connect","连服务器",120,450,100,30,"connect_click","");
-sys.Add_Text("txt_session","000",10,500,200,30);
+sys.Text_Init("txt_session","000",10,500,200,30);
 
 
 

@@ -1,4 +1,5 @@
 ﻿using B_File.Funny;
+using CS_Encrypt;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,10 +46,6 @@ namespace FunnyFav {
             S_File_Text.Write(strFile, strLines,false);
         }
 
-        private void button2_Click(object sender, EventArgs e) {
-            
-        }
-
         public void read_file() {
             string strFile = Program.file;
             if (S_File.Exists(strFile) == false) {
@@ -68,9 +65,6 @@ namespace FunnyFav {
             listBox1.DisplayMember = "Display";
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
 
         private void listBox1_DoubleClick(object sender, EventArgs e) {
             C_Link pLink = (C_Link)listBox1.SelectedItem;

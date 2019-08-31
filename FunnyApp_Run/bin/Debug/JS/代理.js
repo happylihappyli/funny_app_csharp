@@ -56,8 +56,8 @@ function unset_proxy_click(data){
 
 
 
-sys.TextBox_Init("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,600,90);
-sys.Add_Combox("cb_hosts","149.248.37.214",10,110,200,30);
+sys.TextBox_Init("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,500,90);
+sys.Combox_Init("cb_hosts","149.248.37.214",10,110,200,30);
 sys.Combox_Add("cb_hosts","149.248.37.214");
 sys.Combox_Add("cb_hosts","45.63.52.243");
 
@@ -73,6 +73,6 @@ sys.Button_Init("b2_3","设置代理(normal)",250,250,200,30,"proxy2_click","0")
 
 sys.Button_Init("b3_1","不用代理",10,300,200,30,"unset_proxy_click","");
 
-sys.Show_Form(700,500);
+sys.Show_Form(560,500);
 
 sys.Form_Title("代理");

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Management.Automation;
@@ -105,7 +106,7 @@ namespace FunnyApp {
         private void MyMenuItem_Click(object sender, EventArgs e) {
             ToolStripMenuItem pControl2 = (ToolStripMenuItem)sender;
             Function_Callback p = (Function_Callback)pControl2.Tag;
-            pFrmApp.pJS.jint.Invoke(p.Name, p.Data);
+            pFrmApp.Call_Event(p.Name, p.Data); // .pJS.jint.Invoke
 
         }
 
@@ -135,6 +136,24 @@ namespace FunnyApp {
         }
 
 
+        public void Web_New_Event(string control_name,
+            string strEvent) {
+            WebBrowser pControl = (WebBrowser)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.NewWindow += new CancelEventHandler(this.webBrowser1_NewWindow);
+                pControl.Tag = new Function_Callback(strEvent,"");
+            }
+        }
+
+        private void webBrowser1_NewWindow(object sender, CancelEventArgs e) {
+            e.Cancel = true;
+            WebBrowser web = (WebBrowser)sender;
+            string url = web.Document.ActiveElement.GetAttribute("href");
+            //webBrowser1.Navigate(url);
+
+            Function_Callback p = (Function_Callback)web.Tag;
+            pFrmApp.Call_Event(p.Name, url);
+        }
 
         public void ListBox_Init(string name,
             int x, int y,
@@ -304,16 +323,18 @@ namespace FunnyApp {
             }
         }
 
-        public void Add_Password(string name, string text,
+        public void Close() {
+            pFrmApp.Close();
+        }
+
+        public void Password_Init(string name, string text,
             int x, int y,
-            int width, int height,
-            string call_back) {
+            int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
             TextBox pControl = new TextBox();//实例化一个button 
             pControl.PasswordChar = '*';
             pControl.Name = name;
             pControl.Text = text;
-            pControl.Tag = call_back;//tag是控件留给用户自己定义的一个数据项,
             pControl.Location = p;
             pControl.Multiline = false;
             pControl.ScrollBars = ScrollBars.Vertical;
@@ -321,7 +342,7 @@ namespace FunnyApp {
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
         }
 
-        public void Add_Text(string name, string text,
+        public void Text_Init(string name, string text,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -447,7 +468,7 @@ namespace FunnyApp {
 
 
 
-        public void Add_Combox(string name, string text,
+        public void Combox_Init(string name, string text,
             int x, int y,
             int width, int height) {
 
@@ -485,6 +506,12 @@ namespace FunnyApp {
             return "";
         }
 
+        public void Combox_Text_Set(string control_name,string value) {
+            ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Text= value;
+            }
+        }
 
         public int Combox_Index(string control_name) {
             ComboBox pControl = (ComboBox)pFrmApp.Controls[control_name];
@@ -504,15 +531,24 @@ namespace FunnyApp {
 
 
         public void Set_Text(string control_name, string text) {
+            Text_Set(control_name, text);
+        }
+
+        public void Text_Set(string control_name, string text) {
             Show_Text(control_name, text);
         }
+
 
         public void Show_Text(string control_name, string text) {
             TextBox pControl = (TextBox)pFrmApp.Controls[control_name];
             if (pControl != null) pControl.Text = text;
         }
 
+        
         public string Get_Text(string control_name) {
+            return Text_Read(control_name);
+        }
+        public string Text_Read(string control_name) {
             TextBox pControl = (TextBox)pFrmApp.Controls[control_name];
             if (pControl != null) {
                 return pControl.Text;// = text;
@@ -520,6 +556,7 @@ namespace FunnyApp {
                 return "";
             }
         }
+        
 
         private void my_button_Click(object sender, EventArgs e) {
             Button button = (Button)sender;

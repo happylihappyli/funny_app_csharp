@@ -51,11 +51,11 @@ function read(strFile){
 
 
 sys.Label_Init("lb_ftp_host","上传路径：",10,200);
-sys.Add_Text("txt_host","robot6.funnyai.com",100,10,500,30);
+sys.Text_Init("txt_host","robot6.funnyai.com",100,10,500,30);
 
 sys.Label_Init("lb_password","FTP密码：",10,70);
 
-sys.Add_Password("txt1","",100,65,100,30,"");
+sys.Password_Init("txt1","",100,65,100,30);
 
 
 sys.Button_Init("b2_2","读取密码",250,60,100,30,"read_password","");
@@ -64,7 +64,7 @@ sys.Button_Init("b2_1","保存密码",350,60,100,30,"save_password","");
 
 sys.Label_Init("lb_upload","上传文件：",10,100);
 
-sys.Add_Text("txt_upload",sys.args(1),100,100,500,30);
+sys.Text_Init("txt_upload",sys.args(1),100,100,500,30);
 //sys.ListBox_Add("txt_upload",sys.args(1));
 
 
@@ -73,7 +73,7 @@ sys.Button_Init("b2_1","选择文件",100,150,200,30,"file_open","");
 
 sys.Label_Init("lb_ftp_path","上传路径：",10,200);
 
-sys.Add_Combox("txt_ftp_path","/root/happyli",100,200,500,30);
+sys.Combox_Init("txt_ftp_path","/root/happyli",100,200,500,30);
 sys.Combox_Add("txt_ftp_path","/root/happyli");
 sys.Combox_Add("txt_ftp_path","/root/happyli/lib");
 

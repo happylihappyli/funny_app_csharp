@@ -37,6 +37,7 @@ namespace FunnyApp {
         }
 
         public string args(int i) {
+            if (i >= pFrmApp.args.Length) return "";
             return pFrmApp.args[i];
         }
     }

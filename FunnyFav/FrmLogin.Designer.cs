@@ -74,7 +74,8 @@
             this.comboBox1.Items.AddRange(new object[] {
             "D:\\Net\\Web\\private_url.txt",
             "C:\\Net\\Web\\private_url.txt",
-            "D:\\Net\\Web\\private_url_movie.txt"});
+            "D:\\Net\\Web\\private_url_movie.txt",
+            "E:\\CloudStation\\Robot5\\happyli\\bak\\private_url.txt"});
             this.comboBox1.Location = new System.Drawing.Point(43, 183);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(252, 20);

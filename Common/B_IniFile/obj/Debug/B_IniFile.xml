@@ -257,12 +257,11 @@ B_IniFile
  </history>
  -----------------------------------------------------------------------------
 </member>
-<member name="M:B_IniFile.IniFile.Save(System.String)">
+<member name="M:B_IniFile.IniFile.Save">
  -----------------------------------------------------------------------------
  <summary>
  Saves the IniFile to the specified filename.
  </summary>
- <param name="FileName">The filename to save the inifile to.</param>
  <returns></returns>
  <remarks>
  </remarks>
