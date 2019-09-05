@@ -17,6 +17,9 @@ namespace FunnyApp {
         }
 
         public void File_Save(string strFile, string content) {
+            if (strFile.StartsWith("@")) {
+                strFile = strFile.Replace("@", Path_JS());
+            }
             S_File_Text.Write(strFile, content, false, false);
         }
 
@@ -25,6 +28,10 @@ namespace FunnyApp {
         }
 
         public string File_Read(string strFile) {
+            if (strFile.StartsWith("@")) {
+                strFile = strFile.Replace("@", Path_JS());
+            }
+
             if (S_File.Exists(strFile)) { 
                 return File.ReadAllText(strFile);
             } else {

@@ -27,17 +27,20 @@ sys.Button_Init("b1_2","科学上网",200,50,100,30,"show_tools","代理");
 
 sys.Button_Init("b1_3","上传文件",350,50,100,30,"show_tools","上传文件");
 
-sys.Button_Init("b1_4","闹钟",500,50,100,30,"show_tools2","闹钟");
-sys.Button_Init("b1_5","聊天",650,50,100,30,"show_tools","聊天");
+sys.Button_Init("b1_4","闹钟",500,50,100,30,"show_tools2","Clock\\index");
+sys.Button_Init("b1_5","聊天",650,50,100,30,"show_tools2","聊天");
 
-sys.Button_Init("b2_1","计算器",50,150,100,30,"show_tools","计算器");
+sys.Button_Init("b2_1","计算器",50,150,100,30,"show_tools","Calculate\\index");
 sys.Button_Init("b2_2","加密收藏夹",200,150,100,30,"show_tools2","FunnyFav\\index");
 
 sys.Button_Init("b2_3","draw",350,150,100,30,"draw_test","");
 sys.Button_Init("b2_4","draw",500,150,100,30,"draw_test2","");
 
-sys.PictureBox_Init("pic1",50,200,300,200);
+sys.Button_Init("b3_1","FA Java",50,200,100,30,"show_tools2","FunnyApp_Java");
+
+sys.PictureBox_Init("pic1",50,250,300,200);
 sys.PictureBox_Event("pic1","mouse_up");
+
 
 sys.Show_Form(800,500);
 

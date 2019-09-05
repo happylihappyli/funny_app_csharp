@@ -45,5 +45,25 @@ namespace FunnyApp {
 
             sched.ScheduleJob(job, trigger);
         }
+
+
+        public void create_alarm_cron(
+                string job_key, string trigger_key,
+                string strLine) {
+
+            IJobDetail job = JobBuilder.Create<Alarm_Job>()
+                .UsingJobData("file", pFrmApp.strFile)
+                .WithIdentity(job_key)
+                .Build();
+
+
+            ITrigger trigger = TriggerBuilder.Create()
+                .WithIdentity(trigger_key)
+                .StartNow()
+                .WithCronSchedule(strLine)
+                .Build();
+
+            sched.ScheduleJob(job, trigger);
+        }
     }
 }

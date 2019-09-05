@@ -1,8 +1,14 @@
 
 function run_click(){
     var line=sys.ListBox_Text("list1");
-    var head="java -jar E:\\happyli\\Jar\\funny_app\\funny_app.jar E:\\CloudStation\\Robot5\\GitHub\\funny_app_java\\funny_app\\";
-    sys.Run_Cmd(head+line);
+    var strSplit=line.split("|");
+    var head="java -jar E:\\happyli\\Jar\\funny_app\\funny_app.jar E:\\CloudStation\\Robot5\\GitHub\\funny_app_java\\funny_app\\js\\";
+    var url=head+strSplit[0];
+    //sys.Msg(url);
+    sys.Run_Cmd(url);
+    if (strSplit.length>1){
+        sys.Run_JS_Out(strSplit[1]);
+    }
 }
 
 
@@ -19,8 +25,6 @@ sys.TextBox_Init("txt_error","错误信息：",100,300,500,200);
 sys.Show_Form(800,600);
 
 sys.Form_Title("FunnyApp.jar Test");
-
-
 
 
 

@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://www.funnyai.com/Common/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://www.echartsjs.com/examples/vendors/echarts/echarts.min.js?_v_=1567111902585"></script>
+<title>echarts</title>
+
+</head><body style="margin:0px">
+
+    <div id="main" style="height:600px"></div>
+
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+            var symbolSize = 20;
+    var data = [ [0,0],[1,2],[2,3],[3,3.5],[4,4],[5,4.5],[6,5],[7,6] ];
+    //[[15, 0], [-50, 10], [-56.5, 20], [-46.5, 30], [-22.1, 40]];
+
+    var option = {
+        title: {
+            text: 'Try Dragging these Points'
+        },
+        tooltip: {
+            formatter: function (params) {
+                return 'X: ' + params.data[0].toFixed(2) + '<br>Y: ' + params.data[1].toFixed(2);
+            }
+        },
+        grid: {
+        },
+        xAxis: {
+            min: 0,
+            max: 10,
+            type: 'value',
+            axisLine: {onZero: false}
+        },
+        yAxis: {
+            min: 0,
+            max: 10,
+            type: 'value',
+            axisLine: {onZero: false}
+        },
+        dataZoom: [
+            {
+                type: 'slider',
+                xAxisIndex: 0,
+                filterMode: 'empty'
+            },
+            {
+                type: 'slider',
+                yAxisIndex: 0,
+                filterMode: 'empty'
+            },
+            {
+                type: 'inside',
+                xAxisIndex: 0,
+                filterMode: 'empty'
+            },
+            {
+                type: 'inside',
+                yAxisIndex: 0,
+                filterMode: 'empty'
+            }
+        ],
+        series: [
+            {
+                id: 'a',
+                type: 'line',
+                smooth: true,
+                symbolSize: symbolSize,
+                data: data
+            }
+        ]
+    };
+
+        
+        
+        myChart.setOption(option);
+    </script>
+
+</body>
+</html>

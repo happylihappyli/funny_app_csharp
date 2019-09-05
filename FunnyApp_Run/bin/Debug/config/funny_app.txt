@@ -3,3 +3,4 @@ sync_seg.js E:/Data/class_funnyai.ini
 sync_struct.js E:/Data/class_funnyai.ini
 map_db.js E:/Data/class_funnyai.ini
 ssh_test.js E:/Data/class_funnyai.ini
+tree_test.js|tree_test_view.js

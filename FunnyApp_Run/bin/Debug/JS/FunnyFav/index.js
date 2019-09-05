@@ -17,54 +17,6 @@ function C_Link(name,url){
     this.url=url;
 }
 
-//发送消息
-function send_msg_click(){
-    msg_id+=1;
-    
-    var strMsg=sys.Get_Text("txt_send");
-    var friend=sys.ListBox_Text("list_friend");
-    var index=sys.ListBox_Index("list_friend");
-    if (index<0){
-        sys.Msg("请选择好友！");
-        return ;
-    }
-    
-    var strLine="{\"id\":\""+msg_id+"\",\"from\":\""+userName+"\",\"type\":\"\",\"to\":\""
-    +friend+"\",\"message\":\""+strMsg+"\"}";
-    myMap[msg_id]=new C_Msg(msg_id,strLine);
-    
-    sys.Send_Msg("chat_event",strLine);
-    
-    
-    log_msg=sys.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
-            +strMsg+"<br><br>"+log_msg;
-    sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
-        sys.Date_Now()+" "+sys.Time_Now()+" "+strMsg+"\r\n");
-        
-    sys.Web_Content("web",log_msg);
-    sys.Show_Text("txt_send","");
-    
-    sys.setTimeout("check_myMap", 3);//检查消息是否都发送过去了，没有发送的，再发送一次。
-    
-}
-
-function check_myMap() {
-    for(var pMsg in myMap){ 
-        if (pMsg.Count<3){
-            pMsg.Count+=1;
-            sys.Send_Msg("chat_event",pMsg.Msg);
-        }else{
-            var obj=JSON.parse(pMsg.Msg);
-            log_msg=sys.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
-                    +obj.message+"<br><br>"+log_msg;
-            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
-                sys.Date_Now()+" "+sys.Time_Now()+" 消息丢失："+obj.message+"\r\n");
-                
-            sys.Web_Content("web",log_msg);
-        }
-    }
-}
-
 function text_keydown(data){
     if (data==13){
         send_msg_click();
@@ -108,11 +60,6 @@ function read_ini(){
     }
 }
 
-function connect_click(data){
-    var url="http://robot6.funnyai.com:8000";
-    sys.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
-    read_ini();
-}
 
 function log_click(data){
     sys.Run_App("D:\\Net\\Web\\log","");

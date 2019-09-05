@@ -29,8 +29,16 @@ namespace FunnyApp {
             pFrmApp.Text = strLine;
         }
 
+        [Obsolete("Add_Progress() is Obsolete,Use Progress_Init()")]
         public void Add_Progress(
             string name, 
+            int x, int y,
+            int width, int height) {
+            Progress_Init(name, x,y, width, height);
+        }
+
+        public void Progress_Init(
+            string name,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -54,6 +62,134 @@ namespace FunnyApp {
                 pControl.Maximum = (int)dbMaximum;
                 double dbValue = Double.Parse(strValue);
                 pControl.Value = (int)dbValue; ;
+            }
+        }
+
+        public void DataGrid_Add_Line(string control_name,string data,string sep) {
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+
+
+                string[] row0 = data.Split(sep[0]);
+                pControl.Rows.Add(row0);
+                int i = pControl.Rows.Count - 2;
+                pControl.Rows[i].HeaderCell.Value = (i+1)+"" ;
+            }
+        }
+
+
+        public void DataGrid_Add_Button(
+            string control_name, 
+            string btn_Name, 
+            string btn_Text,
+            string my_event) {
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+
+                //在datagridview中添加button按钮
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.Tag = new Function_Callback(my_event,"");
+                btn.Name = btn_Name;
+                btn.HeaderText = btn_Text;
+                btn.DefaultCellStyle.NullValue = btn_Text;
+                pControl.Columns.Add(btn);
+            }
+        }
+
+
+        public int DataGrid_Rows(
+            string control_name) {
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+
+                return pControl.Rows.Count;
+            }
+            return 0;
+        }
+
+        public string DataGrid_Read(
+            string control_name,
+            int index,
+            int column_index) {
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+
+                return Convert.ToString(pControl.Rows[index].Cells[column_index].Value);
+            }
+            return "";
+        }
+
+        public void DataGrid_Set(
+            string control_name,
+            int index, int Col, string strText) {
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Rows[index].Cells[Col].Value = strText;
+            }
+        }
+
+        public void DataGrid_Clear(
+            string control_name) {
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                pControl.Rows.Clear();
+                pControl.Columns.Clear();
+            }
+        }
+
+
+
+        /// <summary>
+        /// 表格初始化
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="Column_Count"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public void DataGrid_Init(string control_name,
+            int x, int y,
+            int width, int height) {
+
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            DataGridView pControl = new DataGridView();//实例化一个button  
+            pControl.Name = control_name;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+
+            pControl.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
+        }
+
+
+
+        public void DataGrid_Init_Column(string control_name,
+            int Column_Count) {
+
+            DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+
+                for (int i = 0; i < Column_Count; i++) {
+                    DataGridViewTextBoxColumn pColunm = new DataGridViewTextBoxColumn();
+                    pColunm.HeaderText = Encoding.ASCII.GetString(new byte[] { (byte)("A"[0] + i) });
+                    pControl.Columns.Add(pColunm);
+                }
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            DataGridView dataGridView1 = (DataGridView)sender;
+            //点击button按钮事件
+            if ( e.RowIndex >= 0) {
+                //说明点击的列是DataGridViewButtonColumn列
+                DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+                if (column.Tag != null) {
+                    Function_Callback p = (Function_Callback)column.Tag;
+                    pFrmApp.Call_Event(p.Name, e.RowIndex+""); 
+                }
             }
         }
 
@@ -93,20 +229,52 @@ namespace FunnyApp {
             MenuStrip pMenu = (MenuStrip)pFrmApp.Controls[menu_name];
             ToolStripMenuItem pControl = (ToolStripMenuItem)pMenu.Items[control_name];
             if (pControl != null) {
-                ToolStripMenuItem pControl2 = new ToolStripMenuItem();//实例化一个button  
+                ToolStripMenuItem pControl2 = new ToolStripMenuItem();//实例化一个
                 pControl2.Name = item;
                 pControl2.Text = text;
                 pControl2.Tag = new Function_Callback(menu_event,menu_data);
                 pControl2.Click += new System.EventHandler(MyMenuItem_Click);
 
                 pControl.DropDownItems.Add(pControl2);//向具体的控件中添加
+                
             }
         }
 
+
+
+        public void Menu_Item2_Add(
+            string menu_name,
+            string control_name,
+            string item,
+            string item2,
+            string text,
+            string menu_event,
+            string menu_data) {
+            MenuStrip pMenu = (MenuStrip)pFrmApp.Controls[menu_name];
+            ToolStripMenuItem pControl = (ToolStripMenuItem)pMenu.Items[control_name];
+            if (pControl != null) {
+
+                ToolStripMenuItem pControl2 = (ToolStripMenuItem)pControl.DropDownItems[item];
+                if (pControl2 != null) {
+                    ToolStripMenuItem pControl3 = new ToolStripMenuItem();//实例化一个
+                    pControl3.Name = item2;
+                    pControl3.Text = text;
+                    pControl3.Tag = new Function_Callback(menu_event, menu_data);
+                    pControl3.Click += new System.EventHandler(MyMenuItem_Click);
+
+                    pControl2.DropDownItems.Add(pControl3);//向具体的控件中添加
+                }
+                
+
+            }
+        }
         private void MyMenuItem_Click(object sender, EventArgs e) {
             ToolStripMenuItem pControl2 = (ToolStripMenuItem)sender;
-            Function_Callback p = (Function_Callback)pControl2.Tag;
-            pFrmApp.Call_Event(p.Name, p.Data); // .pJS.jint.Invoke
+            if (pControl2.Tag != null) {
+
+                Function_Callback p = (Function_Callback)pControl2.Tag;
+                pFrmApp.Call_Event(p.Name, p.Data); // .pJS.jint.Invoke
+            }
 
         }
 
@@ -167,6 +335,78 @@ namespace FunnyApp {
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
 
+        }
+
+
+        public void Tree_Init(string name,
+            int x, int y,
+            int width, int height) {
+            Point p = new Point(x, y);//定义一个具体的位置  
+            TreeView pControl = new TreeView();//实例化一个button  
+            pControl.Name = name;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+        }
+
+
+
+        public void Tree_Add_Node_Root(
+            string control_name,
+            string key,
+            string text,
+            string fun_event) {
+            TreeView pControl = (TreeView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                TreeNode pNode=pControl.Nodes.Add(key,text);
+                pNode.Tag = new Function_Callback(fun_event, "");
+            }
+        }
+
+
+
+        public void Tree_Add_Node(
+            string control_name,
+            string key,
+            string key2,
+            string text,
+            string fun_event) {
+            TreeView pControl = (TreeView)pFrmApp.Controls[control_name];
+            if (pControl != null) {
+                TreeNode pNode = pControl.Nodes[key].Nodes.Add(key2, text);
+                
+                pNode.Tag = new Function_Callback(fun_event, "");
+            }
+        }
+
+        public string Tree_Disk() {
+            string strReturn = "";
+
+            //循环遍历计算机所有逻辑驱动器名称(盘符)
+            foreach (string drive in Environment.GetLogicalDrives()) {
+                //实例化DriveInfo对象 命名空间System.IO
+                var dir = new DriveInfo(drive);
+                switch (dir.DriveType)           //判断驱动器类型
+                {
+                    case DriveType.Fixed:        //仅取固定磁盘盘符 Removable-U盘 
+                    {
+                        strReturn += dir.Name + ",";
+                    }
+                    break;
+                }
+            }
+            if (strReturn.EndsWith(",")) {
+                strReturn = strReturn.Substring(0, strReturn.Length - 1);
+            }
+            return strReturn;
+        }
+
+
+        public void Tray_Show(string url) {
+            if (url.StartsWith("@")) {
+                url = url.Replace("@", App_Path());
+            }
+            pFrmApp.Tray_Show(url);
         }
 
         public int ListBox_Select(
@@ -529,22 +769,30 @@ namespace FunnyApp {
             }
         }
 
-
+        [Obsolete("Set_Text() is Obsolete,Use Text_Set()")]
         public void Set_Text(string control_name, string text) {
             Text_Set(control_name, text);
         }
 
         public void Text_Set(string control_name, string text) {
-            Show_Text(control_name, text);
-        }
-
-
-        public void Show_Text(string control_name, string text) {
             TextBox pControl = (TextBox)pFrmApp.Controls[control_name];
             if (pControl != null) pControl.Text = text;
         }
 
-        
+
+
+        [Obsolete("Show_Text() is Obsolete,Use Text_Set()")]
+        public void Show_Text(string control_name, string text) {
+            Text_Set(control_name, text);
+        }
+
+
+        [Obsolete("Text_Show() is Obsolete,Use Text_Set()")]
+        public void Text_Show(string control_name, string text) {
+            Text_Set(control_name, text);
+        }
+
+
         public string Get_Text(string control_name) {
             return Text_Read(control_name);
         }

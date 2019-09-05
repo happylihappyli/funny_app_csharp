@@ -50,18 +50,25 @@ namespace FunnyApp
                 pJS.Run_Code(this, strCode);
             }
 
-            //webBrowser1.DocumentText = "<a href='http://www.funnyai.com/' target=_blank>funnyai</a>";
+        }
+
+        public void Tray_Show(string url) {
+            this.notifyIcon1.Icon = this.Icon = Icon.ExtractAssociatedIcon(url);
+            this.notifyIcon1.Visible = true;
         }
 
         delegate void d_Call_Event(string str1, string str2);//创建一个代理
 
         public void Call_Event(string str1, string str2) {
+            if (str1 == null) return;
+            if ("".Equals(str1)) return;
 
             if (!this.InvokeRequired){
                 try { 
                     pJS.jint.Invoke(str1, str2);
                 }
                 catch(Exception ex) {
+                    MessageBox.Show(ex.ToString());
                     Debug.Print(ex.ToString());
                 }
             } else{
@@ -189,17 +196,12 @@ namespace FunnyApp
             Console.WriteLine("Connected to server");
             Call_Event(callback_Connect, "");
 
-            //Task.Run(async () => {
-            //    await client.EmitAsync("chat_event",
-            //        new { from = "a",type="", to = "", message = "test .net" });
-
-            //});
         }
 
 
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            notifyIcon1.Visible = false;
         }
 
         public string time_function = "";
@@ -225,6 +227,25 @@ namespace FunnyApp
 
         private void webBrowser1_NewWindow(object sender, CancelEventArgs e) {
             
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) {
+
+            Show();
+            this.Activate();
+
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void FrmApp_Resize(object sender, EventArgs e) {
+            if (this.notifyIcon1.Icon!=null) {
+                if (this.WindowState==FormWindowState.Minimized) {
+
+                    Hide();
+                    notifyIcon1.Visible = true;
+                }
+            }
         }
     }
 }

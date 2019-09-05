@@ -29,6 +29,9 @@ namespace FunnyApp {
             MessageBox.Show(strLine);
         }
 
+        public double Math_sqrt(double value) {
+            return Math.Sqrt(value);
+        }
 
         public void Log(string strLine) {
             Console.WriteLine(strLine);
@@ -195,6 +198,9 @@ namespace FunnyApp {
             }
         }
 
+        public void Exit() {
+            Application.Exit();
+        }
 
         public void Run_JS(string args) {
             FrmApp pApp = new FrmApp();
@@ -235,8 +241,6 @@ namespace FunnyApp {
 
             pFrmApp.Call_Event(callback_event, "");
         }
-
-
 
         public void Run_JS_Out(string args) {
             string strPath = Application.StartupPath + "\\FunnyApp.exe";
@@ -321,13 +325,34 @@ namespace FunnyApp {
             return App_Path();
         }
 
+
+        [Obsolete("App_Path 已经过时，请用  Path_App() ")]
+        public string App_Path() {
+            return Path_App();
+        }
+
+
         /// <summary>
         /// 程序启动路径
         /// </summary>
         /// <returns></returns>
-        public string App_Path() {
+        public string Path_App() {
             return Application.StartupPath;
         }
+
+
+        public string Path_JS() {
+            string[] strSplit = pFrmApp.strFile.Split('\\');
+            string strPath = "";
+            for (int i = 0; i < strSplit.Length-1; i++) {
+                strPath += strSplit[i]+"\\";
+            }
+            if (strPath.EndsWith("\\")) {
+                strPath = strPath.Substring(0, strPath.Length - 1);
+            }
+            return strPath;
+        }
+
 
         public string UserProfile() {
             var pathWithEnv = @"%USERPROFILE%";
@@ -357,16 +382,21 @@ namespace FunnyApp {
                 for (int i = 0; i < cmd.Length; i++) {
                     process.StandardInput.WriteLine(cmd[i]);
                 }
-                Thread.Sleep(6000);
+                Thread.Sleep(3000);
                 process.StandardInput.WriteLine("exit");
                 // 执行进程
-                string standardOutput = process.StandardOutput.ReadToEnd();
+                //string standardOutput = process.StandardOutput.ReadToEnd();
                 process.WaitForExit();
                 process.Close();
-                return standardOutput;
+                return "";// standardOutput;
             } catch (Exception ex) {
                 return ex.ToString();
             }
+        }
+
+
+        public void Sleep(int iSecond) {
+            Thread.Sleep(1000 * iSecond);
         }
 
         public void Run_Shell(string cmds) {

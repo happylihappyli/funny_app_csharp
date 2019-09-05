@@ -18,6 +18,9 @@ function run_click(data){
     
     sys.create_alarm_daily("午饭","tr5_1",11,55);
     
+    sys.create_alarm_cron("参考消息抓取","tr6_1","0 8 */1 ? * *");
+    
+    
     sys.Show_Text("txt1","启动闹钟！");
     
     sys.Button_Enable("b1_1","0");
@@ -25,6 +28,10 @@ function run_click(data){
 
 function sys_event_alarm(data){
     switch(data){
+        case "参考消息抓取":
+            sys.Notification("提醒","参考消息抓取");
+            sys.Run_JS_Out("Clock\\参考消息.js");
+            break;
         case "日记":
             sys.Notification("提醒","可以写日记了");
             open_web("https://www.funnyai.com/funnyai/list_diary.php");
@@ -108,5 +115,6 @@ init();
 
 run_click("");
 
-sys.ShowInTask(0);
+//sys.ShowInTask(0);
 
+sys.Run_JS_Out("Clock\\参考消息.js");
