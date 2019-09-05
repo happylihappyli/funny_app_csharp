@@ -209,6 +209,7 @@
     <Compile Include="TOOLS\Tools_Au3.cs" />
     <Compile Include="TOOLS\Tools_Control.cs" />
     <Compile Include="TOOLS\Tools_File.cs" />
+    <Compile Include="TOOLS\Tools_Math.cs" />
     <Compile Include="TOOLS\Tools_Net.cs" />
     <Compile Include="TOOLS\Tools_String.cs" />
     <EmbeddedResource Include="FrmApp.resx">

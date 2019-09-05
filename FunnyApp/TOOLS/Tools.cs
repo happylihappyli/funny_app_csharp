@@ -29,9 +29,7 @@ namespace FunnyApp {
             MessageBox.Show(strLine);
         }
 
-        public double Math_sqrt(double value) {
-            return Math.Sqrt(value);
-        }
+
 
         public void Log(string strLine) {
             Console.WriteLine(strLine);

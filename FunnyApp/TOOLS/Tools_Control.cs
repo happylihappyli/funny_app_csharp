@@ -166,14 +166,15 @@ namespace FunnyApp {
 
 
         public void DataGrid_Init_Column(string control_name,
-            int Column_Count) {
+            int Column_Count,
+            string strLines) {
 
             DataGridView pControl = (DataGridView)pFrmApp.Controls[control_name];
             if (pControl != null) {
-
+                string[] strSplit = strLines.Split(',');
                 for (int i = 0; i < Column_Count; i++) {
                     DataGridViewTextBoxColumn pColunm = new DataGridViewTextBoxColumn();
-                    pColunm.HeaderText = Encoding.ASCII.GetString(new byte[] { (byte)("A"[0] + i) });
+                    pColunm.HeaderText = strSplit[i];// Encoding.ASCII.GetString(new byte[] { (byte)("A"[0] + i) });
                     pControl.Columns.Add(pColunm);
                 }
             }
