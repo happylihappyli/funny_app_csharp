@@ -259,6 +259,10 @@
       <Project>{499C9509-5D09-4A51-B606-861BEDD735A5}</Project>
       <Name>B_Net</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\B_String\B_String.vbproj">
+      <Project>{fc2b9f69-99d8-4d7b-89cb-156962af9a9c}</Project>
+      <Name>B_String</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\CommonTreapVB\B_TreapVB.vbproj">
       <Project>{c29de218-7553-4124-a831-8adc683fe2d2}</Project>
       <Name>B_TreapVB</Name>

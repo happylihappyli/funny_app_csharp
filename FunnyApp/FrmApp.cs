@@ -2,6 +2,7 @@
 using B_Data.Funny;
 using B_File.Funny;
 using B_IniFile;
+using B_String.Funny;
 using CommonTreapVB.TreapVB;
 using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
@@ -16,6 +17,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
@@ -47,6 +49,18 @@ namespace FunnyApp
                 MessageBox.Show("没有设置启动参数");
             } else {
                 string strCode = S_File_Text.Read(strFile);
+                string pattern = "\\[\\[\\[(.*?\\.js)\\]\\]\\]";
+
+                foreach (Match match in Regex.Matches(strCode, pattern)) {
+
+                    string strMatch = match.Groups[0].Value;
+                    string strFile2=match.Groups[1].Value ;
+
+                    string strPath=this.tools.Path_JS();
+                    string strCode2 = S_File_Text.Read(strPath+"\\"+strFile2);
+                    strCode = strCode.Replace(strMatch, strCode2);
+
+                }
                 pJS.Run_Code(this, strCode);
             }
 

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C_File.cs" />
     <Compile Include="FileAssociations.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>

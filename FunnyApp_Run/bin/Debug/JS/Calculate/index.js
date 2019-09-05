@@ -38,6 +38,6 @@ sys.Text_Init("txt1","0.0",10,10,200,30);
 sys.Show_Form(300,300);
 sys.Form_Title("计算器");
 
-sys.Tray_Show("E:\\CloudStation\\Robot5\\GitHub\\funny_app_csharp\\FunnyApp_Run\\bin\\Debug\\JS\\Calculate\\main.ico");
+sys.Tray_Show(sys.Path_JS()+"\\main.ico");
 
 

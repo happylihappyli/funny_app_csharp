@@ -33,9 +33,13 @@ namespace FunnyApp_Run {
                 MessageBox.Show("请选择一个节点！");
                 return;
             }
-            //this.Visible = false;// = FormWindowState.Minimized ;
-            String strFile = Application.StartupPath
-                + "/JS/" + listBox1.SelectedItem.ToString();
+            C_File pFile = (C_File)listBox1.SelectedItem;
+            string strLine = pFile.File;
+            if (strLine.StartsWith("/")){
+                strLine = strLine.Substring(1) + "\\index.js";
+            }
+
+            string strFile = Application.StartupPath + "\\JS\\" + strLine;
 
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = textBox1.Text;
@@ -48,12 +52,47 @@ namespace FunnyApp_Run {
         private void Form1_Load(object sender, EventArgs e)
         {
             textBox1.Text = Application.StartupPath + "\\FunnyApp.exe";
-            //E:\CloudStation\Robot5\FunnyTeacher\FunnyApp\bin\Debug\FunnyApp.exe
-            ArrayList pList=S_Dir.ListFile(Application.StartupPath + "/JS/");
+            ArrayList
+            pList = S_Dir.ListDir(Application.StartupPath + "/JS/");
+            for (int i = 0; i < pList.Count; i++) {
+                string strFile = pList[i].ToString();
+                if (strFile.ToLower().Equals("data") == false) {
+                    string Name = "【"+ translate(strFile)+ "】";
+                    listBox1.Items.Add(new C_File(Name, "/" + strFile));
+                }
+            }
+
+            pList =S_Dir.ListFile(Application.StartupPath + "/JS/");
             for (int i = 0; i < pList.Count; i++)
             {
-                listBox1.Items.Add(pList[i].ToString());
+                string strFile = pList[i].ToString();
+                if (strFile.EndsWith(".js")) {
+                    listBox1.Items.Add(new C_File(strFile, strFile));
+                }
             }
+            listBox1.DisplayMember = "Name";
+        }
+
+        private string translate(string strFile) {
+            string strReturn = "";
+            switch (strFile.ToLower()) {
+                case "calculate":
+                    strReturn = "计算器";
+                    break;
+                case "clock":
+                    strReturn = "闹钟";
+                    break;
+                case "funnyfav":
+                    strReturn = "加密收藏夹";
+                    break;
+                case "funnygrid":
+                    strReturn = "电子表格";
+                    break;
+                default:
+                    strReturn = strFile;
+                    break;
+            }
+            return strReturn;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
