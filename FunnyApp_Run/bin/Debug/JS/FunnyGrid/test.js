@@ -22,7 +22,7 @@ function chi_square_sub(data){
         a[i]=data[i][0];
         b[i]=data[i][1];
         var delta=a[i]-b[i];
-        sys.Msg(delta);
+        //sys.Msg(delta);
         x+=delta*delta/b[i];
     }
     return x;
@@ -58,7 +58,13 @@ function WOE_IV(data){
         
         IV+=((a[i]/sum_a)-(b[i]/sum_b))*woe;
     }
-    sys.Web_Content("web1","IV="+IV);
+    var strInfo="<br> &lt; 0.03 无预测能力<br>"
+            +"0.03 - 0.09 低<br>"
+            +"0.1 - 0.29 中<br>"
+            +"0.3 - 0.49 高<br>"
+            +"&gt;=0.5 极高<br>";
+
+    sys.Web_Content("web1","IV="+IV+strInfo);
 }
 
 

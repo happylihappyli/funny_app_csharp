@@ -36,7 +36,7 @@ function data_init2(data){
 function data_init3(data){
     sys.DataGrid_Clear("grid1");
     
-    sys.DataGrid_Init_Column("grid1",6,"A,B,C,D,E,F");
+    sys.DataGrid_Init_Column("grid1",6,"good,bad,WOE,D,E,F");
     sys.DataGrid_Add_Line("grid1","50,40",",");
     sys.DataGrid_Add_Line("grid1","100,60",",");
     sys.DataGrid_Add_Line("grid1","100,80",",");

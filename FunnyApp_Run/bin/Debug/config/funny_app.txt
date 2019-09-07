@@ -1,4 +1,6 @@
 ks.js E:/Test/5442.data 0 1 2
+woe_iv.js E:/Test/5442.data 1 2
+chi_square.js E:/CloudStation/Robot5/GitHub/funny_app_java/funny_app/data/data1.txt 0 1
 sync_seg.js E:/Data/class_funnyai.ini
 sync_struct.js E:/Data/class_funnyai.ini
 map_db.js E:/Data/class_funnyai.ini

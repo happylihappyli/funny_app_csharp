@@ -40,12 +40,13 @@ function send_msg_click(){
     sys.Web_Content("web",log_msg);
     sys.Show_Text("txt_send","");
     
-    sys.setTimeout("check_myMap", 3);//检查消息是否都发送过去了，没有发送的，再发送一次。
+    sys.setTimeout("check_myMap('')", 3);//检查消息是否都发送过去了，没有发送的，再发送一次。
     
 }
 
-function check_myMap() {
-    for(var pMsg in myMap){ 
+function check_myMap(data) {
+    for(var key in myMap){
+        var pMsg=myMap[key];
         if (pMsg.Count<3){
             pMsg.Count+=1;
             sys.Send_Msg("chat_event",pMsg.Msg);
@@ -96,7 +97,7 @@ function event_chat(data){
         var index=sys.ListBox_Select("list_friend",friend);
         if (index==-1){
             friend_list("");
-            sys.sleep(10);
+            //sys.sleep(10);
             sys.ListBox_Select("list_friend",friend);
         }
         var strMsg=sys.Time_Now()+" "+obj.message;
@@ -106,7 +107,7 @@ function event_chat(data){
         
         var id=obj.id;
         var strLine="{\"from\":\""+userName+"\",\"type\":\"chat_return\",\"to\":\""+obj.from+"\",\"message\":\""+id+"\"}";
-        sys.Send_Msg("sys_event",strLine); //服务器会记录用户名
+        sys.Send_Msg("sys_event",strLine); //消息返回
         
     }
     
@@ -121,7 +122,8 @@ function event_system(data){
     sys.Show_Text("txt_info",log_msg2);
     switch(obj.type){
         case "chat_return":
-            sys.Show_Text("txt_info","chat_return:"+obj.message);
+            //sys.Msg(obj.type);
+            sys.Text_Set("txt_info","chat_return:"+obj.message);
             delete myMap[obj.message];
             break;
         case "30s:session":

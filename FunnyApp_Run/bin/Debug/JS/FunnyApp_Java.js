@@ -11,8 +11,12 @@ function run_click(){
     }
 }
 
+function fold_open(data){
+    sys.Open_Fold(sys.App_Path()+"\\config\\funny_app.txt");
+}
 
 sys.Button_Init("b1_1","运行",100,10,200,30,"run_click","");
+sys.Button_Init("b1_1","文件",300,10,200,30,"fold_open","");
 
 sys.ListBox_Init("list1",100,50,500,200);
 

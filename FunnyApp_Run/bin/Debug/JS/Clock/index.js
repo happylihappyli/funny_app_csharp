@@ -119,7 +119,5 @@ run_click("");
 
 sys.Run_JS_Out("Clock\\参考消息.js");
 
-
 sys.Tray_Show(sys.Path_JS()+"\\clock2.ico");
-
 
