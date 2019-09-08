@@ -70,9 +70,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonRecord;
-        private System.Windows.Forms.Label labelInfo;
         public System.Windows.Forms.Timer timer1;
         private Tulpep.NotificationWindow.PopupNotifier popupNotifier1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;

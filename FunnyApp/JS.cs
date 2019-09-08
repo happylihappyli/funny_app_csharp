@@ -14,7 +14,11 @@ namespace FunnyApp
         public void Run_Code(FrmApp pApp,string run_codestr1)
         {
             //pApp.tools = new Tools(pApp);
-            jint = new Jint.Engine().SetValue("sys", pApp.tools);
+            jint = new Jint.Engine();
+            jint.SetValue("sys", pApp.tools);
+            jint.SetValue("s_sys", pApp.tools);
+            jint.SetValue("s_ui", pApp.ui);
+            jint.SetValue("s_math", new S_Math());
 
             try
             {

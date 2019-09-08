@@ -1,11 +1,11 @@
 
 function New_URL(data){
-    sys.Run_App("chrome.exe", data);
+    s_ui.Run_App("chrome.exe", data);
 }
 
-sys.Web_Init("web",10,30,600,390);
+s_ui.Web_Init("web",10,30,600,390);
 
-sys.Web_New_Event("web","New_URL");
+s_ui.Web_New_Event("web","New_URL");
 
 
 
@@ -22,21 +22,21 @@ if (day<10) day="0"+day;
 
 var str='<a href="http://www.ckxxbao.com/cankaoxiaoxidianziban/(.*?)\\.html" target="_blank">参考消息电子版在线阅读 '+year+month+day+'</a>';
 
-//sys.Text_Set("txt_info",str);
-//sys.Msg(a);
+//s_ui.Text_Set("txt_info",str);
+//s_ui.Msg(a);
 
 var x=new RegExp(str,'g').exec(a);
 if (x==null){
-    //sys.Text_Set("txt_info","null");
-    sys.ShowInTask(0);
+    //s_ui.Text_Set("txt_info","null");
+    s_ui.ShowInTask(0);
     sys.Exit();
 }else{
-    sys.Form_Title("抓取参考消息");
-    sys.Show_Form(700,500);
-    //sys.ShowInTask(0);
+    s_ui.Form_Title("抓取参考消息");
+    s_ui.Show_Form(700,500);
+    //s_ui.ShowInTask(0);
     var html=x[0];
-    //sys.Msg();
-    sys.Web_Content("web",html);
+    //s_ui.Msg();
+    s_ui.Web_Content("web",html);
 }
 
 

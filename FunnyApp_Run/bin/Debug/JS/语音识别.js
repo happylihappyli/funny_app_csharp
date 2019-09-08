@@ -6,10 +6,10 @@ function b_record_click(data){
     if (bRecord==0){
         bRecord=1;
         sys.SR_Record("D:\\123.wav");
-        sys.Button_Backgound("b_record","@record_stop");
+        s_ui.Button_Backgound("b_record","@record_stop");
     }else{
         bRecord=0;
-        sys.Button_Backgound("b_record","@recording");
+        s_ui.Button_Backgound("b_record","@recording");
         b_stop_click("");
     }
 }
@@ -37,22 +37,22 @@ function init(){
     var API_KEY = "s6tcrNFyDTPfrMS7dLq8PxDy";
     var SECRET_KEY = "9UqrO2GDM12mcSSjLGK6WzVkyHmEhnBq";
     sys.SR_Init(APP_ID,API_KEY,SECRET_KEY);
-    sys.Button_Backgound("b_record","@recording");
+    s_ui.Button_Backgound("b_record","@recording");
 }
 
 function b_read_click(data){
-    var a=sys.Get_Text("txt1");
+    var a=s_ui.Text_Read("txt1");
     sys.TTS(a);
 }
 
-sys.Button_Init("b_record","",100,100,49,46,"b_record_click","");
-sys.Button_Init("b_read","阅读",200,100,49,46,"b_read_click","");
+s_ui.Button_Init("b_record","",100,100,49,46,"b_record_click","");
+s_ui.Button_Init("b_read","阅读",200,100,49,46,"b_read_click","");
 
-sys.TextBox_Init("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
-sys.TextBox_Init("txt2","AI回复：",100,300,300,100);
+s_ui.TextBox_Init("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
+s_ui.TextBox_Init("txt2","AI回复：",100,300,300,100);
 
-sys.Show_Form(500,500);
-sys.Form_Title("语音识别");
+s_ui.Show_Form(500,500);
+s_ui.Form_Title("语音识别");
 init();
 
 

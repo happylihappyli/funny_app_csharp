@@ -18,13 +18,13 @@ var p2 = new Point(10, 10);
 
 var tools=new Tools();
 
-sys.Button_Init("b1","Test",10,50,200,30,"show_distance","");
+s_ui.Button_Init("b1","Test",10,50,200,30,"show_distance","");
 
-sys.Text_Init("txt1","输入信息",10,10,200,30);
+s_ui.Text_Init("txt1","输入信息",10,10,200,30);
 
 function show_distance(){
-    sys.Show_Text("txt1","distance=:"+tools.distance(p1, p2));
+    s_ui.Text_Set("txt1","distance=:"+tools.distance(p1, p2));
 }
 
-sys.Show_Form(300,300);
+s_ui.Show_Form(300,300);
 

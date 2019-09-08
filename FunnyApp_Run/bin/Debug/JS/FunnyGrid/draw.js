@@ -2,12 +2,12 @@
 
 function draw_line(){
     var mydata="";
-    var count=sys.DataGrid_Rows("grid1")-1;
+    var count=s_ui.DataGrid_Rows("grid1")-1;
     var data=new Array(count);
     for (var i=0;i<count;i++){
         data[i]= new Array(2);
-        data[i][0]=parseFloat(sys.DataGrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(sys.DataGrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.DataGrid_Read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.DataGrid_Read("grid1",i,1));
         mydata+="["+data[i][0]+","+data[i][1]+"],";
     }
     if (mydata.endsWith(",")){
@@ -19,6 +19,6 @@ function draw_line(){
     data=data.replace("{sys.data.0}",mydata);
     html=html.replace("{sys.data.0}",data);
     sys.File_Save(sys.Path_JS()+"\\data\\test.html",html);
-    sys.Run_App("chrome.exe",sys.Path_JS()+"\\data\\test.html");
-    //sys.Web_Content("web1",html);
+    s_ui.Run_App("chrome.exe",sys.Path_JS()+"\\data\\test.html");
+    //s_ui.Web_Content("web1",html);
 }

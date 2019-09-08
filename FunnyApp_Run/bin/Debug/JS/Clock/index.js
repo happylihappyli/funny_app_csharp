@@ -21,36 +21,36 @@ function run_click(data){
     sys.create_alarm_cron("参考消息抓取","tr6_1","0 8 */1 ? * *");
     
     
-    sys.Show_Text("txt1","启动闹钟！");
+    s_ui.Text_Set("txt1","启动闹钟！");
     
-    sys.Button_Enable("b1_1","0");
+    s_ui.Button_Enable("b1_1","0");
 }
 
 function sys_event_alarm(data){
     switch(data){
         case "参考消息抓取":
-            sys.Notification("提醒","参考消息抓取");
-            sys.Run_JS_Out("Clock\\参考消息.js");
+            s_ui.Notification("提醒","参考消息抓取");
+            s_ui.Run_JS_Out("Clock\\参考消息.js");
             break;
         case "日记":
-            sys.Notification("提醒","可以写日记了");
+            s_ui.Notification("提醒","可以写日记了");
             open_web("https://www.funnyai.com/funnyai/list_diary.php");
             break;
         case "日报":
-            sys.Notification("提醒","可以写日报了");
+            s_ui.Notification("提醒","可以写日报了");
             open_web("http://pms.jiangrongxin.com:11006/pms/index.html");
             break;
         case "参考消息":
-            sys.Notification("提醒","参考消息");
+            s_ui.Notification("提醒","参考消息");
             open_web("http://www.ckxxbao.com/");
             break;
         case "整点报时":
-            sys.Notification("提醒","整点报时");
+            s_ui.Notification("提醒","整点报时");
             var a=get_hour_minute();
             sys.TTS(a);
             break;
         case "午饭":
-            sys.Notification("提醒","准备吃午饭");
+            s_ui.Notification("提醒","准备吃午饭");
             sys.TTS("准备吃午饭");
             break;
     }
@@ -86,38 +86,38 @@ function get_hour_minute() {
 
 
 function tickle(){
-    sys.Show_Text("txt_timer",get_now());
+    s_ui.Text_Set("txt_timer",get_now());
 }
 
 
 
 function open_web(data){
-    sys.Run_App(data,"");
+    s_ui.Run_App(data,"");
 }
 
 
 
-sys.TextBox_Init("txt1","提示信息",10,10,600,90);
+s_ui.TextBox_Init("txt1","提示信息",10,10,600,90);
 
 
-sys.Text_Init("txt_timer","00:00",10,150,600,30);
+s_ui.Text_Init("txt_timer","00:00",10,150,600,30);
 
-sys.Button_Init("b1_1","运行",10,200,200,30,"run_click","0");
-sys.Button_Init("b2_1","test",10,250,200,30,"open_web","https://www.funnyai.com/funnyai/list_diary.php");
+s_ui.Button_Init("b1_1","运行",10,200,200,30,"run_click","0");
+s_ui.Button_Init("b2_1","test",10,250,200,30,"open_web","https://www.funnyai.com/funnyai/list_diary.php");
 
 
-sys.Show_Form(700,500);
+s_ui.Show_Form(700,500);
 
-sys.Form_Title("闹钟");
+s_ui.Form_Title("闹钟");
 
 
 init();
 
 run_click("");
 
-//sys.ShowInTask(0);
+//s_ui.ShowInTask(0);
 
-sys.Run_JS_Out("Clock\\参考消息.js");
+s_ui.Run_JS_Out("Clock\\参考消息.js");
 
-sys.Tray_Show(sys.Path_JS()+"\\clock2.ico");
+s_ui.Tray_Show(sys.Path_JS()+"\\clock2.ico");
 

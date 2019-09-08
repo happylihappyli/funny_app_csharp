@@ -194,6 +194,7 @@
     <Compile Include="FrmApp.Designer.cs">
       <DependentUpon>FrmApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Function\S_Math.cs" />
     <Compile Include="Function_Callback.cs" />
     <Compile Include="JS.cs" />
     <Compile Include="Class\Msg.cs" />
@@ -201,17 +202,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxies.cs" />
     <Compile Include="SecureTransfer.cs" />
-    <Compile Include="TOOLS\Audio\ISpeechRecorder.cs" />
-    <Compile Include="TOOLS\Audio\NAudioRecorder.cs" />
-    <Compile Include="TOOLS\Tools.cs" />
-    <Compile Include="TOOLS\Tools_AI.cs" />
-    <Compile Include="TOOLS\Tools_Alarm.cs" />
-    <Compile Include="TOOLS\Tools_Au3.cs" />
-    <Compile Include="TOOLS\Tools_Control.cs" />
-    <Compile Include="TOOLS\Tools_File.cs" />
-    <Compile Include="TOOLS\Tools_Math.cs" />
-    <Compile Include="TOOLS\Tools_Net.cs" />
-    <Compile Include="TOOLS\Tools_String.cs" />
+    <Compile Include="Function\Audio\ISpeechRecorder.cs" />
+    <Compile Include="Function\Audio\NAudioRecorder.cs" />
+    <Compile Include="Function\Tools.cs" />
+    <Compile Include="Function\Tools_AI.cs" />
+    <Compile Include="Function\Tools_Alarm.cs" />
+    <Compile Include="Function\Tools_Au3.cs" />
+    <Compile Include="Function\C_UI.cs" />
+    <Compile Include="Function\Tools_File.cs" />
+    <Compile Include="Function\Tools_Net.cs" />
+    <Compile Include="Function\Tools_String.cs" />
     <EmbeddedResource Include="FrmApp.resx">
       <DependentUpon>FrmApp.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,11 +36,13 @@ namespace FunnyApp
         public string strFile = "";
         public JS pJS = new JS();
         public Tools tools = null;
+        public C_UI ui = null;
 
         public FrmApp()
         {
             InitializeComponent();
             tools = new Tools(this);
+            ui = new C_UI(this);
         }
 
         private void FrmApp_Load(object sender, EventArgs e)
@@ -91,6 +93,8 @@ namespace FunnyApp
             }
 
         }
+
+
 
 
 
@@ -260,6 +264,18 @@ namespace FunnyApp
                     notifyIcon1.Visible = true;
                 }
             }
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) {
+
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
+
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e) {
+
         }
     }
 }

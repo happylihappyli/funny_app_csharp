@@ -18,7 +18,7 @@ function check_myMap() {
             sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
                 sys.Date_Now()+" "+sys.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
-            sys.Web_Content("web",log_msg);
+            s_ui.Web_Content("web",log_msg);
         }
     }
 }
@@ -31,27 +31,27 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    sys.Show_Text("txt_info","event_connected");
-    sys.Button_Enable("btn_connect",0);
+    s_ui.Text_Set("txt_info","event_connected");
+    s_ui.Button_Enable("btn_connect",0);
     friend_list();
     
 }
 
 function event_disconnected(data){
-    sys.Show_Text("txt_info","event_disconnected");
-    sys.Button_Enable("btn_connect",1);
+    s_ui.Text_Set("txt_info","event_disconnected");
+    s_ui.Button_Enable("btn_connect",1);
     sys.Socket_Connect();
 }
 
 function clear_click(data){
     log_msg="clear\r\n";
-    sys.Web_Content("web",log_msg);
+    s_ui.Web_Content("web",log_msg);
 }
 
 
 
 function read_ini(){
-    //sys.Combox_Clear("cb_friend");
+    //s_ui.Combox_Clear("cb_friend");
     var path=sys.AppPath();
     var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
@@ -60,51 +60,51 @@ function read_ini(){
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
         var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //sys.Combox_Add("cb_friend",strName);
+        //s_ui.Combox_Add("cb_friend",strName);
     }
     if (count>0){
-        //sys.Combox_Select("cb_friend",0);
+        //s_ui.Combox_Select("cb_friend",0);
     }
 }
 
 function login_click(data){
-    var pass1 = sys.Get_Text("password1");
-    var pass2 = sys.Get_Text("password2");
+    var pass1 = s_ui.Text_Read("password1");
+    var pass2 = s_ui.Text_Read("password2");
     if (pass1!=pass2){
-        sys.Msg("两次密码不一样！");
+        s_ui.Msg("两次密码不一样！");
         return ;
     }
 
-    sys.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",sys.Combox_Text("combox1"));
+    sys.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",s_ui.Combox_Text("combox1"));
     
     
     sys.Value_Save("password",pass1);
-    sys.Value_Save("file",sys.Combox_Text("combox1"));
+    sys.Value_Save("file",s_ui.Combox_Text("combox1"));
     
-    sys.Close();
+    s_ui.Close();
 }
     
 
-sys.Label_Init("lb1","输入密码:",10,30);
-sys.Password_Init("password1","",10,50,300,30);
-sys.Password_Init("password2","",10,100,300,30);
-sys.Label_Init("lb2","选择收藏夹文件:",10,180);
+s_ui.Label_Init("lb1","输入密码:",10,30);
+s_ui.Password_Init("password1","",10,50,300,30);
+s_ui.Password_Init("password2","",10,100,300,30);
+s_ui.Label_Init("lb2","选择收藏夹文件:",10,180);
 
-sys.Combox_Init("combox1","D:\\Net\\Web\\private_url.txt",10,200,300,30);
-sys.Combox_Add("combox1","D:\\Net\\Web\\private_url.txt");
+s_ui.Combox_Init("combox1","D:\\Net\\Web\\private_url.txt",10,200,300,30);
+s_ui.Combox_Add("combox1","D:\\Net\\Web\\private_url.txt");
 
-sys.Combox_Add("combox1","E:\\CloudStation\\Robot5\\happyli\\bak\\private_url.txt");
+s_ui.Combox_Add("combox1","E:\\CloudStation\\Robot5\\happyli\\bak\\private_url.txt");
 
-sys.Combox_Add("combox1","C:\\Net\\Web\\private_url.txt");
+s_ui.Combox_Add("combox1","C:\\Net\\Web\\private_url.txt");
 
-sys.Button_Init("b1_login","登录",10,250,100,30,"login_click","");
+s_ui.Button_Init("b1_login","登录",10,250,100,30,"login_click","");
 
 
 var a=sys.Ini_Read("D:\\Net\\Web\\funnyfav.ini","main","file");
-sys.Combox_Text_Set("combox1",a);
+s_ui.Combox_Text_Set("combox1",a);
 
 
 //其他属性
-sys.Acception_Button("b1_login");
-sys.Show_Form(560,380);
-sys.Form_Title("登录");
+s_ui.Acception_Button("b1_login");
+s_ui.Show_Form(560,380);
+s_ui.Form_Title("登录");

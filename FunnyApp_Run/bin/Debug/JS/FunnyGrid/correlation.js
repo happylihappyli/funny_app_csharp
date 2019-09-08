@@ -1,16 +1,16 @@
 
 function Pearson_Correlation(data){
-    var count=sys.DataGrid_Rows("grid1")-1;
+    var count=s_ui.DataGrid_Rows("grid1")-1;
     var data=new Array(count);
     for (var i=0;i<count;i++){
         data[i]= new Array(2);  
-        data[i][0]=parseFloat(sys.DataGrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(sys.DataGrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.DataGrid_Read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.DataGrid_Read("grid1",i,1));
     }
     
     var r=Pearson_Correlation_Sub(data);
 
-    sys.Web_Content("web1","Pearson相关系数："+r);
+    s_ui.Web_Content("web1","Pearson相关系数："+r);
 }
 
 
@@ -30,12 +30,12 @@ function Pearson_Correlation_Sub(data){
     var xx_sum=0;
     var yy_sum=0;
     for (var i=0;i<count;i++){
-        //sys.Msg(data[i][0]);
+        //s_ui.Msg(data[i][0]);
         xy_sum+= (data[i][0]-a_avg)*(data[i][1]-b_avg);
         xx_sum+= (data[i][0]-a_avg)*(data[i][0]-a_avg);
         yy_sum+= (data[i][1]-b_avg)*(data[i][1]-b_avg);
     }
-    //sys.Msg(xy_sum+","+xx_sum+","+yy_sum);
+    //s_ui.Msg(xy_sum+","+xx_sum+","+yy_sum);
     var r=xy_sum/(sys.Math_sqrt(xx_sum)*sys.Math_sqrt(yy_sum));
     return r;
 }
@@ -49,7 +49,7 @@ function sortNumber(a,b)
 //计算排序下标
 function calculate_index(a){
     var count=a.length;
-    //sys.Msg(count);
+    //s_ui.Msg(count);
     
     var index=[];
     var iNext;
@@ -73,16 +73,16 @@ function calculate_index(a){
 }
 
 function Spearman_Correlation(data){
-    var count=sys.DataGrid_Rows("grid1")-1;
-    //sys.Msg(count);
+    var count=s_ui.DataGrid_Rows("grid1")-1;
+    //s_ui.Msg(count);
     
     var a=new Array(count);
     var b=new Array(count);
     var data=new Array(count);
     for (var i=0;i<count;i++){
         data[i]= new Array(2);
-        data[i][0]=parseFloat(sys.DataGrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(sys.DataGrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.DataGrid_Read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.DataGrid_Read("grid1",i,1));
         a[i]=data[i][0];
         b[i]=data[i][1];
     }
@@ -97,7 +97,7 @@ function Spearman_Correlation(data){
     for (var i=0;i<count;i++){
         strLine+=a[i]+",";
     }
-    //sys.DataGrid_Set("grid1",i,2,);
+    //s_ui.DataGrid_Set("grid1",i,2,);
     
     var index=calculate_index(a);
     
@@ -106,7 +106,7 @@ function Spearman_Correlation(data){
     for(var key in index){
         strLine+=index[key]+"(k="+key+")\n";
     }
-    //sys.Msg("...:"+strLine);
+    //s_ui.Msg("...:"+strLine);
     
     
     var data2=new Array(count);
@@ -124,18 +124,18 @@ function Spearman_Correlation(data){
     for(var key in index){
         strLine+=index[key]+"(k="+key+")\n";
     }
-    //sys.Msg("...:"+strLine);
+    //s_ui.Msg("...:"+strLine);
     
     for (var i=0;i<count;i++){
         var key=data[i][1]+"";
         data2[i][1]=index[key];
     }
     
-    //sys.Msg("step3");
+    //s_ui.Msg("step3");
     
     var r=Pearson_Correlation_Sub(data2);
 
-    sys.Web_Content("web1","SpearMan相关系数："+r);
+    s_ui.Web_Content("web1","SpearMan相关系数："+r);
     
 }
 

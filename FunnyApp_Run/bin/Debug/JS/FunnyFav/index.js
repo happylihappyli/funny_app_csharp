@@ -25,26 +25,26 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    sys.Show_Text("txt_info","event_connected");
-    sys.Button_Enable("btn_connect",0);
+    s_ui.Text_Set("txt_info","event_connected");
+    s_ui.Button_Enable("btn_connect",0);
     friend_list();
     
 }
 
 function event_disconnected(data){
-    sys.Show_Text("txt_info","event_disconnected");
-    sys.Button_Enable("btn_connect",1);
+    s_ui.Text_Set("txt_info","event_disconnected");
+    s_ui.Button_Enable("btn_connect",1);
     sys.Socket_Connect();
 }
 
 function clear_click(data){
     log_msg="clear\r\n";
-    sys.Web_Content("web",log_msg);
+    s_ui.Web_Content("web",log_msg);
 }
 
 
 function read_ini(){
-    //sys.Combox_Clear("cb_friend");
+    //s_ui.Combox_Clear("cb_friend");
     var path=sys.AppPath();
     var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
@@ -53,36 +53,36 @@ function read_ini(){
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
         var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //sys.Combox_Add("cb_friend",strName);
+        //s_ui.Combox_Add("cb_friend",strName);
     }
     if (count>0){
-        //sys.Combox_Select("cb_friend",0);
+        //s_ui.Combox_Select("cb_friend",0);
     }
 }
 
 
 function log_click(data){
-    sys.Run_App("D:\\Net\\Web\\log","");
+    s_ui.Run_App("D:\\Net\\Web\\log","");
 }
 
 
 function switch_click(data){
-    sys.Run_JS("加密聊天_login.js");
+    s_ui.Run_JS("加密聊天_login.js");
 }
 
 function chat2(data){
-    sys.Run_JS("加密聊天.js");
+    s_ui.Run_JS("加密聊天.js");
 }
 
 function friend_list(data){
-    sys.ListBox_Clear("list_friend");
-    sys.ListBox_Add("list_friend","*");
+    s_ui.ListBox_Clear("list_friend");
+    s_ui.ListBox_Add("list_friend","*");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
     sys.Send_Msg("sys_event",strLine);
 }
 
 function New_URL(data){
-    sys.Run_App("chrome.exe", "--incognito "+ data);
+    s_ui.Run_App("chrome.exe", "--incognito "+ data);
 }
 
 
@@ -127,7 +127,7 @@ function show_html(){
         var pLink=arraylist[i];
         strHTML += "<a href='" + pLink.url + "' target=_blank>"+pLink.name+" "+pLink.url+"</a><br>";
     }
-    sys.Web_Content("web",strHTML);
+    s_ui.Web_Content("web",strHTML);
 }
 
 //保存收藏夹
@@ -135,7 +135,7 @@ function save_fav(data){
     var file=sys.Value_Read("file");
     var password=sys.Value_Read("password");
     if (password == "") {
-        sys.Msg("密码为空！");
+        s_ui.Msg("密码为空！");
         return;
     }
     
@@ -144,7 +144,7 @@ function save_fav(data){
         var pLink=arraylist[i];
         strLines += pLink.name + "\t" + pLink.url + "\n";
     }
-    //sys.Msg(strLines);
+    //s_ui.Msg(strLines);
     
     strLines=sys.AES_Encrypt(strLines, password);
     sys.File_Save(file,strLines);
@@ -152,43 +152,43 @@ function save_fav(data){
 }
 
 function add_click(){
-    var name=sys.Get_Text("txt_name");
-    var url =sys.Get_Text("txt_url");
+    var name=s_ui.Text_Read("txt_name");
+    var url =s_ui.Text_Read("txt_url");
     arraylist.push(new C_Link(name,url));
     save_fav("");
     show_html();
 }
 
 function edit_click(data){
-    sys.Run_JS_Dialog("FunnyFav/edit.js","callback_edit");
+    s_ui.Run_JS_Dialog("FunnyFav/edit.js","callback_edit");
 }
 
 
 
-sys.Web_Init("web",10,30,600,390);
+s_ui.Web_Init("web",10,30,600,390);
 var a="<a href='http://www.funnyai.com/' target=_blank>funnyai</a>";
-sys.Web_Content("web",a);
-sys.Web_New_Event("web","New_URL");
+s_ui.Web_Content("web",a);
+s_ui.Web_New_Event("web","New_URL");
 
-sys.Button_Init("b1_send","添加",520,450,100,70,"add_click","");
+s_ui.Button_Init("b1_send","添加",520,450,100,70,"add_click","");
 
-sys.Label_Init("lb1","名称：",10,450);
-sys.Text_Init("txt_name","",100,450,390,30);
-sys.Label_Init("lb1","网址：",10,500);
-sys.Text_Init("txt_url","",100,500,390,30);
+s_ui.Label_Init("lb1","名称：",10,450);
+s_ui.Text_Init("txt_name","",100,450,390,30);
+s_ui.Label_Init("lb1","网址：",10,500);
+s_ui.Text_Init("txt_url","",100,500,390,30);
 
 
 
-sys.Menu_Init("Menu1",0,0,800,25);
-sys.Menu_Add("Menu1","File","&File");
-sys.Menu_Item_Add("Menu1","File","Edit","编辑(&L)","edit_click","");
-sys.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
+s_ui.Menu_Init("Menu1",0,0,800,25);
+s_ui.Menu_Add("Menu1","File","&File");
+s_ui.Menu_Item_Add("Menu1","File","Edit","编辑(&L)","edit_click","");
+s_ui.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
 
 
 
 //其他属性
-//sys.Acception_Button("b1_send");
-sys.Show_Form(700,600);
-sys.Form_Title("加密收藏夹");
+//s_ui.Acception_Button("b1_send");
+s_ui.Show_Form(700,600);
+s_ui.Form_Title("加密收藏夹");
 
-sys.Run_JS_Dialog("FunnyFav/login.js","callback_login");
+s_ui.Run_JS_Dialog("FunnyFav/login.js","callback_login");

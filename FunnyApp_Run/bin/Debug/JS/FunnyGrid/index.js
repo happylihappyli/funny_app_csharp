@@ -15,13 +15,13 @@ function Node_Click(data){
 
 function modify_click(data){
     var index=parseInt(data);
-    var a=sys.DataGrid_Read("grid1",index,0);
+    var a=s_ui.DataGrid_Read("grid1",index,0);
     
-    sys.Msg(":"+a);
+    s_ui.Msg(":"+a);
 }
 
 function clear_data(data){
-    sys.DataGrid_Clear("grid1");
+    s_ui.DataGrid_Clear("grid1");
 }
 
 //界面
