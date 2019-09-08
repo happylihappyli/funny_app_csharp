@@ -146,7 +146,9 @@ function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
     var path=sys.AppPath();
     var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
+    
+    var userName2=sys.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
+    userName=userName2+"_public";
     
     
     var count=parseInt(strCount);
@@ -185,7 +187,9 @@ function friend_list(data){
     sys.Send_Msg("sys_event",strLine);
 }
 
-
+function set_click(data){
+    s_ui.Run_JS("Chat\\setting.js");
+}
 
 s_ui.Button_Init("btn_friend","刷新好友列表",10,30,200,30,"friend_list","");
 s_ui.ListBox_Init("list_friend",10,60,200,380);
@@ -214,6 +218,8 @@ s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","File","&File");
 s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
 s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.Menu_Add("Menu1","Tools","&Tools");
+s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 

@@ -155,17 +155,10 @@ function event_system(data){
 function read_ini(){
     var path=sys.AppPath();
     var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
-    var count=parseInt(strCount);
-    //s_ui.Combox_Clear("cb_friend");
-    for (var i=0;i<count;i++){
-        var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //s_ui.Combox_Add("cb_friend",strName);
-    }
-    if (count>0){
-        //s_ui.Combox_Select("cb_friend",0);
-    }
+    var userName2=sys.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
+    userName=userName2+"_public";
+    
 }
 
 function connect_click(data){
