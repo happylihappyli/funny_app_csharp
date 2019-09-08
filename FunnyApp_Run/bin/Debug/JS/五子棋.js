@@ -228,6 +228,10 @@ function board_init(){
     }
 }
 
+function set_click(data){
+    s_ui.Run_JS("Chat\\setting.js");
+}
+
 s_ui.Button_Init("btn_friend","刷新好友列表",10,30,250,30,"friend_list","");
 s_ui.ListBox_Init("list_friend",10,60,250,80);
 
@@ -255,6 +259,8 @@ s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","File","&File");
 s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
 s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.Menu_Add("Menu1","Tools","&Tools");
+s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 
