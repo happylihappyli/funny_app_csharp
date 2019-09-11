@@ -33,6 +33,7 @@ function search(data){
     }
     s_ui.Web_Content("web",html);
 }
+
 function callback_init(data){
     s_ui.Text_Set("txt1","中国");
     s_ui.Button_Enable("b1",1);
