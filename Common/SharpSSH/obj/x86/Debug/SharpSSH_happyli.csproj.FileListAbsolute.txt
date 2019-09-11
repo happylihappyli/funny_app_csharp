@@ -1,0 +1,10 @@
+E:\CloudStation\Robot5\SopBin\Sop\SharpSSH_happyli.dll
+E:\CloudStation\Robot5\SopBin\Sop\SharpSSH_happyli.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\SharpSSH_happyli.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\Tamir.SharpSsh.jsch.examples.ProgressForm.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\Tamir.SharpSsh.jsch.examples.InputForm.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\SharpSSH_happyli.csproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\SharpSSH_happyli.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\SharpSSH_happyli.csproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\SharpSSH_happyli.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\SharpSSH\obj\x86\Debug\SharpSSH_happyli.pdb

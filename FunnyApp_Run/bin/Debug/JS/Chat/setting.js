@@ -10,13 +10,13 @@ function check_myMap() {
     for(var pMsg in myMap){ 
         if (pMsg.Count<3){
             pMsg.Count+=1;
-            sys.Send_Msg("chat_event",pMsg.Msg);
+            s_net.Send_Msg("chat_event",pMsg.Msg);
         }else{
             var obj=JSON.parse(pMsg.Msg);
-            log_msg=sys.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
+            log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
             sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
-                sys.Date_Now()+" "+sys.Time_Now()+" 消息丢失："+obj.message+"\r\n");
+                s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
             s_ui.Web_Content("web",log_msg);
         }
@@ -40,7 +40,7 @@ function event_connected(data){
 function event_disconnected(data){
     s_ui.Text_Set("txt_info","event_disconnected");
     s_ui.Button_Enable("btn_connect",1);
-    sys.Socket_Connect();
+    s_net.Socket_Connect();
 }
 
 function clear_click(data){
@@ -67,28 +67,43 @@ function read_ini(){
     }
 }
 
-function save_click(data){
+function save_check_click(data){
     var name = s_ui.Text_Read("name");
     if (name==""){
         s_ui.Msg("请输入用户名");
         return ;
     }
-
-    sys.Ini_Save("D:\\Net\\Web\\main.ini","main","account",name);
+    var password=s_ui.Text_Read("password");
+    var md5=s_string.md5(password);
     
+    s_sys.Ini_Save("D:\\Net\\Web\\main.ini","main","account",name);
+    s_sys.Ini_Save("D:\\Net\\Web\\main.ini","main","md5",md5);
     
-    s_ui.Close();
+    var url="http://www.funnyai.com/login_check_json.php";
+    var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
+    
+    var result=s_net.http_post(url,data);
+    s_ui.Msg(result);
+    if (result.indexOf("登录成功")>-1){
+        s_ui.Close();
+    }else{
+    }
 }
     
+var userName=s_sys.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
 
-s_ui.Label_Init("lb1","用户名:",10,30);
-var userName=sys.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
-s_ui.Text_Init("name",userName,10,50,300,30);
 
-s_ui.Button_Init("b1_save","保存",10,150,100,30,"save_click","");
+s_ui.Label_Init("lb1","www.funnyai.com的用户名和密码",10,30);
+
+s_ui.Label_Init("lb2","用户名:",10,100);
+s_ui.Text_Init("name",userName,150,100,300,30);
+s_ui.Label_Init("lb3","密码:",10,150);
+s_ui.Password_Init("password","",150,150,300,30);
+
+s_ui.Button_Init("b1_save","登录",150,200,100,30,"save_check_click","");
 
 
 //其他属性
 s_ui.Acception_Button("b1_save");
-s_ui.Show_Form(360,380);
+s_ui.Show_Form(560,380);
 s_ui.Form_Title("参数设置");

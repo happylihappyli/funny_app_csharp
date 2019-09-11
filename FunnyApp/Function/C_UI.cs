@@ -720,7 +720,15 @@ namespace FunnyApp {
             }
         }
 
+
+        [Obsolete("Acception_Button 不推荐，使用 Button_Default(xxx) 代替")]
         public void Acception_Button(string control_name) {
+            Button pControl = (Button)Ctrls[control_name];
+            pFrmApp.AcceptButton = pControl;
+        }
+
+
+        public void Button_Default(string control_name) {
             Button pControl = (Button)Ctrls[control_name];
             pFrmApp.AcceptButton = pControl;
         }
@@ -833,6 +841,9 @@ namespace FunnyApp {
             pFrmApp.pJS.jint.Invoke(pBox.Tag.ToString(), new[] { e.X,e.Y});
         }
 
+        
+
+
 
 
         public void Combox_Init(string name, string text,
@@ -888,6 +899,20 @@ namespace FunnyApp {
             return -1;
         }
 
+        public int Combox_Event(string control_name,string myEvent) {
+            ComboBox pControl = (ComboBox)Ctrls[control_name];
+            if (pControl != null) {
+                pControl.Tag = new Function_Callback(myEvent, "");
+                pControl.SelectedIndexChanged += new EventHandler(this.MyComBox_Change);
+            }
+            return -1;
+        }
+
+        private void MyComBox_Change(object sender, EventArgs e) {
+            ComboBox pControl = (ComboBox)sender;
+            Function_Callback pFun = (Function_Callback)pControl.Tag;
+            pFrmApp.Call_Event(pFun.Name, pFun.Data);
+        }
 
         public void Combox_Select(string control_name,int index) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
@@ -985,14 +1010,22 @@ namespace FunnyApp {
 
         public void SplitContainer_Init(
             string name,int x,int y,
-            int width,int height) {
+            int width,int height,
+            string Type) {
             Point p = new Point(x, y);//定义一个具体的位置  
             SplitContainer pControl = new SplitContainer();//实例化一个button  
             pControl.Name = name;
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pControl.Dock = DockStyle.Fill;
-            pControl.Orientation =Orientation.Vertical;
+            switch (Type.ToLower()) {
+                case "v":
+                    pControl.Orientation = Orientation.Vertical;
+                    break;
+                case "h":
+                    pControl.Orientation = Orientation.Horizontal;
+                    break;
+            }
             pControl.SplitterDistance = 107;
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
             Ctrls.Add(name,pControl);
@@ -1002,7 +1035,8 @@ namespace FunnyApp {
 
         public void SplitContainer_Add(
             string name,
-            int index,string name2) {
+            int index,string name2,
+            string fillType) {
             SplitContainer pControl = (SplitContainer)Ctrls[name];
             if (pControl != null) {
                 Control pControl2 = (Control)Ctrls[name2];
@@ -1012,12 +1046,77 @@ namespace FunnyApp {
                     } else {
                         pControl.Panel2.Controls.Add(pControl2);
                     }
-                    pControl2.Dock = DockStyle.Fill;
+                    switch (fillType.ToLower()) {
+                        case "fill":
+                            pControl2.Dock = DockStyle.Fill;
+                            break;
+                        case "top":
+                            pControl2.Dock = DockStyle.Top ;
+                            break;
+                        case "left":
+                            pControl2.Dock = DockStyle.Left;
+                            break;
+                        case "right":
+                            pControl2.Dock = DockStyle.Right;
+                            break;
+                        case "bottom":
+                            pControl2.Dock = DockStyle.Bottom;
+                            break;
+                        case "none":
+                            pControl2.Dock = DockStyle.None ;
+                            break;
+                    }
                 }
             }
 
         }
 
+        public void Panel_Init(string name,
+            int x, int y,
+            int width, int height) {
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            Panel pControl = new Panel();//实例化一个button  
+            pControl.Name = name;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+            Ctrls.Add(name, pControl);
+        }
+
+        public void Panel_Add(
+            string name, string name2,
+            string fillType) {
+            Panel pControl = (Panel)Ctrls[name];
+            if (pControl != null) {
+                Control pControl2 = (Control)Ctrls[name2];
+                if (pControl2 != null) {
+                    pControl.Controls.Add(pControl2);
+
+                    switch (fillType.ToLower()) {
+                        case "fill":
+                            pControl2.Dock = DockStyle.Fill;
+                            break;
+                        case "top":
+                            pControl2.Dock = DockStyle.Top;
+                            break;
+                        case "left":
+                            pControl2.Dock = DockStyle.Left;
+                            break;
+                        case "right":
+                            pControl2.Dock = DockStyle.Right;
+                            break;
+                        case "bottom":
+                            pControl2.Dock = DockStyle.Bottom;
+                            break;
+                        case "none":
+                            pControl2.Dock = DockStyle.None;
+                            break;
+                    }
+                }
+            }
+
+        }
 
 
         [Obsolete("Set_Text() is Obsolete,Use Text_Set()")]

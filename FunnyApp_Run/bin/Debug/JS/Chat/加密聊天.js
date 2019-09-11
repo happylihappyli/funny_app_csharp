@@ -30,17 +30,17 @@ function send_msg_click(){
         s_ui.Msg("公钥不存在:"+file);
         return ;
     }
-    var strLine=sys.encrypt_public_key(file,strMsg);
+    var strLine=s_string.encrypt_public_key(file,strMsg);
     s_ui.Text_Set("txt_send_en",strLine);
     var friend=s_ui.ListBox_Text("list_friend");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"encrypt\",\"to\":\""
     +friend+"\",\"message\":\""+strLine+"\"}";
-    sys.Send_Msg("chat_event",strLine);
+    s_net.Send_Msg("chat_event",strLine);
     
     
-    log_msg=sys.Time_Now()+" "+strMsg+"\r\n\r\n"+log_msg;
+    log_msg=s_time.Time_Now()+" "+strMsg+"\r\n\r\n"+log_msg;
     sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
-        sys.Date_Now()+" "+sys.Time_Now()+" "+strMsg+"\r\n");
+        s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
     s_ui.Text_Set("txt1",log_msg);
     s_ui.Text_Set("txt_send","");
 }
@@ -60,7 +60,7 @@ function event_connected(data){
 
 function event_disconnected(data){
     s_ui.Text_Set("txt_info","event_disconnected");
-    sys.Socket_Connect();
+    s_net.Socket_Connect();
 }
 
 
@@ -76,15 +76,15 @@ function event_chat(data){
     
     if (obj.type=="encrypt"){
         if (obj.to==userName){
-            var strMsg=sys.Time_Now()+" "+sys.decrypt_private_key("D:/Net/Web/id_rsa",obj.message);
-            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
+            var strMsg=s_time.Time_Now()+" "+s_string.decrypt_private_key("D:/Net/Web/id_rsa",obj.message);
+            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
             log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
         }else{
             //log_msg="to="+obj.to+"\r\n"+"\r\n"+log_msg;
         }
     }else{
-        //var strMsg=sys.Time_Now()+" "+obj.message;
-        //sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",sys.Date_Now()+" "+strMsg+"\r\n");
+        //var strMsg=s_time.Time_Now()+" "+obj.message;
+        //sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
         //log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
     }
     
@@ -107,7 +107,7 @@ function event_system(data){
                 //$("#user_name").html(userName);
                 var friend="*";
                 var strLine="{\"from\":\""+userName+"\",\"type\":\"session\",\"to\":\".\",\"message\":\""+session_id+"\"}";
-                sys.Send_Msg("sys_event",strLine); //服务器会记录用户名
+                s_net.Send_Msg("sys_event",strLine); //服务器会记录用户名
             }
             break;
         case "list.all":
@@ -134,7 +134,7 @@ function read_ini(){
 
 function connect_click(data){
     var url="http://robot6.funnyai.com:8000";
-    sys.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
+    s_net.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
     read_ini();
     s_ui.Button_Enable("btn_connect",0);
 }
@@ -152,7 +152,7 @@ function switch_click(){
 function friend_list(data){
     s_ui.ListBox_Clear("list_friend");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
-    sys.Send_Msg("sys_event",strLine);
+    s_net.Send_Msg("sys_event",strLine);
 }
 
 s_ui.Button_Init("btn_friend","刷新好友列表",10,30,200,30,"friend_list","");

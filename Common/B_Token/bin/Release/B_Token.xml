@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_Token
+</name>
+</assembly>
+<members>
+<member name="M:B_Token.Funny.C_Token_Link.clearNextToken">
+	<summary>
+ 清空pNextToken，比如这个链增加了东西
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

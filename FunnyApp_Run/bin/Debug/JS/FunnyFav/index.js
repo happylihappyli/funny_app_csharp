@@ -34,7 +34,7 @@ function event_connected(data){
 function event_disconnected(data){
     s_ui.Text_Set("txt_info","event_disconnected");
     s_ui.Button_Enable("btn_connect",1);
-    sys.Socket_Connect();
+    s_net.Socket_Connect();
 }
 
 function clear_click(data){
@@ -78,7 +78,7 @@ function friend_list(data){
     s_ui.ListBox_Clear("list_friend");
     s_ui.ListBox_Add("list_friend","*");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
-    sys.Send_Msg("sys_event",strLine);
+    s_net.Send_Msg("sys_event",strLine);
 }
 
 function New_URL(data){
@@ -170,11 +170,22 @@ var a="<a href='http://www.funnyai.com/' target=_blank>funnyai</a>";
 s_ui.Web_Content("web",a);
 s_ui.Web_New_Event("web","New_URL");
 
+
+
 s_ui.Button_Init("b1_send","添加",520,450,100,70,"add_click","");
 
 s_ui.Label_Init("lb1","名称：",10,450);
+
 s_ui.Text_Init("txt_name","",100,450,390,30);
-s_ui.Label_Init("lb1","网址：",10,500);
+
+
+
+
+s_ui.Label_Init("lb2","网址：",10,500);
+
+
+
+
 s_ui.Text_Init("txt_url","",100,500,390,30);
 
 

@@ -1,0 +1,440 @@
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.dll
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.pdb
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.dll
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.pdb
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.xml
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+J:\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_Core.dll
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_Core.pdb
+D:\BAK\VB\Common\B_Segmentation\bin\Debug\B_Core.xml
+D:\BAK\VB\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+D:\BAK\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+D:\BAK\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+D:\BAK\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+D:\BAK\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+D:\BAK\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.dll
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Core.pdb
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+D:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_File.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_File.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_File.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\System.Data.SQLite.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Data.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_File.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_String.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Token.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\System.Data.SQLite.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Data.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Data.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_String.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_String.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_File.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_File.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Token.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\bin\Debug\B_Token.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_File.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\System.Data.SQLite.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_File.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_File.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x32.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x32.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x32.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x32.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_TreapVB.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\GenerateResource.read.1.tlog
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\obj\Debug\GenerateResource.write.1.tlog
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\GenerateResource.read.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\GenerateResource.write.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\GenerateResource.read.1.tlog
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\GenerateResource.write.1.tlog
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+E:\Happy\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbprojResolveAssemblyReference.cache
+E:\Data_Dropbox\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+E:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbprojResolveAssemblyReference.cache
+E:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbprojResolveAssemblyReference.cache
+D:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+D:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+D:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+D:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\MySql.Data.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\MySql.Data.dll
+D:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x64.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x64.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\MySql.Data.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\ShellControl.dll
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+I:\Dropbox\Project\Common\B_Segmentation\bin\Debug\ShellControl.pdb
+I:\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbprojResolveAssemblyReference.cache
+I:\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+I:\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+I:\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+I:\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+I:\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Segmentation.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x64.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\MySql.Data.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\ShellControl.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Data.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\CommonTreapVB.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_String.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Token.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Array.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\ShellControl.pdb
+F:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbprojResolveAssemblyReference.cache
+F:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+F:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.Cache
+F:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+F:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+F:\Data\Dropbox\Project\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\System.Data.SQLite.x64.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\ShellControl.dll
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_File.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_XML.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.pdb
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\B_Debug.xml
+E:\Data\Dropbox\Project\Common\B_Segmentation\bin\Debug\ShellControl.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.vbprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.vbproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Segmentation\obj\Debug\B_Segmentation.pdb

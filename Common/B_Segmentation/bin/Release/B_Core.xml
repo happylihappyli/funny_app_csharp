@@ -1,0 +1,386 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_Core
+</name>
+</assembly>
+<members>
+<member name="F:B_Core.FunnyFtp.clsFTP.Request">
+	<summary>
+ FTP请求对象
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP.Response">
+	<summary>
+ FTP响应对象
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._Uri">
+	<summary>
+ FTP服务器地址
+ </summary>
+</member><member name="P:B_Core.FunnyFtp.clsFTP.Uri">
+	<summary>
+ FTP服务器地址
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._DirectoryPath">
+	<summary>
+ 当前工作目录
+ </summary>
+</member><member name="P:B_Core.FunnyFtp.clsFTP.DirectoryPath">
+	<summary>
+ 当前工作目录
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._UserName">
+	<summary>
+ FTP登录用户
+ </summary>
+</member><member name="P:B_Core.FunnyFtp.clsFTP.UserName">
+	<summary>
+ FTP登录用户
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._ErrorMsg">
+	<summary>
+ 错误信息
+ </summary>
+</member><member name="P:B_Core.FunnyFtp.clsFTP.ErrorMsg">
+	<summary>
+ 错误信息
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._Password">
+	<summary>
+ FTP登录密码
+ </summary>
+</member><member name="P:B_Core.FunnyFtp.clsFTP.Password">
+	<summary>
+ FTP登录密码
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._Proxy">
+	<summary>
+ 连接FTP服务器的代理服务
+ </summary>
+</member><member name="P:B_Core.FunnyFtp.clsFTP.Proxy">
+	<summary>
+ 连接FTP服务器的代理服务
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._isDeleteTempFile">
+	<summary>
+ 是否需要删除临时文件
+ </summary>
+</member><member name="F:B_Core.FunnyFtp.clsFTP._UploadTempFile">
+	<summary>
+ 异步上传所临时生成的文件
+ </summary>
+</member><member name="E:B_Core.FunnyFtp.clsFTP.DownloadProgressChanged">
+	<summary>
+ 异步下载进度发生改变触发的事件
+ </summary>
+</member><member name="E:B_Core.FunnyFtp.clsFTP.DownloadDataCompleted">
+	<summary>
+ 异步下载文件完成之后触发的事件
+ </summary>
+</member><member name="E:B_Core.FunnyFtp.clsFTP.UploadProgressChanged">
+	<summary>
+ 异步上传进度发生改变触发的事件
+ </summary>
+</member><member name="E:B_Core.FunnyFtp.clsFTP.UploadFileCompleted">
+	<summary>
+ 异步上传文件完成之后触发的事件
+ </summary>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.#ctor(System.Uri,System.String,System.String)">
+	<summary>
+ 构造函数
+ </summary>
+	<param name="FtpUri">FTP地址</param>
+	<param name="strUserName">登录用户名</param>
+	<param name="strPassword">登录密码</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.#ctor(System.Uri,System.String,System.String,System.Net.WebProxy)">
+	<summary>
+ 构造函数
+ </summary>
+	<param name="FtpUri">FTP地址</param>
+	<param name="strUserName">登录用户名</param>
+	<param name="strPassword">登录密码</param>
+	<param name="objProxy">连接代理</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.#ctor">
+	<summary>
+ 构造函数
+ </summary>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.Open(System.Uri,System.String)">
+	<summary>
+ 建立FTP链接,返回响应对象
+ </summary>
+	<param name="uri">FTP地址</param>
+	<param name="FtpMathod">操作命令</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.OpenRequest(System.Uri,System.String)">
+	<summary>
+ 建立FTP链接,返回请求对象
+ </summary>
+	<param name="uri">FTP地址</param>
+	<param name="FtpMathod">操作命令</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DownloadFile(System.String,System.String)">
+	<summary>
+ 从FTP服务器下载文件，使用与远程文件同名的文件名来保存文件
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+	<param name="LocalPath">本地路径</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DownloadFile(System.String,System.String,System.String)">
+	<summary>
+ 从FTP服务器下载文件，指定本地路径和本地文件名
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+	<param name="LocalPath">本地路径</param>
+	<param name="LocalFileName">保存本地的文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DownloadFile(System.String)">
+	<summary>
+ 从FTP服务器下载文件，返回文件二进制数据
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DownloadFileAsync(System.String,System.String,System.String)">
+	<summary>
+ 从FTP服务器异步下载文件，指定本地路径和本地文件名
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+	<param name="LocalPath">保存文件的本地路径,后面带有"\"</param>
+	<param name="LocalFileName">保存本地的文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DownloadFileAsync(System.String,System.String)">
+	<summary>
+ 从FTP服务器异步下载文件，指定本地完整路径文件名
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+	<param name="LocalFullPath">本地完整路径文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.client_DownloadFileCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)">
+	<summary>
+ 异步下载文件完成之后触发的事件
+ </summary>
+	<param name="sender">下载对象</param>
+	<param name="e">数据信息对象</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.client_DownloadProgressChanged(System.Object,System.Net.DownloadProgressChangedEventArgs)">
+	<summary>
+ 异步下载进度发生改变触发的事件
+ </summary>
+	<param name="sender">下载对象</param>
+	<param name="e">进度信息对象</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFile(System.String)">
+	<summary>
+ 上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFile(System.String,System.Boolean)">
+	<summary>
+ 上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件</param>
+	<param name="OverWriteRemoteFile">是否覆盖远程服务器上面同名的文件</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFile(System.String,System.String)">
+	<summary>
+ 上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFile(System.String,System.String,System.Boolean)">
+	<summary>
+ 上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件名</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+	<param name="OverWriteRemoteFile">是否覆盖远程服务器上面同名的文件</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFile(System.Byte[],System.String)">
+**//// <summary>
+ 上传文件到FTP服务器
+ </summary>
+	<param name="FileBytes">上传的二进制数据</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFile(System.Byte[],System.String,System.Boolean)">
+**//// <summary>
+ 上传文件到FTP服务器
+ </summary>
+	<param name="FileBytes">文件二进制内容</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+	<param name="OverWriteRemoteFile">是否覆盖远程服务器上面同名的文件</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFileAsync(System.String)">
+**//// <summary>
+ 异步上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFileAsync(System.String,System.Boolean)">
+**//// <summary>
+ 异步上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件</param>
+	<param name="OverWriteRemoteFile">是否覆盖远程服务器上面同名的文件</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFileAsync(System.String,System.String)">
+**//// <summary>
+ 异步上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFileAsync(System.String,System.String,System.Boolean)">
+**//// <summary>
+ 异步上传文件到FTP服务器
+ </summary>
+	<param name="LocalFullPath">本地带有完整路径的文件名</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+	<param name="OverWriteRemoteFile">是否覆盖远程服务器上面同名的文件</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFileAsync(System.Byte[],System.String)">
+**//// <summary>
+ 异步上传文件到FTP服务器
+ </summary>
+	<param name="FileBytes">上传的二进制数据</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.UploadFileAsync(System.Byte[],System.String,System.Boolean)">
+**//// <summary>
+ 异步上传文件到FTP服务器
+ </summary>
+	<param name="FileBytes">文件二进制内容</param>
+	<param name="RemoteFileName">要在FTP服务器上面保存文件名</param>
+	<param name="OverWriteRemoteFile">是否覆盖远程服务器上面同名的文件</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.client_UploadFileCompleted(System.Object,System.Net.UploadFileCompletedEventArgs)">
+**//// <summary>
+ 异步上传文件完成之后触发的事件
+ </summary>
+	<param name="sender">下载对象</param>
+	<param name="e">数据信息对象</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.client_UploadProgressChanged(System.Object,System.Net.UploadProgressChangedEventArgs)">
+**//// <summary>
+ 异步上传进度发生改变触发的事件
+ </summary>
+	<param name="sender">下载对象</param>
+	<param name="e">进度信息对象</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ListFilesAndDirectories">
+**//// <summary>
+ 列出FTP服务器上面当前目录的所有文件和目录
+ </summary>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ListFiles">
+**//// <summary>
+ 列出FTP服务器上面当前目录的所有文件
+ </summary>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ListDirectories">
+**//// <summary>
+ 列出FTP服务器上面当前目录的所有的目录
+ </summary>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.GetList(System.String)">
+**//// <summary>
+ 获得文件和目录列表
+ </summary>
+	<param name="datastring">FTP返回的列表字符信息</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ParseFileStructFromWindowsStyleRecord(System.String)">
+**//// <summary>
+ 从Windows格式中返回文件信息
+ </summary>
+	<param name="Record">文件信息</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.GuessFileListStyle(System.String[])">
+**//// <summary>
+ 判断文件列表的方式Window方式还是Unix方式
+ </summary>
+	<param name="recordList">文件信息列表</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ParseFileStructFromUnixStyleRecord(System.String)">
+**//// <summary>
+ 从Unix格式中返回文件信息
+ </summary>
+	<param name="Record">文件信息</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP._cutSubstringFromStringWithTrim(System.String@,System.Char,System.Int32)">
+**//// <summary>
+ 按照一定的规则进行字符串截取
+ </summary>
+	<param name="s">截取的字符串</param>
+	<param name="c">查找的字符</param>
+	<param name="startIndex">查找的位置</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DirectoryExist(System.String)">
+**//// <summary>
+ 判断当前目录下指定的子目录是否存在
+ </summary>
+	<param name="RemoteDirectoryName">指定的目录名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.FileExist(System.String)">
+**//// <summary>
+ 判断一个远程文件是否存在服务器当前目录下面
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.DeleteFile(System.String)">
+**//// <summary>
+ 从FTP服务器上面删除一个文件
+ </summary>
+	<param name="RemoteFileName">远程文件名</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ReName(System.String,System.String)">
+**//// <summary>
+ 更改一个文件的名称或一个目录的名称
+ </summary>
+	<param name="RemoteFileName">原始文件或目录名称</param>
+	<param name="NewFileName">新的文件或目录的名称</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.CopyFileToAnotherDirectory(System.String,System.String)">
+**//// <summary>
+ 把当前目录下面的一个文件拷贝到服务器上面另外的目录中，注意，拷贝文件之后，当前工作目录还是文件原来所在的目录
+ </summary>
+	<param name="RemoteFile">当前目录下的文件名</param>
+	<param name="DirectoryName">新目录名称。
+ 说明：如果新目录是当前目录的子目录，则直接指定子目录。如: SubDirectory1/SubDirectory2 ；
+ 如果新目录不是当前目录的子目录，则必须从根目录一级一级的指定。如： ./NewDirectory/SubDirectory1/SubDirectory2
+ </param>
+	<returns></returns>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.MoveFileToAnotherDirectory(System.String,System.String)">
+	<summary>
+ 把当前目录下面的一个文件移动到服务器上面另外的目录中，注意，移动文件之后，当前工作目录还是文件原来所在的目录
+ </summary>
+	<param name="RemoteFile">当前目录下的文件名</param>
+	<param name="DirectoryName">新目录名称。
+ 说明：如果新目录是当前目录的子目录，则直接指定子目录。如: SubDirectory1/SubDirectory2 ；
+ 如果新目录不是当前目录的子目录，则必须从根目录一级一级的指定。如： ./NewDirectory/SubDirectory1/SubDirectory2
+ </param>
+	<returns></returns>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.MakeDirectory(System.String)">
+**//// <summary>
+ 在FTP服务器上当前工作目录建立一个子目录
+ </summary>
+	<param name="DirectoryName">子目录名称</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.RemoveDirectory(System.String)">
+**//// <summary>
+ 从当前工作目录中删除一个子目录
+ </summary>
+	<param name="DirectoryName">子目录名称</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.IsValidPathChars(System.String)">
+**//// <summary>
+ 判断目录名中字符是否合法
+ </summary>
+	<param name="DirectoryName">目录名称</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.IsValidFileChars(System.String)">
+**//// <summary>
+ 判断文件名中字符是否合法
+ </summary>
+	<param name="FileName">文件名称</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.GotoDirectory(System.String)">
+**//// <summary>
+ 进入一个目录
+ </summary>
+	<param name="DirectoryName">
+ 新目录的名字。 
+ 说明：如果新目录是当前目录的子目录，则直接指定子目录。如: SubDirectory1/SubDirectory2 ； 
+ 如果新目录不是当前目录的子目录，则必须从根目录一级一级的指定。如： ./NewDirectory/SubDirectory1/SubDirectory2
+ </param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.EnterOneSubDirectory(System.String)">
+**//// <summary>
+ 从当前工作目录进入一个子目录
+ </summary>
+	<param name="DirectoryName">子目录名称</param>
+</member><member name="M:B_Core.FunnyFtp.clsFTP.ComeoutDirectory">
+**//// <summary>
+ 从当前工作目录往上一级目录
+ </summary>
+</member><member name="M:B_Core.Funny.C_Token_Link.clearNextToken">
+	<summary>
+ 清空pNextToken，比如这个链增加了东西
+ </summary>
+	<remarks></remarks>
+</member><member name="M:B_Core.Funny.S_Strings.Blank_Chinese(System.String)">
+	<summary>
+ 在汉字前面后面加空格,以及在数字符号前后加空格
+ </summary>
+</member><member name="M:B_Core.Funny.S_Strings.DeCrypt_Unicode(System.String,System.String)">
+	<summary>
+ 加密成unicode的
+ </summary>
+	<param name="mStr"></param>
+	<param name="MyKey"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

@@ -10,13 +10,13 @@ function check_myMap() {
     for(var pMsg in myMap){ 
         if (pMsg.Count<3){
             pMsg.Count+=1;
-            sys.Send_Msg("chat_event",pMsg.Msg);
+            s_net.Send_Msg("chat_event",pMsg.Msg);
         }else{
             var obj=JSON.parse(pMsg.Msg);
-            log_msg=sys.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
+            log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
             sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
-                sys.Date_Now()+" "+sys.Time_Now()+" 消息丢失："+obj.message+"\r\n");
+                s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
             s_ui.Web_Content("web",log_msg);
         }
@@ -40,7 +40,7 @@ function event_connected(data){
 function event_disconnected(data){
     s_ui.Text_Set("txt_info","event_disconnected");
     s_ui.Button_Enable("btn_connect",1);
-    sys.Socket_Connect();
+    s_net.Socket_Connect();
 }
 
 function clear_click(data){

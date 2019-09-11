@@ -27,7 +27,7 @@ function b_recognize_click(data){
     
     var url="https://www.funnyai.com/funnyai/fs_ai_reply.php?id=1&web=0&key="+encodeURIComponent(msg);
     //sys.Set_Text("txt1",url);
-    var result=sys.Net_Http_GET(url);
+    var result=s_net.Net_Http_GET(url);
     sys.TTS(result);
     sys.Set_Text("txt2",result);
 }

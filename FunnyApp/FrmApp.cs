@@ -3,7 +3,7 @@ using B_Data.Funny;
 using B_File.Funny;
 using B_IniFile;
 using B_String.Funny;
-using CommonTreapVB.TreapVB;
+using B_TreapVB.TreapVB;
 using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -29,7 +29,7 @@ namespace FunnyApp
 {
     public partial class FrmApp : Form
     {
-        public static Treap<string> pMap = new Treap<string>();
+        public static Treap<Object> pMap = new Treap<Object>();
         public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
 
         public FrmApp pParent = null;
@@ -84,8 +84,9 @@ namespace FunnyApp
                     pJS.jint.Invoke(str1, str2);
                 }
                 catch(Exception ex) {
-                    MessageBox.Show(ex.ToString());
-                    Debug.Print(ex.ToString());
+                    string strHTML=str1+"|" + str2 + "\n" + ex.ToString();
+                    MessageBox.Show(strHTML);
+                    Debug.Print(strHTML);
                 }
             } else{
                 d_Call_Event a1 = new d_Call_Event(Call_Event);

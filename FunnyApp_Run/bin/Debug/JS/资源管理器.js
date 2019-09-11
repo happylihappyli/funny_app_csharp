@@ -5,14 +5,7 @@ var Path="";
 
 function Node_Click(data){
     Path=data+"\\";
-    var strLine=s_sys.File_List_File(data+"\\");
-    var strSplit=strLine.split("|");
-    var strHTML="";
-    s_ui.ListBox_Clear("list");
-    for(var i=0;i<strSplit.length;i++){
-        strHTML+=strSplit[i]+"<br>";
-        s_ui.ListBox_Add("list",strSplit[i]);
-    }
+    s_ui.Combox_Text_Set("combox1",Path);
     //s_ui.Msg(strHTML);
     //s_ui.Web_Content("web",strHTML);
     
@@ -30,6 +23,21 @@ function Node_Click(data){
         }
     }
     
+    list_file("");
+    
+}
+
+function list_file(data){
+    
+    var Path=s_ui.Combox_Text("combox1");
+    var strLine=s_sys.File_List_File(Path);
+    var strSplit=strLine.split("|");
+    var strHTML="";
+    s_ui.ListBox_Clear("list");
+    for(var i=0;i<strSplit.length;i++){
+        strHTML+=strSplit[i]+"<br>";
+        s_ui.ListBox_Add("list",strSplit[i]);
+    }
 }
 
 
@@ -65,21 +73,28 @@ function init_menu(data){
     s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
 }
 
-s_ui.SplitContainer_Init("split",0,0,500,500);
+function init_fav(data){
+    
+    s_ui.Combox_Add("combox1","E:\\CloudStation\\Robot5\\GitHub\\funny_app_csharp\\FunnyApp_Run\\bin\\Debug\\JS");
+}
+
+s_ui.SplitContainer_Init("split",0,0,500,500,"v");
 
 init_tree("");
 
-s_ui.SplitContainer_Add("split",0,"tree1");
+s_ui.SplitContainer_Add("split",0,"tree1","fill");
 
 s_ui.ListBox_Init("list",250,60,450,380);
 s_ui.ListBox_Init_Event("list","listbox_dbclick")
 
+s_ui.Combox_Init("combox1","",250,60,450,30);
+s_ui.Combox_Event("combox1","list_file");
 
-s_ui.SplitContainer_Add("split",1,"list");
-
+s_ui.SplitContainer_Add("split",1,"list","fill");
+s_ui.SplitContainer_Add("split",1,"combox1","top");
 
 init_menu("");
-
+init_fav("");
 
 //其他属性
 s_ui.Acception_Button("b1_send");

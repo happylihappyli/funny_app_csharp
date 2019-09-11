@@ -76,7 +76,6 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_XML.xml
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_Debug.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_File.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_String.dll
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\ShellControl.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\MySql.Data.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_Array.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_Debug.pdb
@@ -85,7 +84,6 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_File.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_File.xml
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_String.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_String.xml
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\ShellControl.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_Array.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\bin\Debug\B_Array.xml
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_XML\obj\Debug\B_XML.vbprojAssemblyReference.cache

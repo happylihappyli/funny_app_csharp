@@ -7,14 +7,14 @@
     <framework targetVersion="4.6" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="FunnyApp.exe.manifest" size="38723">
+    <dependentAssembly dependencyType="install" codebase="FunnyApp.exe.manifest" size="40719">
       <assemblyIdentity name="FunnyApp.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9T8aTC3h1e7TE39nkOdccTxfqtfACxhB7eOLAU/6vTA=</dsig:DigestValue>
+        <dsig:DigestValue>zaK0Rfloxaj6e8yh3zGpl6gHSMBIbC23ilDL8sloXWI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

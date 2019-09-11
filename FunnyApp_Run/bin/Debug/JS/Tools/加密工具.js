@@ -1,4 +1,5 @@
 
+var disk="D:";
 var log_error="";
 function show_error(data){
     log_error+=data+"\r\n";
@@ -30,8 +31,8 @@ function file_pem(){
 
 function file_pem_private(){
     var file_key="C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe";
-    var txt_file="D:\\Net\\Web\\id_rsa";
-    var txt_file2="D:\\Net\\Web\\id_rsa.pem";//txt_file.replace(".pub",".pem.pub");
+    var txt_file=disk+"\\Net\\Web\\id_rsa";
+    var txt_file2=disk+"\\Net\\Web\\id_rsa.pem";//txt_file.replace(".pub",".pem.pub");
     var param="pkcs8 -topk8 -inform PEM -outform DER -in "+txt_file+" -nocrypt > "+txt_file2;
     //pkcs8 -topk8 -inform PEM -outform DER -in private_key_file  -nocrypt > pkcs8_key
     show_error(file_key);
@@ -42,7 +43,7 @@ function file_pem_private(){
     
     show_error(result);
     
-    //s_ui.Run_App("explorer.exe","D:\\Net\\Web\\public\\");
+    //s_ui.Run_App("explorer.exe",disk+"\\Net\\Web\\public\\");
 }
 
 
@@ -50,7 +51,7 @@ function encrypt_click(data){
     
     var file=s_ui.Text_Read("txt_file_public_pem");
     var strMsg=s_ui.Text_Read("txt_input");
-    var strLine=sys.encrypt_public_key(file,strMsg);
+    var strLine=s_string.encrypt_public_key(file,strMsg);
     s_ui.Text_Set("txt_input2",strLine);
     
 }
@@ -66,7 +67,7 @@ function copy_click(){
 function decrypt_click(){
     var strMsg=s_ui.Text_Read("txt_input");
     var strFile=s_ui.Text_Read("txt_file_private");
-    var strLine=sys.decrypt_private_key(strFile,strMsg);
+    var strLine=s_string.decrypt_private_key(strFile,strMsg);
     s_ui.Text_Set("txt_input2",strLine);
 }
 
@@ -82,7 +83,7 @@ s_ui.Button_Init("b1","创建key",650,10,100,30,"key_click","0");
 
 s_ui.Label_Init("lb_file","文件：",10,10);
 
-s_ui.Text_Init("txt_file_public","D:/Net/Web/public/id_rsa_happyli.pub",100,10,500,30);
+s_ui.Text_Init("txt_file_public",disk+"/Net/Web/public/id_rsa_happyli.pub",100,10,500,30);
 s_ui.Button_Init("b2_1","选择文件",100,50,200,30,"file_open","");
 
 
@@ -91,7 +92,7 @@ s_ui.Button_Init("b2_3","转为pem格式(p)",500,50,200,30,"file_pem_private",""
 
 
 
-s_ui.Text_Init("txt_file_public_pem","D:/Net/Web/public/pem/id_rsa_happyli.pem.pub",100,110,500,30);
+s_ui.Text_Init("txt_file_public_pem",disk+"/Net/Web/public/pem/id_rsa_happyli.pem.pub",100,110,500,30);
 
 
 s_ui.Label_Init("lb_upload","解密私钥文件：",10,150);
@@ -100,7 +101,7 @@ s_ui.Label_Init("lb_upload","解密私钥文件：",10,150);
 
 
 
-s_ui.Text_Init("txt_file_private","D:/Net/Web/id_rsa",100,150,500,30);
+s_ui.Text_Init("txt_file_private",disk+"/Net/Web/id_rsa",100,150,500,30);
 
 
 s_ui.Text_Init("txt_input","hello，你好",100,200,500,30);

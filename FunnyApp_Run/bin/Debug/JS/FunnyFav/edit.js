@@ -49,7 +49,7 @@ function read_ini(){
 
 function connect_click(data){
     var url="http://robot6.funnyai.com:8000";
-    sys.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
+    s_net.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
     read_ini();
 }
 
@@ -70,7 +70,7 @@ function friend_list(data){
     s_ui.ListBox_Clear("list_friend");
     s_ui.ListBox_Add("list_friend","*");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
-    sys.Send_Msg("sys_event",strLine);
+    s_net.Send_Msg("sys_event",strLine);
 }
 
 function New_URL(data){

@@ -42,16 +42,16 @@ function run_click(data){
 
 
 function proxy1_click(data){
-    sys.Set_Proxy("127.0.0.1","1315");
+    s_net.Set_Proxy("127.0.0.1","1315");
 }
 
 
 function proxy2_click(data){
-    sys.Set_Proxy("127.0.0.1","1316");
+    s_net.Set_Proxy("127.0.0.1","1316");
 }
 
 function unset_proxy_click(data){
-    sys.UnSet_Proxy();
+    s_net.UnSet_Proxy();
 }
 
 

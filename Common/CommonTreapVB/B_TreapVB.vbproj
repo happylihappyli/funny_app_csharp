@@ -9,8 +9,8 @@
     </SchemaVersion>
     <ProjectGuid>{C29DE218-7553-4124-A831-8ADC683FE2D2}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CommonTreapVB</RootNamespace>
-    <AssemblyName>CommonTreapVB</AssemblyName>
+    <RootNamespace>B_TreapVB</RootNamespace>
+    <AssemblyName>B_TreapVB</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>CommonTreapVB.xml</DocumentationFile>
+    <DocumentationFile>B_TreapVB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>CommonTreapVB.xml</DocumentationFile>
+    <DocumentationFile>B_TreapVB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>

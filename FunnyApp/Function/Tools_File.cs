@@ -82,9 +82,12 @@ namespace FunnyApp {
             IniFile pIni = new IniFile(file);
             return  pIni.Read_Item(section, key);
         }
+
         public void Ini_Save(string file, string section, string key,string value) {
             IniFile pIni = new IniFile(file);
+            
             pIni.AddSection(section);
+            pIni.DeleteKey(key,section);
             pIni.AddKey(key, value,section);
             pIni.Save();
         }

@@ -50,7 +50,7 @@ function encrypt_click(data){
     
     var file=s_ui.Text_Read("txt_file_public_pem");
     var strMsg=s_ui.Text_Read("txt_input");
-    var strLine=sys.encrypt_public_key(file,strMsg);
+    var strLine=s_string.encrypt_public_key(file,strMsg);
     s_ui.Text_Set("txt_input2",strLine);
     
 }
@@ -66,7 +66,7 @@ function copy_click(){
 function decrypt_click(){
     var strMsg=s_ui.Text_Read("txt_input");
     var strFile=s_ui.Text_Read("txt_file_private");
-    var strLine=sys.decrypt_private_key(strFile,strMsg);
+    var strLine=s_string.decrypt_private_key(strFile,strMsg);
     s_ui.Text_Set("txt_input2",strLine);
 }
 

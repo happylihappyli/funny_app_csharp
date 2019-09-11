@@ -19,11 +19,18 @@ using System.Windows.Forms;
 namespace FunnyApp {
     public partial class Tools {
 
-        FrmApp pFrmApp;
+        public FrmApp pFrmApp;
 
         public Tools(FrmApp FrmApp) {
             this.pFrmApp = FrmApp;
         }
+
+
+        public string args(int i) {
+            if (i >= pFrmApp.args.Length) return "";
+            return pFrmApp.args[i];
+        }
+
 
         public delegate void Init_Delegate(
             string url,
@@ -41,11 +48,6 @@ namespace FunnyApp {
         public void set_time_function(string strFunction) {
             pFrmApp.time_function = strFunction;
             pFrmApp.timer1.Enabled = true;
-        }
-
-        public double Math_Cal(string strLine) {
-            C_Math pMath = new C_Math();
-            return pMath.EvaluateExpression(strLine);
         }
 
 
@@ -202,12 +204,13 @@ namespace FunnyApp {
 
         public void Value_Save(string key,string value) {
             IComparable pKey =new C_K_Str(key);
-            FrmApp.pMap.insert(ref pKey, ref value);
+            Object pObj = value;
+            FrmApp.pMap.insert(ref pKey, ref pObj);
         }
 
         public string Value_Read(string key) {
             IComparable pKey = new C_K_Str(key);
-            return FrmApp.pMap.find(pKey);
+            return (string)FrmApp.pMap.find(pKey);
         }
 
 

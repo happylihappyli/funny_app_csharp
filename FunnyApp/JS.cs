@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FunnyApp.Function;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,11 @@ namespace FunnyApp
             jint.SetValue("s_sys", pApp.tools);
             jint.SetValue("s_ui", pApp.ui);
             jint.SetValue("s_math", new S_Math());
+            jint.SetValue("s_string", new C_String());
+            jint.SetValue("s_net", new C_Net(pApp));
+            jint.SetValue("s_time", new C_Time());
+            jint.SetValue("s_index", new C_Index(pApp));
+            jint.SetValue("s_xml", new C_XML());
 
             try
             {

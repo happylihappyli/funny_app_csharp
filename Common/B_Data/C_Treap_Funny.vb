@@ -1,4 +1,4 @@
-Imports CommonTreapVB.TreapVB
+Imports B_TreapVB.TreapVB
 
 Namespace Funny
     Public Class C_Treap_Funny(Of T)

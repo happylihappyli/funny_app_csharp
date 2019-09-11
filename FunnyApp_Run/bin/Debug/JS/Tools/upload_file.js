@@ -6,12 +6,12 @@ function upload_click(data){
     var path=s_ui.Combox_Text("txt_ftp_path")+"/"+sys.File_Short_Name(file);
 
     var hosts=s_ui.Text_Read("txt_host");
-    sys.Net_Upload(hosts,"root",password,"22",file,path,"set_status","show_error");
+    s_net.Net_Upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
 
 function set_status(data){
     var strSplit=data.split(",");
-    sys.Show_ProgressBar("progress1",strSplit[1],strSplit[0]);
+    s_ui.ProgressBar_Show("progress1",strSplit[1],strSplit[0]);
 }
 
 var log_error="";
@@ -24,7 +24,7 @@ function show_error(data){
 //保存密码
 function save_password(data){
     var strPassword=s_ui.Text_Read("txt1");
-    var strLine=sys.encrypt_public_key("D:/Net/Web/id_rsa.pem.pub",strPassword);
+    var strLine=s_string.encrypt_public_key("D:/Net/Web/id_rsa.pem.pub",strPassword);
     sys.File_Save("D:/Net/Web/password_upload_1.txt",strLine);
     
 }
@@ -32,7 +32,7 @@ function save_password(data){
 //读取密码
 function read_password(data){
     var strLine=sys.File_Read("D:/Net/Web/password_upload_1.txt");
-    var strPassword=sys.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
+    var strPassword=s_string.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
     s_ui.Text_Set("txt1",strPassword);
 }
 
@@ -68,7 +68,7 @@ s_ui.Text_Init("txt_upload",sys.args(1),100,100,500,30);
 //s_ui.ListBox_Add("txt_upload",sys.args(1));
 
 
-s_ui.Button_Init("b2_1","选择文件",100,150,200,30,"file_open","");
+s_ui.Button_Init("b_select","选择文件",100,150,200,30,"file_open","");
 
 
 s_ui.Label_Init("lb_ftp_path","上传路径：",10,200);
@@ -78,7 +78,7 @@ s_ui.Combox_Add("txt_ftp_path","/root/happyli");
 s_ui.Combox_Add("txt_ftp_path","/root/happyli/lib");
 
 
-s_ui.Button_Init("b3_1","upload",100,250,200,30,"upload_click","");
+s_ui.Button_Init("b_upload","upload",100,250,200,30,"upload_click","");
 
 
 s_ui.TextBox_Init("txt_error","错误信息：",100,300,500,200);

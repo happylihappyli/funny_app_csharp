@@ -1,10 +1,9 @@
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\bin\Debug\CommonTreapVB.dll
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\bin\Debug\CommonTreapVB.pdb
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\bin\Debug\CommonTreapVB.xml
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\CommonTreapVB.Resources.resources
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.vbproj.GenerateResource.cache
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.vbproj.CoreCompileInputs.cache
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\CommonTreapVB.dll
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\CommonTreapVB.xml
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\CommonTreapVB.pdb
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.vbprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\bin\Debug\B_TreapVB.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\bin\Debug\B_TreapVB.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\bin\Debug\B_TreapVB.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\CommonTreapVB\obj\Debug\B_TreapVB.pdb

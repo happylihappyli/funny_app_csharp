@@ -10,7 +10,7 @@ s_ui.Web_New_Event("web","New_URL");
 
 
 
-var a=sys.Net_Http_GET("http://www.ckxxbao.com/");
+var a=s_net.Net_Http_GET("http://www.ckxxbao.com/");
 
 
 var dt=new Date();

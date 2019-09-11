@@ -85,6 +85,12 @@
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\EngineIoClientDotNet.0.9.22\lib\net45\EngineIoClientDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
@@ -194,6 +200,9 @@
     <Compile Include="FrmApp.Designer.cs">
       <DependentUpon>FrmApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Function\C_Index.cs" />
+    <Compile Include="Function\C_Time.cs" />
+    <Compile Include="Function\C_XML.cs" />
     <Compile Include="Function\S_Math.cs" />
     <Compile Include="Function_Callback.cs" />
     <Compile Include="JS.cs" />
@@ -210,8 +219,8 @@
     <Compile Include="Function\Tools_Au3.cs" />
     <Compile Include="Function\C_UI.cs" />
     <Compile Include="Function\Tools_File.cs" />
-    <Compile Include="Function\Tools_Net.cs" />
-    <Compile Include="Function\Tools_String.cs" />
+    <Compile Include="Function\C_Net.cs" />
+    <Compile Include="Function\C_String.cs" />
     <EmbeddedResource Include="FrmApp.resx">
       <DependentUpon>FrmApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +249,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\happyli\Project\Common\B_Segmentation\B_Segmentation.vbproj">
+      <Project>{322709a3-e8dc-43e9-98a9-3ab926665d32}</Project>
+      <Name>B_Segmentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\B_Data\B_Data.vbproj">
       <Project>{755fa603-fb1e-41e0-aaf9-961a58a91b81}</Project>
       <Name>B_Data</Name>

@@ -19,7 +19,7 @@ function stop_click(data){
 function run_next(){
     var count=s_ui.ListBox_Item_Size("list_param");
     if (index<count){
-        sys.Show_ProgressBar("progress0",count+"",index+"");
+        s_ui.ProgressBar_Show("progress0",count+"",index+"");
         s_ui.ListBox_Item_Selected("list_param",index);
         var strLine=s_ui.ListBox_Item("list_param",index);
         var strSplit=strLine.split(",");
@@ -28,18 +28,18 @@ function run_next(){
         var url="http://www.funnyai.com/funnyscript/fs_run_line_shell.php?id="+id+"&user="
     +encodeURIComponent(userName)+"&param="+encodeURIComponent(param);
         show_error(url);
-        var result=sys.Net_Http_GET(url);
+        var result=s_net.Net_Http_GET(url);
         show_error(result);
         index+=1;
     }else{
         show_error("运行完毕");
-        sys.Show_ProgressBar("progress0","100","100");
+        s_ui.ProgressBar_Show("progress0","100","100");
     }
 }
 
 function set_status(data){
     var strSplit=data.split(",");
-    sys.Show_ProgressBar("progress1",strSplit[1],strSplit[0]);
+    s_ui.ProgressBar_Show("progress1",strSplit[1],strSplit[0]);
 }
 
 function show_error(data){
@@ -49,7 +49,7 @@ function show_error(data){
 
 
 function send_msg_click(){
-    sys.Send_Msg("chat_event","csharp","*",s_ui.Text_Read("send_msg"));
+    s_net.Send_Msg("chat_event","csharp","*",s_ui.Text_Read("send_msg"));
 }
 
 var log_error="";
@@ -77,7 +77,7 @@ function event_system(data1){
             s_ui.Text_Set("txt_user_name",userName);
             var line="{\"from\":\""+userName+"\","
                 +"\"type\":\"session\",\"to\":\"\",\"message\":\""+session_id+"\"}";
-            sys.Send_Msg("sys_event",line); //服务器会记录用户名
+            s_net.Send_Msg("sys_event",line); //服务器会记录用户名
             break;
         default:
             switch(data.from){
@@ -105,14 +105,14 @@ function event_system(data1){
                     break;
                 case "progress1":
                     var strSplit=data.message.split(":");
-                    sys.Show_ProgressBar("progress1","100",strSplit[0]);
-                    sys.Show_ProgressBar("progress2","100","100");
+                    s_ui.ProgressBar_Show("progress1","100",strSplit[0]);
+                    s_ui.ProgressBar_Show("progress2","100","100");
                     break;
                 case "progress2":
                     //log_error="progress2\r\n"+log_error;
                     //s_ui.Text_Set("txt_error",log_error);
                     var strSplit=data.message.split(":");
-                    sys.Show_ProgressBar('progress2', "100",strSplit[0]);
+                    s_ui.ProgressBar_Show('progress2', "100",strSplit[0]);
                     break;
             }
             break;
@@ -157,7 +157,7 @@ s_ui.Show_Form(1000,800);
 s_ui.Form_Title("Run_Bat");
 
 var url="http://robot6.funnyai.com:8000";
-sys.Socket_Init(url,"event_connected","event_chat","event_system","");
+s_net.Socket_Init(url,"event_connected","event_chat","event_system","");
 
 
 

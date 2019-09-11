@@ -1,0 +1,56 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+B_Token
+</name>
+</assembly>
+<members>
+<member name="T:B_Token.My.Resources.Resources">
+<summary>
+  一个强类型的资源类，用于查找本地化的字符串等。
+</summary>
+</member>
+<member name="P:B_Token.My.Resources.Resources.ResourceManager">
+<summary>
+  返回此类使用的缓存的 ResourceManager 实例。
+</summary>
+</member>
+<member name="P:B_Token.My.Resources.Resources.Culture">
+<summary>
+  使用此强类型资源类，为所有资源查找
+  重写当前线程的 CurrentUICulture 属性。
+</summary>
+</member>
+<member name="F:B_Token.Funny.C_Token.bCheckConvert">
+ <summary>
+ 是否已经转化过
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:B_Token.Funny.C_Token_Link.clearNextToken">
+ <summary>
+ 清空pNextToken，比如这个链增加了东西
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:B_Token.Funny.C_Token_Link.AddKeyToTreap(B_Token.Funny.I_Robot@,B_Token.Funny.C_Token_Link@,B_TreapVB.TreapVB.Treap{B_Token.Funny.C_Token_Key}@)">
+ <summary>
+ 激活的Token加入到Treap中
+ </summary>
+ <param name="pLink"></param>
+ <param name="pTreap"></param>
+ <remarks></remarks>
+</member>
+<member name="M:B_Token.Funny.C_Token_Link.AddToQue(B_Token.Funny.I_Robot@,System.Collections.ArrayList@,B_Token.Funny.C_Token_Link@,B_TreapVB.TreapVB.Treap{B_Token.Funny.C_Token_Key}@)">
+ <summary>
+ pLink 添加到 pArray中 
+ </summary>
+ <param name="pRobot"></param>
+ <param name="pArray"></param>
+ <param name="pLink"></param>
+ <param name="pTreap"></param>
+ <remarks></remarks>
+</member>
+</members>
+</doc>

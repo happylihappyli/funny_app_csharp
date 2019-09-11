@@ -1,0 +1,9 @@
+E:\CloudStation\Robot5\GitHub\SopBin\Sop\ShellControl.dll
+E:\CloudStation\Robot5\GitHub\SopBin\Sop\ShellControl.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\ShellControl.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\UILibrary.ShellControl.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\UILibrary.ShellTextBox.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\ShellControl.csproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\ShellControl.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\ShellControl.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\x86\Debug\ShellControl.pdb

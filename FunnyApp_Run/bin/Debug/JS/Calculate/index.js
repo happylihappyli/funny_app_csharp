@@ -7,7 +7,7 @@ function button_click(data){
 }
 //计算结果
 function button_click_cal(data){
-    input=sys.Math_Cal(input);
+    input=s_math.Math_Cal(input);
     s_ui.Text_Set("txt1",input);
 }
 

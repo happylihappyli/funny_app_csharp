@@ -1,0 +1,226 @@
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\bin\Debug\B_Token.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\bin\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\bin\Debug\B_Token.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\obj\Debug\B_Token.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\obj\Debug\B_Token.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\B_Token\obj\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\bin\Debug\B_Token.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\bin\Debug\B_Token.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.dll
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.xml
+E:\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\bin\Debug\B_Token.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\bin\Debug\B_Token.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\bin\Debug\B_Token.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.Resources.resources
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNET\VB\Common\B_Token\obj\Debug\B_Token.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.pdb
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.Resources.resources
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.dll
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.xml
+F:\Share\Happy\My Dropbox\Happy_Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.dll
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.xml
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.pdb
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.dll
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.xml
+E:\HappyHome\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.pdb
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.dll
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.xml
+E:\DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\bin\Debug\B_Token.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.dll
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.xml
+E:\Happy\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\GenerateResource.read.1.tlog
+E:\Data_DropBox\My Dropbox\Project\dotNet_FunnyAI\Common\B_Token\obj\Debug\GenerateResource.write.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\GenerateResource.read.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\GenerateResource.write.1.tlog
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+E:\Data_DropBox\My Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Happy\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+E:\Happy\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Happy\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\ResolveAssemblyReference.cache
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\GenerateResource.read.1.tlog
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\GenerateResource.write.1.tlog
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+E:\Happy\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+E:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+E:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+E:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.dll
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.dll
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.dll
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.dll
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.xml
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.xml
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.xml
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.xml
+E:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbprojResolveAssemblyReference.cache
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_String.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.dll
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_String.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_String.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.pdb
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.xml
+E:\Data_Dropbox\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbprojResolveAssemblyReference.cache
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.dll
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.dll
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.dll
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.dll
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.pdb
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.xml
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.pdb
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.xml
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.pdb
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.xml
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.pdb
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.xml
+D:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+D:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+D:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+D:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+D:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+E:\Data\Dropbox\Project\Common\B_Token\bin\Debug\MySql.Data.dll
+D:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbprojResolveAssemblyReference.cache
+D:\Data\Dropbox\Project\Common\B_Token\bin\Debug\MySql.Data.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_String.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\MySql.Data.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.dll
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.pdb
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.xml
+I:\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.pdb
+I:\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.xml
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_String.pdb
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_String.xml
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.pdb
+I:\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.xml
+I:\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbprojResolveAssemblyReference.cache
+I:\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+I:\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+I:\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+I:\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+I:\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.dll
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.pdb
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Token.xml
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.dll
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.dll
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.dll
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\MySql.Data.dll
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.dll
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.pdb
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Data.xml
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.pdb
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\CommonTreapVB.xml
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.pdb
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_String.xml
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.pdb
+F:\Data\Dropbox\Project\Common\B_Token\bin\Debug\B_Array.xml
+F:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbprojResolveAssemblyReference.cache
+F:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.Resources.resources
+F:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.Cache
+F:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.dll
+F:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.xml
+F:\Data\Dropbox\Project\Common\B_Token\obj\Debug\B_Token.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Token.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Token.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Token.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Data.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_TreapVB.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_String.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\MySql.Data.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Array.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Data.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Data.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_TreapVB.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_TreapVB.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_String.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_String.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Array.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\bin\Debug\B_Array.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.vbprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.vbproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.vbproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.vbproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_Token\obj\Debug\B_Token.pdb
