@@ -15,7 +15,7 @@ function check_myMap() {
             var obj=JSON.parse(pMsg.Msg);
             log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
-            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
+            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
             s_ui.Web_Content("web",log_msg);
@@ -53,13 +53,13 @@ function clear_click(data){
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
     var path=sys.AppPath();
-    var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
+    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
+    userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
     
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
-        var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
         //s_ui.Combox_Add("cb_friend",strName);
     }
     if (count>0){
@@ -75,11 +75,11 @@ function login_click(data){
         return ;
     }
 
-    sys.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",s_ui.Combox_Text("combox1"));
+    s_file.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",s_ui.Combox_Text("combox1"));
     
     
-    sys.Value_Save("password",pass1);
-    sys.Value_Save("file",s_ui.Combox_Text("combox1"));
+    s_sys.Value_Save("password",pass1);
+    s_sys.Value_Save("file",s_ui.Combox_Text("combox1"));
     
     s_ui.Close();
 }
@@ -100,7 +100,7 @@ s_ui.Combox_Add("combox1","C:\\Net\\Web\\private_url.txt");
 s_ui.Button_Init("b1_login","登录",10,250,100,30,"login_click","");
 
 
-var a=sys.Ini_Read("D:\\Net\\Web\\funnyfav.ini","main","file");
+var a=s_file.Ini_Read("D:\\Net\\Web\\funnyfav.ini","main","file");
 s_ui.Combox_Text_Set("combox1",a);
 
 

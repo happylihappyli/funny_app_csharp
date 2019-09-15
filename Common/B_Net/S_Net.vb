@@ -102,10 +102,10 @@ Namespace Funny
             req.ReadWriteTimeout = 100000
 
             Dim strEmail As String = Rnd()
-            Dim pCookieCurrent As CookieContainer = pTreapCookie.find(New C_K_Str(strEmail))
+            Dim pCookieCurrent As CookieContainer = pTreapCookie.find(strEmail)
             If pCookieCurrent Is Nothing Then
                 pCookieCurrent = New CookieContainer()
-                pTreapCookie.insert(New C_K_Str(strEmail), pCookieCurrent)
+                pTreapCookie.insert(strEmail, pCookieCurrent)
             End If
             req.CookieContainer = pCookieCurrent
             req.ServicePoint.Expect100Continue = False
@@ -380,10 +380,10 @@ Namespace Funny
             req.Timeout = 40000 '设置超时 
             req.ReadWriteTimeout = 100000
 
-            Dim pCookieCurrent As CookieContainer = pTreapCookie.find(New C_K_Str(strEmail))
+            Dim pCookieCurrent As CookieContainer = pTreapCookie.find(strEmail)
             If pCookieCurrent Is Nothing Then
                 pCookieCurrent = New CookieContainer()
-                pTreapCookie.insert(New C_K_Str(strEmail), pCookieCurrent)
+                pTreapCookie.insert(strEmail, pCookieCurrent)
             End If
             req.CookieContainer = pCookieCurrent
             req.ServicePoint.Expect100Continue = False
@@ -534,10 +534,10 @@ Namespace Funny
             req.Timeout = 40000 '设置超时 
             req.ReadWriteTimeout = 100000
 
-            Dim pCookieCurrent As CookieContainer = pTreapCookie.find(New C_K_Str(strEmail))
+            Dim pCookieCurrent As CookieContainer = pTreapCookie.find(strEmail)
             If pCookieCurrent Is Nothing Then
                 pCookieCurrent = New CookieContainer()
-                pTreapCookie.insert(New C_K_Str(strEmail), pCookieCurrent)
+                pTreapCookie.insert(strEmail, pCookieCurrent)
             End If
             req.CookieContainer = pCookieCurrent
             req.ServicePoint.Expect100Continue = False

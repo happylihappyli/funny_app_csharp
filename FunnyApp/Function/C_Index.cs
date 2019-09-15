@@ -58,7 +58,7 @@ namespace FunnyApp.Function {
 
                     string strLine = "";
                     while (pReader.Peek() != -1) {
-                        strLine = S_File_Text.Read_Line(ref pReader);
+                        strLine = S_File_Text.Read_Line(pReader);
                         pSeg.readLine_fromDic(strLine);
                     }
                 }
@@ -86,6 +86,13 @@ namespace FunnyApp.Function {
             doc.Add(new Field("Content", strLine, Field.Store.YES, Field.Index.ANALYZED));
             writer.AddDocument(doc);
         }
+
+
+        public void Remove_Document(int ID) {
+
+            writer.DeleteDocuments(new Term("ID",ID+""));
+        }
+
 
         public void Create_End() { 
 

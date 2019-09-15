@@ -120,7 +120,7 @@ function event_system(data1){
 }
 
 function file_open(){
-    var strLine=sys.File_Open();
+    var strLine=s_file.File_Open();
     s_ui.Text_Set("txt_upload_file",strLine);
 }
 

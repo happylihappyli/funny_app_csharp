@@ -13,6 +13,7 @@ using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -203,34 +204,45 @@ namespace FunnyApp {
 
 
         public void Value_Save(string key,string value) {
-            IComparable pKey =new C_K_Str(key);
-            Object pObj = value;
-            FrmApp.pMap.insert(ref pKey, ref pObj);
+
+            FrmApp.pMap.insert("value:" + key, value);
         }
 
         public string Value_Read(string key) {
-            IComparable pKey = new C_K_Str(key);
-            return (string)FrmApp.pMap.find(pKey);
+            return (string)FrmApp.pMap.find("value:" + key);
         }
 
-
-        public void setTimeout(string strFunction,int iSec) {
-            SetTimeout(1000* iSec, delegate
-            {
-                pFrmApp.Call_Event(strFunction,"");//, data.ToString());
-            });
+        private string strFile_JS = "";
+        private string callback_event = "";
+        public void call_thread(string strFile_JS, string callback_event) {
+            this.strFile_JS = strFile_JS;
+            this.callback_event = callback_event;
+            Thread p = new Thread(call_thread_sub);
+            p.Start();
         }
 
+        private void call_thread_sub() {
 
-        public static void SetTimeout(double interval, Action action) {
-            System.Timers.Timer timer = new System.Timers.Timer(interval);
-            timer.Elapsed += delegate (object sender, System.Timers.ElapsedEventArgs e) {
-                timer.Enabled = false;
-                action();
-            };
-            timer.Enabled = true;
+            string strFile = this.Path_JS() + "\\" + strFile_JS;
 
+            string strCode = S_File_Text.Read(strFile);
+            string pattern = "\\[\\[\\[(.*?\\.js)\\]\\]\\]";
+
+            foreach (Match match in Regex.Matches(strCode, pattern)) {
+
+                string strMatch = match.Groups[0].Value;
+                string strFile2 = match.Groups[1].Value;
+
+                string strPath = this.Path_JS();
+                string strCode2 = S_File_Text.Read(strPath + "\\" + strFile2);
+                strCode = strCode.Replace(strMatch, strCode2);
+
+            }
+            FrmApp pApp2 = new FrmApp();
+            pApp2.pJS.Run_Code(pFrmApp, strCode);
+            pFrmApp.Call_Event(this.callback_event,"");
         }
+
 
 
         /// <summary>

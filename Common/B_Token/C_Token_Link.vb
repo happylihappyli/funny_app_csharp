@@ -54,14 +54,14 @@ Namespace Funny
                 For j As Integer = 0 To pToken.Count() - 1
                     strLine = pToken.Item(j)
                     If strLine.Length > pRobot.Word_Min_Length Then
-                        pTreap.insert(New C_K_Str(strLine), New C_Token_Key(strLine, pToken))
+                        pTreap.insert(strLine, New C_Token_Key(strLine, pToken))
 
                         If pToken.Name.StartsWith("Word.L.") Then
                         ElseIf strLine = "{any}" Then
                         Else
                             If pToken.Name <> strLine Then
                                 strLine = pToken.Name & "@" & strLine
-                                pTreap.insert(New C_K_Str(strLine), New C_Token_Key(strLine, pToken))
+                                pTreap.insert(strLine, New C_Token_Key(strLine, pToken))
                             End If
                         End If
                     End If

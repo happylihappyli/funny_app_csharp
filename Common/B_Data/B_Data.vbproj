@@ -66,14 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="C_FunnyNode.vb" />
-    <Compile Include="C_Key_Value.vb" />
-    <Compile Include="C_Key_Value_ID.vb" />
-    <Compile Include="C_Key_Value_Value_ID.vb" />
-    <Compile Include="C_K_Double_Str.vb" />
-    <Compile Include="C_K_ID.vb" />
-    <Compile Include="C_K_Long.vb" />
-    <Compile Include="C_K_Long_Long.vb" />
-    <Compile Include="C_K_Str.vb" />
     <Compile Include="C_Queue.vb" />
     <Compile Include="C_Return.vb" />
     <Compile Include="C_Treap_Funny.vb" />

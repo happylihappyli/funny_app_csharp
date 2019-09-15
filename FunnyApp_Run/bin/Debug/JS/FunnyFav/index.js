@@ -46,13 +46,13 @@ function clear_click(data){
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
     var path=sys.AppPath();
-    var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
+    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
+    userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
     
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
-        var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
         //s_ui.Combox_Add("cb_friend",strName);
     }
     if (count>0){
@@ -99,13 +99,13 @@ var arraylist=[];
 //读取收藏夹
 function read_fav(){
     var file=sys.Value_Read("file");
-    if (sys.File_Exists(file)==false){
+    if (s_file.File_Exists(file)==false){
         return ;
     }
     arraylist=[];
     var password=sys.Value_Read("password");
-    var strLines=sys.File_Read(file);
-    strLines=sys.AES_Decrypt(strLines,password)
+    var strLines=s_file.read(file);
+    strLines=s_string.AES_Decrypt(strLines,password)
     
     strLines=strLines.replace("\r","");
     var strSplit = strLines.split('\n');
@@ -146,8 +146,8 @@ function save_fav(data){
     }
     //s_ui.Msg(strLines);
     
-    strLines=sys.AES_Encrypt(strLines, password);
-    sys.File_Save(file,strLines);
+    strLines=s_string.AES_Encrypt(strLines, password);
+    s_file.save(file,strLines);
     
 }
 

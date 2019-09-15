@@ -218,7 +218,7 @@
     <Compile Include="Function\Tools_Alarm.cs" />
     <Compile Include="Function\Tools_Au3.cs" />
     <Compile Include="Function\C_UI.cs" />
-    <Compile Include="Function\Tools_File.cs" />
+    <Compile Include="Function\C_File.cs" />
     <Compile Include="Function\C_Net.cs" />
     <Compile Include="Function\C_String.cs" />
     <EmbeddedResource Include="FrmApp.resx">

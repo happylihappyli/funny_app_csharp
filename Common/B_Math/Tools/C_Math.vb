@@ -263,7 +263,7 @@ Public Class C_Math
     Public pTreapVar As New Treap(Of C_Var)
 
     Public Function TreapVar(ByVal strName As String) As Boolean
-        Dim pVar As C_Var = pTreapVar.find(New C_K_Str(strName))
+        Dim pVar As C_Var = pTreapVar.find(strName)
         If pVar Is Nothing Then
             Return False
         Else
@@ -272,7 +272,7 @@ Public Class C_Math
     End Function
 
     Public Function CalculateVar(ByVal strName As String) As Double
-        Dim pVar As C_Var = pTreapVar.find(New C_K_Str(strName))
+        Dim pVar As C_Var = pTreapVar.find(strName)
         If pVar Is Nothing Then
             Return 0
         Else

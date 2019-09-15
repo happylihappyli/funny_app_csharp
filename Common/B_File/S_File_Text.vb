@@ -72,15 +72,15 @@ Namespace Funny
             Return pSR
         End Function
 
-        Public Shared Function Read_ifEnd(pSR As StreamReader) As Boolean
+        Public Shared Function Read_ifEnd(ByVal pSR As StreamReader) As Boolean
             Return pSR.Peek = -1
         End Function
 
-        Public Shared Function Read_Line(ByRef pSR As StreamReader) As String
+        Public Shared Function Read_Line(ByVal pSR As StreamReader) As String
             Return pSR.ReadLine()
         End Function
 
-        Public Shared Sub Read_End(ByRef pSR As StreamReader)
+        Public Shared Sub Read_End(pSR As StreamReader)
             pSR.Close()
         End Sub
 

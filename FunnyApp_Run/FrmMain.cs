@@ -40,7 +40,13 @@ namespace FunnyApp_Run {
             }
 
             string strFile = Application.StartupPath + "\\JS\\" + strLine;
-
+            if (S_File.Exists(strFile)==false) {
+                strLine = pFile.File;
+                if (strLine.StartsWith("/")) {
+                    strLine = strLine.Substring(1) + "\\main.js";
+                }
+                strFile = Application.StartupPath + "\\JS\\" + strLine;
+            }
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = textBox1.Text;
             proc.StartInfo.Arguments = strFile;

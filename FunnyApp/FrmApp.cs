@@ -35,14 +35,12 @@ namespace FunnyApp
         public FrmApp pParent = null;
         public string strFile = "";
         public JS pJS = new JS();
-        public Tools tools = null;
-        public C_UI ui = null;
+        public Tools sys = null;
 
         public FrmApp()
         {
             InitializeComponent();
-            tools = new Tools(this);
-            ui = new C_UI(this);
+            sys = new Tools(this);
         }
 
         private void FrmApp_Load(object sender, EventArgs e)
@@ -58,14 +56,14 @@ namespace FunnyApp
                     string strMatch = match.Groups[0].Value;
                     string strFile2=match.Groups[1].Value ;
 
-                    string strPath=this.tools.Path_JS();
+                    string strPath=this.sys.Path_JS();
                     string strCode2 = S_File_Text.Read(strPath+"\\"+strFile2);
                     strCode = strCode.Replace(strMatch, strCode2);
 
                 }
                 pJS.Run_Code(this, strCode);
             }
-
+            //webBrowser1.DocumentText = "<a href='http://t.com/?file=E:/CloudStation/Robot5/私人资料库/Code/Data/1.txt' target=_blank > 打开 </a>< hr > ";
         }
 
         public void Tray_Show(string url) {
@@ -277,6 +275,14 @@ namespace FunnyApp
 
         private void listBox1_DoubleClick(object sender, EventArgs e) {
 
+        }
+
+        private void webBrowser1_DocumentCompleted_2(object sender, WebBrowserDocumentCompletedEventArgs e) {
+
+        }
+
+        private void webBrowser1_NewWindow_1(object sender, CancelEventArgs e) {
+            sender.ToString();
         }
     }
 }

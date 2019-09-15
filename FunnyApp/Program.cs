@@ -26,16 +26,14 @@ namespace FunnyApp
                     strFile = Application.StartupPath + "\\JS\\" + strFile.Substring(1);
                 }
                 pApp.strFile = strFile;
-                IComparable pKey = new C_K_Str(strFile);
-                FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp);
+                FrmApp.pTreapFrmApp.insert(strFile, pApp);
 
             } else {
                 string strFile = Application.StartupPath + "/main.js";
                 if (S_File.Exists(strFile)) {
                     pApp.strFile = strFile;
                 }
-                IComparable pKey = new C_K_Str(strFile);
-                FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp);
+                FrmApp.pTreapFrmApp.insert(strFile, pApp);
             }
             Application.Run(pApp);
 

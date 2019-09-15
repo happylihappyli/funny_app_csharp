@@ -148,7 +148,7 @@
     </ProjectReference>
     <ProjectReference Include="..\CommonTreapVB\B_TreapVB.vbproj">
       <Project>{C29DE218-7553-4124-A831-8ADC683FE2D2}</Project>
-      <Name>CommonTreapVB</Name>
+      <Name>B_TreapVB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

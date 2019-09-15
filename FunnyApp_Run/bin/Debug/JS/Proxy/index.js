@@ -28,7 +28,7 @@ function set_click(data){
     "}";
 
     var path=sys.AppPath();
-    sys.File_Save("D:\\Net\\Web\\set.json",content);
+    s_file.File_Save("D:\\Net\\Web\\set.json",content);
 }
 
 function run_click(data){

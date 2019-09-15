@@ -14,11 +14,11 @@ function draw_line(){
         mydata=mydata.substring(0,mydata.length-1);
     }
     
-    var html=sys.File_Read(sys.Path_JS()+"\\data\\echarts.html.template");
-    var data=sys.File_Read(sys.Path_JS()+"\\data\\tmp.data");
+    var html=s_file.File_Read(sys.Path_JS()+"\\data\\echarts.html.template");
+    var data=s_file.File_Read(sys.Path_JS()+"\\data\\tmp.data");
     data=data.replace("{sys.data.0}",mydata);
     html=html.replace("{sys.data.0}",data);
-    sys.File_Save(sys.Path_JS()+"\\data\\test.html",html);
+    s_file.File_Save(sys.Path_JS()+"\\data\\test.html",html);
     s_ui.Run_App("chrome.exe",sys.Path_JS()+"\\data\\test.html");
     //s_ui.Web_Content("web1",html);
 }

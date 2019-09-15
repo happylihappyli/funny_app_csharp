@@ -8,7 +8,7 @@ function show_error(data){
 
 
 function file_open(){
-    var strLine=sys.File_Open();
+    var strLine=s_file.File_Open();
     s_ui.Text_Set("txt_file_public",strLine);
 }
 
@@ -22,7 +22,7 @@ function file_pem(){
     show_error(param);
     
     var result=s_ui.Run_App_Return(file_key,param);
-    sys.File_Save(txt_file2,result);
+    s_file.File_Save(txt_file2,result);
     
     show_error(result);
     
@@ -39,7 +39,7 @@ function file_pem_private(){
     show_error(param);
     
     var result=s_ui.Run_App_Return(file_key,param);
-    sys.File_Save(txt_file2,result);
+    s_file.File_Save(txt_file2,result);
     
     show_error(result);
     
@@ -77,7 +77,11 @@ function key_click(data){
     s_ui.Text_Set("txt1","把这个文件 D:\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
 }
 
-
+function bak_click(data){
+    var file1=s_ui.Text_Read("txt_file_private");
+    var file2="E:\\CloudStation\\Robot5\\私人资料库\\BAK\\id_rsa";
+    s_file.copy(file1,file2,true);
+}
 
 s_ui.Button_Init("b1","创建key",650,10,100,30,"key_click","0");
 
@@ -102,6 +106,8 @@ s_ui.Label_Init("lb_upload","解密私钥文件：",10,150);
 
 
 s_ui.Text_Init("txt_file_private",disk+"/Net/Web/id_rsa",100,150,500,30);
+
+s_ui.Button_Init("b3_bak","备份",650,150,100,30,"bak_click","");
 
 
 s_ui.Text_Init("txt_input","hello，你好",100,200,500,30);

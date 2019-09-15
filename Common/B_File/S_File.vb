@@ -24,17 +24,18 @@ Namespace Funny
         Private Declare Function SHFileOperation Lib "shell32.dll" Alias _
           "SHFileOperationA" (ByRef lpFileOp As SHFILEOPSTRUCT) As Integer
 
-        Public Shared Function Recycle(ByRef sPath As String, Optional bDialog As Boolean = False) As Integer
+        Public Shared Function Recycle(ByVal sPath As String,
+                                       Optional bDialog As Boolean = False) As Integer
 
             Try
                 If bDialog = False Then
-                    My.Computer.FileSystem.DeleteFile(sPath, _
-                            FileIO.UIOption.OnlyErrorDialogs, _
+                    My.Computer.FileSystem.DeleteFile(sPath,
+                            FileIO.UIOption.OnlyErrorDialogs,
                             FileIO.RecycleOption.SendToRecycleBin)
                 Else
 
-                    My.Computer.FileSystem.DeleteFile(sPath, _
-                            FileIO.UIOption.AllDialogs, _
+                    My.Computer.FileSystem.DeleteFile(sPath,
+                            FileIO.UIOption.AllDialogs,
                             FileIO.RecycleOption.SendToRecycleBin)
                 End If
             Catch ex As Exception

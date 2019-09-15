@@ -53,7 +53,7 @@ namespace Test_Lucene.net {
 
                     string strLine = "";
                     while (pReader.Peek() != -1) {
-                        strLine = S_File_Text.Read_Line(ref pReader);
+                        strLine = S_File_Text.Read_Line(pReader);
                         pSeg.readLine_fromDic(strLine);
                     }
                 }

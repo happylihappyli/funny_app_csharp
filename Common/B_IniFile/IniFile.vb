@@ -53,12 +53,15 @@ Public Class IniFile
         Dim FileType As Int32 = 0
         Dim iCount As Int32 = 0
 
-        For i As Int32 = 0 To pArrayList.Count - 1
-            pItem = pArrayList.Item(i)
-            If pItem.Name = Item Then
-                Return pItem.Value
-            End If
-        Next
+        If Not (pArrayList Is Nothing) Then
+            For i As Int32 = 0 To pArrayList.Count - 1
+                pItem = pArrayList.Item(i)
+                If pItem.Name = Item Then
+                    Return pItem.Value
+                End If
+            Next
+        End If
+
         Return ""
     End Function
     ''' -----------------------------------------------------------------------------

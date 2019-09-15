@@ -11,7 +11,7 @@ function Node_Click(data){
     
     if (tree_map[data]!=1){
         tree_map[data]=1;
-        strLine=s_sys.File_List_Dir(data+"\\");
+        strLine=s_s_file.File_List_Dir(data+"\\");
         if (strLine!=""){
             strSplit=strLine.split("|");
             
@@ -30,7 +30,7 @@ function Node_Click(data){
 function list_file(data){
     
     var Path=s_ui.Combox_Text("combox1");
-    var strLine=s_sys.File_List_File(Path);
+    var strLine=s_s_file.File_List_File(Path);
     var strSplit=strLine.split("|");
     var strHTML="";
     s_ui.ListBox_Clear("list");

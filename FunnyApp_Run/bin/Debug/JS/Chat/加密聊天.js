@@ -13,20 +13,20 @@ function send_msg_click(){
     }
     
     var path=sys.AppPath();
-    var count=parseInt(sys.Ini_Read(path+"\\config\\friend.ini","items","count"));
+    var count=parseInt(s_file.Ini_Read(path+"\\config\\friend.ini","items","count"));
     var file="";
     var name="";
     var iFind=0;
     for (var i=0;i<count;i++){
-        name=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        file=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"file");
+        name=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        file=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"file");
         if (name==friend){
             iFind=1;
             break;
         }
     }
     
-    if (iFind==0 || sys.File_Exists(file)==false){
+    if (iFind==0 || s_file.File_Exists(file)==false){
         s_ui.Msg("公钥不存在:"+file);
         return ;
     }
@@ -39,7 +39,7 @@ function send_msg_click(){
     
     
     log_msg=s_time.Time_Now()+" "+strMsg+"\r\n\r\n"+log_msg;
-    sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
+    s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
         s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
     s_ui.Text_Set("txt1",log_msg);
     s_ui.Text_Set("txt_send","");
@@ -77,14 +77,14 @@ function event_chat(data){
     if (obj.type=="encrypt"){
         if (obj.to==userName){
             var strMsg=s_time.Time_Now()+" "+s_string.decrypt_private_key("D:/Net/Web/id_rsa",obj.message);
-            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
+            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
             log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
         }else{
             //log_msg="to="+obj.to+"\r\n"+"\r\n"+log_msg;
         }
     }else{
         //var strMsg=s_time.Time_Now()+" "+obj.message;
-        //sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
+        //s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
         //log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
     }
     
@@ -118,12 +118,12 @@ function event_system(data){
 
 function read_ini(){
     var path=sys.AppPath();
-    var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account");
+    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
+    userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account");
     
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
-        var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
         //s_ui.Combox_Add("cb_friend",strName);
     }
     if (count>0){

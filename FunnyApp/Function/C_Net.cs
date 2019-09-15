@@ -171,10 +171,23 @@ namespace FunnyApp {
         }
 
         public void Socket_Connect() {
+            if (pFrmApp.client.State != SocketIOClient.SocketIOState.Connected) {
 
-            Task.Run(async () => {
-                await pFrmApp.client.ConnectAsync();
-            });
+                Task.Run(async () => {
+                    await pFrmApp.client.ConnectAsync();
+                });
+            }
+        }
+
+        public bool Socket_Connected() {
+            if (pFrmApp.client.State == SocketIOClient.SocketIOState.Closed) {
+                return false;
+            } else if (pFrmApp.client.State == SocketIOClient.SocketIOState.Connected) {
+                
+                return true;
+            } else {
+                return true;
+            }
         }
 
         public string Net_Http_GET(string url) {

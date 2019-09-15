@@ -1,4 +1,5 @@
 ﻿using B_String.Funny;
+using CS_Encrypt;
 using Funny;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,15 @@ namespace FunnyApp {
             } catch(Exception ex) {
                 return ex.ToString();
             }
+        }
+
+
+        public string AES_Encrypt(string strLines, string password) {
+            return AES.Encrypt(strLines, password);
+        }
+
+        public string AES_Decrypt(string strLines, string password) {
+            return AES.Decrypt(strLines, password);
         }
     }
 }

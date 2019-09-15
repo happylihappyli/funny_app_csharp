@@ -25,6 +25,7 @@
 '/</summary>
 Imports System.Text
 Imports System.Collections
+Imports B_TreapVB.Funny
 
 Namespace TreapVB
 
@@ -56,22 +57,19 @@ Namespace TreapVB
         End Sub
 
 
-        'Public Function Add_Treap_IfNone(ByRef key As IComparable) As Treap
-        '    Dim pTreap As Treap
-        '    pTreap = Me.find(key)
-        '    If pTreap Is Nothing Then
-        '        pTreap = New Treap
-        '        Me.Insert(key, pTreap)
-        '    End If
-        '    Return pTreap
-        'End Function
+        Public Function insert(ByVal key As String, ByVal data As T) As TreapNode
+            Return insert(New C_K_Str(key), data)
+        End Function
+
+
+
 
         '/<summary>
         '/ Add
         '/ args: ByVal key As IComparable, ByVal data As Object
         '/ key is object that implements IComparable interface
         '/</summary>
-        Public Function insert(ByRef key As IComparable, ByRef data As T) As TreapNode
+        Public Function insert(ByVal key As IComparable, ByVal data As T) As TreapNode
 
             If (key Is Nothing Or data Is Nothing) Then
                 Throw New TreapException("Treap key and data must not be Nothing")
@@ -138,6 +136,9 @@ Namespace TreapVB
 
         End Function
 
+        Public Function find(ByVal key As String) As T
+            Return find(New C_K_Str(key))
+        End Function
         '/<summary>
         '/ GetData
         '/ Gets the data associated with the specified key

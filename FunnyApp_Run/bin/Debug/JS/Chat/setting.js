@@ -15,7 +15,7 @@ function check_myMap() {
             var obj=JSON.parse(pMsg.Msg);
             log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
-            sys.File_Append("D:\\Net\\Web\\log\\"+friend+".txt",
+            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
             s_ui.Web_Content("web",log_msg);
@@ -53,13 +53,13 @@ function clear_click(data){
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
     var path=sys.AppPath();
-    var strCount=sys.Ini_Read(path+"\\config\\friend.ini","items","count");
-    userName=sys.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
+    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
+    userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
     
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
-        var strName=sys.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
+        var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
         //s_ui.Combox_Add("cb_friend",strName);
     }
     if (count>0){
@@ -76,8 +76,8 @@ function save_check_click(data){
     var password=s_ui.Text_Read("password");
     var md5=s_string.md5(password);
     
-    s_sys.Ini_Save("D:\\Net\\Web\\main.ini","main","account",name);
-    s_sys.Ini_Save("D:\\Net\\Web\\main.ini","main","md5",md5);
+    s_file.Ini_Save("D:\\Net\\Web\\main.ini","main","account",name);
+    s_file.Ini_Save("D:\\Net\\Web\\main.ini","main","md5",md5);
     
     var url="http://www.funnyai.com/login_check_json.php";
     var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
@@ -90,7 +90,7 @@ function save_check_click(data){
     }
 }
     
-var userName=s_sys.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
+var userName=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
 
 
 s_ui.Label_Init("lb1","www.funnyai.com的用户名和密码",10,30);

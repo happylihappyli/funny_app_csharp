@@ -3,7 +3,7 @@
 function upload_click(data){
     var password=s_ui.Text_Read("txt1");
     var file=s_ui.Text_Read("txt_upload_file");
-    var path=s_ui.Text_Read("txt_ftp_path")+"/"+sys.File_Short_Name(file);
+    var path=s_ui.Text_Read("txt_ftp_path")+"/"+s_file.File_Short_Name(file);
     //"/root/happyli/Line_Java.jar"
     var hosts=s_ui.Text_Read("txt_host");
     s_net.Net_Upload(hosts,"root",password,"22",file,path,"set_status","show_error");
@@ -25,13 +25,13 @@ function show_error(data){
 function save_password(data){
     var strPassword=s_ui.Text_Read("txt1");
     var strLine=s_string.encrypt_public_key("D:/Net/Web/id_rsa.pem.pub",strPassword);
-    sys.File_Save("D:/Net/Web/password_upload_1.txt",strLine);
+    s_file.File_Save("D:/Net/Web/password_upload_1.txt",strLine);
     
 }
 
 //读取密码
 function read_password(data){
-    var strLine=sys.File_Read("D:/Net/Web/password_upload_1.txt");
+    var strLine=s_file.File_Read("D:/Net/Web/password_upload_1.txt");
     var strPassword=s_string.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
     s_ui.Text_Set("txt1",strPassword);
 }

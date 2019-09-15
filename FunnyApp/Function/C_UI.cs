@@ -101,7 +101,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
 
@@ -210,7 +214,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
             pControl.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
         }
 
@@ -256,7 +264,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
         public void Menu_Add(
@@ -343,8 +355,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
-
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
 
@@ -389,8 +404,11 @@ namespace FunnyApp {
             pControl.NodeMouseClick += new TreeNodeMouseClickEventHandler(mytreeView_NodeMouseClick);
 
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
-
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
         private void mytreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
@@ -460,7 +478,7 @@ namespace FunnyApp {
 
         public void Tray_Show(string url) {
             if (url.StartsWith("@")) {
-                url = url.Replace("@", pFrmApp.tools.Path_App());
+                url = url.Replace("@", pFrmApp.sys.Path_App());
             }
             pFrmApp.Tray_Show(url);
         }
@@ -505,7 +523,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
         public void ListBox_Init_Event(
@@ -514,7 +536,7 @@ namespace FunnyApp {
 
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
-                pControl.DoubleClick += new EventHandler(mylistBox_DoubleClick);
+                pControl.SelectedIndexChanged += new EventHandler(mylistBox_DoubleClick);
                 pControl.Tag = new Function_Callback(event_double_click, "");
             }
         }
@@ -554,12 +576,12 @@ namespace FunnyApp {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 StreamReader pFile=S_File_Text.Read_Begin(file);
-                string strLine=S_File_Text.Read_Line(ref pFile);
+                string strLine=S_File_Text.Read_Line(pFile);
                 while (strLine != null) {
                     pControl.Items.Add(strLine);
-                    strLine = S_File_Text.Read_Line(ref pFile);
+                    strLine = S_File_Text.Read_Line(pFile);
                 }
-                S_File_Text.Read_End(ref pFile);
+                S_File_Text.Read_End(pFile);
             }
         }
 
@@ -621,7 +643,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button 
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
             pControl.Click += new EventHandler(my_button_Click);//使用事件函数句柄指向一个具体的函数  
 
         }
@@ -674,7 +700,11 @@ namespace FunnyApp {
             pControl.ScrollBars = ScrollBars.Vertical;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
         public void Text_Init(string name, string text,
@@ -689,7 +719,11 @@ namespace FunnyApp {
             pControl.ScrollBars = ScrollBars.Vertical;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
 
@@ -706,7 +740,11 @@ namespace FunnyApp {
             pControl.ScrollBars = ScrollBars.Vertical;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
 
@@ -741,8 +779,7 @@ namespace FunnyApp {
             e.SuppressKeyPress = true;
         }
 
-        public void Label_Init(string name, string text,
-            int x, int y) {
+        public void Label_Init(string name, string text,int x, int y) {
 
             Point p = new Point(x, y);//定义一个具体的位置  
             Label pControl = new Label();//实例化一个button  
@@ -750,8 +787,12 @@ namespace FunnyApp {
             pControl.Text = text;
             pControl.Location = p;
             pControl.AutoSize = true;
-            pFrmApp.Controls.Add(pControl);//向具体的控件中添加button  
-            Ctrls.Add(name,pControl);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:"+name);
+            }
         }
 
 
@@ -765,7 +806,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
         public void PictureBox_Draw_Ellipse(
@@ -857,7 +902,11 @@ namespace FunnyApp {
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
 
@@ -928,9 +977,8 @@ namespace FunnyApp {
             if (S_File.Exists(strFile)) {
                 pApp2.strFile = strFile;
             }
-
-            IComparable pKey = new C_K_Str(strFile);
-            FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp2);
+            
+            FrmApp.pTreapFrmApp.insert(strFile,pApp2);
 
             pApp2.pParent = pFrmApp;
             pApp2.ShowDialog();
@@ -954,9 +1002,8 @@ namespace FunnyApp {
             if (S_File.Exists(strFile)) {
                 pApp.strFile = strFile;
             }
-
-            IComparable pKey = new C_K_Str(strFile);
-            FrmApp.pTreapFrmApp.insert(ref pKey, ref pApp);
+            
+            FrmApp.pTreapFrmApp.insert(strFile,pApp);
 
             pApp.pParent = pFrmApp;
             pApp.Show();
@@ -1028,7 +1075,11 @@ namespace FunnyApp {
             }
             pControl.SplitterDistance = 107;
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name,pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
 
@@ -1071,17 +1122,76 @@ namespace FunnyApp {
 
         }
 
+
+
+        public void Control_Dock(string name,
+            string fillType) {
+
+            Control pControl = (Control)Ctrls[name];
+            if (pControl != null) {
+
+                switch (fillType.ToLower()) {
+                    case "fill":
+                        pControl.Dock = DockStyle.Fill;
+                        break;
+                    case "top":
+                        pControl.Dock = DockStyle.Top;
+                        break;
+                    case "left":
+                        pControl.Dock = DockStyle.Left;
+                        break;
+                    case "right":
+                        pControl.Dock = DockStyle.Right;
+                        break;
+                    case "bottom":
+                        pControl.Dock = DockStyle.Bottom;
+                        break;
+                    case "none":
+                        pControl.Dock = DockStyle.None;
+                        break;
+                }
+            }
+        }
+
+
+
         public void Panel_Init(string name,
             int x, int y,
-            int width, int height) {
+            int width, int height,
+            string fillType) {
 
             Point p = new Point(x, y);//定义一个具体的位置  
             Panel pControl = new Panel();//实例化一个button  
             pControl.Name = name;
             pControl.Location = p;
             pControl.Size = new Size(width, height);
+
+            switch (fillType.ToLower()) {
+                case "fill":
+                    pControl.Dock = DockStyle.Fill;
+                    break;
+                case "top":
+                    pControl.Dock = DockStyle.Top;
+                    break;
+                case "left":
+                    pControl.Dock = DockStyle.Left;
+                    break;
+                case "right":
+                    pControl.Dock = DockStyle.Right;
+                    break;
+                case "bottom":
+                    pControl.Dock = DockStyle.Bottom;
+                    break;
+                case "none":
+                    pControl.Dock = DockStyle.None;
+                    break;
+            }
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
-            Ctrls.Add(name, pControl);
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
         }
 
         public void Panel_Add(
@@ -1131,6 +1241,16 @@ namespace FunnyApp {
 
 
 
+        public void Text_Font_Size(string control_name, float iSize) {
+            TextBox pControl = (TextBox)Ctrls[control_name];
+            if (pControl != null) {
+                pControl.Font = new Font("宋体", iSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+            }
+        }
+        
+
+
         [Obsolete("Show_Text() is Obsolete,Use Text_Set()")]
         public void Show_Text(string control_name, string text) {
             Text_Set(control_name, text);
@@ -1154,7 +1274,21 @@ namespace FunnyApp {
                 return "";
             }
         }
-        
+
+
+        public void Text_Read_Only(
+                string control_name,
+                int iRead) {
+            TextBox pControl = (TextBox)Ctrls[control_name];
+            if (pControl != null) {
+                if (iRead == 1) {
+                    pControl.ReadOnly = true;
+                } else {
+                    pControl.ReadOnly = false;
+                }
+            }
+        }
+
 
         private void my_button_Click(object sender, EventArgs e) {
             Button button = (Button)sender;
