@@ -52,11 +52,16 @@ function read(strFile){
 
 function file_open_config(data){
 
-    s_ui.Run_Cmd("Notepad++.exe "+sys.App_Path()+"\\config\\upload_js.txt");
+    s_ui.Run_Cmd("Notepad++.exe "+sys.App_Path()+"\\config\\"+data);
 }
 
+function wall9(data){
+    s_ui.Text_Set("txt_host","80.240.30.201");
+}
 
 s_ui.Text_Init("txt_host","robot6.funnyai.com",100,10,300,30);
+
+s_ui.Button_Init("wall9","wall9",450,10,100,30,"wall9","");
 
 s_ui.Label_Init("lb_password","FTP密码：",10,70);
 

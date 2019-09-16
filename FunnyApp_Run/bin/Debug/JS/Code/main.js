@@ -8,14 +8,6 @@ var Path_Seg="";
 
 
 
-function index_create(data){
-    s_index.Create_Start(Path_Index,true);
-    s_index.Add_Document("1","你好中国");
-    s_index.Add_Document("2","中国社会发展");
-    s_index.Create_End();
-}
-
-
 //添加回调函数
 function callback_add(data){
     var id=s_sys.Value_Read("ID");
@@ -51,11 +43,7 @@ function callback_edit(data){
 
     if (id!="" && content!=""){
         s_file.save(Path_Data+"\\"+id+".txt",content);
-        if (id=="1"){
-            s_index.Create_Start(Path_Index,true);
-        }else{
-            s_index.Create_Start(Path_Index,false);
-        }
+        s_index.Create_Start(Path_Index,false);
         
         s_index.Remove_Document(id);
         
@@ -85,7 +73,7 @@ function search(data){
     for (var i=1;i<=count;i++){
         var id=s_xml.read("doc1","/data/item[position()="+i+"]/id");
         var file=Path_Data+"\\"+id+".txt";
-        var content=s_file.read(file);
+        var content=s_file.read(file,5);//读取5行
         content=content.replaceAll("\n","<br>");
         content=content.substr(0,500);
         //s_xml.read("doc1","/data/item[position()="+i+"]/content");
@@ -100,6 +88,7 @@ function search(data){
 function callback_init(data){
     s_ui.Button_Enable("b_search",1);
     s_ui.Button_Enable("b_add",1);
+    s_ui.Button_Enable("b_init",1);
 }
 
 function init(data){
@@ -133,6 +122,31 @@ function New_URL(data){
     }
 }
 
+function index_init(data){
+    
+    var id=s_sys.Value_Read("ID");
+    var content=s_sys.Value_Read("Content");
+
+    s_index.Create_Start(Path_Index,true);
+    
+    var max_id=0;
+    var Path=Path_Data;
+    var strLine=s_file.File_List_File(Path);
+    var strSplit=strLine.split("|");
+    for(var i=0;i<strSplit.length;i++){
+        var file=strSplit[i];
+        if (file.endsWith(".txt")){
+            var id=parseInt(file.split(".")[0]);
+            if (id>max_id) max_id=id;
+            var content=s_file.read(Path+"\\"+file);
+            s_index.Add_Document(id+"",content);
+        }
+    }
+    
+    s_index.Create_End();
+    s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",max_id+"");
+}
+
 
 //词库初始化
 s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
@@ -145,6 +159,10 @@ s_ui.Button_Enable("b_search",0);
 
 s_ui.Button_Init("b_add","添加",500,30,100,30,"index_add","");
 s_ui.Button_Enable("b_add",0);
+
+
+s_ui.Button_Init("b_init","重新生成索引",550,30,100,30,"index_init","");
+s_ui.Button_Enable("b_init",0);
 
 s_ui.Web_Init("web",10,130,700,500);
 
@@ -164,6 +182,7 @@ s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&L)","set_click","");
 
 
+s_ui.Panel_Add("panel_top","b_init","left");
 s_ui.Panel_Add("panel_top","b_add","left");
 s_ui.Panel_Add("panel_top","b_search","left");
 s_ui.Panel_Add("panel_top","txt1","left");

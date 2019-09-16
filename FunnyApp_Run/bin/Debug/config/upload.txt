@@ -4,6 +4,6 @@ E:\happyli\Jar\sync_struct\mv_sync_struct.jar
 E:\happyli\Jar\sync_subset\mv_sync_subset.jar
 E:\happyli\Jar\train_ai\funnyarticle_train_one_from_web.jar
 E:\happyli\Jar\server_socket\funny_socket_io_server.jar
-E:\happyli\Jar\funny_app\funny_app.jar
+E:\happyli\Jar\funny_app_linux\funny_app.jar
 E:\happyli\Jar\server_class\funny_server_class.jar
 E:\happyli\Jar\file_watch\FunnyWatch.jar

@@ -25,7 +25,6 @@ function init(data){
 
 function save_click(data){
     var ID=s_ui.Text_Read("txt1");
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",ID);
     s_sys.Value_Save("ID",ID);
     s_sys.Value_Save("Content",s_ui.Text_Read("txt2"));
     s_ui.Close();
@@ -43,11 +42,8 @@ s_ui.Text_Read_Only("txt1",1);
 
 s_ui.Button_Init("b_save","保存",250,30,200,30,"save_click","");
 
-
 s_ui.Panel_Add("panel1","b_save","left");
 s_ui.Panel_Add("panel1","txt1","left");
-
-
 
 s_ui.Show_Form(700,600);
 s_ui.Form_Title("新建文件");

@@ -58,6 +58,28 @@ namespace FunnyApp {
             }
         }
 
+
+        public string read(string strFile,int Count) {
+            if (strFile.StartsWith("@")) {
+                strFile = strFile.Replace("@", pFrmApp.sys.Path_JS());
+            }
+
+            if (S_File.Exists(strFile)) {
+                string strReturn = "";
+                StreamReader pFile=S_File_Text.Read_Begin(strFile);
+                for(int i = 0; i < Count; i++) {
+                    string strLine = S_File_Text.Read_Line(pFile);
+                    if (strLine == null) break;
+                    strReturn += strLine + "\n";
+                }
+                S_File_Text.Read_End(pFile);
+                strReturn = strReturn.Substring(0, strReturn.Length - 1);
+                return strReturn;
+            } else {
+                return "";
+            }
+        }
+
         public void Read_Begin(string file,string key) {
             object pReader= S_File_Text.Read_Begin(file);
             FrmApp.pMap.insert(key, pReader);

@@ -67,23 +67,49 @@ namespace FunnyApp {
         }
 
 
-        public void Run_Shell(string cmds) {
+        public string Run_Shell(string cmds) {
+            try {
+                // 创建进程
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                process.StartInfo.FileName = "PowerShell.exe";
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.RedirectStandardInput = true;
+                //process.StartInfo.RedirectStandardOutput = true;
+                //process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.CreateNoWindow = false;
+                process.Start();
+                //process.StandardInput.AutoFlush = true;
+                string[] cmd = cmds.Split('\n');
+                for (int i = 0; i < cmd.Length; i++) {
+                    process.StandardInput.WriteLine(cmd[i]);
+                }
+                Thread.Sleep(3000);
+                process.StandardInput.WriteLine("exit");
+                // 执行进程
+                //string standardOutput = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+                process.Close();
+                return "";// standardOutput;
+            } catch (Exception ex) {
+                return ex.ToString();
+            }
 
-            Process p = new Process();
-            p.StartInfo.FileName = "PowerShell.exe";
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.RedirectStandardInput = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.Verb = "runas";
-            p.StartInfo.CreateNoWindow = false;
-            p.Start();
-            p.StandardInput.WriteLine("set-ExecutionPolicy RemoteSigned");
-            p.StandardInput.WriteLine("y");
-            p.StandardInput.WriteLine("cd SVC_Tool_1.0.0.0_Master_Test");
-            p.StandardInput.WriteLine(".\\Add-AppDevPackage.ps1");
-            p.StandardInput.AutoFlush = true;
-            p.WaitForExit();
-            p.Close();
+
+            //Process p = new Process();
+            //p.StartInfo.FileName = "PowerShell.exe";
+            //p.StartInfo.UseShellExecute = false;
+            //p.StartInfo.RedirectStandardInput = true;
+            //p.StartInfo.RedirectStandardOutput = true;
+            //p.StartInfo.Verb = "runas";
+            //p.StartInfo.CreateNoWindow = false;
+            //p.Start();
+            //p.StandardInput.WriteLine("set-ExecutionPolicy RemoteSigned");
+            //p.StandardInput.WriteLine("y");
+            //p.StandardInput.WriteLine("cd SVC_Tool_1.0.0.0_Master_Test");
+            //p.StandardInput.WriteLine(".\\Add-AppDevPackage.ps1");
+            //p.StandardInput.AutoFlush = true;
+            //p.WaitForExit();
+            //p.Close();
         }
 
 
