@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using Renci.SshNet;
 using Renci.SshNet.Sftp;
@@ -20,6 +21,7 @@ namespace FunnyApp {
 
 
         public SecureTransfer() {
+
         }
 
         public SecureTransfer(string host, string user, string pass, int port, SSHTransferProtocol protocol) {
@@ -66,6 +68,32 @@ namespace FunnyApp {
             if (Protocol == SSHTransferProtocol.SFTP) {
                 SftpClt.Disconnect();
             }
+        }
+
+        public string List_File(string dir) {
+            string[] strSplit = dir.Split('/');
+            string path = "";
+            for(var i = 0; i < strSplit.Length - 1; i++) {
+                path += strSplit[i]+"/";
+            }
+            dir = strSplit[strSplit.Length - 1];
+
+            ArrayList pList = new ArrayList();
+            SftpClt.ChangeDirectory(path);// "/");
+
+            string strReturn = "";
+            foreach (var entry in SftpClt.ListDirectory(dir)) {
+                if (entry.IsDirectory) {
+                    //ListDirectory(client, entry.FullName, ref files);
+                } else {
+                    strReturn += entry.FullName + "|";
+                    //pList.Add(entry.FullName);
+                }
+            }
+            if (strReturn.EndsWith("|")) {
+                strReturn = strReturn.Substring(0, strReturn.Length - 1);
+            }
+            return strReturn;
         }
 
 

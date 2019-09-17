@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CS_Encrypt.dll" size="21504">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CS_Encrypt.dll" size="22528">
       <assemblyIdentity name="CS_Encrypt" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YW9x2ui9QFVmYA71I9i6dccGJyR+2X8wzfyY/Fjr0Do=</dsig:DigestValue>
+        <dsig:DigestValue>fH05XCCg4s4oV6VCrWZweUUNGMhoiUEcnn6DiJTNb5w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -246,14 +246,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FunnyApp.exe" size="75736">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FunnyApp.exe" size="77272">
       <assemblyIdentity name="FunnyApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rXSzsz7w2ovTBMpMDXgAn0nac8kgpKcaQwrljpPqA7I=</dsig:DigestValue>
+        <dsig:DigestValue>t087p+tWylnj/xuU7zLO3nQlPh6+KBk1hBODdOFwgTc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -146,9 +146,9 @@ namespace FunnyApp
             this.WindowState = FormWindowState.Normal;
         }
 
-        public string callback_Connect = "";
-        public string callback_DisConnect = "";
-        public SocketIO client = null;
+        private string callback_Connect = "";
+        private string callback_DisConnect = "";
+        private SocketIO client = null;
         public void Init(string url,
             string callback_Connect,
             string callback_DisConnect,

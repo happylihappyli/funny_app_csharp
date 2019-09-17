@@ -179,12 +179,7 @@ s_ui.Label_Init("lb1","名称：",10,450);
 s_ui.Text_Init("txt_name","",100,450,390,30);
 
 
-
-
 s_ui.Label_Init("lb2","网址：",10,500);
-
-
-
 
 s_ui.Text_Init("txt_url","",100,500,390,30);
 

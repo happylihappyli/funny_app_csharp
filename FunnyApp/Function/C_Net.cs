@@ -1,11 +1,7 @@
 ﻿using B_Net.Funny;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,6 +24,57 @@ namespace FunnyApp {
             WarningMsg = 2,
             ErrorMsg = 3,
         }
+
+        string hosts = "";
+        string user = "";
+        string password = "";
+        string port = "";
+        string dir = "";
+        string callback = "";
+
+        public void ftp_list(
+            string hosts, 
+            string user,string password, 
+            string port,
+            string dir,string callback) {
+            this.hosts = hosts;
+            this.user = user;
+            this.password = password;
+            this.port = port;
+            this.dir = dir;
+            this.callback = callback;
+
+            Thread p = new Thread(ftp_list_sub);
+            p.Start();
+        }
+
+
+        public void ftp_list_sub() { 
+            string strReturn = "";
+            SecureTransfer.SSHTransferProtocol Protocol = SecureTransfer.SSHTransferProtocol.SFTP;
+
+            try {
+                st = new SecureTransfer(hosts, user, password,
+                            int.Parse(port), Protocol);
+
+                st.Connect();
+
+                switch (Protocol) {
+                    case SecureTransfer.SSHTransferProtocol.SFTP:
+                        st.asyncCallback = AsyncCallback;
+                        break;
+                }
+
+                strReturn= st.List_File(dir); 
+            } catch (Exception ex) {
+                pFrmApp.JS_Function(this.callback_error, ex.ToString());
+                st?.Disconnect();
+                st?.Dispose();
+            }
+
+            pFrmApp.Call_Event(callback, strReturn);
+        }
+
 
         public string http_post(string url,string data) {
             string strReturn="";

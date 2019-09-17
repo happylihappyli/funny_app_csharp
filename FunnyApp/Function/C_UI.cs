@@ -709,7 +709,8 @@ namespace FunnyApp {
             }
         }
 
-        public void Close() {
+        
+        public void close() {
             pFrmApp.Close();
         }
 
@@ -1108,7 +1109,15 @@ namespace FunnyApp {
             }
         }
 
+        public void SplitContainer_Distance(
+            string name,
+            int distance) {
+            SplitContainer pControl = (SplitContainer)Ctrls[name];
+            if (pControl != null) {
+                pControl.SplitterDistance = distance;
+            }
 
+        }
 
         public void SplitContainer_Add(
             string name,

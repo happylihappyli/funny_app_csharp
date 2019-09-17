@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -126,7 +127,7 @@ namespace FunnyApp {
 
 
         public long Size(string file) {
-            FileInfo pInfo = new System.IO.FileInfo(file);
+            FileInfo pInfo = new FileInfo(file);
 
             return pInfo.Length;
         }
@@ -205,5 +206,45 @@ namespace FunnyApp {
         }
 
 
+        string file1 = "";
+        string file2 = "";
+        string password = "";
+        string callback = "";
+
+        public void AES_Encrypt_File(
+            string file1,string file2,string password,
+            string callback) {
+
+            this.file1 = file1;
+            this.file2 = file2;
+            this.password = password;
+            this.callback = callback;
+
+            Thread p = new Thread(AES_Encrypt_File_sub);
+            p.Start();
+        }
+
+        private void AES_Encrypt_File_sub() {
+            AES.Encrypt_File(file1, file2, password);
+            pFrmApp.Call_Event(callback, "");
+        }
+
+
+        public void AES_Decrypt_File(
+            string file1, string file2, string password,
+            string callback) {
+            this.file1 = file1;
+            this.file2 = file2;
+            this.password = password;
+            this.callback = callback;
+
+            Thread p = new Thread(AES_Decrypt_File_sub);
+            p.Start();
+        }
+
+        private void AES_Decrypt_File_sub() {
+            AES.Decrypt_File(file1, file2, password);
+            pFrmApp.Call_Event(callback, "");
+        }
     }
 }

@@ -1,10 +1,15 @@
-
+var disk="D:";
 var userName="none";
 var md5="";
 var log_msg="";
-
+var session_send=0;
 var msg_id=0;
 var myMap=[];
+var head="";
+var css_head='<html><head>\n'
++'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'
++'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
++'<body>\n';
 
 //消息和发送计数器
 function C_Msg(ID,Msg){
@@ -12,6 +17,24 @@ function C_Msg(ID,Msg){
     this.Msg=Msg;
     this.Count=0;
 }
+
+var sep=1;
+
+
+
+function New_URL(data){
+    s_ui.Msg(data);
+    var strSplit=data.split("?");
+    var file=strSplit[1];
+    switch(strSplit[0]){
+        case "http://file.edit/":
+            var file2=file.substr(5);
+            change_group(file2);
+            break;
+    }
+}
+
+[[[event_chat.js]]]
 
 
 //发送消息
@@ -30,8 +53,8 @@ function send_msg_click(){
     var token="";
     
     var url="http://www.funnyai.com/login_get_token_json.php";
-    var name=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
-    var md5=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","md5");
+    var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
+    var md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
     var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
     
     var result=s_net.http_post(url,data);
@@ -56,24 +79,22 @@ function send_msg_click(){
     
     s_ui.Text_Set("txt_info",strLine);
     
-    myMap[msg_id]=new C_Msg(msg_id,strLine);
+    myMap["K"+msg_id]=new C_Msg(msg_id,strLine);
     
     s_net.Send_Msg("chat_event",strLine);
     
     
     log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
             +strMsg+"<br><br>"+log_msg;
-    s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
+    s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
         s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
-        
-    s_ui.Web_Content("web",log_msg);
-    s_ui.Text_Set("txt_send","");
     
-    s_time.setTimeout("check_myMap", 3);//检查消息是否都发送过去了，没有发送的，再发送一次。
+    s_ui.Web_Content("web",css_head+log_msg);
+    s_ui.Text_Set("txt_send","");
     
 }
 
-function check_myMap(data) {
+function resend_chat_msg(data) {
     for(var key in myMap){
         var pMsg=myMap[key];
         if (pMsg.Count<3){
@@ -84,10 +105,11 @@ function check_myMap(data) {
             var friend=pMsg.to;
             log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
-            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
+            s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
-            s_ui.Web_Content("web",log_msg);
+            
+            s_ui.Web_Content("web",css_head+log_msg);
         }
     }
 }
@@ -117,35 +139,24 @@ function clear_click(data){
     s_ui.Web_Content("web",log_msg);
 }
 
-
-function event_chat(data){
-    var obj=JSON.parse(data);
-    var friend=obj.from;
+function friend_change(data){
     
-    if (obj.type=="encrypt"){
-    }else{
-        var index=s_ui.ListBox_Select("list_friend",friend);
-        if (index==-1){
-            friend_list("");
-            //sys.sleep(10);
-            s_ui.ListBox_Select("list_friend",friend);
-        }
-        var strMsg=s_time.Time_Now()+"<br>"+obj.message;
-        s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
-        log_msg=s_time.Time_Now()+" "+friend+" &gt; <span style='color:#aaaaaa;'>"+obj.to+"</span>"
-        +"<br><div><textarea style='width:100%;height:600px;'>"
-        +obj.message+"</textarea></div><br><br>\r\n"+log_msg;
-        
-        var id=obj.id;
-        var strLine="{\"from\":\""+userName+"\",\"type\":\"chat_return\",\"to\":\""+obj.from+"\",\"message\":\""+id+"\"}";
-        s_net.Send_Msg("sys_event",strLine); //消息返回
-        
+    var friend=s_ui.ListBox_Text("list_friend");
+    if (friend!=""){
+        //s_sys.Value_Save("friend_selected",friend);
+        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
     }
-    
-    s_ui.Web_Content("web",log_msg);
-    
-    //s_ui.Notification(obj.from,strMsg);
 }
+
+function select_old_friend(data){
+    var friend=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","friend_selected");
+
+    if (friend!=null && friend!=""){
+        s_ui.Text_Set("txt_info","选择刚才选择的好友:"+friend);
+        s_ui.ListBox_Select("list_friend",friend);
+    }
+}
+
 
 function event_system(data){
     var obj=JSON.parse(data);
@@ -154,7 +165,7 @@ function event_system(data){
     switch(obj.type){
         case "chat_return":
             s_ui.Text_Set("txt_info","chat_return:"+obj.message);
-            delete myMap[obj.message];
+            delete myMap["K"+obj.oid];
             break;
         case "30s:session":
             if (obj.from=="system"){
@@ -164,6 +175,7 @@ function event_system(data){
                 var friend="*";
                 var strLine="{\"from\":\""+userName+"\",\"type\":\"session\",\"to\":\".\",\"message\":\""+session_id+"\"}";
                 s_net.Send_Msg("sys_event",strLine); //服务器会记录用户名
+                session_send=1;
             }
             break;
         case "list.all":
@@ -177,19 +189,10 @@ function read_ini(){
     var path=sys.AppPath();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
-    var userName2=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","md5");
+    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
+    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
     userName=userName2+"/linux";
     
-    
-    var count=parseInt(strCount);
-    for (var i=0;i<count;i++){
-        var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //s_ui.Combox_Add("cb_friend",strName);
-    }
-    if (count>0){
-        //s_ui.Combox_Select("cb_friend",0);
-    }
 }
 
 function connect_click(data){
@@ -199,7 +202,7 @@ function connect_click(data){
 }
 
 function log_click(data){
-    s_ui.Run_App("D:\\Net\\Web\\log","");
+    s_ui.Run_App(disk+"\\Net\\Web\\log","");
 }
 
 
@@ -222,94 +225,88 @@ function set_click(data){
     s_ui.Run_JS("Chat\\setting.js");
 }
 
-function cmd(data){
+function cmd_sub(data){
     s_ui.Text_Set("txt_send",data);
     send_msg_click();
 }
 
-s_ui.SplitContainer_Init("split",0,0,500,500,"v");
+function show_user(data){
+    sep=2;//分隔符用第2个方案
+    head="<tr><th>用户名</th><th>口令</th><th>用户ID</th><th>组ID</th><th>注释性描述</th><th>主目录</th><th>登录Shell</th></tr>";
+    cmd_sub(data);
+}
 
-s_ui.Button_Init("btn_friend","刷新好友列表",10,30,200,30,"friend_list","");
-s_ui.ListBox_Init("list_friend",10,60,200,180);
+function show_ps(data){
+    sep=1;
+    head="<tr><th>USER</th><th>PID</th><th>%CPU</th><th>%MEM</th><th>VSZ</th><th>RSS</th><th>TTY</th><th>STAT</th><th>TART</th><th>TIME</th><th>COMMAND</th></tr>";
+    cmd_sub(data);
+}
 
+function show_group(data){
+    sep=2;//分隔符用第2个方案
+    head="<tr><th>用户组名</th><th>用户组密码</th><th>GID</th><th>用户列表</th></tr>";
+    cmd_sub(data);
+}
 
-s_ui.Button_Init("b_clear","清空聊天记录",250,30,450,30,"clear_click","");
-
-s_ui.Web_Init("web",250,60,450,250);
-s_ui.Web_Content("web","接收到信息");
-
-
-
-s_ui.Combox_Init("combox_head","/root/test.js",250,350,100,30);
-s_ui.Combox_Add("combox_head","/root/test.js");
-
-s_ui.Text_Init("txt_send","ls",380,350,320,30);
-
-
-s_ui.Button_Init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
-
-
-s_ui.Text_Init("txt_user_name","000",10,450,100,30);
-s_ui.Button_Init("btn_connect","连服务器",120,450,90,30,"connect_click","");
-s_ui.Text_Init("txt_session","000",10,500,200,30);
+function show_file(data){
+    sep="file_list";//分隔符用第1.1个方案
+    head="<tr><th>权限</th><th>子目录(文件)数</th><th>所属用户</th><th>所属用户组</th><th>大小</th><th colspan=3>最近修改/查看时间</th><th>名称</th></tr>";
+    cmd_sub(data);  
+}
 
 
-
-s_ui.TextBox_Init("txt_info","",10,250,200,80);
-
-
-s_ui.SplitContainer_Add("split",0,"list_friend","fill");
-s_ui.SplitContainer_Add("split",0,"btn_friend","top");
-
-s_ui.SplitContainer_Add("split",0,"txt_info","bottom");
-s_ui.SplitContainer_Add("split",0,"txt_user_name","bottom");
-s_ui.SplitContainer_Add("split",0,"btn_connect","bottom");
-s_ui.SplitContainer_Add("split",0,"txt_session","bottom");
+function change_group(data){
+    s_sys.Value_Save("file",data);
+    s_sys.Value_Save("cmd","");
+    s_ui.Run_JS_Dialog("Linux\\change_own.js","callback_cmd");
+}
 
 
-s_ui.SplitContainer_Add("split",0,"combox_head","bottom");
+function callback_cmd(data){
+    var line=s_sys.Value_Read("cmd");
+    if (line!=""){
+        s_ui.Text_Set("txt_send",line);
+        send_msg_click();
+    }
+}
 
+function new_user(data){
+    s_sys.Value_Save("cmd","");
+    s_ui.Run_JS_Dialog("Linux\\new_user.js","callback_cmd");
+}
 
+function new_group(data){
+    s_sys.Value_Save("cmd","");
+    s_ui.Run_JS_Dialog("Linux\\new_group.js","callback_cmd");
+}
 
-s_ui.SplitContainer_Add("split",1,"web","fill");
-s_ui.SplitContainer_Add("split",1,"b_clear","top");
+function add_user_2_group(data){
+    s_sys.Value_Save("cmd","");
+    s_ui.Run_JS_Dialog("Linux\\user_group.js","callback_cmd");
+}
 
+//检查是否联网
+function check_connected(data){
+    s_ui.Text_Set("txt_info","check_connected...");
+    s_time.setTimeout("check_connected",2,"check_connected");
+    
+    if (s_net.Socket_Connected()){
+        //friend_list("");
+        
+        if (session_send==1){
+            select_old_friend("");
+            //检查消息是否都发送过去了，没有发送的，再发送一次。
+            resend_chat_msg("");
+        }
+    }else{
+        session_send=0;
+        s_net.Socket_Connect();//如果没有连，会自动连
+    }
+}
 
+function restart_ssh(data){
+    data="sudo service ssh restart";
+    cmd_sub(data);
+}
 
-s_ui.Panel_Init("panel_top",0,0,500,25,"none");
-s_ui.SplitContainer_Add("split",1,"panel_top","bottom");
-s_ui.Panel_Add("panel_top","txt_send","fill");
-
-s_ui.Panel_Add("panel_top","b1_send","right");
-
-
-s_ui.Panel_Init("panel2",0,0,500,25,"none");
-s_ui.SplitContainer_Add("split",1,"panel2","bottom");
-
-s_ui.Button_Init("btn_ls","目录文件",10,30,100,30,"cmd","ls");
-s_ui.Panel_Add("panel2","btn_ls","left");
-s_ui.Button_Init("btn_ps","查看进程",10,30,100,30,"cmd","ps aux");
-s_ui.Panel_Add("panel2","btn_ps","left");
-s_ui.Button_Init("btn_ps_js","JS进程",10,30,100,30,"cmd","ps aux|grep .js");
-s_ui.Panel_Add("panel2","btn_ps_js","left");
-s_ui.Button_Init("btn_ps_java","Java进程",10,30,100,30,"cmd","ps aux|grep java");
-s_ui.Panel_Add("panel2","btn_ps_java","left");
-
-
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
-
-
-
-//其他属性
-s_ui.Acception_Button("b1_send");
-s_ui.Show_Form(800,600);
-s_ui.Form_Title("Linux");
-
-//s_ui.ShowInTask(0);
-connect_click("");
+[[[ui.js]]]
