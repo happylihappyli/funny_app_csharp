@@ -148,7 +148,7 @@ namespace FunnyApp
 
         private string callback_Connect = "";
         private string callback_DisConnect = "";
-        private SocketIO client = null;
+        public SocketIO client = null;
         public void Init(string url,
             string callback_Connect,
             string callback_DisConnect,

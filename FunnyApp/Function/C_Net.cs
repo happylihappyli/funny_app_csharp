@@ -1,5 +1,6 @@
 ﻿using B_Net.Funny;
 using Newtonsoft.Json.Linq;
+using Renci.SshNet.Sftp;
 using System;
 using System.IO;
 using System.Threading;
@@ -84,7 +85,7 @@ namespace FunnyApp {
 
         public string callback_status = "";
         public string callback_error = "";
-        public void Net_Upload(
+        public void ftp_upload(
             string hosts, string user,
             string password, string port,
             string local_file, string remotefile,
@@ -100,59 +101,121 @@ namespace FunnyApp {
                             int.Parse(port), Protocol,
                                         local_file, remotefile);
 
-                // Connect creates the protocol objects and makes the initial connection.
                 st.Connect();
 
                 switch (Protocol) {
-                    //case SecureTransfer.SSHTransferProtocol.SCP:
-                    //    st.ScpClt.Uploading += ScpClt_Uploading;
-                    //    break;
                     case SecureTransfer.SSHTransferProtocol.SFTP:
                         st.asyncCallback = AsyncCallback;
                         break;
                 }
 
-                var t = new Thread(StartTransferBG);
+                var t = new Thread(Start_Upload);
                 t.SetApartmentState(ApartmentState.STA);
                 t.IsBackground = true;
                 t.Start();
             } catch (Exception ex) {
                 pFrmApp.JS_Function(this.callback_error, ex.ToString());
-                //txMsg.Text = ex.ToString();
-                //Runtime.MessageCollector.AddExceptionStackTrace(Language.strSSHTransferFailed, ex);
                 st?.Disconnect();
                 st?.Dispose();
             }
         }
 
 
+        public void ftp_download(
+            string hosts, string user,
+            string password, string port,
+            string source_file, string dest_file,
+            string callback_status,
+            string callback_error) {
 
-        private void AsyncCallback(IAsyncResult ar) {
-            
-            pFrmApp.JS_Function(this.callback_error, ar.ToString());
+            this.callback_status = callback_status;
+            this.callback_error = callback_error;
+            SecureTransfer.SSHTransferProtocol Protocol = SecureTransfer.SSHTransferProtocol.SFTP;
+
+            try {
+                st = new SecureTransfer(hosts, user, password,
+                            int.Parse(port), Protocol,
+                            source_file, dest_file);
+
+                st.Connect();
+
+                switch (Protocol) {
+                    case SecureTransfer.SSHTransferProtocol.SFTP:
+                        st.asyncCallback = AsyncCallback;
+                        break;
+                }
+
+                var t = new Thread(Start_Download);
+                t.SetApartmentState(ApartmentState.STA);
+                t.IsBackground = true;
+                t.Start();
+            } catch (Exception ex) {
+                pFrmApp.JS_Function(this.callback_error, ex.ToString());
+                st?.Disconnect();
+                st?.Dispose();
+            }
         }
 
 
+        private void AsyncCallback(IAsyncResult ar) {
+            if ("".Equals(callback_error) == false) {
+                pFrmApp.JS_Function(this.callback_error, ar.ToString());
+            }
+        }
 
-        private void StartTransferBG() {
+
+        private void Start_Download() {
+            try {
+                st.Download();
+
+                if (st.Protocol == SecureTransfer.SSHTransferProtocol.SFTP) {
+                    SftpFileAttributes att = st.SftpClt.GetAttributes(st.SrcFile);
+                    var fileSize = att.Size;
+
+                    while (!st.async_download_result.IsCompleted) {
+                        var max = fileSize > int.MaxValue
+                            ? Convert.ToInt32(fileSize / 1024)
+                            : Convert.ToInt32(fileSize);
+
+                        var cur = fileSize > int.MaxValue
+                            ? Convert.ToInt32(st.async_download_result.DownloadedBytes / 1024)
+                            : Convert.ToInt32(st.async_download_result.DownloadedBytes);
+                        Show_Progress(cur, max);
+                        Thread.Sleep(100);
+                    }
+                }
+                st.End_Download();
+                pFrmApp.JS_Function(this.callback_error, "传输完毕");
+                st.Disconnect();
+                st.Dispose();
+            } catch (Exception ex) {
+                pFrmApp.JS_Function(this.callback_error, ex.ToString());
+                st?.Disconnect();
+                st?.Dispose();
+            }
+        }
+
+        private void Start_Upload() {
             try {st.Upload();
 
                 // SftpClient is Asynchronous, so we need to wait here after the upload and handle the status directly since no status events are raised.
                 if (st.Protocol == SecureTransfer.SSHTransferProtocol.SFTP) {
                     var fi = new FileInfo(st.SrcFile);
-                    while (!st.asyncResult.IsCompleted) {
+                    while (!st.async_upload_result.IsCompleted) {
                         var max = fi.Length > int.MaxValue
                             ? Convert.ToInt32(fi.Length / 1024)
                             : Convert.ToInt32(fi.Length);
 
                         var cur = fi.Length > int.MaxValue
-                            ? Convert.ToInt32(st.asyncResult.UploadedBytes / 1024)
-                            : Convert.ToInt32(st.asyncResult.UploadedBytes);
-                        SshTransfer_Progress(cur, max);
+                            ? Convert.ToInt32(st.async_upload_result.UploadedBytes / 1024)
+                            : Convert.ToInt32(st.async_upload_result.UploadedBytes);
+                        Show_Progress(cur, max);
                         Thread.Sleep(50);
                     }
                 }
 
+                st.End_Upload();
+                
                 pFrmApp.JS_Function(this.callback_error,"传输完毕");
                 st.Disconnect();
                 st.Dispose();
@@ -174,7 +237,7 @@ namespace FunnyApp {
         }
 
 
-        private void SshTransfer_Progress(int transferredBytes, int totalBytes) {
+        private void Show_Progress(int transferredBytes, int totalBytes) {
             maxVal = totalBytes;
             curVal = transferredBytes;
 
@@ -237,7 +300,7 @@ namespace FunnyApp {
             }
         }
 
-        public string Net_Http_GET(string url) {
+        public string Http_GET(string url) {
             return S_Net.Http(url,"GET","","utf-8");
         }
 

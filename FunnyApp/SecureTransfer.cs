@@ -16,9 +16,13 @@ namespace FunnyApp {
         public string DstFile;
         public ScpClient ScpClt;
         public SftpClient SftpClt;
-        public SftpUploadAsyncResult asyncResult;
+        public SftpUploadAsyncResult async_upload_result;
+        public SftpDownloadAsyncResult async_download_result;
+
         public AsyncCallback asyncCallback;
 
+        FileStream stream_upload = null;
+        FileStream stream_download = null;
 
         public SecureTransfer() {
 
@@ -96,6 +100,26 @@ namespace FunnyApp {
             return strReturn;
         }
 
+        public void Download() {
+            if (Protocol == SSHTransferProtocol.SCP) {
+                if (!ScpClt.IsConnected) {
+                    return;
+                }
+                ScpClt.Download(SrcFile, new FileInfo(DstFile));
+            }
+
+            if (Protocol == SSHTransferProtocol.SFTP) {
+                if (!SftpClt.IsConnected) {
+                    return;
+                }
+
+                stream_download = new FileStream(DstFile, FileMode.Create);
+                async_download_result =
+                    (SftpDownloadAsyncResult)SftpClt.BeginDownloadFile(
+                        SrcFile, stream_download,
+                        asyncCallback);
+            }
+        }
 
         public void Upload() {
             if (Protocol == SSHTransferProtocol.SCP) {
@@ -105,7 +129,6 @@ namespace FunnyApp {
                     //    "SCP Not Connected!");
                     return;
                 }
-
                 ScpClt.Upload(new FileInfo(SrcFile), $"{DstFile}");
             }
 
@@ -116,9 +139,9 @@ namespace FunnyApp {
                     //    "SFTP Not Connected!");
                     return;
                 }
-
-                asyncResult =
-                    (SftpUploadAsyncResult)SftpClt.BeginUploadFile(new FileStream(SrcFile, Open), $"{DstFile}",
+                stream_upload = new FileStream(SrcFile, Open);
+                async_upload_result =
+                    (SftpUploadAsyncResult)SftpClt.BeginUploadFile(stream_upload, $"{DstFile}",
                         asyncCallback);
             }
         }
@@ -143,6 +166,18 @@ namespace FunnyApp {
         public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void End_Download() {
+
+            SftpClt.EndDownloadFile(async_download_result);
+            stream_download.Flush();
+            stream_download.Close();
+        }
+
+        public void End_Upload() {
+            SftpClt.EndUploadFile(async_upload_result);
+            stream_upload.Close();
         }
     }
 }

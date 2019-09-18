@@ -1,13 +1,23 @@
 
-//按钮点击
+var password="test";
+
 function upload_click(data){
-    var password=s_ui.Text_Read("txt1");
     var file=s_ui.Text_Read("txt_upload");
     var path=s_ui.Combox_Text("txt_ftp_path")+"/"+s_file.File_Short_Name(file);
 
     var hosts=s_ui.Text_Read("txt_host");
-    s_net.Net_Upload(hosts,"test",password,"22",file,path,"set_status","show_error");
+    s_net.ftp_upload(hosts,"test",password,"22",file,path,"set_status","show_error");
 }
+
+
+function download_click(data){
+    var file=s_ui.Combox_Text("txt_ftp_path");
+    var local=s_ui.Text_Read("txt_local")+"\\"+s_file.File_Short_Name(file);
+
+    var hosts=s_ui.Text_Read("txt_host");
+    s_net.ftp_download(hosts,"test",password,"22",file,local,"set_status","show_error");
+}
+
 
 function set_status(data){
     var strSplit=data.split(",");
@@ -35,7 +45,11 @@ function file_open_config(data){
 
 
 function callback_ftp_list(data){
+    var strSplit=data.split("|");
     s_ui.Text_Set("txt_error",data);
+    for (var i=0;i<strSplit.length;i++){
+        s_ui.Combox_Add("txt_ftp_path",strSplit[i]);
+    }
 }
 
 
@@ -44,27 +58,25 @@ function file_open(){
     s_ui.Text_Set("txt_upload",strLine);
 }
 
-s_ui.Text_Init("txt_host","robot6.funnyai.com",100,10,500,30);
-
-
-s_ui.Label_Init("lb_password","FTP密码：",10,70);
-
-s_ui.Password_Init("txt1","test",100,65,100,30);
-
+s_ui.Label_Init("lb_site","服务器：",10,50);
+s_ui.Text_Init("txt_host","robot6.funnyai.com",100,50,500,30);
 
 s_ui.Label_Init("lb_upload","上传文件：",10,100);
 
 
 s_ui.Text_Init("txt_upload","",100,100,500,30);
-s_ui.Button_Init("b2_1","选择文件",100,150,200,30,"file_open","");
+s_ui.Button_Init("b2_1","选择文件",620,100,200,30,"file_open","");
 
-s_ui.Label_Init("lb_ftp_path","路径：",10,200);
+s_ui.Label_Init("lb_ftp_path","路径：",10,150);
 
-s_ui.Combox_Init("txt_ftp_path","/upload/",100,200,500,30);
-s_ui.Combox_Add("txt_ftp_path","/root/happyli/lib/");
+s_ui.Combox_Init("txt_ftp_path","/upload/",100,150,500,30);
+s_ui.Combox_Add("txt_ftp_path","/upload/");
+
+s_ui.Button_Init("b_upload","上传",620,150,200,30,"upload_click","");
 
 
-s_ui.Button_Init("b3_1","upload",100,250,200,30,"upload_click","");
+s_ui.Text_Init("txt_local","D:",100,200,500,30);
+s_ui.Button_Init("b_download","下载",620,200,200,30,"download_click","");
 
 
 s_ui.TextBox_Init("txt_error","错误信息：",100,300,500,200);
@@ -72,9 +84,9 @@ s_ui.TextBox_Init("txt_error","错误信息：",100,300,500,200);
 
 s_ui.Progress_Init("progress1",100,500,500,30);
 
-s_ui.Show_Form(800,600);
+s_ui.Show_Form(860,600);
 
-s_ui.Form_Title("上传文件Test");
+s_ui.Form_Title("上传下载");
 
 //s_file.AES_Encrypt_File("E:\\sample1.txt","E:\\sample1_en.txt","test");
 //s_file.AES_Decrypt_File("E:\\sample1_en.txt","E:\\sample1_de.txt","test");

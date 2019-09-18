@@ -6,7 +6,7 @@ function upload_click(data){
     var path=s_ui.Combox_Text("txt_ftp_path")+"/"+s_file.File_Short_Name(file);
 
     var hosts=s_ui.Text_Read("txt_host");
-    s_net.Net_Upload(hosts,"root",password,"22",file,path,"set_status","show_error");
+    s_net.ftp_upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
 
 function set_status(data){
