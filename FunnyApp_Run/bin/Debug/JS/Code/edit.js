@@ -27,7 +27,7 @@ function save_click(data){
     var ID=s_ui.Text_Read("txt1");
     s_sys.Value_Save("ID",ID);
     s_sys.Value_Save("Content",s_ui.Text_Read("txt2"));
-    s_ui.Close();
+    s_ui.close();
 }
 
 

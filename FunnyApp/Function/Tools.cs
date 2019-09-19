@@ -291,7 +291,7 @@ namespace FunnyApp {
 
 
 
-        public void Sleep(int iSecond) {
+        public void sleep(int iSecond) {
             Thread.Sleep(1000 * iSecond);
         }
     }

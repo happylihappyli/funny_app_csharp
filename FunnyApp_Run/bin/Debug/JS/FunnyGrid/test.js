@@ -53,7 +53,7 @@ function WOE_IV(data){
     var IV=0;
     for (var i=0;i<count;i++){
         var x=(a[i]/sum_a)/(b[i]/sum_b);
-        var woe=sys.Math_ln(x);
+        var woe=s_math.ln(x);
         s_ui.DataGrid_Set("grid1",i,2,woe);
         
         IV+=((a[i]/sum_a)-(b[i]/sum_b))*woe;

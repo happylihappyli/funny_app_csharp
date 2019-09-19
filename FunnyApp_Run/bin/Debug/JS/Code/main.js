@@ -145,6 +145,7 @@ function index_init(data){
     
     s_index.Create_End();
     s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",max_id+"");
+    s_ui.Msg("索引生成成功！");
 }
 
 

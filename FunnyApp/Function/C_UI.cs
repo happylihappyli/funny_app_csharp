@@ -146,7 +146,7 @@ namespace FunnyApp {
             }
         }
 
-        public void DataGrid_Add_Line(string control_name,string data,string sep) {
+        public void datagrid_add_line(string control_name,string data,string sep) {
             DataGridView pControl = (DataGridView)Ctrls[control_name];
             if (pControl != null) {
 
@@ -159,7 +159,28 @@ namespace FunnyApp {
         }
 
 
-        public void DataGrid_Add_Button(
+        public void datagrid_add_checkbox(
+            string control_name,
+            string btn_Name,
+            string btn_Text,
+            string my_event) {
+            DataGridView pControl = (DataGridView)Ctrls[control_name];
+            if (pControl != null) {
+
+                //在datagridview中添加button按钮
+                DataGridViewCheckBoxColumn btn = new DataGridViewCheckBoxColumn();
+                btn.Tag = new Function_Callback(my_event, "");
+                btn.Name = btn_Name;
+                btn.HeaderText = btn_Text;
+                btn.FalseValue = "0";
+                btn.TrueValue = "1";
+                //btn.DefaultCellStyle.NullValue = btn_Text;
+                pControl.Columns.Add(btn);
+            }
+        }
+
+
+        public void datagrid_add_button(
             string control_name, 
             string btn_Name, 
             string btn_Text,
@@ -178,7 +199,7 @@ namespace FunnyApp {
         }
 
 
-        public int DataGrid_Rows(
+        public int datagrid_rows(
             string control_name) {
             DataGridView pControl = (DataGridView)Ctrls[control_name];
             if (pControl != null) {
@@ -188,19 +209,32 @@ namespace FunnyApp {
             return 0;
         }
 
-        public string DataGrid_Read(
+
+
+        public string datagrid_read(
             string control_name,
             int index,
             int column_index) {
             DataGridView pControl = (DataGridView)Ctrls[control_name];
             if (pControl != null) {
+                if (pControl.Rows[index].Cells[column_index].OwningColumn.GetType().Name
+                    == "DataGridViewCheckBoxColumn") {
+                    DataGridViewCheckBoxCell p = (DataGridViewCheckBoxCell)pControl.Rows[index].Cells[column_index];
+                    if (p.EditingCellFormattedValue.Equals(true)) {
+                        return "1";
+                    } else {
+                        return "0";
+                    }
+                } else {
+                    return Convert.ToString(pControl.Rows[index].Cells[column_index].Value);
+                }
 
-                return Convert.ToString(pControl.Rows[index].Cells[column_index].Value);
             }
             return "";
         }
 
-        public void DataGrid_Set(
+
+        public void datagrid_set(
             string control_name,
             int index, int Col, string strText) {
             DataGridView pControl = (DataGridView)Ctrls[control_name];
@@ -209,7 +243,7 @@ namespace FunnyApp {
             }
         }
 
-        public void DataGrid_Clear(
+        public void datagrid_clear(
             string control_name) {
             DataGridView pControl = (DataGridView)Ctrls[control_name];
             if (pControl != null) {
@@ -229,7 +263,7 @@ namespace FunnyApp {
         /// <param name="y"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void DataGrid_Init(string name,
+        public void datagrid_init(string name,
             int x, int y,
             int width, int height) {
 
@@ -245,12 +279,13 @@ namespace FunnyApp {
             } else {
                 this.Msg("控件已经存在:" + name);
             }
+            // CellContentClick 
             pControl.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
         }
 
 
 
-        public void DataGrid_Init_Column(string control_name,
+        public void datagrid_init_column(string control_name,
             int Column_Count,
             string strLines) {
 
@@ -823,13 +858,14 @@ namespace FunnyApp {
         }
 
 
-        public void PictureBox_Init(string name,
+        public void picturebox_init(string name,
             int x, int y,
             int width, int height) {
 
             Point p = new Point(x, y);//定义一个具体的位置  
             PictureBox pControl = new PictureBox();//实例化一个button  
             pControl.Name = name;
+            pControl.BorderStyle = BorderStyle.FixedSingle;
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
@@ -840,7 +876,7 @@ namespace FunnyApp {
             }
         }
 
-        public void PictureBox_Draw_Ellipse(
+        public void picturebox_draw_ellipse(
                 string control_name,
                 int x,int y,int width,int height,
                 string strColor,
@@ -867,7 +903,7 @@ namespace FunnyApp {
 
 
 
-        public void PictureBox_Draw_Line(
+        public void picturebox_draw_line(
                 string control_name,
                 int x, int y, int x2, int y2,
                 string strColor,
@@ -892,10 +928,45 @@ namespace FunnyApp {
             }
         }
 
+        public void win_active() {
+            pFrmApp.WindowState = FormWindowState.Normal;
+            pFrmApp.Activate();
+        }
+
+
+        public void win_min() {
+            pFrmApp.WindowState = FormWindowState.Minimized;
+        }
+
+        public int screen_width() {
+            return Screen.PrimaryScreen.Bounds.Width;
+        }
+        public int screen_height() {
+            return Screen.PrimaryScreen.Bounds.Height;
+        }
+
+        public void picturebox_capture_screen(
+                string control_name) {
+            PictureBox pControl = (PictureBox)Ctrls[control_name];
+
+            if (pControl != null) {
+
+
+                Bitmap bit = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
+                Graphics g = Graphics.FromImage(bit);
+
+                g.CopyFromScreen(new Point(0, 0), new Point(0, 0), bit.Size);
+
+                g.Dispose();
+
+                pControl.Image = bit;
+            }
+        }
 
 
 
-        public void PictureBox_Event(
+        public void picturebox_event(
                 string control_name,
                 string mouse_up_event) {
             PictureBox pControl = (PictureBox)Ctrls[control_name];
@@ -1188,9 +1259,105 @@ namespace FunnyApp {
             }
         }
 
+        public void status_label_init(
+            string name,string text,
+            int width, int height) {
+
+            ToolStripStatusLabel pControl = new ToolStripStatusLabel();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            pControl.Size = new Size(width, height);
+
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
+        }
+
+        public void status_label_show(
+            string name, string text) {
+
+            ToolStripStatusLabel pControl = (ToolStripStatusLabel)Ctrls[name];
+            if (pControl != null) {
+                pControl.Text = text;
+            }
+        }
+
+        public void status_init(string name,
+            int x, int y,
+            int width, int height,string fillType) {
+
+            Point p = new Point(x, y);//定义一个具体的位置  
+            StatusStrip pControl = new StatusStrip();//实例化一个button  
+            pControl.Name = name;
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+
+            switch (fillType.ToLower()){
+                case "fill":
+                    pControl.Dock = DockStyle.Fill;
+                    break;
+                case "top":
+                    pControl.Dock = DockStyle.Top;
+                    break;
+                case "left":
+                    pControl.Dock = DockStyle.Left;
+                    break;
+                case "right":
+                    pControl.Dock = DockStyle.Right;
+                    break;
+                case "bottom":
+                    pControl.Dock = DockStyle.Bottom;
+                    break;
+                case "none":
+                    pControl.Dock = DockStyle.None;
+                    break;
+            }
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.Msg("控件已经存在:" + name);
+            }
+            
+        }
+
+        public void status_add(
+            string name, string name2,
+            string fillType) {
+            StatusStrip pControl = (StatusStrip)Ctrls[name];
+            if (pControl != null) {
+                ToolStripItem pControl2 = (ToolStripItem)Ctrls[name2];
+                if (pControl2 != null) {
+                    pControl.Items.Add(pControl2);
+
+                    switch (fillType.ToLower()) {
+                        case "fill":
+                            pControl2.Dock = DockStyle.Fill;
+                            break;
+                        case "top":
+                            pControl2.Dock = DockStyle.Top;
+                            break;
+                        case "left":
+                            pControl2.Dock = DockStyle.Left;
+                            break;
+                        case "right":
+                            pControl2.Dock = DockStyle.Right;
+                            break;
+                        case "bottom":
+                            pControl2.Dock = DockStyle.Bottom;
+                            break;
+                        case "none":
+                            pControl2.Dock = DockStyle.None;
+                            break;
+                    }
+                }
+            }
+        }
 
 
-        public void Panel_Init(string name,
+        public void panel_init(string name,
             int x, int y,
             int width, int height,
             string fillType) {
@@ -1229,7 +1396,7 @@ namespace FunnyApp {
             }
         }
 
-        public void Panel_Add(
+        public void panel_add(
             string name, string name2,
             string fillType) {
             Panel pControl = (Panel)Ctrls[name];
@@ -1260,14 +1427,18 @@ namespace FunnyApp {
                     }
                 }
             }
-
         }
 
 
-        [Obsolete("Set_Text() is Obsolete,Use Text_Set()")]
-        public void Set_Text(string control_name, string text) {
-            Text_Set(control_name, text);
+        public void panel_autoscroll(
+            string name, string Value) {
+            Panel pControl = (Panel)Ctrls[name];
+            if (pControl != null) {
+                pControl.AutoScroll = (Value == "1");
+            }
         }
+
+
 
         public void Text_Set(string control_name, string text) {
             TextBox pControl = (TextBox)Ctrls[control_name];

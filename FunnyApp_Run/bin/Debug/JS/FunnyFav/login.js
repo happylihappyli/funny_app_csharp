@@ -81,7 +81,7 @@ function login_click(data){
     s_sys.Value_Save("password",pass1);
     s_sys.Value_Save("file",s_ui.Combox_Text("combox1"));
     
-    s_ui.Close();
+    s_ui.close();
 }
     
 

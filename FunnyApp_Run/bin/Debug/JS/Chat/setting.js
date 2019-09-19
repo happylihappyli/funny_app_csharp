@@ -85,7 +85,7 @@ function save_check_click(data){
     var result=s_net.http_post(url,data);
     s_ui.Msg(result);
     if (result.indexOf("登录成功")>-1){
-        s_ui.Close();
+        s_ui.close();
     }else{
     }
 }
