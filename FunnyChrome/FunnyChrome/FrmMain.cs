@@ -7,24 +7,29 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using B_Net.Funny;
+using B_TreapVB.TreapVB;
 using CefSharp;
 using CefSharp.MinimalExample.WinForms.Controls;
 using CefSharp.WinForms;
+using FunnyApp;
 
 namespace Funny {
     public partial class FrmMain : Form {
         private readonly ChromiumWebBrowser browser;
 
+        public static Treap<Object> pMap = new Treap<Object>();
         public FrmMain() {
             InitializeComponent();
 
-            Text = "CefSharp";
+            //Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser(Application.StartupPath + @"\test.html") {
+            browser = new ChromiumWebBrowser(
+                Application.StartupPath + @"\main.html") {
                 Dock = DockStyle.Fill,
             };
-            toolStripContainer.ContentPanel.Controls.Add(browser);
+            this.Controls.Add(browser);
+            browser.BringToFront();
 
             browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
             browser.LoadingStateChanged += OnLoadingStateChanged;
@@ -35,15 +40,15 @@ namespace Funny {
 
             CefSharpSettings.LegacyJavascriptBindingEnabled = true;
 
-            //browser.RegisterJsObject("sys", new C_SYS(browser),BindingOptions.DefaultBinder);
-            // RegisterAsyncJsObject
-            //browser.JavascriptObjectRepository.Register("sys", new C_SYS(browser));
-
             browser.JavascriptObjectRepository.ResolveObject += (s, eve) => {
                 var repo = eve.ObjectRepository;
-                if (eve.ObjectName == "sys") //这个名字对应页面上 CefSharp.BindObjectAsync 部分
-                {
-                    repo.Register("sys", new C_SYS(browser), isAsync: true, options: BindingOptions.DefaultBinder);
+                switch (eve.ObjectName) {
+                    case "s_sys":
+                        repo.Register("s_sys", new C_SYS(this,browser), isAsync: true, options: BindingOptions.DefaultBinder);
+                        break;
+                    case "s_file":
+                        repo.Register("s_file", new C_File(browser), isAsync: true, options: BindingOptions.DefaultBinder);
+                        break;
                 }
             };
 
@@ -65,7 +70,7 @@ namespace Funny {
         }
 
         private void OnBrowserStatusMessage(object sender, StatusMessageEventArgs args) {
-            this.InvokeOnUiThreadIfRequired(() => statusLabel.Text = args.Value);
+            this.InvokeOnUiThreadIfRequired(() => toolStripStatusLabel1.Text = args.Value);
         }
 
         private void OnLoadingStateChanged(object sender, LoadingStateChangedEventArgs args) {
@@ -103,7 +108,11 @@ namespace Funny {
         }
 
         public void DisplayOutput(string output) {
-            this.InvokeOnUiThreadIfRequired(() => outputLabel.Text = output);
+            this.InvokeOnUiThreadIfRequired(() => outputlabel.Text = output);
+        }
+        public void Display_Post(string strLine) {
+            this.InvokeOnUiThreadIfRequired(() => lb_translate.Text = strLine);
+            
         }
 
         private void HandleToolStripLayout(object sender, LayoutEventArgs e) {
@@ -151,14 +160,7 @@ namespace Funny {
                 browser.Load(url);
             }
         }
-
-        private void ShowDevToolsMenuItemClick(object sender, EventArgs e) {
-            browser.ShowDevTools();
-        }
-
-        private void BrowserForm_Load(object sender, EventArgs e) {
-
-        }
+ 
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e) {
             browser.ExecuteScriptAsync("DisplayDate()");
@@ -166,85 +168,53 @@ namespace Funny {
 
         private void toolStripButton1_Click(object sender, EventArgs e) {
 
-            //browser.JavascriptObjectRepository.UnRegister("sys");
-            //browser.JavascriptObjectRepository.Register("sys", new C_SYS(browser));
+        }
 
 
+        private void FrmMain_Load(object sender, EventArgs e) {
 
+        }
 
-            //CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+        private void showDevToolsToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            browser.ShowDevTools();
+        }
 
-            //browser.RegisterAsyncJsObject("sys", new C_SYS(browser));
+        private void testToolStripMenuItem1_Click(object sender, EventArgs e) {
+            urlTextBox.Text = "https://www.sciencedaily.com/";
+            LoadUrl(urlTextBox.Text);
+        }
 
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e) {
+            urlTextBox.Text = "https://www.funnyai.com/english/";
+            LoadUrl(urlTextBox.Text);
+        }
 
+        private void 配置ToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            MessageBox.Show("funnyapp 聊天软件登录即可！");
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e) {
 
             string script = File.ReadAllText(
-                Application.StartupPath + "\\funny_translate.js", 
+                Application.StartupPath + "\\funny_translate.js",
                 System.Text.Encoding.UTF8);
 
             browser.ExecuteScriptAsync(script);
         }
 
-        private void toolStripContainer_ContentPanel_Load(object sender, EventArgs e) {
-
+        private void toolStripButton2_Click_1(object sender, EventArgs e) {
+            var strLine = "CefSharp.BindObjectAsync(\"s_sys\");" +
+                "CefSharp.BindObjectAsync(\"s_file\");";
+            browser.ExecuteScriptAsync(strLine);
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e) {
-            browser.ExecuteScriptAsync("CefSharp.BindObjectAsync(\"sys\");");
+        private void toolStripButton1_Click_2(object sender, EventArgs e) {
+            browser.SetZoomLevel(1.5);
         }
 
-        private void testToolStripMenuItem1_Click(object sender, EventArgs e) {
-            urlTextBox.Text = "https://www.sciencedaily.com/";
-        }
-
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e) {
-            urlTextBox.Text = "https://www.funnyai.com/english/";
+        private void toolStripButton3_Click(object sender, EventArgs e) {
+            browser.SetZoomLevel(1.0);
         }
     }
 
-    public class C_SYS {
-        //方法名要小写，大写会失败
-        public ChromiumWebBrowser browser;
-
-        public C_SYS(ChromiumWebBrowser browser) {
-            this.browser = browser;
-        }
-        public string test() {
-            //MessageBox.Show("qqq");
-            return "aaa";
-        }
-
-
-        public string http_post(string url, string data) {
-            string strReturn = "";
-            strReturn = S_Net.http_post("", url, data, "POST", "utf-8", "");
-            return strReturn;
-        }
-
-
-        public string http_post2(string url, string data, string refer) {
-            string strReturn = "";
-            strReturn = S_Net.http_post("", url, data, "POST", "utf-8", refer);
-            return strReturn;
-        }
-
-
-        //public void http_post_asyn(string url, string data, string callback) {
-        //    Thread p = new Thread(http_post_sub);
-        //    C_URL pURL = new C_URL();
-        //    pURL.url = url;
-        //    pURL.data = data;
-        //    pURL.callback = callback;
-        //    p.Start();
-        //}
-
-        //private void http_post_sub(object pParam) {
-        //    //string url, string data;
-        //    C_URL pURL = (C_URL)pParam;
-        //    string strReturn = "";
-        //    strReturn = S_Net.http_post("", pURL.url, pURL.data, "POST", "utf-8", "");
-        //    //return strReturn;
-        //    browser.ExecuteScriptAsync(pURL.callback, new object[] { (object)strReturn });
-        //}
-    }
 }

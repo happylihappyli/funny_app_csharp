@@ -57,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common3", "Common3", "{81EE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common4", "Common4", "{2509BD28-7AD9-4029-80FB-3BA11668A091}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyChrome", "..\..\FunnyChrome\FunnyChrome\FunnyChrome.csproj", "{C043FFF7-5F71-4FFC-989A-E09E18548589}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyChrome", "..\FunnyChrome\FunnyChrome\FunnyChrome.csproj", "{C043FFF7-5F71-4FFC-989A-E09E18548589}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

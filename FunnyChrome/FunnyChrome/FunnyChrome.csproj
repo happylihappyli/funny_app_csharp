@@ -64,8 +64,10 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrmMain.cs">
@@ -76,6 +78,7 @@
     </Compile>
     <Compile Include="Controls\ControlExtensions.cs" />
     <Compile Include="C_URL.cs" />
+    <Compile Include="Function\C_File.cs" />
     <Compile Include="Program.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,7 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="C_SYS.cs" />
+    <Compile Include="Function\C_SYS.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmMain.resx">
@@ -116,9 +119,33 @@
     <None Include="Resources\chromium-256.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\funny_app_csharp\Common\B_Net\B_Net.vbproj">
+    <ProjectReference Include="..\..\Common\B_Data\B_Data.vbproj">
+      <Project>{755fa603-fb1e-41e0-aaf9-961a58a91b81}</Project>
+      <Name>B_Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\B_File\B_File.vbproj">
+      <Project>{c67a973a-0b41-4925-acfc-07516b1b20c8}</Project>
+      <Name>B_File</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\B_IniFile\B_IniFile.vbproj">
+      <Project>{cbde9274-9d0b-4200-aacd-fc544b313675}</Project>
+      <Name>B_IniFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\B_Net\B_Net.vbproj">
       <Project>{499c9509-5d09-4a51-b606-861bedd735a5}</Project>
       <Name>B_Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\B_String\B_String.vbproj">
+      <Project>{fc2b9f69-99d8-4d7b-89cb-156962af9a9c}</Project>
+      <Name>B_String</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\CommonTreapVB\B_TreapVB.vbproj">
+      <Project>{c29de218-7553-4124-a831-8adc683fe2d2}</Project>
+      <Name>B_TreapVB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\CS_Encrypt\CS_Encrypt.csproj">
+      <Project>{b3044f21-739c-4715-b897-8de6536ca3a9}</Project>
+      <Name>CS_Encrypt</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
