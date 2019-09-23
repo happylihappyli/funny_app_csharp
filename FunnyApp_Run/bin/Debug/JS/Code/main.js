@@ -10,8 +10,8 @@ var Path_Seg="";
 
 //添加回调函数
 function callback_add(data){
-    var id=s_sys.Value_Read("ID");
-    var content=s_sys.Value_Read("Content");
+    var id=s_sys.value_read("ID");
+    var content=s_sys.value_read("Content");
 
     if (id!="" && content!=""){
         s_file.save(Path_Data+"\\"+id+".txt",content);
@@ -23,23 +23,23 @@ function callback_add(data){
         s_index.Add_Document(id,content);
         s_index.Create_End();
         
-        s_sys.Value_Save("ID","");
-        s_sys.Value_Save("Content","");
+        s_sys.value_save("ID","");
+        s_sys.value_save("Content","");
     }
 }
 
 function index_add(data){
-    //s_ui.Msg(data);
-    s_sys.Value_Save("ID","");
-    s_sys.Value_Save("Content","");
+    //s_ui.msg(data);
+    s_sys.value_save("ID","");
+    s_sys.value_save("Content","");
     s_ui.Run_JS_Dialog("Code/new.js","callback_add");
 }
 
 
 //添加回调函数
 function callback_edit(data){
-    var id=s_sys.Value_Read("ID");
-    var content=s_sys.Value_Read("Content");
+    var id=s_sys.value_read("ID");
+    var content=s_sys.value_read("Content");
 
     if (id!="" && content!=""){
         s_file.save(Path_Data+"\\"+id+".txt",content);
@@ -50,19 +50,19 @@ function callback_edit(data){
         s_index.Add_Document(id,content);
         s_index.Create_End();
         
-        s_sys.Value_Save("ID","");
-        s_sys.Value_Save("Content","");
+        s_sys.value_save("ID","");
+        s_sys.value_save("Content","");
     }
 }
 
 function index_edit(data){
-    s_sys.Value_Save("ID",data);
+    s_sys.value_save("ID",data);
     s_ui.Run_JS_Dialog("Code/edit.js","callback_edit");
 }
 
 
 function search(data){
-    var seg=s_index.Seg(s_ui.Text_Read("txt1"));
+    var seg=s_index.Seg(s_ui.text_read("txt1"));
     var result=s_index.Search(Path_Index,seg);
     
     s_xml.init(result,"doc1");
@@ -86,9 +86,9 @@ function search(data){
 }
 
 function callback_init(data){
-    s_ui.Button_Enable("b_search",1);
-    s_ui.Button_Enable("b_add",1);
-    s_ui.Button_Enable("b_init",1);
+    s_ui.button_enable("b_search",1);
+    s_ui.button_enable("b_add",1);
+    s_ui.button_enable("b_init",1);
 }
 
 function init(data){
@@ -124,8 +124,8 @@ function New_URL(data){
 
 function index_init(data){
     
-    var id=s_sys.Value_Read("ID");
-    var content=s_sys.Value_Read("Content");
+    var id=s_sys.value_read("ID");
+    var content=s_sys.value_read("Content");
 
     s_index.Create_Start(Path_Index,true);
     
@@ -145,25 +145,25 @@ function index_init(data){
     
     s_index.Create_End();
     s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",max_id+"");
-    s_ui.Msg("索引生成成功！");
+    s_ui.msg("索引生成成功！");
 }
 
 
 //词库初始化
 s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
 
-s_ui.Text_Init("txt1","",10,30,300,30);
+s_ui.text_init("txt1","",10,30,300,30);
 s_ui.Text_Font_Size("txt1",12);
-s_ui.Button_Init("b_search","搜索",250,30,100,30,"search","");
-s_ui.Button_Enable("b_search",0);
+s_ui.button_init("b_search","搜索",250,30,100,30,"search","");
+s_ui.button_enable("b_search",0);
 
 
-s_ui.Button_Init("b_add","添加",500,30,100,30,"index_add","");
-s_ui.Button_Enable("b_add",0);
+s_ui.button_init("b_add","添加",500,30,100,30,"index_add","");
+s_ui.button_enable("b_add",0);
 
 
-s_ui.Button_Init("b_init","重新生成索引",550,30,100,30,"index_init","");
-s_ui.Button_Enable("b_init",0);
+s_ui.button_init("b_init","重新生成索引",550,30,100,30,"index_init","");
+s_ui.button_enable("b_init",0);
 
 s_ui.Web_Init("web",10,130,700,500);
 
@@ -173,7 +173,7 @@ s_ui.Web_New_Event("web","New_URL");
 s_ui.Control_Dock("web","fill");
 //s_ui.Control_Dock("panel_top","top");
 
-s_ui.Panel_Init("panel_top",10,10,200,30,"top");
+s_ui.panel_init("panel_top",10,10,200,30,"top");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","File","&File");
@@ -183,10 +183,10 @@ s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&L)","set_click","");
 
 
-s_ui.Panel_Add("panel_top","b_init","left");
-s_ui.Panel_Add("panel_top","b_add","left");
-s_ui.Panel_Add("panel_top","b_search","left");
-s_ui.Panel_Add("panel_top","txt1","left");
+s_ui.panel_add("panel_top","b_init","left");
+s_ui.panel_add("panel_top","b_add","left");
+s_ui.panel_add("panel_top","b_search","left");
+s_ui.panel_add("panel_top","txt1","left");
 
 
 

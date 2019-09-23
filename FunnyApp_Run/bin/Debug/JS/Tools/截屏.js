@@ -17,11 +17,11 @@ function C_Msg(ID,Msg){
 function send_msg_click(){
     msg_id+=1;
     
-    var strMsg=s_ui.Text_Read("txt_send");
-    var friend=s_ui.ListBox_Text("list_friend");
-    var index=s_ui.ListBox_Index("list_friend");
+    var strMsg=s_ui.text_read("txt_send");
+    var friend=s_ui.listbox_text("list_friend");
+    var index=s_ui.listbox_index("list_friend");
     if (index<0){
-        s_ui.Msg("请选择好友！");
+        s_ui.msg("请选择好友！");
         return ;
     }
     
@@ -38,7 +38,7 @@ function send_msg_click(){
         s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
         
     s_ui.Web_Content("web",log_msg);
-    s_ui.Text_Set("txt_send","");
+    s_ui.text_set("txt_send","");
     
     s_time.setTimeout("check_myMap", 3);//检查消息是否都发送过去了，没有发送的，再发送一次。
     
@@ -69,15 +69,15 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    s_ui.Text_Set("txt_info","event_connected");
-    s_ui.Button_Enable("btn_connect",0);
+    s_ui.text_set("txt_info","event_connected");
+    s_ui.button_enable("btn_connect",0);
     friend_list();
     
 }
 
 function event_disconnected(data){
-    s_ui.Text_Set("txt_info","event_disconnected");
-    s_ui.Button_Enable("btn_connect",1);
+    s_ui.text_set("txt_info","event_disconnected");
+    s_ui.button_enable("btn_connect",1);
     s_net.Socket_Connect();
 }
 
@@ -104,11 +104,11 @@ function event_chat(data){
             
             break;
         default:
-            var index=s_ui.ListBox_Select("list_friend",friend);
+            var index=s_ui.listbox_select("list_friend",friend);
             if (index==-1){
                 friend_list("");
                 sys.sleep(10);
-                s_ui.ListBox_Select("list_friend",friend);
+                s_ui.listbox_select("list_friend",friend);
             }
             var strMsg=s_time.Time_Now()+" "+obj.message;
             s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
@@ -130,24 +130,24 @@ function event_chat(data){
 function event_system(data){
     var obj=JSON.parse(data);
     var log_msg2=obj.from+"："+obj.message+"\r\n";
-    s_ui.Text_Set("txt_info",log_msg2);
+    s_ui.text_set("txt_info",log_msg2);
     switch(obj.type){
         case "chat_return":
-            s_ui.Text_Set("txt_info","chat_return:"+obj.message);
+            s_ui.text_set("txt_info","chat_return:"+obj.message);
             delete myMap[obj.message];
             break;
         case "30s:session":
             if (obj.from=="system"){
                 session_id=obj.message;
-                s_ui.Text_Set("txt_session",session_id);  
-                s_ui.Text_Set("txt_user_name",userName);
+                s_ui.text_set("txt_session",session_id);  
+                s_ui.text_set("txt_user_name",userName);
                 var friend="*";
                 var strLine="{\"from\":\""+userName+"\",\"type\":\"session\",\"to\":\".\",\"message\":\""+session_id+"\"}";
                 s_net.Send_Msg("sys_event",strLine); //服务器会记录用户名
             }
             break;
         case "list.all":
-            s_ui.ListBox_Add("list_friend",obj.message);
+            s_ui.listbox_add("list_friend",obj.message);
             break;
     }
 }
@@ -172,8 +172,8 @@ function log_click(data){
 }
 
 function friend_list(data){
-    s_ui.ListBox_Clear("list_friend");
-    s_ui.ListBox_Add("list_friend","*");
+    s_ui.listbox_clear("list_friend");
+    s_ui.listbox_add("list_friend","*");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
     s_net.Send_Msg("sys_event",strLine);
 }
@@ -208,7 +208,7 @@ function capture_click(data){
     
     s_ui.win_min();//最小化窗口
     
-    s_sys.Value_Save("sleep",data);
+    s_sys.value_save("sleep",data);
     s_sys.call_thread("截屏.sub.capture.js","callback_capture");
 }
 
@@ -225,8 +225,8 @@ s_ui.panel_add("panel1","pic1","none");
 
 s_ui.panel_init("panel_top",0,0,1000,30,"top");
 
-s_ui.Button_Init("b_capture","截屏",10,10,100,30,"capture_click","0");
-s_ui.Button_Init("b_capture2","截屏*3秒后",110,10,100,30,"capture_click","3");
+s_ui.button_init("b_capture","截屏",10,10,100,30,"capture_click","0");
+s_ui.button_init("b_capture2","截屏*3秒后",110,10,100,30,"capture_click","3");
 
 s_ui.panel_add("panel_top","b_capture2","left");
 s_ui.panel_add("panel_top","b_capture","left");
@@ -234,7 +234,7 @@ s_ui.panel_add("panel_top","b_capture","left");
 
 
 //其他属性
-//s_ui.Acception_Button("b_capture");
+//s_ui.acception_button("b_capture");
 s_ui.Show_Form(1100,800);
 s_ui.Form_Title("截屏");
 

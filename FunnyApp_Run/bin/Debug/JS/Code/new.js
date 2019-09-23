@@ -20,32 +20,32 @@ function init(data){
         max_id=parseInt(max_id);
     }
     max_id+=1;
-    s_ui.Text_Set("txt1",max_id);
+    s_ui.text_set("txt1",max_id);
 }
 
 function save_click(data){
-    var ID=s_ui.Text_Read("txt1");
+    var ID=s_ui.text_read("txt1");
     s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",ID);
-    s_sys.Value_Save("ID",ID);
-    s_sys.Value_Save("Content",s_ui.Text_Read("txt2"));
+    s_sys.value_save("ID",ID);
+    s_sys.value_save("Content",s_ui.text_read("txt2"));
     s_ui.close();
 }
 
 
-s_ui.TextBox_Init("txt2","",10,100,600,300);
+s_ui.textbox_init("txt2","",10,100,600,300);
 s_ui.Text_Font_Size("txt2",18);
 s_ui.Control_Dock("txt2","fill");
 
-s_ui.Panel_Init("panel1",0,0,500,25,"top");
+s_ui.panel_init("panel1",0,0,500,25,"top");
 
-s_ui.Text_Init("txt1","1",10,30,200,30);
+s_ui.text_init("txt1","1",10,30,200,30);
 s_ui.Text_Read_Only("txt1",1);
 
-s_ui.Button_Init("b_save","保存",250,30,200,30,"save_click","");
+s_ui.button_init("b_save","保存",250,30,200,30,"save_click","");
 
 
-s_ui.Panel_Add("panel1","b_save","left");
-s_ui.Panel_Add("panel1","txt1","left");
+s_ui.panel_add("panel1","b_save","left");
+s_ui.panel_add("panel1","txt1","left");
 
 
 

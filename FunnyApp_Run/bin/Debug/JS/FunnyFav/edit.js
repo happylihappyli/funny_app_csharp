@@ -33,15 +33,6 @@ function read_ini(){
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
-    
-    var count=parseInt(strCount);
-    for (var i=0;i<count;i++){
-        var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //s_ui.Combox_Add("cb_friend",strName);
-    }
-    if (count>0){
-        //s_ui.Combox_Select("cb_friend",0);
-    }
 }
 
 function connect_click(data){
@@ -64,8 +55,8 @@ function chat2(data){
 }
 
 function friend_list(data){
-    s_ui.ListBox_Clear("list_friend");
-    s_ui.ListBox_Add("list_friend","*");
+    s_ui.listbox_clear("list_friend");
+    s_ui.listbox_add("list_friend","*");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
     s_net.Send_Msg("sys_event",strLine);
 }
@@ -82,30 +73,30 @@ function callback_login(data){
 var arraylist=[];
 //读取收藏夹
 function read_fav(){
-    var file=sys.Value_Read("file");
+    var file=s_sys.value_read("file");
     if (s_file.File_Exists(file)==false){
         return ;
     }
     
-    var password=sys.Value_Read("password");
-    var strLines=s_file.File_Read(file);
+    var password=s_sys.value_read("password");
+    var strLines=s_file.read(file);
     strLines=s_string.AES_Decrypt(strLines,password)
     
     strLines=strLines.replaceAll("\n","\r\n");
-    s_ui.Text_Set("edit1",strLines);
+    s_ui.text_set("edit1",strLines);
 }
 
 
 //保存收藏夹
 function save_fav(data){
-    var file=sys.Value_Read("file");
-    var password=sys.Value_Read("password");
+    var file=s_sys.value_read("file");
+    var password=s_sys.value_read("password");
     if (password == "") {
-        s_ui.Msg("密码为空！");
+        s_ui.msg("密码为空！");
         return;
     }
     
-    var strLines = s_ui.Text_Read("edit1");
+    var strLines = s_ui.text_read("edit1");
     
     strLines=s_string.AES_Encrypt(strLines, password);
     s_file.File_Save(file,strLines);
@@ -113,14 +104,14 @@ function save_fav(data){
 }
 
 function tab_click(){
-    var strLines=s_ui.Text_Read("edit1");
+    var strLines=s_ui.text_read("edit1");
     
-    s_ui.Text_Set("edit1",strLines+"\t");
+    s_ui.text_set("edit1",strLines+"\t");
 }
 
-s_ui.TextBox_Init("edit1","",10,30,600,390);
+s_ui.textbox_init("edit1","",10,30,600,390);
 
-s_ui.Button_Init("b1_send","制表符",520,450,100,70,"tab_click","");
+s_ui.button_init("b1_send","制表符",520,450,100,70,"tab_click","");
 
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
@@ -130,7 +121,7 @@ s_ui.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
 
 
 //其他属性
-//s_ui.Acception_Button("b1_send");
+//s_ui.acception_button("b1_send");
 s_ui.Show_Form(700,600);
 s_ui.Form_Title("加密收藏夹");
 

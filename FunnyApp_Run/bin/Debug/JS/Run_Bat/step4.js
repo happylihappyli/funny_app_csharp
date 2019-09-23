@@ -8,7 +8,7 @@ function modify_click(data){
     var a=s_ui.datagrid_read("grid1",index,10);
     
     //s_ui.Run_JS("Run_Bat\\step3_map.js");
-    //s_ui.Msg(a);
+    //s_ui.msg(a);
 }
 
 function clear_data(data){
@@ -38,7 +38,7 @@ function save_click(data){
     var a=s_ui.datagrid_read("grid1",i,10);
     line+=a;
     }
-    s_ui.Msg(line);
+    s_ui.msg(line);
 }
 
 
@@ -54,10 +54,10 @@ s_ui.datagrid_init("grid1",10,60,750,380);
 
 
 
-s_ui.Button_Init("b_static","保存",100,450,200,30,"save_click","");
+s_ui.button_init("b_static","保存",100,450,200,30,"save_click","");
 
-s_ui.Button_Init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat\\step3");
-s_ui.Button_Init("b_next","下一步",350,500,200,30,"next_click","Run_Bat\\step5");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat\\step3");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat\\step5");
 
 
 s_ui.Show_Form(800,600);

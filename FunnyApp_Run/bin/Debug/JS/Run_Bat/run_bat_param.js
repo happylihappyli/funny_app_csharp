@@ -12,7 +12,7 @@ String.prototype.replaceAll = function (FindText, RepText) {
 
 
 function generate(data) {
-    var count=parseInt(s_ui.Text_Read("txt_param"));
+    var count=parseInt(s_ui.text_read("txt_param"));
     var strResult="";
 
     for (var i=0;i<count+1;i++){
@@ -26,16 +26,16 @@ function generate(data) {
         if (i<count) strResult+="\r\n";
     }
     
-    s_ui.Text_Set("txt_param1",strResult);
+    s_ui.text_set("txt_param1",strResult);
 }
 
 function run_join(bLeft){
-    s_ui.Text_Set("txt_result","");
+    s_ui.text_set("txt_result","");
 
-    var strLines=s_ui.Text_Read("txt_param1");
+    var strLines=s_ui.text_read("txt_param1");
     strLines=strLines.replaceAll("\r\n","\n");
     
-    var strLines2=s_ui.Text_Read("txt_param2");
+    var strLines2=s_ui.text_read("txt_param2");
     strLines2=strLines2.replaceAll("\r\n","\n");
     
     var strSplit=strLines.split("\n");
@@ -52,21 +52,21 @@ function run_join(bLeft){
              }
         }
     }
-    s_ui.Text_Set("txt_result",output);
+    s_ui.text_set("txt_result",output);
 }
 
 
-s_ui.Label_Init("lb1","参数：",10,10);
-s_ui.Text_Init("txt_param","28",100,10,100,150);
-s_ui.TextBox_Init("txt_param1","",100,50,300,300);
-s_ui.TextBox_Init("txt_param2","21\r\n22",500,50,100,300);
-s_ui.TextBox_Init("txt_result","",100,400,300,300);
+s_ui.label_init("lb1","参数：",10,10);
+s_ui.text_init("txt_param","28",100,10,100,150);
+s_ui.textbox_init("txt_param1","",100,50,300,300);
+s_ui.textbox_init("txt_param2","21\r\n22",500,50,100,300);
+s_ui.textbox_init("txt_result","",100,400,300,300);
 
-s_ui.Button_Init("b2_1","生成",500,10,100,30,"generate","");
+s_ui.button_init("b2_1","生成",500,10,100,30,"generate","");
 
-s_ui.Button_Init("b2_2","Join左右",650,200,100,30,"run_join","1");
+s_ui.button_init("b2_2","Join左右",650,200,100,30,"run_join","1");
 
-s_ui.Button_Init("b2_3","Join右左",650,250,100,30,"run_join","0");
+s_ui.button_init("b2_3","Join右左",650,250,100,30,"run_join","0");
 
 s_ui.Show_Form(800,800);
 

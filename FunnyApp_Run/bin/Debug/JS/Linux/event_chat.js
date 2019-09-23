@@ -5,10 +5,10 @@ function event_chat(data){
     
     if (obj.type=="encrypt"){
     }else{
-        var index=s_ui.ListBox_Select("list_friend",friend);
+        var index=s_ui.listbox_select("list_friend",friend);
         if (index==-1){
             friend_list("");
-            s_ui.ListBox_Select("list_friend",friend);
+            s_ui.listbox_select("list_friend",friend);
         }
         var strMsg=s_time.Time_Now()+"<br>"+obj.message;
         s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");

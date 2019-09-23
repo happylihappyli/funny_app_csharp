@@ -30,4 +30,3 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_IniFile\obj\Debug\B_IniF
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_IniFile\obj\Debug\B_IniFile.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_IniFile\obj\Debug\B_IniFile.xml
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_IniFile\obj\Debug\B_IniFile.pdb
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\B_IniFile\obj\Debug\B_IniFile.vbprojAssemblyReference.cache

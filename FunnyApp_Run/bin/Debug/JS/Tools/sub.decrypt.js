@@ -1,6 +1,6 @@
 
-var file1=s_sys.Value_Read("file1");// s_ui.Text_Read("txt_file2");
-var file2=s_sys.Value_Read("file2");//s_ui.Text_Read("txt_file3");
+var file1=s_sys.value_read("file1");// s_ui.text_read("txt_file2");
+var file2=s_sys.value_read("file2");//s_ui.text_read("txt_file3");
 
 var key="test";
 var step=1024;

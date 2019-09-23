@@ -34,25 +34,25 @@ function init(data){
     var weather1=weather("上海");
     var weather2=weather("银川");
     s_ui.status_label_show("status_label","上海："+weather1+"  银川："+weather2);
-    //s_ui.Msg(weather);
+    //s_ui.msg(weather);
 }
-s_ui.Button_Init("b1","控制面板",50,50,100,30,"show_tools","Tools\\控制面板");
+s_ui.button_init("b1","控制面板",50,50,100,30,"show_tools","Tools\\控制面板");
 
-s_ui.Button_Init("b1_2","科学上网",200,50,100,30,"show_tools","Proxy\\index");
+s_ui.button_init("b1_2","科学上网",200,50,100,30,"show_tools","Proxy\\index");
 
-s_ui.Button_Init("b1_3","上传文件",350,50,100,30,"show_tools","Tools\\上传文件");
-
-
-s_ui.Button_Init("b2_1","计算器",50,100,100,30,"show_tools","Calculate\\index");
-s_ui.Button_Init("b2_2","加密收藏夹",200,100,100,30,"show_tools2","FunnyFav\\index");
-s_ui.Button_Init("b_clock","闹钟",350,100,100,30,"show_tools2","Clock\\index");
-
-s_ui.Button_Init("b3_1","FA Java",50,150,100,30,"show_tools2","FA_Java\\index");
-s_ui.Button_Init("b3_2","加密工具",200,150,100,30,"show_tools2","Tools\\加密工具");
-s_ui.Button_Init("b1_5","聊天",350,150,100,30,"show_tools2","聊天");
+s_ui.button_init("b1_3","上传文件",350,50,100,30,"show_tools","Tools\\上传文件");
 
 
-s_ui.Button_Init("b_capture","截屏",50,200,100,30,"show_tools2","Tools\\截屏");
+s_ui.button_init("b2_1","计算器",50,100,100,30,"show_tools","Calculate\\index");
+s_ui.button_init("b2_2","加密收藏夹",200,100,100,30,"show_tools2","FunnyFav\\index");
+s_ui.button_init("b_clock","闹钟",350,100,100,30,"show_tools2","Clock\\index");
+
+s_ui.button_init("b3_1","FA Java",50,150,100,30,"show_tools2","FA_Java\\index");
+s_ui.button_init("b3_2","加密工具",200,150,100,30,"show_tools2","Tools\\加密工具");
+s_ui.button_init("b1_5","聊天",350,150,100,30,"show_tools2","Chat\\main");
+
+
+s_ui.button_init("b_capture","截屏",50,200,100,30,"show_tools2","Tools\\截屏");
 
 s_ui.status_init("status",0,0,200,30,"bottom");
 s_ui.status_label_init("status_label","test",300,30);

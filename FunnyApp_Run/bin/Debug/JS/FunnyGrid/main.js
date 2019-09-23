@@ -1,4 +1,4 @@
-[[[common.js]]]
+[[[..\\data\\common_string.js]]]
 [[[tools.js]]]
 [[[data.js]]]
 [[[correlation.js]]]
@@ -15,13 +15,13 @@ function Node_Click(data){
 
 function modify_click(data){
     var index=parseInt(data);
-    var a=s_ui.DataGrid_Read("grid1",index,0);
+    var a=s_ui.datagrid_Read("grid1",index,0);
     
-    s_ui.Msg(":"+a);
+    s_ui.msg(":"+a);
 }
 
 function clear_data(data){
-    s_ui.DataGrid_Clear("grid1");
+    s_ui.datagrid_clear("grid1");
 }
 
 //界面

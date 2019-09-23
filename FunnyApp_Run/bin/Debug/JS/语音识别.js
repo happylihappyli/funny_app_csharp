@@ -27,7 +27,7 @@ function b_recognize_click(data){
     
     var url="https://www.funnyai.com/funnyai/fs_ai_reply.php?id=1&web=0&key="+encodeURIComponent(msg);
     //sys.Set_Text("txt1",url);
-    var result=s_net.Net_Http_GET(url);
+    var result=s_net.http_get(url);
     sys.TTS(result);
     sys.Set_Text("txt2",result);
 }
@@ -41,15 +41,15 @@ function init(){
 }
 
 function b_read_click(data){
-    var a=s_ui.Text_Read("txt1");
+    var a=s_ui.text_read("txt1");
     sys.TTS(a);
 }
 
-s_ui.Button_Init("b_record","",100,100,49,46,"b_record_click","");
-s_ui.Button_Init("b_read","阅读",200,100,49,46,"b_read_click","");
+s_ui.button_init("b_record","",100,100,49,46,"b_record_click","");
+s_ui.button_init("b_read","阅读",200,100,49,46,"b_read_click","");
 
-s_ui.TextBox_Init("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
-s_ui.TextBox_Init("txt2","AI回复：",100,300,300,100);
+s_ui.textbox_init("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
+s_ui.textbox_init("txt2","AI回复：",100,300,300,100);
 
 s_ui.Show_Form(500,500);
 s_ui.Form_Title("语音识别");

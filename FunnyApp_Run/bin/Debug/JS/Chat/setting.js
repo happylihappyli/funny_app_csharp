@@ -31,15 +31,15 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    s_ui.Text_Set("txt_info","event_connected");
-    s_ui.Button_Enable("btn_connect",0);
+    s_ui.text_set("txt_info","event_connected");
+    s_ui.button_enable("btn_connect",0);
     friend_list();
     
 }
 
 function event_disconnected(data){
-    s_ui.Text_Set("txt_info","event_disconnected");
-    s_ui.Button_Enable("btn_connect",1);
+    s_ui.text_set("txt_info","event_disconnected");
+    s_ui.button_enable("btn_connect",1);
     s_net.Socket_Connect();
 }
 
@@ -60,7 +60,7 @@ function read_ini(){
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
         var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //s_ui.Combox_Add("cb_friend",strName);
+        //s_ui.combox_add("cb_friend",strName);
     }
     if (count>0){
         //s_ui.Combox_Select("cb_friend",0);
@@ -68,12 +68,12 @@ function read_ini(){
 }
 
 function save_check_click(data){
-    var name = s_ui.Text_Read("name");
+    var name = s_ui.text_read("name");
     if (name==""){
-        s_ui.Msg("请输入用户名");
+        s_ui.msg("请输入用户名");
         return ;
     }
-    var password=s_ui.Text_Read("password");
+    var password=s_ui.text_read("password");
     var md5=s_string.md5(password);
     
     s_file.Ini_Save("D:\\Net\\Web\\main.ini","main","account",name);
@@ -83,7 +83,7 @@ function save_check_click(data){
     var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
     
     var result=s_net.http_post(url,data);
-    s_ui.Msg(result);
+    s_ui.msg(result);
     if (result.indexOf("登录成功")>-1){
         s_ui.close();
     }else{
@@ -93,17 +93,17 @@ function save_check_click(data){
 var userName=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
 
 
-s_ui.Label_Init("lb1","www.funnyai.com的用户名和密码",10,30);
+s_ui.label_init("lb1","www.funnyai.com的用户名和密码",10,30);
 
-s_ui.Label_Init("lb2","用户名:",10,100);
-s_ui.Text_Init("name",userName,150,100,300,30);
-s_ui.Label_Init("lb3","密码:",10,150);
-s_ui.Password_Init("password","",150,150,300,30);
+s_ui.label_init("lb2","用户名:",10,100);
+s_ui.text_init("name",userName,150,100,300,30);
+s_ui.label_init("lb3","密码:",10,150);
+s_ui.password_init("password","",150,150,300,30);
 
-s_ui.Button_Init("b1_save","登录",150,200,100,30,"save_check_click","");
+s_ui.button_init("b1_save","登录",150,200,100,30,"save_check_click","");
 
 
 //其他属性
-s_ui.Acception_Button("b1_save");
+s_ui.acception_button("b1_save");
 s_ui.Show_Form(560,380);
 s_ui.Form_Title("参数设置");

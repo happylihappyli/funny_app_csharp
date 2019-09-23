@@ -25,10 +25,7 @@ namespace FunnyApp.Function {
 
 
         public void setTimeout(string strFunction, int iSec,string memo) {
-            //SetTimeout(1000 * iSec, delegate {
-            //    pFrmApp.Call_Event(strFunction, "");//, data.ToString());
-            //});
-
+            
             var t = Task.Run(async delegate {
                 Console.WriteLine("iSec秒");
                 await Task.Delay(1000 * iSec);
@@ -38,19 +35,7 @@ namespace FunnyApp.Function {
                     Console.WriteLine("iSec秒后会执行此输出语句");
                 }
                 pFrmApp.Call_Event(strFunction, memo);
-                //return 42;
             });
         }
-
-
-        //private static void SetTimeout(double interval, Action action) {
-        //    System.Timers.Timer timer = new System.Timers.Timer(interval);
-        //    timer.Elapsed += delegate (object sender, System.Timers.ElapsedEventArgs e) {
-        //        timer.Enabled = false;
-        //        action();
-        //    };
-        //    timer.Enabled = true;
-
-        //}
     }
 }

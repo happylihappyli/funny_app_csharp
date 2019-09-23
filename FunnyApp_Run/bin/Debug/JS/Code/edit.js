@@ -15,35 +15,35 @@ function init(data){
         set_click("");
     }
     
-    var id=s_sys.Value_Read("ID");
-    s_ui.Text_Set("txt1",id);
+    var id=s_sys.value_read("ID");
+    s_ui.text_set("txt1",id);
     
     var file=Path_Data+"\\"+id+".txt";
     var content=s_file.read(file);
-    s_ui.Text_Set("txt2",content);
+    s_ui.text_set("txt2",content);
 }
 
 function save_click(data){
-    var ID=s_ui.Text_Read("txt1");
-    s_sys.Value_Save("ID",ID);
-    s_sys.Value_Save("Content",s_ui.Text_Read("txt2"));
+    var ID=s_ui.text_read("txt1");
+    s_sys.value_save("ID",ID);
+    s_sys.value_save("Content",s_ui.text_read("txt2"));
     s_ui.close();
 }
 
 
-s_ui.TextBox_Init("txt2","",10,100,600,300);
+s_ui.textbox_init("txt2","",10,100,600,300);
 s_ui.Text_Font_Size("txt2",18);
 s_ui.Control_Dock("txt2","fill");
 
-s_ui.Panel_Init("panel1",0,0,500,25,"top");
+s_ui.panel_init("panel1",0,0,500,25,"top");
 
-s_ui.Text_Init("txt1","1",10,30,200,30);
+s_ui.text_init("txt1","1",10,30,200,30);
 s_ui.Text_Read_Only("txt1",1);
 
-s_ui.Button_Init("b_save","保存",250,30,200,30,"save_click","");
+s_ui.button_init("b_save","保存",250,30,200,30,"save_click","");
 
-s_ui.Panel_Add("panel1","b_save","left");
-s_ui.Panel_Add("panel1","txt1","left");
+s_ui.panel_add("panel1","b_save","left");
+s_ui.panel_add("panel1","txt1","left");
 
 s_ui.Show_Form(700,600);
 s_ui.Form_Title("新建文件");

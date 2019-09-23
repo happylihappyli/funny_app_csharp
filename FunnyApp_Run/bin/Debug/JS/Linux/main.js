@@ -10,6 +10,10 @@ var css_head='<html><head>\n'
 +'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'
 +'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
 +'<body>\n';
+var sep=1;
+
+
+[[[..\\data\\common_string.js]]]
 
 //消息和发送计数器
 function C_Msg(ID,Msg){
@@ -18,12 +22,11 @@ function C_Msg(ID,Msg){
     this.Count=0;
 }
 
-var sep=1;
 
 
 
 function New_URL(data){
-    s_ui.Msg(data);
+    //s_ui.msg(data);
     var strSplit=data.split("?");
     var file=strSplit[1];
     switch(strSplit[0]){
@@ -41,14 +44,15 @@ function New_URL(data){
 function send_msg_click(){
     msg_id+=1;
     
-    var index=s_ui.ListBox_Index("list_friend");
+    var index=s_ui.listbox_index("list_friend");
     if (index<0){
-        s_ui.Msg("请选择好友！");
+        s_ui.msg("请选择好友！");
         return ;
     }
-    var strMsg=s_ui.Combox_Text("combox_head")+" "+s_ui.Text_Read("txt_send");
-    var friend=s_ui.ListBox_Text("list_friend");
-    var strType="js";
+    //s_ui.combox_text("combox_head")+" "+
+    var strMsg=s_ui.text_read("txt_send");
+    var friend=s_ui.listbox_text("list_friend");
+    var strType="cmd";
     
     var token="";
     
@@ -63,21 +67,22 @@ function send_msg_click(){
         token=strSplit[2];
     }
 
-
     var strLine="";
+    
+    var strMsg2=strMsg.replaceAll("\"","\\\"");
     
     if (token==""){
         strLine="{\"id\":\""+msg_id+"\","
             +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
-            +"\"to\":\""+friend+"\",\"message\":\""+strMsg+"\"}";
+            +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
     }else{
         strLine="{\"id\":\""+msg_id+"\","
             +"\"token\":\""+token+"\","
             +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
-            +"\"to\":\""+friend+"\",\"message\":\""+strMsg+"\"}";
+            +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
     }
     
-    s_ui.Text_Set("txt_info",strLine);
+    s_ui.text_set("txt_info",strLine);
     
     myMap["K"+msg_id]=new C_Msg(msg_id,strLine);
     
@@ -90,7 +95,7 @@ function send_msg_click(){
         s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
     
     s_ui.Web_Content("web",css_head+log_msg);
-    s_ui.Text_Set("txt_send","");
+    s_ui.text_set("txt_send","");
     
 }
 
@@ -122,15 +127,15 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    s_ui.Text_Set("txt_info","event_connected");
-    s_ui.Button_Enable("btn_connect",0);
+    s_ui.text_set("txt_info","event_connected");
+    s_ui.button_enable("btn_connect","0");
     friend_list();
     
 }
 
 function event_disconnected(data){
-    s_ui.Text_Set("txt_info","event_disconnected");
-    s_ui.Button_Enable("btn_connect",1);
+    s_ui.text_set("txt_info","event_disconnected");
+    s_ui.button_enable("btn_connect","1");
     s_net.Socket_Connect();
 }
 
@@ -141,9 +146,9 @@ function clear_click(data){
 
 function friend_change(data){
     
-    var friend=s_ui.ListBox_Text("list_friend");
+    var friend=s_ui.listbox_text("list_friend");
     if (friend!=""){
-        //s_sys.Value_Save("friend_selected",friend);
+        //s_sys.value_save("friend_selected",friend);
         s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
     }
 }
@@ -152,8 +157,8 @@ function select_old_friend(data){
     var friend=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","friend_selected");
 
     if (friend!=null && friend!=""){
-        s_ui.Text_Set("txt_info","选择刚才选择的好友:"+friend);
-        s_ui.ListBox_Select("list_friend",friend);
+        s_ui.text_set("txt_info","选择刚才选择的好友:"+friend);
+        s_ui.listbox_select("list_friend",friend);
     }
 }
 
@@ -161,17 +166,17 @@ function select_old_friend(data){
 function event_system(data){
     var obj=JSON.parse(data);
     var log_msg2=obj.from+"："+obj.message+"\r\n";
-    s_ui.Text_Set("txt_info",log_msg2);
+    s_ui.text_set("txt_info",log_msg2);
     switch(obj.type){
         case "chat_return":
-            s_ui.Text_Set("txt_info","chat_return:"+obj.message);
+            s_ui.text_set("txt_info","chat_return:"+obj.message);
             delete myMap["K"+obj.oid];
             break;
         case "30s:session":
             if (obj.from=="system"){
                 session_id=obj.message;
-                s_ui.Text_Set("txt_session",session_id);  
-                s_ui.Text_Set("txt_user_name",userName);
+                s_ui.text_set("txt_session",session_id);  
+                s_ui.text_set("txt_user_name",userName);
                 var friend="*";
                 var strLine="{\"from\":\""+userName+"\",\"type\":\"session\",\"to\":\".\",\"message\":\""+session_id+"\"}";
                 s_net.Send_Msg("sys_event",strLine); //服务器会记录用户名
@@ -179,7 +184,7 @@ function event_system(data){
             }
             break;
         case "list.all":
-            s_ui.ListBox_Add("list_friend",obj.message);
+            s_ui.listbox_add("list_friend",obj.message);
             break;
     }
 }
@@ -195,11 +200,6 @@ function read_ini(){
     
 }
 
-function connect_click(data){
-    var url="http://robot6.funnyai.com:8000";
-    s_net.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
-    read_ini();
-}
 
 function log_click(data){
     s_ui.Run_App(disk+"\\Net\\Web\\log","");
@@ -215,8 +215,8 @@ function chat2(data){
 }
 
 function friend_list(data){
-    s_ui.ListBox_Clear("list_friend");
-    s_ui.ListBox_Add("list_friend","*");
+    s_ui.listbox_clear("list_friend");
+    s_ui.listbox_add("list_friend","*");
     var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
     s_net.Send_Msg("sys_event",strLine);
 }
@@ -226,7 +226,7 @@ function set_click(data){
 }
 
 function cmd_sub(data){
-    s_ui.Text_Set("txt_send",data);
+    s_ui.text_set("txt_send",data);
     send_msg_click();
 }
 
@@ -256,38 +256,43 @@ function show_file(data){
 
 
 function change_group(data){
-    s_sys.Value_Save("file",data);
-    s_sys.Value_Save("cmd","");
+    s_sys.value_save("file",data);
+    s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("Linux\\change_own.js","callback_cmd");
 }
 
 
 function callback_cmd(data){
-    var line=s_sys.Value_Read("cmd");
+    var line=s_sys.value_read("cmd");
     if (line!=""){
-        s_ui.Text_Set("txt_send",line);
+        s_ui.text_set("txt_send",line);
         send_msg_click();
     }
 }
 
 function new_user(data){
-    s_sys.Value_Save("cmd","");
+    s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("Linux\\new_user.js","callback_cmd");
 }
 
 function new_group(data){
-    s_sys.Value_Save("cmd","");
+    s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("Linux\\new_group.js","callback_cmd");
 }
 
 function add_user_2_group(data){
-    s_sys.Value_Save("cmd","");
+    s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("Linux\\user_group.js","callback_cmd");
 }
 
+function connect_click(data){
+    var url="http://robot6.funnyai.com:8000";
+    s_net.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
+    read_ini();
+}
 //检查是否联网
 function check_connected(data){
-    s_ui.Text_Set("txt_info","check_connected...");
+    s_ui.text_set("txt_info","check_connected...");
     s_time.setTimeout("check_connected",2,"check_connected");
     
     if (s_net.Socket_Connected()){
@@ -307,6 +312,11 @@ function check_connected(data){
 function restart_ssh(data){
     data="sudo service ssh restart";
     cmd_sub(data);
+}
+
+function file_sql_input(data){
+    s_sys.value_save("cmd","");
+    s_ui.Run_JS_Dialog("Linux\\file_sql_input.js","callback_cmd");
 }
 
 [[[ui.js]]]

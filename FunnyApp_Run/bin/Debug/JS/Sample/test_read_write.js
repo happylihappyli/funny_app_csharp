@@ -18,7 +18,7 @@ function index_add(data){
 
 
 function search(data){
-    var seg=s_index.Seg(s_ui.Text_Read("txt1"));
+    var seg=s_index.Seg(s_ui.text_read("txt1"));
     var result=s_index.Search("D:\\Net\\Web\\index",seg);
     
     s_xml.init(result,"doc1");
@@ -46,9 +46,9 @@ function test(data){
 }
 
 //s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
-s_ui.Text_Init("txt1","输入信息",10,10,200,30);
+s_ui.text_init("txt1","输入信息",10,10,200,30);
 
-s_ui.Button_Init("b2","Test",250,50,200,30,"test","");
+s_ui.button_init("b2","Test",250,50,200,30,"test","");
 
 
 s_ui.Web_Init("web",10,100,700,500);

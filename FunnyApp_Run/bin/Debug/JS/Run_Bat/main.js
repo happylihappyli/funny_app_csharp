@@ -34,12 +34,12 @@ function init(data){
     var weather1=weather("上海");
     var weather2=weather("银川");
     s_ui.status_label_show("status_label","上海："+weather1+"  银川："+weather2);
-    //s_ui.Msg(weather);
+    //s_ui.msg(weather);
 }
 
-s_ui.Button_Init("b_bat","批量跑任务",50,50,100,30,"show_tools","Run_Bat\\bat");
+s_ui.button_init("b_bat","批量跑任务",50,50,100,30,"show_tools","Run_Bat\\bat");
 
-s_ui.Button_Init("b_model","建模工具",200,50,100,30,"show_tools","Run_Bat\\step1");
+s_ui.button_init("b_model","建模工具",200,50,100,30,"show_tools","Run_Bat\\step1");
 
 
 

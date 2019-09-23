@@ -1,4 +1,4 @@
-s_ui.DataGrid_Init("grid1",10,60,750,380);
+s_ui.datagrid_init("grid1",10,60,750,380);
 
 
 s_ui.Web_Init("web1",10,450,750,250);

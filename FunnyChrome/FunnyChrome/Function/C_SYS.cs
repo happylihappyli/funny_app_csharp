@@ -1,6 +1,7 @@
 ﻿using B_IniFile;
 using B_Net.Funny;
 using B_String.Funny;
+using B_TreapVB.TreapVB;
 using CefSharp;
 using CefSharp.WinForms;
 using System;
@@ -15,6 +16,8 @@ namespace Funny {
 
 
     public class C_SYS {
+        public static Treap<string> pTreap = new Treap<string>();
+
         //方法名要小写，大写会失败
         public ChromiumWebBrowser browser;
         FrmMain pFrmMain;
@@ -37,6 +40,8 @@ namespace Funny {
         public string http_post(string url, string data) {
             string strReturn = "";
             strReturn = S_Net.http_post("", url, data, "POST", "utf-8", "");
+
+            pFrmMain.Display_Post(strReturn);
             return strReturn;
         }
 
@@ -49,6 +54,21 @@ namespace Funny {
             pFrmMain.Display_Post(strReturn);
 
             return strReturn;
+        }
+
+
+        public string check_know(string word) {
+            string strKnow = pTreap.find(word);
+            if (strKnow != null) {
+                return strKnow;
+            } else {
+                return "0";
+            }
+        }
+
+        public void  put_check_word(string word,string iKnow) {
+            if (pTreap.find(word) != null) pTreap.Remove(word);
+            pTreap.insert(word, iKnow);
         }
 
 

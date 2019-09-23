@@ -286,6 +286,12 @@ Namespace TreapVB
 
             Return boolKeyFound
         End Function
+
+        Public Function Remove(ByVal key As String) As Boolean
+            Return Remove(New C_K_Str(key))
+        End Function
+
+
         '/<summary>
         '/ RemoveMin
         '/ removes the node with the minimum key

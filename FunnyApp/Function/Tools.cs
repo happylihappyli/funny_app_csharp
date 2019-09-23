@@ -203,12 +203,12 @@ namespace FunnyApp {
         }
 
 
-        public void Value_Save(string key,string value) {
+        public void value_save(string key,string value) {
 
             FrmApp.pMap.insert("value:" + key, value);
         }
 
-        public string Value_Read(string key) {
+        public string value_read(string key) {
             return (string)FrmApp.pMap.find("value:" + key);
         }
 

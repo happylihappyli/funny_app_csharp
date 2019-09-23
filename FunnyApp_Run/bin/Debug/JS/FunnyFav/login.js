@@ -31,15 +31,15 @@ function text_keydown(data){
 
 
 function event_connected(data){
-    s_ui.Text_Set("txt_info","event_connected");
-    s_ui.Button_Enable("btn_connect",0);
+    s_ui.text_set("txt_info","event_connected");
+    s_ui.button_enable("btn_connect",0);
     friend_list();
     
 }
 
 function event_disconnected(data){
-    s_ui.Text_Set("txt_info","event_disconnected");
-    s_ui.Button_Enable("btn_connect",1);
+    s_ui.text_set("txt_info","event_disconnected");
+    s_ui.button_enable("btn_connect",1);
     s_net.Socket_Connect();
 }
 
@@ -60,7 +60,7 @@ function read_ini(){
     var count=parseInt(strCount);
     for (var i=0;i<count;i++){
         var strName=s_file.Ini_Read(path+"\\config\\friend.ini","item"+i,"name");
-        //s_ui.Combox_Add("cb_friend",strName);
+        //s_ui.combox_add("cb_friend",strName);
     }
     if (count>0){
         //s_ui.Combox_Select("cb_friend",0);
@@ -68,43 +68,43 @@ function read_ini(){
 }
 
 function login_click(data){
-    var pass1 = s_ui.Text_Read("password1");
-    var pass2 = s_ui.Text_Read("password2");
+    var pass1 = s_ui.text_read("password1");
+    var pass2 = s_ui.text_read("password2");
     if (pass1!=pass2){
-        s_ui.Msg("两次密码不一样！");
+        s_ui.msg("两次密码不一样！");
         return ;
     }
 
-    s_file.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",s_ui.Combox_Text("combox1"));
+    s_file.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",s_ui.combox_text("combox1"));
     
     
-    s_sys.Value_Save("password",pass1);
-    s_sys.Value_Save("file",s_ui.Combox_Text("combox1"));
+    s_sys.value_save("password",pass1);
+    s_sys.value_save("file",s_ui.combox_text("combox1"));
     
     s_ui.close();
 }
     
 
-s_ui.Label_Init("lb1","输入密码:",10,30);
-s_ui.Password_Init("password1","",10,50,300,30);
-s_ui.Password_Init("password2","",10,100,300,30);
-s_ui.Label_Init("lb2","选择收藏夹文件:",10,180);
+s_ui.label_init("lb1","输入密码:",10,30);
+s_ui.password_init("password1","",10,50,300,30);
+s_ui.password_init("password2","",10,100,300,30);
+s_ui.label_init("lb2","选择收藏夹文件:",10,180);
 
-s_ui.Combox_Init("combox1","D:\\Net\\Web\\private_url.txt",10,200,300,30);
-s_ui.Combox_Add("combox1","D:\\Net\\Web\\private_url.txt");
+s_ui.combox_init("combox1","D:\\Net\\Web\\private_url.txt",10,200,300,30);
+s_ui.combox_add("combox1","D:\\Net\\Web\\private_url.txt");
 
-s_ui.Combox_Add("combox1","E:\\CloudStation\\Robot5\\happyli\\bak\\private_url.txt");
+s_ui.combox_add("combox1","E:\\CloudStation\\Robot5\\happyli\\bak\\private_url.txt");
 
-s_ui.Combox_Add("combox1","C:\\Net\\Web\\private_url.txt");
+s_ui.combox_add("combox1","C:\\Net\\Web\\private_url.txt");
 
-s_ui.Button_Init("b1_login","登录",10,250,100,30,"login_click","");
+s_ui.button_init("b1_login","登录",10,250,100,30,"login_click","");
 
 
 var a=s_file.Ini_Read("D:\\Net\\Web\\funnyfav.ini","main","file");
-s_ui.Combox_Text_Set("combox1",a);
+s_ui.combox_text_set("combox1",a);
 
 
 //其他属性
-s_ui.Acception_Button("b1_login");
+s_ui.acception_button("b1_login");
 s_ui.Show_Form(560,380);
 s_ui.Form_Title("登录");

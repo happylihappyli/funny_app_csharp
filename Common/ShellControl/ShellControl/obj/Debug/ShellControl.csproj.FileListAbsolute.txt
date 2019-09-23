@@ -45,4 +45,3 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\Debug\ShellControl.csproj.CoreCompileInputs.cache
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\Debug\ShellControl.dll
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\Debug\ShellControl.pdb
-E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\ShellControl\ShellControl\obj\Debug\ShellControl.csprojAssemblyReference.cache

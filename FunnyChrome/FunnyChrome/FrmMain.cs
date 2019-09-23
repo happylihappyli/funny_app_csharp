@@ -5,7 +5,9 @@
 using System;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using B_File.Funny;
 using B_Net.Funny;
 using B_TreapVB.TreapVB;
 using CefSharp;
@@ -70,7 +72,9 @@ namespace Funny {
         }
 
         private void OnBrowserStatusMessage(object sender, StatusMessageEventArgs args) {
-            this.InvokeOnUiThreadIfRequired(() => toolStripStatusLabel1.Text = args.Value);
+            string msg = args.Value;
+            if (msg.Length > 60) msg = msg.Substring(0, 60);
+            this.InvokeOnUiThreadIfRequired(() => toolStripStatusLabel1.Text = msg);
         }
 
         private void OnLoadingStateChanged(object sender, LoadingStateChangedEventArgs args) {
@@ -108,9 +112,14 @@ namespace Funny {
         }
 
         public void DisplayOutput(string output) {
+            if (output.Length > 60) {
+                output = output.Substring(0, 60);
+            }
             this.InvokeOnUiThreadIfRequired(() => outputlabel.Text = output);
         }
         public void Display_Post(string strLine) {
+            if (strLine.Contains("\n")) strLine = strLine.Replace("\n", "");
+            if (strLine.Length > 60) strLine = strLine.Substring(0, 60);
             this.InvokeOnUiThreadIfRequired(() => lb_translate.Text = strLine);
             
         }
@@ -166,27 +175,18 @@ namespace Funny {
             browser.ExecuteScriptAsync("DisplayDate()");
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e) {
-
-        }
-
-
-        private void FrmMain_Load(object sender, EventArgs e) {
-
-        }
-
         private void showDevToolsToolStripMenuItem_Click_1(object sender, EventArgs e) {
             browser.ShowDevTools();
         }
 
         private void testToolStripMenuItem1_Click(object sender, EventArgs e) {
-            urlTextBox.Text = "https://www.sciencedaily.com/";
-            LoadUrl(urlTextBox.Text);
+            
+            go("https://www.sciencedaily.com/");
         }
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e) {
-            urlTextBox.Text = "https://www.funnyai.com/english/";
-            LoadUrl(urlTextBox.Text);
+            
+            go("https://www.funnyai.com/english/");
         }
 
         private void 配置ToolStripMenuItem_Click_1(object sender, EventArgs e) {
@@ -194,18 +194,13 @@ namespace Funny {
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e) {
+            
 
-            string script = File.ReadAllText(
-                Application.StartupPath + "\\funny_translate.js",
-                System.Text.Encoding.UTF8);
 
-            browser.ExecuteScriptAsync(script);
         }
 
         private void toolStripButton2_Click_1(object sender, EventArgs e) {
-            var strLine = "CefSharp.BindObjectAsync(\"s_sys\");" +
-                "CefSharp.BindObjectAsync(\"s_file\");";
-            browser.ExecuteScriptAsync(strLine);
+            
         }
 
         private void toolStripButton1_Click_2(object sender, EventArgs e) {
@@ -214,6 +209,120 @@ namespace Funny {
 
         private void toolStripButton3_Click(object sender, EventArgs e) {
             browser.SetZoomLevel(1.0);
+        }
+
+        private void aAAToolStripMenuItem_Click(object sender, EventArgs e) {
+            go("http://www.chinadaily.com.cn");
+        }
+
+        public void go(string url) {
+            urlTextBox.Text = url;
+            LoadUrl(url);
+        }
+
+        private void tool_home_Click(object sender, EventArgs e) {
+            string url = Application.StartupPath + @"\main.html";
+            urlTextBox.Text = url;
+            browser.Load(url);
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e) {
+            string file = "D:\\Net\\Web\\funnychrome_word.txt";
+            if (S_File.Exists(file) == false) return;
+            StreamReader pSR=S_File_Text.Read_Begin(file);
+
+            string line=S_File_Text.Read_Line(pSR);
+            while (line != null) {
+                string[] strSplit = line.Split(new char[1]{'|'});
+                if (strSplit.Length > 1) {
+                    C_SYS.pTreap.insert(strSplit[0], strSplit[1]);
+                } else {
+                    C_SYS.pTreap.insert(strSplit[0],"1");
+                }
+                line = S_File_Text.Read_Line(pSR);
+            }
+            S_File_Text.Read_End(pSR);
+
+        }
+
+        private void backButton_Click(object sender, EventArgs e) {
+            
+            browser.Back();
+        }
+
+        private void forwardButton_Click(object sender, EventArgs e) {
+
+            browser.Forward();
+        }
+
+        private void 添加收藏夹ToolStripMenuItem_Click(object sender, EventArgs e) {
+            string url = Application.StartupPath + @"\fav_new.html";
+            urlTextBox.Text = url;
+            browser.Load(url);
+        }
+
+        private void 查看收藏夹ToolStripMenuItem_Click(object sender, EventArgs e) {
+            string url = Application.StartupPath + @"\fav_list.html";
+            urlTextBox.Text = url;
+            browser.Load(url);
+        }
+
+        private void tool_fav_Click(object sender, EventArgs e) {
+            string url = Application.StartupPath + @"\fav_list.html";
+            urlTextBox.Text = url;
+            browser.Load(url);
+        }
+
+        private void goButton_Click(object sender, EventArgs e) {
+            string url = urlTextBox.Text;
+            browser.Load(url);
+        }
+
+        private void urlTextBox_Click(object sender, EventArgs e) {
+
+        }
+
+        private void urlTextBox_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                string url = urlTextBox.Text;
+                browser.Load(url);
+            }
+        }
+
+        private void tool_check_Click(object sender, EventArgs e) {
+            var strLine = "CefSharp.BindObjectAsync(\"s_sys\");" +
+                "CefSharp.BindObjectAsync(\"s_file\");";
+            browser.ExecuteScriptAsync(strLine);
+
+
+            var t = Task.Run(async delegate {
+                Console.WriteLine("1秒");
+                await Task.Delay(1000 * 1);
+
+                string script = File.ReadAllText(
+                    Application.StartupPath + "\\funny_translate.js",
+                    System.Text.Encoding.UTF8);
+
+                browser.ExecuteScriptAsync(script);
+            });
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e) {
+            var strLine = "CefSharp.BindObjectAsync(\"s_sys\");" +
+                "CefSharp.BindObjectAsync(\"s_file\");";
+            browser.ExecuteScriptAsync(strLine);
+
+
+            var t = Task.Run(async delegate {
+                Console.WriteLine("1秒");
+                await Task.Delay(1000 * 1);
+
+                string script = File.ReadAllText(
+                    Application.StartupPath + "\\funny_translate2.js",
+                    System.Text.Encoding.UTF8);
+
+                browser.ExecuteScriptAsync(script);
+            });
         }
     }
 

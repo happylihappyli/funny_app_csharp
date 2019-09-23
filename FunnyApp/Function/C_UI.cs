@@ -23,6 +23,8 @@ namespace FunnyApp {
     public class C_UI {
 
         FrmApp pFrmApp;
+        public Hashtable Ctrls = new Hashtable();
+
 
         public C_UI(FrmApp FrmApp) {
             this.pFrmApp = FrmApp;
@@ -114,7 +116,7 @@ namespace FunnyApp {
 
 
 
-        public void Progress_Init(
+        public void progress_init(
             string name,
             int x, int y,
             int width, int height) {
@@ -130,12 +132,12 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
 
-        public void ProgressBar_Show(
+        public void progress_show(
             string control_name, string strMax, string strValue) {
             ProgressBar pControl = (ProgressBar)Ctrls[control_name];
             if (pControl != null) {
@@ -277,7 +279,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
             // CellContentClick 
             pControl.CellContentClick += new DataGridViewCellEventHandler(dataGridView1_CellContentClick);
@@ -294,6 +296,7 @@ namespace FunnyApp {
                 string[] strSplit = strLines.Split(',');
                 for (int i = 0; i < Column_Count; i++) {
                     DataGridViewTextBoxColumn pColunm = new DataGridViewTextBoxColumn();
+                    pColunm.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     pColunm.HeaderText = strSplit[i];// Encoding.ASCII.GetString(new byte[] { (byte)("A"[0] + i) });
                     pControl.Columns.Add(pColunm);
                 }
@@ -328,7 +331,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
@@ -419,7 +422,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
@@ -468,7 +471,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
@@ -544,12 +547,12 @@ namespace FunnyApp {
             pFrmApp.Tray_Show(url);
         }
 
-        public void Msg(string strLine) {
+        public void msg(string strLine) {
             MessageBox.Show(strLine);
         }
 
 
-        public int ListBox_Select(
+        public int listbox_select(
             string control_name,
             string Name) {
             ListBox pControl = (ListBox)Ctrls[control_name];
@@ -565,15 +568,13 @@ namespace FunnyApp {
             return -1;
         }
 
-        public void ListBox_Clear(string control_name) {
+        public void listbox_clear(string control_name) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Items.Clear();
             }
         }
-
-        public Hashtable Ctrls = new Hashtable();
-        public void ListBox_Init(string name,
+        public void listbox_init(string name,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -587,28 +588,28 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
-        public void ListBox_Init_Event(
+        public void listbox_init_event(
             string control_name,
             string event_double_click) {
 
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
-                pControl.SelectedIndexChanged += new EventHandler(mylistBox_DoubleClick);
+                pControl.SelectedIndexChanged += new EventHandler(mylistbox_DoubleClick);
                 pControl.Tag = new Function_Callback(event_double_click, "");
             }
         }
 
-        private void mylistBox_DoubleClick(object sender, EventArgs e) {
+        private void mylistbox_DoubleClick(object sender, EventArgs e) {
             ListBox pControl = (ListBox)sender;
             Function_Callback pFun = (Function_Callback)pControl.Tag;
             pFrmApp.Call_Event(pFun.Name, pFun.Data);
         }
 
-        public void ListBox_Add(string control_name, string text) {
+        public void listbox_add(string control_name, string text) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Items.Add(text);
@@ -616,7 +617,7 @@ namespace FunnyApp {
         }
 
 
-        public void ListBox_Add_Bat(string control_name, string strTexts) {
+        public void listbox_add_bat(string control_name, string strTexts) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 strTexts = strTexts.Replace("\r\n", "\n");
@@ -633,7 +634,7 @@ namespace FunnyApp {
         /// </summary>
         /// <param name="control_name"></param>
         /// <param name="file"></param>
-        public void ListBox_From_File(string control_name, string file) {
+        public void listbox_from_file(string control_name, string file) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 StreamReader pFile=S_File_Text.Read_Begin(file);
@@ -646,7 +647,7 @@ namespace FunnyApp {
             }
         }
 
-        public int ListBox_Item_Size(string control_name) {
+        public int listbox_item_size(string control_name) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 return pControl.Items.Count;
@@ -655,7 +656,7 @@ namespace FunnyApp {
         }
 
         
-        public void ListBox_Selected(string control_name, string strIndex) {
+        public void listbox_selected(string control_name, string strIndex) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 int index = Int32.Parse(strIndex);
@@ -663,7 +664,7 @@ namespace FunnyApp {
             }
         }
 
-        public string ListBox_Text(string control_name) {
+        public string listbox_text(string control_name) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null && pControl.SelectedItem!=null) {
                 return pControl.SelectedItem.ToString();
@@ -672,7 +673,7 @@ namespace FunnyApp {
         }
 
 
-        public int ListBox_Index(string control_name) {
+        public int listbox_index(string control_name) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null && pControl.SelectedItem != null) {
                 return pControl.SelectedIndex;
@@ -680,7 +681,7 @@ namespace FunnyApp {
             return -1;
         }
 
-        public string ListBox_Item(string control_name, string strIndex) {
+        public string listbox_item(string control_name, string strIndex) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 int index = Int32.Parse(strIndex);
@@ -691,7 +692,7 @@ namespace FunnyApp {
 
 
 
-        public void Button_Init(string name, string text,
+        public void button_init(string name, string text,
             int x, int y,
             int width, int height,
             string Function, String Function_data) {
@@ -707,7 +708,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
             pControl.Click += new EventHandler(my_button_Click);//使用事件函数句柄指向一个具体的函数  
 
@@ -715,7 +716,7 @@ namespace FunnyApp {
 
 
 
-        public void Button_Backgound(string control_name, string file) {
+        public void button_backgound(string control_name, string file) {
             Button pControl = (Button)Ctrls[control_name];
             if (pControl != null) {
                 if (file.StartsWith("@")) {
@@ -732,10 +733,10 @@ namespace FunnyApp {
 
 
 
-        public void Button_Enable(string control_name, string strEnable) {
+        public void button_enable(string control_name, string iEnable) {
             Button pControl = (Button)Ctrls[control_name];
             if (pControl != null) {
-                if (strEnable=="1") {
+                if (iEnable == "1") {
                     //"recording"
                     pControl.Enabled = true;
                 } else {
@@ -749,7 +750,7 @@ namespace FunnyApp {
             pFrmApp.Close();
         }
 
-        public void Password_Init(string name, string text,
+        public void password_init(string name, string text,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -765,11 +766,11 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
-        public void Text_Init(string name, string text,
+        public void text_init(string name, string text,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -784,13 +785,13 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
 
 
-        public void TextBox_Init(string name, string text,
+        public void textbox_init(string name, string text,
             int x, int y,
             int width, int height) {
             Point p = new Point(x, y);//定义一个具体的位置  
@@ -805,12 +806,12 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
 
-        public void Text_KeyDown(
+        public void text_keydown(
             string control_name,
             string function_name) {
             TextBox pControl = (TextBox)Ctrls[control_name];
@@ -822,13 +823,13 @@ namespace FunnyApp {
 
 
         [Obsolete("Acception_Button 不推荐，使用 Button_Default(xxx) 代替")]
-        public void Acception_Button(string control_name) {
+        public void acception_button(string control_name) {
             Button pControl = (Button)Ctrls[control_name];
             pFrmApp.AcceptButton = pControl;
         }
 
 
-        public void Button_Default(string control_name) {
+        public void button_default(string control_name) {
             Button pControl = (Button)Ctrls[control_name];
             pFrmApp.AcceptButton = pControl;
         }
@@ -841,7 +842,7 @@ namespace FunnyApp {
             e.SuppressKeyPress = true;
         }
 
-        public void Label_Init(string name, string text,int x, int y) {
+        public void label_init(string name, string text,int x, int y) {
 
             Point p = new Point(x, y);//定义一个具体的位置  
             Label pControl = new Label();//实例化一个button  
@@ -853,7 +854,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:"+name);
+                this.msg("控件已经存在:"+name);
             }
         }
 
@@ -872,7 +873,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
@@ -986,10 +987,7 @@ namespace FunnyApp {
 
         
 
-
-
-
-        public void Combox_Init(string name, string text,
+        public void combox_init(string name, string text,
             int x, int y,
             int width, int height) {
 
@@ -1003,12 +1001,12 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
 
-        public void Combox_Add(string control_name, string text) {
+        public void combox_add(string control_name, string text) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Items.Add(text);
@@ -1016,14 +1014,14 @@ namespace FunnyApp {
         }
 
 
-        public void Combox_Clear(string control_name) {
+        public void combox_clear(string control_name) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Items.Clear();
             }
         }
 
-        public string Combox_Text(string control_name) {
+        public string combox_text(string control_name) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 return pControl.Text;
@@ -1031,14 +1029,14 @@ namespace FunnyApp {
             return "";
         }
 
-        public void Combox_Text_Set(string control_name,string value) {
+        public void combox_text_set(string control_name,string value) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Text= value;
             }
         }
 
-        public int Combox_Index(string control_name) {
+        public int combox_index(string control_name) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 return pControl.SelectedIndex;
@@ -1046,7 +1044,7 @@ namespace FunnyApp {
             return -1;
         }
 
-        public int Combox_Event(string control_name,string myEvent) {
+        public int combox_event(string control_name,string myEvent) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Tag = new Function_Callback(myEvent, "");
@@ -1061,7 +1059,7 @@ namespace FunnyApp {
             pFrmApp.Call_Event(pFun.Name, pFun.Data);
         }
 
-        public void Combox_Select(string control_name,int index) {
+        public void combox_select(string control_name,int index) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.SelectedIndex = index;
@@ -1153,7 +1151,7 @@ namespace FunnyApp {
         }
 
 
-        public void SplitContainer_Init(
+        public void splitcontainer_init(
             string name,int x,int y,
             int width,int height,
             string Type) {
@@ -1176,11 +1174,11 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
-        public void SplitContainer_Distance(
+        public void splitcontainer_distance(
             string name,
             int distance) {
             SplitContainer pControl = (SplitContainer)Ctrls[name];
@@ -1190,7 +1188,7 @@ namespace FunnyApp {
 
         }
 
-        public void SplitContainer_Add(
+        public void splitcontainer_add(
             string name,
             int index,string name2,
             string fillType) {
@@ -1271,7 +1269,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
@@ -1318,7 +1316,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
             
         }
@@ -1392,7 +1390,7 @@ namespace FunnyApp {
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
             } else {
-                this.Msg("控件已经存在:" + name);
+                this.msg("控件已经存在:" + name);
             }
         }
 
@@ -1440,39 +1438,24 @@ namespace FunnyApp {
 
 
 
-        public void Text_Set(string control_name, string text) {
+        public void text_set(string control_name, string text) {
             TextBox pControl = (TextBox)Ctrls[control_name];
             if (pControl != null) pControl.Text = text;
         }
 
 
 
-        public void Text_Font_Size(string control_name, float iSize) {
+        public void text_font_size(string control_name, float iSize) {
             TextBox pControl = (TextBox)Ctrls[control_name];
             if (pControl != null) {
-                pControl.Font = new Font("宋体", iSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+                pControl.Font = new Font("宋体", iSize, FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 
             }
         }
         
 
 
-        [Obsolete("Show_Text() is Obsolete,Use Text_Set()")]
-        public void Show_Text(string control_name, string text) {
-            Text_Set(control_name, text);
-        }
-
-
-        [Obsolete("Text_Show() is Obsolete,Use Text_Set()")]
-        public void Text_Show(string control_name, string text) {
-            Text_Set(control_name, text);
-        }
-
-
-        public string Get_Text(string control_name) {
-            return Text_Read(control_name);
-        }
-        public string Text_Read(string control_name) {
+        public string text_read(string control_name) {
             TextBox pControl = (TextBox)Ctrls[control_name];
             if (pControl != null) {
                 return pControl.Text;// = text;
@@ -1482,7 +1465,7 @@ namespace FunnyApp {
         }
 
 
-        public void Text_Read_Only(
+        public void text_tead_only(
                 string control_name,
                 int iRead) {
             TextBox pControl = (TextBox)Ctrls[control_name];
