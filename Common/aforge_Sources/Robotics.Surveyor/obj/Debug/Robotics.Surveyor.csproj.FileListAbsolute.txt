@@ -1,0 +1,11 @@
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Robotics.Surveyor.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Robotics.Surveyor.pdb
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Robotics.Surveyor.xml
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Robotics.Surveyor\obj\Debug\ResolveAssemblyReference.cache
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Robotics.Surveyor\obj\Debug\AForge.Robotics.Surveyor.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Robotics.Surveyor\obj\Debug\AForge.Robotics.Surveyor.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Robotics.Surveyor.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Robotics.Surveyor.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Robotics.Surveyor.xml
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Robotics.Surveyor\obj\Debug\AForge.Robotics.Surveyor.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Robotics.Surveyor\obj\Debug\AForge.Robotics.Surveyor.pdb

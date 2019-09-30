@@ -11,7 +11,7 @@ function upload_click(data){
 
 function set_status(data){
     var strSplit=data.split(",");
-    s_ui.ProgressBar_Show("progress1",strSplit[1],strSplit[0]);
+    s_ui.progress_show("progress1",strSplit[1],strSplit[0]);
 }
 
 var log_error="";
@@ -24,14 +24,14 @@ function show_error(data){
 //保存密码
 function save_password(data){
     var strPassword=s_ui.text_read("txt1");
-    var strLine=s_string.encrypt_public_key("D:/Net/Web/id_rsa.pem.pub",strPassword);
-    s_file.File_Save("D:/Net/Web/password_upload_1.txt",strLine);
+    var strLine=s_string.encrypt_public_key("D:/Net/Web/public/id_rsa_happyli.pem.pub",strPassword);
+    s_file.save("D:/Net/Web/password_upload_1.txt",strLine);
     
 }
 
 //读取密码
 function read_password(data){
-    var strLine=s_file.File_Read("D:/Net/Web/password_upload_1.txt");
+    var strLine=s_file.read("D:/Net/Web/password_upload_1.txt");
     var strPassword=s_string.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
     s_ui.text_set("txt1",strPassword);
 }
@@ -46,13 +46,13 @@ function file_open(){
 
 function read(strFile){
     s_ui.listbox_clear("list_upload");
-    s_ui.ListBox_From_File("list_upload",sys.App_Path()+"\\config\\"+strFile);
+    s_ui.ListBox_From_File("list_upload",s_sys.App_Path()+"\\config\\"+strFile);
 }
 
 
 function file_open_config(data){
 
-    s_ui.Run_Cmd("Notepad++.exe "+sys.App_Path()+"\\config\\"+data);
+    s_ui.Run_Cmd("Notepad++.exe "+s_sys.App_Path()+"\\config\\"+data);
 }
 
 function wall9(data){
@@ -77,7 +77,7 @@ s_ui.label_init("lb_upload","上传文件：",10,100);
 
 s_ui.listbox_init("list_upload",100,100,500,100);
 
-s_ui.ListBox_From_File("list_upload",sys.App_Path()+"\\config\\upload.txt");
+s_ui.ListBox_From_File("list_upload",s_sys.App_Path()+"\\config\\upload.txt");
 
 
 s_ui.button_init("b_read1","jar",610,100,100,30,"read","upload.txt");

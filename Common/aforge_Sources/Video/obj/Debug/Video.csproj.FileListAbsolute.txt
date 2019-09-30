@@ -1,0 +1,11 @@
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Video.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Video.pdb
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Video.xml
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Video\obj\Debug\ResolveAssemblyReference.cache
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Video\obj\Debug\AForge.Video.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Video\obj\Debug\AForge.Video.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Video.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Video.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Video.xml
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Video\obj\Debug\AForge.Video.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Video\obj\Debug\AForge.Video.pdb

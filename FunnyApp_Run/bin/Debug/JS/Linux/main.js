@@ -22,9 +22,6 @@ function C_Msg(ID,Msg){
     this.Count=0;
 }
 
-
-
-
 function New_URL(data){
     //s_ui.msg(data);
     var strSplit=data.split("?");
@@ -36,6 +33,7 @@ function New_URL(data){
             break;
     }
 }
+
 
 [[[event_chat.js]]]
 
@@ -49,11 +47,10 @@ function send_msg_click(){
         s_ui.msg("请选择好友！");
         return ;
     }
-    //s_ui.combox_text("combox_head")+" "+
+    
     var strMsg=s_ui.text_read("txt_send");
     var friend=s_ui.listbox_text("list_friend");
     var strType="cmd";
-    
     var token="";
     
     var url="http://www.funnyai.com/login_get_token_json.php";
@@ -290,6 +287,7 @@ function connect_click(data){
     s_net.Socket_Init(url,"event_connected","event_disconnected","event_chat","event_system");
     read_ini();
 }
+
 //检查是否联网
 function check_connected(data){
     s_ui.text_set("txt_info","check_connected...");
@@ -317,6 +315,12 @@ function restart_ssh(data){
 function file_sql_input(data){
     s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("Linux\\file_sql_input.js","callback_cmd");
+}
+
+
+function process_kill(data){
+    s_sys.value_save("cmd","");
+    s_ui.Run_JS_Dialog("Linux\\process_kill.js","callback_cmd");
 }
 
 [[[ui.js]]]

@@ -19,7 +19,7 @@ function stop_click(data){
 function run_next(){
     var count=s_ui.ListBox_Item_Size("list_param");
     if (index<count){
-        s_ui.ProgressBar_Show("progress0",count+"",index+"");
+        s_ui.progress_show("progress0",count+"",index+"");
         s_ui.listbox_item_selected("list_param",index);
         var strLine=s_ui.ListBox_Item("list_param",index);
         var strSplit=strLine.split(",");
@@ -33,13 +33,13 @@ function run_next(){
         index+=1;
     }else{
         show_error("运行完毕");
-        s_ui.ProgressBar_Show("progress0","100","100");
+        s_ui.progress_show("progress0","100","100");
     }
 }
 
 function set_status(data){
     var strSplit=data.split(",");
-    s_ui.ProgressBar_Show("progress1",strSplit[1],strSplit[0]);
+    s_ui.progress_show("progress1",strSplit[1],strSplit[0]);
 }
 
 function show_error(data){
@@ -105,14 +105,14 @@ function event_system(data1){
                     break;
                 case "progress1":
                     var strSplit=data.message.split(":");
-                    s_ui.ProgressBar_Show("progress1","100",strSplit[0]);
-                    s_ui.ProgressBar_Show("progress2","100","100");
+                    s_ui.progress_show("progress1","100",strSplit[0]);
+                    s_ui.progress_show("progress2","100","100");
                     break;
                 case "progress2":
                     //log_error="progress2\r\n"+log_error;
                     //s_ui.text_set("txt_error",log_error);
                     var strSplit=data.message.split(":");
-                    s_ui.ProgressBar_Show('progress2', "100",strSplit[0]);
+                    s_ui.progress_show('progress2', "100",strSplit[0]);
                     break;
             }
             break;

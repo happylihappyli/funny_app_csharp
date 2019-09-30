@@ -153,7 +153,7 @@ function index_init(data){
 s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
 
 s_ui.text_init("txt1","",10,30,300,30);
-s_ui.Text_Font_Size("txt1",12);
+s_ui.text_font_size("txt1",12);
 s_ui.button_init("b_search","搜索",250,30,100,30,"search","");
 s_ui.button_enable("b_search",0);
 
@@ -190,7 +190,7 @@ s_ui.panel_add("panel_top","txt1","left");
 
 
 
-s_ui.Button_Default("b_search");
+s_ui.button_default("b_search");
 
 
 s_ui.Show_Form(800,680);

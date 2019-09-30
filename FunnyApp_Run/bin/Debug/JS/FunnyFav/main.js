@@ -160,7 +160,7 @@ function add_click(){
 }
 
 function edit_click(data){
-    s_ui.Run_JS_Dialog("FunnyFav/edit.js","callback_edit");
+    s_ui.Run_JS_Dialog("FunnyFav\\edit.js","callback_edit");
 }
 
 

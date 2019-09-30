@@ -21,7 +21,7 @@ function download_click(data){
 
 function set_status(data){
     var strSplit=data.split(",");
-    s_ui.ProgressBar_Show("progress1",strSplit[1],strSplit[0]);
+    s_ui.progress_show("progress1",strSplit[1],strSplit[0]);
 }
 
 var log_error="";
@@ -61,7 +61,9 @@ function file_open(){
 
 function next_click(data){
     var file=s_ui.listbox_text("txt_ftp_path");
-    s_sys.value_save("file2",file);
+    if (file!=""){
+        s_sys.value_save("file2",file);
+    }
     s_ui.Run_JS(data+".js");
     s_ui.close();
 }

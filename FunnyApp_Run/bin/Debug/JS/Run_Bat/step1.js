@@ -93,8 +93,5 @@ s_ui.Show_Form(860,650);
 
 s_ui.Form_Title("第一步：文件上传");
 
-//s_file.AES_Encrypt_File("E:\\sample1.txt","E:\\sample1_en.txt","test");
-//s_file.AES_Decrypt_File("E:\\sample1_en.txt","E:\\sample1_de.txt","test");
-
 s_net.ftp_list("robot6.funnyai.com","test","test",22,"/upload","callback_ftp_list");
 

@@ -1,0 +1,12 @@
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Vision.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Vision.pdb
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Vision.xml
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Vision\obj\Debug\ResolveAssemblyReference.cache
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Vision\obj\Debug\AForge.Vision.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Vision\obj\Debug\AForge.Vision.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Vision.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Vision.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Vision.xml
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Vision\obj\Debug\AForge.Vision.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Vision\obj\Debug\AForge.Vision.pdb

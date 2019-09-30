@@ -44,7 +44,7 @@ s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
 s_ui.text_init("txt1","输入信息",10,10,200,30);
 s_ui.button_init("b_search","搜索",250,10,200,30,"search","");
 
-s_ui.Button_Default("b_search");
+s_ui.button_default("b_search");
 
 s_ui.button_init("b1","清空，创建文档",10,50,200,30,"index_create","");
 s_ui.button_enable("b1",0);

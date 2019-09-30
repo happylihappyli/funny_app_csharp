@@ -8,7 +8,7 @@ function chi_square(data){
 
 function chi_square_sub(data){
     
-    var count=s_ui.datagrid_Rows("grid1")-1;
+    var count=s_ui.datagrid_rows("grid1")-1;
     //s_ui.msg(count);
     
     var a=new Array(count);
@@ -17,8 +17,8 @@ function chi_square_sub(data){
     var x=0;
     for (var i=0;i<count;i++){
         data[i]= new Array(2);
-        data[i][0]=parseFloat(s_ui.datagrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(s_ui.datagrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.datagrid_read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.datagrid_read("grid1",i,1));
         a[i]=data[i][0];
         b[i]=data[i][1];
         var delta=a[i]-b[i];
@@ -30,7 +30,7 @@ function chi_square_sub(data){
 
 function WOE_IV(data){
     
-    var count=s_ui.datagrid_Rows("grid1")-1;
+    var count=s_ui.datagrid_rows("grid1")-1;
     //s_ui.msg(count);
     
     var a=new Array(count);
@@ -41,8 +41,8 @@ function WOE_IV(data){
     var sum_b=0;
     for (var i=0;i<count;i++){
         data[i]= new Array(2);
-        data[i][0]=parseFloat(s_ui.datagrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(s_ui.datagrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.datagrid_read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.datagrid_read("grid1",i,1));
         a[i]=data[i][0];
         b[i]=data[i][1];
         

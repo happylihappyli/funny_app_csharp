@@ -1,0 +1,12 @@
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Neuro.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Neuro.pdb
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Neuro.xml
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Neuro\obj\Debug\ResolveAssemblyReference.cache
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Neuro\obj\Debug\AForge.Neuro.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Neuro\obj\Debug\AForge.Neuro.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Neuro.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Neuro.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\Release\AForge.Neuro.xml
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Neuro\obj\Debug\Neuro.csprojResolveAssemblyReference.cache
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Neuro\obj\Debug\AForge.Neuro.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\auto_learn_sys2016\aforge_Sources\Neuro\obj\Debug\AForge.Neuro.pdb

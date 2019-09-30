@@ -32,13 +32,13 @@ function save_click(data){
 
 
 s_ui.textbox_init("txt2","",10,100,600,300);
-s_ui.Text_Font_Size("txt2",18);
+s_ui.text_font_size("txt2",18);
 s_ui.Control_Dock("txt2","fill");
 
 s_ui.panel_init("panel1",0,0,500,25,"top");
 
 s_ui.text_init("txt1","1",10,30,200,30);
-s_ui.Text_Read_Only("txt1",1);
+s_ui.text_read_only("txt1",1);
 
 s_ui.button_init("b_save","保存",250,30,200,30,"save_click","");
 

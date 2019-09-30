@@ -29,6 +29,7 @@ namespace FunnyApp
 {
     public partial class FrmApp : Form
     {
+        public C_UI pUI;
         public static Treap<Object> pMap = new Treap<Object>();
         public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
 
@@ -218,6 +219,7 @@ namespace FunnyApp
 
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
+            pUI.moue_unhook();
             notifyIcon1.Visible = false;
         }
 

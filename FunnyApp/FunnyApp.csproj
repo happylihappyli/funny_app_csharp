@@ -85,6 +85,9 @@
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\EngineIoClientDotNet.0.9.22\lib\net45\EngineIoClientDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="Gma.System.MouseKeyHook, Version=5.6.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -252,6 +255,10 @@
     <ProjectReference Include="..\..\..\happyli\Project\Common\B_Segmentation\B_Segmentation.vbproj">
       <Project>{322709a3-e8dc-43e9-98a9-3ab926665d32}</Project>
       <Name>B_Segmentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\aforge_Sources\Imaging\Imaging.csproj">
+      <Project>{c6a8b9ae-0749-41c7-8ff9-02c156696f45}</Project>
+      <Name>Imaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Common\B_Data\B_Data.vbproj">
       <Project>{755fa603-fb1e-41e0-aaf9-961a58a91b81}</Project>

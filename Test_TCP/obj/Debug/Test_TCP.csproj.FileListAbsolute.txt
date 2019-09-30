@@ -1,0 +1,10 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\bin\Debug\Test_TCP.exe.config
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\bin\Debug\Test_TCP.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\bin\Debug\Test_TCP.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.Form1.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.Properties.Resources.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.csproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Test_TCP\obj\Debug\Test_TCP.pdb

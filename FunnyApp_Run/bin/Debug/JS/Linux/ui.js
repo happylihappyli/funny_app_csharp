@@ -92,6 +92,9 @@ s_ui.panel_add("panel4","btn_restart_ssh","left");
 s_ui.button_init("btn_file_sql","File_SQL",10,30,100,30,"file_sql_input","");
 s_ui.panel_add("panel4","btn_file_sql","left");
 
+s_ui.button_init("btn_process_kill","删除进程",10,30,100,30,"process_kill","");
+s_ui.panel_add("panel4","btn_process_kill","left");
+
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","File","&File");
@@ -99,7 +102,6 @@ s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
 s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
 s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
-
 
 
 //其他属性

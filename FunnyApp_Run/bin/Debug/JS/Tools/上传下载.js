@@ -21,7 +21,7 @@ function download_click(data){
 
 function set_status(data){
     var strSplit=data.split(",");
-    s_ui.ProgressBar_Show("progress1",strSplit[1],strSplit[0]);
+    s_ui.progress_show("progress1",strSplit[1],strSplit[0]);
 }
 
 var log_error="";

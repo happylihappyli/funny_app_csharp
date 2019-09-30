@@ -1,11 +1,11 @@
 
 function Pearson_Correlation(data){
-    var count=s_ui.datagrid_Rows("grid1")-1;
+    var count=s_ui.datagrid_rows("grid1")-1;
     var data=new Array(count);
     for (var i=0;i<count;i++){
         data[i]= new Array(2);  
-        data[i][0]=parseFloat(s_ui.datagrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(s_ui.datagrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.datagrid_read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.datagrid_read("grid1",i,1));
     }
     
     var r=Pearson_Correlation_Sub(data);
@@ -73,7 +73,7 @@ function calculate_index(a){
 }
 
 function Spearman_Correlation(data){
-    var count=s_ui.datagrid_Rows("grid1")-1;
+    var count=s_ui.datagrid_rows("grid1")-1;
     //s_ui.msg(count);
     
     var a=new Array(count);
@@ -81,8 +81,8 @@ function Spearman_Correlation(data){
     var data=new Array(count);
     for (var i=0;i<count;i++){
         data[i]= new Array(2);
-        data[i][0]=parseFloat(s_ui.datagrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(s_ui.datagrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.datagrid_read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.datagrid_read("grid1",i,1));
         a[i]=data[i][0];
         b[i]=data[i][1];
     }

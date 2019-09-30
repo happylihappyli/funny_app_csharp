@@ -1,0 +1,57 @@
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Imaging.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Imaging.pdb
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\Release\AForge.Imaging.xml
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Imaging\obj\Debug\ResolveAssemblyReference.cache
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Imaging\obj\Debug\AForge.Imaging.dll
+H:\2015prj\works\zhuanxiu2016\zhuanxiu2016\aforge_Sources\Imaging\obj\Debug\AForge.Imaging.pdb
+C:\Users\admin\Documents\Tencent Files\494778080\FileRecv\MobileFile\auto_jiaoxue_sources20190607\auto_jiaoxue_sources\auto_learn_sys2016\Release\AForge.Imaging.dll
+C:\Users\admin\Documents\Tencent Files\494778080\FileRecv\MobileFile\auto_jiaoxue_sources20190607\auto_jiaoxue_sources\auto_learn_sys2016\Release\AForge.Imaging.pdb
+C:\Users\admin\Documents\Tencent Files\494778080\FileRecv\MobileFile\auto_jiaoxue_sources20190607\auto_jiaoxue_sources\auto_learn_sys2016\Release\AForge.Imaging.xml
+C:\Users\admin\Documents\Tencent Files\494778080\FileRecv\MobileFile\auto_jiaoxue_sources20190607\auto_jiaoxue_sources\auto_learn_sys2016\aforge_Sources\Imaging\obj\Debug\Imaging.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\Tencent Files\494778080\FileRecv\MobileFile\auto_jiaoxue_sources20190607\auto_jiaoxue_sources\auto_learn_sys2016\aforge_Sources\Imaging\obj\Debug\AForge.Imaging.dll
+C:\Users\admin\Documents\Tencent Files\494778080\FileRecv\MobileFile\auto_jiaoxue_sources20190607\auto_jiaoxue_sources\auto_learn_sys2016\aforge_Sources\Imaging\obj\Debug\AForge.Imaging.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Imaging\obj\Debug\Imaging.csprojResolveAssemblyReference.cache
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Imaging\obj\Debug\AForge.Imaging.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Imaging\obj\Debug\AForge.Imaging.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\Release\AForge.Imaging.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\Release\AForge.Imaging.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\Release\AForge.Imaging.xml
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.xml
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.dll
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.pdb
+G:\CloudStation\Seafile\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.dll
+G:\CloudStation\Seafile\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.pdb
+G:\CloudStation\Seafile\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.xml
+G:\CloudStation\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csprojResolveAssemblyReference.cache
+G:\CloudStation\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.dll
+G:\CloudStation\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.pdb
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csprojAssemblyReference.cache
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csproj.CoreCompileInputs.cache
+G:\2019doc\2019_虚拟按键式非屏幕录像式的智能软件教学软件\auto_jiaoxue_sources\Seafile\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csproj.CopyComplete
+E:\CloudStation\Seafile2\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.dll
+E:\CloudStation\Seafile2\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.pdb
+E:\CloudStation\Seafile2\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.xml
+E:\CloudStation\Seafile2\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csprojResolveAssemblyReference.cache
+E:\CloudStation\Seafile2\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.dll
+E:\CloudStation\Seafile2\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.pdb
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.dll
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.pdb
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\Release\AForge.Imaging.xml
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.dll
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\AForge.Imaging.pdb
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\FunnyTeacher\sources_auto_teacher\aforge_Sources_rebulid\Imaging\obj\Debug\Imaging.csproj.CopyComplete
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Imaging\obj\Debug\Imaging.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Imaging\obj\Debug\Imaging.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Imaging\obj\Debug\AForge.Imaging.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Imaging\obj\Debug\AForge.Imaging.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\aforge_Sources\Imaging\obj\Debug\Imaging.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\aforge_Sources\Imaging\obj\Debug\Imaging.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\aforge_Sources\Imaging\obj\Debug\AForge.Imaging.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\aforge_Sources\Imaging\obj\Debug\AForge.Imaging.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Release\AForge.Imaging.dll
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Release\AForge.Imaging.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\Release\AForge.Imaging.xml
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\Common\aforge_Sources\Imaging\obj\Debug\Imaging.csproj.CopyComplete

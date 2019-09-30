@@ -1,15 +1,19 @@
 ﻿
+using AForge.Imaging;
 using B_Data.Funny;
 using B_File.Funny;
 using B_Math;
+using Gma.System.MouseKeyHook;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
@@ -26,7 +30,8 @@ namespace FunnyApp {
         public Hashtable Ctrls = new Hashtable();
 
 
-        public C_UI(FrmApp FrmApp) {
+        public C_UI(FrmApp pFrmApp) {
+            pFrmApp.pUI = this;
             this.pFrmApp = FrmApp;
         }
 
@@ -724,7 +729,7 @@ namespace FunnyApp {
                     string key = file.Substring(1);
                     pControl.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject(key);
                 } else {
-                    Image myimage = new Bitmap(file);
+                    System.Drawing.Image myimage = new Bitmap(file);
                     pControl.BackgroundImage = myimage;
                 }
                 pControl.BackgroundImageLayout=ImageLayout.Center;
@@ -887,7 +892,7 @@ namespace FunnyApp {
             if (pControl != null) {
                 pControl.BorderStyle = BorderStyle.FixedSingle;
                 Graphics g2;
-                Image b;
+                System.Drawing.Image b;
                 if (pControl.Image != null) {
                     b = pControl.Image;
                 } else {
@@ -914,7 +919,7 @@ namespace FunnyApp {
             if (pControl != null) {
                 pControl.BorderStyle = BorderStyle.FixedSingle;
                 Graphics g2;
-                Image b;
+                System.Drawing.Image b;
                 if (pControl.Image != null) {
                     b = pControl.Image;
                 } else {
@@ -927,6 +932,102 @@ namespace FunnyApp {
                 //g2.DrawEllipse
                 pControl.Image = b;
             }
+        }
+
+
+        private Bitmap get_pictemp(String strFile) {
+            strFile = strFile.Replace(".\\", Application.StartupPath + "\\");
+            Bitmap rtt = new Bitmap(strFile);
+            return rtt;
+        }
+
+
+        private Bitmap ImageConvert(Bitmap bmOld) {
+            int iwidth = bmOld.Width;
+            int iHeight = bmOld.Height;
+
+            Bitmap bmNew = new Bitmap(iwidth, iHeight, PixelFormat.Format24bppRgb);
+            Graphics g = Graphics.FromImage(bmNew);
+            g.DrawImage(bmOld, new Point(0, 0));
+            g.Dispose();
+            return bmNew;
+        }
+
+
+        public void screen_save(string strFile) {
+            Bitmap bit = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);// 1920, 1080);
+
+            Graphics g = Graphics.FromImage(bit);
+            g.CopyFromScreen(new Point(0, 0), new Point(0, 0), new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            g.Dispose();
+
+            bit.Save(strFile);
+        }
+
+
+        public void top_most(int iValue) {
+            if (iValue == 1) {
+                pFrmApp.TopMost = true;
+            } else {
+                pFrmApp.TopMost = false;
+            }
+        }
+
+
+        public void win_pos(int x,int y) {
+            pFrmApp.Left = x;
+            pFrmApp.Top = y;
+        }
+
+
+        public string screen_match(string strFile) {
+
+
+            Bitmap bit = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);// 1920, 1080);
+
+            Graphics g = Graphics.FromImage(bit);
+            g.CopyFromScreen(new Point(0, 0), new Point(0, 0), new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
+            g.Dispose();
+
+            Bitmap retimg2 = bit;
+
+            Bitmap retimg2b = (Bitmap)retimg2.Clone();
+
+
+            ExhaustiveTemplateMatching pMatchTools = new ExhaustiveTemplateMatching(0.95f);
+
+            Bitmap pFind = get_pictemp(strFile);
+            ;
+            int MaxDif = 1;// 30;
+            Debug.Print(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss fff"));
+            List<TemplateMatch> pMatchs = pMatchTools.ProcessImage2(
+                ImageConvert(retimg2),
+                ImageConvert(get_pictemp(strFile)), 3 * 5, 30, MaxDif);
+
+            Debug.Print(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss fff"));
+            Debug.Print(pMatchs.Count.ToString());
+            List<TemplateMatch> pMatchs2 = pMatchTools.ProcessImage3(
+                ImageConvert(retimg2),
+                ImageConvert(get_pictemp(strFile)),
+                pMatchs);
+
+            Debug.Print(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss fff"));
+            Debug.Print(pMatchs2.Count.ToString());
+
+            if (pMatchs2.Count == 1) {
+                TemplateMatch pMatch = pMatchs2[0];
+                    //TxOutput.Text = pMatch.Rectangle.ToString();
+                    //FrmTip pFrmTip = new FrmTip();
+                    //pFrmTip.Show();
+                    //pFrmTip.Left = pMatch.Rectangle.X + pFind.Width * 8 / 10;
+                    //pFrmTip.Top = pMatch.Rectangle.Y - 100 + pFind.Height / 2;
+                return "1:"+ pMatch.Rectangle.X+":"+ pMatch.Rectangle.Y;
+            } else if (pMatchs2.Count > 1) {
+                return pMatchs2.Count+":找到太多:";
+            } else {
+                return "0:0:0";
+            }
+
         }
 
         public void win_active() {
@@ -1089,6 +1190,45 @@ namespace FunnyApp {
                 process.StartInfo.Arguments = Application.StartupPath + "\\JS\\" + args;
                 process.Start();
             }
+        }
+
+        private IKeyboardMouseEvents m_GlobalHook;
+
+        private string mouse_event = "";
+        private Rectangle hook_area;
+
+        public void moue_hook(string mouse_event,
+            int x,int y,int width,int height) {
+            this.mouse_event = mouse_event;
+            // Note: for the application hook, use the Hook.AppEvents() instead
+            m_GlobalHook = Hook.GlobalEvents();
+
+            m_GlobalHook.MouseUpExt += GlobalHookMouseUpExt;
+            //m_GlobalHook.KeyPress += GlobalHookKeyPress;
+
+            hook_area = new Rectangle(x, y, width, height);
+        }
+
+        private void GlobalHookKeyPress(object sender, KeyPressEventArgs e) {
+            Console.WriteLine("KeyPress: \t{0}", e.KeyChar);
+        }
+
+        private void GlobalHookMouseUpExt(object sender, MouseEventExtArgs e) {
+            Console.WriteLine("MouseDown: \t{0}; \t System Timestamp: \t{1}", e.Button, e.Timestamp);
+            
+            if (hook_area!=null) {
+                if (hook_area.Contains(e.X, e.Y)) {
+                    e.Handled = true;
+                    pFrmApp.Call_Event(this.mouse_event, e.X + "," + e.Y);
+                }
+            }
+        }
+
+        public void moue_unhook() {
+            m_GlobalHook.MouseDownExt -= GlobalHookMouseUpExt;
+            m_GlobalHook.KeyPress -= GlobalHookKeyPress;
+            
+            m_GlobalHook.Dispose();
         }
 
 
@@ -1465,7 +1605,7 @@ namespace FunnyApp {
         }
 
 
-        public void text_tead_only(
+        public void text_read_only(
                 string control_name,
                 int iRead) {
             TextBox pControl = (TextBox)Ctrls[control_name];

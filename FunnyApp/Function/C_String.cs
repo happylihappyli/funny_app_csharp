@@ -1,6 +1,7 @@
 ﻿using B_String.Funny;
 using CS_Encrypt;
 using Funny;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,28 @@ using System.Threading.Tasks;
 
 namespace FunnyApp {
     public class C_String {
-        
+        public void json(string strJSON,string key) {
+            
+            JObject jObject = JObject.Parse(strJSON);
+            FrmApp.pMap.insert(key, jObject);
+        }
+
+        public void json_array(string strJSON, string key) {
+            JArray jArray = JArray.Parse(strJSON);
+            FrmApp.pMap.insert(key, jArray);
+        }
+
+        public int json_array_length(string key) {
+            JArray jArray = (JArray)FrmApp.pMap.find(key);//, jObject);
+            return jArray.Count;
+        }
+        public string json_array_item(string key,int index,string name) {
+            JArray jArray = (JArray)FrmApp.pMap.find(key);//, jObject);
+            JObject pObj = (JObject)jArray[index];
+
+            return pObj.GetValue(name).ToString();
+        }
+
         public string md5(string strLine) {
             return S_Strings.MD5(strLine);
         }

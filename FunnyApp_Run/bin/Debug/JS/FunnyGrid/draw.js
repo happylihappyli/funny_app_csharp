@@ -2,12 +2,12 @@
 
 function draw_line(){
     var mydata="";
-    var count=s_ui.datagrid_Rows("grid1")-1;
+    var count=s_ui.datagrid_rows("grid1")-1;
     var data=new Array(count);
     for (var i=0;i<count;i++){
         data[i]= new Array(2);
-        data[i][0]=parseFloat(s_ui.datagrid_Read("grid1",i,0));
-        data[i][1]=parseFloat(s_ui.datagrid_Read("grid1",i,1));
+        data[i][0]=parseFloat(s_ui.datagrid_read("grid1",i,0));
+        data[i][1]=parseFloat(s_ui.datagrid_read("grid1",i,1));
         mydata+="["+data[i][0]+","+data[i][1]+"],";
     }
     if (mydata.endsWith(",")){

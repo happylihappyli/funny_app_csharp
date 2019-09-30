@@ -19,7 +19,12 @@ namespace FunnyApp {
             this.pFrmApp = pFrmApp;
         }
 
+        [Obsolete("use exists ")]
         public bool File_Exists(string strFile) {
+            return exists(strFile);
+        }
+
+        public bool exists(string strFile) {
             return S_File.Exists(strFile);
         }
 

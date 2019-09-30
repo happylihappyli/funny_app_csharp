@@ -5,7 +5,7 @@ function Node_Click(data){
 
 function modify_click(data){
     var index=parseInt(data);
-    var a=s_ui.datagrid_Read("grid1",index,1);
+    var a=s_ui.datagrid_read("grid1",index,1);
     
     
     s_ui.msg(a);
@@ -16,23 +16,33 @@ function clear_data(data){
 }
 
 function data_init(data){
+    var data=s_sys.value_read("map");
+    var strSplit=data.split("\n");
+    
     s_ui.datagrid_clear("grid1");
     
     s_ui.datagrid_init_column("grid1",2,"数据,映射值");
-    s_ui.datagrid_add_line("grid1","A,",",");
-    s_ui.datagrid_add_line("grid1","B,",",");
-    s_ui.datagrid_add_line("grid1","C,",",");
-    s_ui.datagrid_add_line("grid1","D,",",");
-    
+    for (var i=0;i<strSplit.length;i++){
+        var strSplit2=strSplit[i].split(",");
+        s_ui.datagrid_add_line("grid1",strSplit2[0]+",",",");
+    }
     //s_ui.datagrid_add_button("grid1","modify","映射","modify_click");
 }
 
-function static_click(data){
-    
-}
 
 
 function save_click(data){
+    
+    var count=s_ui.datagrid_rows("grid1")-1;
+    
+    var strMap="";
+    for (var i=0;i<count;i++){
+        strMap+=s_ui.datagrid_read("grid1",i,0)+","
+        +s_ui.datagrid_read("grid1",i,1)+"\n";
+    }
+    
+    var row_index=s_sys.value_read("row_index");
+    s_file.save("D:\\Net\\Web\\data\\map_c"+row_index+".txt",strMap);
     s_ui.close();
 }
 

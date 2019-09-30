@@ -99,7 +99,7 @@ function save_fav(data){
     var strLines = s_ui.text_read("edit1");
     
     strLines=s_string.AES_Encrypt(strLines, password);
-    s_file.File_Save(file,strLines);
+    s_file.save(file,strLines);
     
 }
 

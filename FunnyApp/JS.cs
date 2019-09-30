@@ -16,7 +16,6 @@ namespace FunnyApp
         {
             //pApp.tools = new Tools(pApp);
             jint = new Jint.Engine();
-            jint.SetValue("sys", pApp.sys);//zzz
             jint.SetValue("s_sys", pApp.sys);
             jint.SetValue("s_ui",new C_UI(pApp));
             jint.SetValue("s_math", new S_Math());
@@ -26,6 +25,9 @@ namespace FunnyApp
             jint.SetValue("s_index", new C_Index(pApp));
             jint.SetValue("s_xml", new C_XML());
             jint.SetValue("s_file", new C_File(pApp));
+            jint.SetValue("s_au3", new C_AU3(pApp));
+
+            
 
             try
             {

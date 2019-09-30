@@ -15,7 +15,7 @@ function Node_Click(data){
 
 function modify_click(data){
     var index=parseInt(data);
-    var a=s_ui.datagrid_Read("grid1",index,0);
+    var a=s_ui.datagrid_read("grid1",index,0);
     
     s_ui.msg(":"+a);
 }

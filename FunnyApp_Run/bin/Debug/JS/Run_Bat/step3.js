@@ -1,17 +1,19 @@
+var session_send=0;
+var msg_id=0;
+var sep=1;
+var step=0;//处理步骤
+var row_index=0;//第几个字段被点击
+
 var disk="D:";
 var userName="none";
 var md5="";
 var log_msg="";
-var session_send=0;
-var msg_id=0;
 var myMap=[];
 var head="";
 var css_head='<html><head>\n'
 +'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'
 +'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
 +'<body>\n';
-var sep=1;
-var step=0;//处理步骤
 
 [[[..\\data\\common_string.js]]]
 
@@ -26,7 +28,7 @@ function C_Msg(ID,Msg){
 
 function event_system(data){
     var obj=JSON.parse(data);
-    var log_msg2=obj.from+"："+obj.message+"\r\n";
+    var log_msg2=obj.type+":"+obj.from+"："+obj.message+"\r\n";
     s_ui.text_set("txt_info",log_msg2);
     switch(obj.type){
         case "chat_return":
@@ -47,6 +49,19 @@ function event_system(data){
         case "list.all":
             s_ui.listbox_add("list_friend",obj.message);
             break;
+        default:
+            switch(obj.from){
+                case "progress1":
+                    var strSplit=obj.message.split(":");
+                    s_ui.progress_show("progress1","100",strSplit[0]);
+                    s_ui.progress_show("progress2","100","100");
+                    break;
+                case "progress2":
+                    var strSplit=obj.message.split(":");
+                    s_ui.progress_show('progress2', "100",strSplit[0]);
+                    break;
+            }
+            break;
     }
 }
 
@@ -66,48 +81,12 @@ function event_chat(data){
     s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
     
     var msg=obj.message;
-    var r;
-    switch(sep){
-        case "file_list"://file
-            //head="<tr><th>权限</th><th>子目录(文件)数</th><th>所属用户</th><th>所属用户组</th><th>大小</th><th colspan=3>最近修改/查看时间</th><th>名称</th></tr>";
-            var strSplit=msg.split('\n');
-            msg="";
-            for (var i=0;i<strSplit.length;i++){
-                r = /\s+/g;
-                strSplit[i] = strSplit[i].replace(r, '|');
-                var strSplit2=strSplit[i].split('|');
-                
-                msg+="<tr>";
-                for (var j=0;j<strSplit2.length;j++){
-                    var value=strSplit2[j];
-                    if (j==8){
-                        msg+="<td>"+value+"</td><td>"
-                        +"<a href='http://file.edit?file="+value+"' target=_blank>编辑</a></td>";
-                    }else{
-                        msg+="<td>"+value+"</td>";
-                    }
-                }
-                msg+="</tr>";
-            }
-            break;
-        case 1:
-            r = /\n/g;
-            msg = msg.replace(r, '</td></tr><tr><td>');
-            r = /\s+/g;
-            msg = msg.replace(r, '</td><td>');
-            break;
-        case 2:
-            r = /\n/g;
-            msg = msg.replace(r, '</td></tr><tr><td>');
-            r = /:/g;
-            msg = msg.replace(r, '</td><td>');
-            break;
-    }
-    msg=head+"\n"+msg;
+
+    var msg2=head+"\n"+msg;
     
     log_msg=s_time.Time_Now()+" "+friend+" &gt; <span style='color:#aaaaaa;'>"+obj.to+"</span>"
-    +"<br><div><table id=data>"
-    +msg+"</table></div><br><br>\r\n"+log_msg;
+    +"<br><div><pre>"
+    +msg2+"</pre></div><br><br>\r\n"+log_msg;
     
     var id=obj.id;
     var strLine="{\"from\":\""+userName+"\",\"type\":\"chat_return\",\"to\":\""+obj.from+"\",\"oid\":\""+id+"\",\"message\":\""+id+"\"}";
@@ -130,31 +109,76 @@ function event_chat(data){
         }
     }
     
-    step+=1;
     var cmd="";
     switch(step){
-        case 1:
+        case 0:
             cmd="file_sql "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
             s_ui.text_set("txt_send",cmd);
-            send_msg_click();
             break;
-        case 2:
+        case 1:
             cmd="cat /root/step3_2.txt";
             s_ui.text_set("txt_send",cmd);
+            break;
+        case 2:
+            s_ui.datagrid_clear("grid1");
+            s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
+            s_ui.msg(msg);
+            var strSplit=msg.split(",");
+            for(var i=0;i<strSplit.length;i++){
+                if (strSplit[i]=="0.0"){
+                    s_ui.datagrid_add_line("grid1",(i+1)+",数字",",");
+                }else{
+                    s_ui.datagrid_add_line("grid1",(i+1)+",字符",",");
+                }
+            }
+            s_ui.datagrid_add_button("grid1","modify","映射","map_click");
+            break;
+        case 5:
+            cmd="cat /root/map_"+row_index+".txt";
+            s_ui.text_set("txt_send",cmd);
+            break;
+        case 6:
+            s_sys.value_save("map",msg);
+            s_ui.Run_JS("Run_Bat\\step3_map.js");
+            break;
+    }
+    switch(step){
+        case 0:
+        case 1:
+        case 5:
+            step+=1;
             send_msg_click();
             break;
-        case 3:
+        default:
+            step+=1;
             break;
     }
 }
 
+function sql(file1,sql,sep,output){
+    var cmd="file_sql "+userName+" "+file1
+        +" 250000 \""+sql+"\" "+sep+" "+output;
+    return cmd;
+}
 
-function modify_click(data){
+
+function map_click(data){
     var index=parseInt(data);
-    var a=s_ui.datagrid_read("grid1",index,1);
+    row_index=s_ui.datagrid_read("grid1",index,0);
+    s_sys.value_save("row_index",row_index);
     
-    s_ui.Run_JS("Run_Bat\\step3_map.js");
-    //s_ui.msg(a);
+    var type=s_ui.datagrid_read("grid1",index,1);
+    //s_ui.msg(type);
+    
+    var file2=s_sys.value_read("file2");
+    var cmd=sql("/home/ftp_home"+file2,
+            "select c"+row_index+",count(1) from t group by c"+row_index,
+            "v","/root/map_"+row_index+".txt");
+    
+    s_ui.text_set("txt_send",cmd);
+    step=5;
+    send_msg_click();
+    
 }
 
 function clear_data(data){
@@ -165,15 +189,9 @@ function data_init(data){
     s_ui.datagrid_clear("grid1");
     
     s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
-    s_ui.datagrid_add_line("grid1","1,数字",",");
-    s_ui.datagrid_add_line("grid1","2,字符串",",");
-    s_ui.datagrid_add_line("grid1","3,数字",",");
-    s_ui.datagrid_add_line("grid1","4,数字",",");
-    s_ui.datagrid_add_line("grid1","5,字符串",",");
-    s_ui.datagrid_add_line("grid1","6,数字",",");
-    s_ui.datagrid_add_line("grid1","7,字符串",",");
+    s_ui.datagrid_add_line("grid1","1,正在分析...",",");
     
-    s_ui.datagrid_add_button("grid1","modify","映射","modify_click");
+    s_ui.datagrid_add_button("grid1","modify","映射","map_click");
 }
 
 function static_click(data){
@@ -194,10 +212,8 @@ function static_click(data){
     var cmd="file_sql "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
     
     s_ui.text_set("txt_send",cmd);
-    send_msg_click();
     step=0;
-    
-    //s_ui.msg(strSplit.length+"");
+    send_msg_click();
 }
 
 
@@ -253,8 +269,11 @@ function select_old_friend(data){
         //if (s_ui.listbox_text("txt_info")==friend){
         var friend2=s_ui.listbox_text("list_friend");
         if (friend2!=friend){
-        s_ui.text_set("txt_info","选择刚才选择的好友:"+friend);
-        s_ui.listbox_select("list_friend",friend);
+            s_ui.text_set("txt_info","选择刚才选择的好友:"+friend);
+            s_ui.listbox_select("list_friend",friend);
+            if (step==0){
+                static_click("");
+            }
         }
     }
 }
@@ -370,7 +389,35 @@ function send_msg_click(){
     
 }
 
+function upload_click(data){
+    
+    var strLine=s_file.File_List_File("D:\\Net\\Web\\Data");
+    var strSplit=strLine.split("|");
 
+    for(var i=0;i<strSplit.length;i++){
+        var file="D:\\Net\\Web\\Data\\"+strSplit[i];
+        var path="/upload/map/"+s_file.File_Short_Name(file);
+        //s_ui.msg(file+","+path);
+        s_net.ftp_upload("robot6.funnyai.com","test","test","22",file,path,"set_status","show_error");
+    }
+    
+    var file=s_ui.text_read("txt_upload");
+    var path="/upload/map/"+s_file.File_Short_Name(file);
+
+    var hosts=s_ui.text_read("txt_host");
+    s_net.ftp_upload(hosts,"test","test","22",file,path,"set_status","show_error");
+}
+
+function set_status(data){
+    var strSplit=data.split(",");
+    s_ui.progress_show("progress1",strSplit[1],strSplit[0]);
+}
+
+var log_error="";
+function show_error(data){
+    log_error+=data+"\n";
+    s_ui.text_set("txt_info",log_error);
+}
 
 s_ui.splitcontainer_init("split",0,0,500,500,"v");
 s_ui.splitcontainer_distance("split",100);
@@ -380,11 +427,10 @@ s_ui.listbox_init("list_friend",10,60,200,180);
 s_ui.listbox_init_event("list_friend","friend_change");
 
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
-//s_ui.button_init("b_clear","清空",250,30,450,30,"clear_click","");
 
 
 //界面
-s_ui.datagrid_init("grid1",10,60,650,220);
+s_ui.datagrid_init("grid1",10,60,650,320);
 
 s_ui.text_init("txt_send","ls",380,350,320,30);
 
@@ -413,11 +459,17 @@ s_ui.Web_Init("web",250,60,450,250);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
+
+s_ui.progress_init("progress1",100,400,500,30);
+s_ui.progress_init("progress2",100,400,500,30);
+
 s_ui.splitcontainer_add("split",1,"web","fill");
+
+s_ui.splitcontainer_add("split",1,"progress2","top");
+s_ui.splitcontainer_add("split",1,"progress1","top");
 
 s_ui.splitcontainer_add("split",1,"grid1","top");
 s_ui.splitcontainer_add("split",1,"txt_file","top");
-
 
 
 
@@ -432,25 +484,22 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_static","重新统计分析",100,450,200,30,"static_click","");
-
-
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat\\step2");
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat\\step4");
 
 
-s_ui.panel_add("panel2","b_static","left");
 s_ui.panel_add("panel2","b_next","left");
 s_ui.panel_add("panel2","b_pre","left");
 
 
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Refresh","刷新好友列表(&R)","friend_list","");
+s_ui.Menu_Add("Menu1","Menu_File","&File");
+s_ui.Menu_Item_Add("Menu1","File","Menu_Refresh","刷新好友列表(&R)","friend_list","");
 
 s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
+s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
+//s_ui.Menu_Item_Add("Menu1","Tools","Menu_Upload","上传Map文件","upload_click","");
 
 
 

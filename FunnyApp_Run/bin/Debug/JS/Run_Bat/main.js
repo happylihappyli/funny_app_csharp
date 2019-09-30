@@ -39,7 +39,12 @@ function init(data){
 
 s_ui.button_init("b_bat","批量跑任务",50,50,100,30,"show_tools","Run_Bat\\bat");
 
-s_ui.button_init("b_model","建模工具",200,50,100,30,"show_tools","Run_Bat\\step1");
+s_ui.button_init("b_model","建模工具",50,100,100,30,"show_tools","Run_Bat\\step1");
+
+s_ui.button_init("b_model_step2","step2",150,100,100,30,"show_tools","Run_Bat\\step2");
+s_ui.button_init("b_model_step3","step3",250,100,100,30,"show_tools","Run_Bat\\step3");
+s_ui.button_init("b_model_step4","step4",350,100,100,30,"show_tools","Run_Bat\\step4");
+s_ui.button_init("b_model_step5","step5",450,100,100,30,"show_tools","Run_Bat\\step5");
 
 
 
