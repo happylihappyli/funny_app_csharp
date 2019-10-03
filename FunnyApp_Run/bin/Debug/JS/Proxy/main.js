@@ -5,7 +5,7 @@ function key_click(data){
 }
 
 function set_click(data){
-    //var path1=sys.UserProfile();
+    //var path1=s_sys.UserProfile();
     var hosts=s_ui.combox_text("cb_hosts");
     //s_ui.text_set("txt1",path1);
     var content="{\n"+

@@ -20,7 +20,7 @@ function b_stop_click(data){
 }
 
 function b_recognize_click(data){
-    var a=sys.SR_Recognize("D:\\123.wav");//,"result");//err_msg
+    var a=s_sys.SR_Recognize("D:\\123.wav");//,"result");//err_msg
     var obj = JSON.parse(a);
     var msg = obj.result[0];
     sys.Set_Text("txt1",msg);

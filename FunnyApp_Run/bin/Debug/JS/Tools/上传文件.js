@@ -46,7 +46,7 @@ function file_open(){
 
 function read(strFile){
     s_ui.listbox_clear("list_upload");
-    s_ui.ListBox_From_File("list_upload",s_sys.App_Path()+"\\config\\"+strFile);
+    s_ui.listbox_from_file("list_upload",s_sys.App_Path()+"\\config\\"+strFile);
 }
 
 
@@ -77,7 +77,7 @@ s_ui.label_init("lb_upload","上传文件：",10,100);
 
 s_ui.listbox_init("list_upload",100,100,500,100);
 
-s_ui.ListBox_From_File("list_upload",s_sys.App_Path()+"\\config\\upload.txt");
+s_ui.listbox_from_file("list_upload",s_sys.App_Path()+"\\config\\upload.txt");
 
 
 s_ui.button_init("b_read1","jar",610,100,100,30,"read","upload.txt");
@@ -98,7 +98,7 @@ s_ui.button_init("b3_1","upload",100,250,200,30,"upload_click","");
 s_ui.textbox_init("txt_error","错误信息：",100,300,500,200);
 
 
-s_ui.Progress_Init("progress1",100,500,500,30);
+s_ui.progress_init("progress1",100,500,500,30);
 
 s_ui.Show_Form(800,600);
 

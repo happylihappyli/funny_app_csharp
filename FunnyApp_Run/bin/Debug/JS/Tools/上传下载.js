@@ -82,7 +82,7 @@ s_ui.button_init("b_download","下载",620,200,200,30,"download_click","");
 s_ui.textbox_init("txt_error","错误信息：",100,300,500,200);
 
 
-s_ui.Progress_Init("progress1",100,500,500,30);
+s_ui.progress_init("progress1",100,500,500,30);
 
 s_ui.Show_Form(860,600);
 

@@ -45,7 +45,7 @@ function clear_click(data){
 
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
-    var path=sys.AppPath();
+    var path=s_sys.AppPath();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     

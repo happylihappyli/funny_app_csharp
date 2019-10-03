@@ -256,7 +256,7 @@ function event_chat(data){
 
 
 function read_ini(){
-    var path=sys.AppPath();
+    var path=s_sys.AppPath();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
     var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");

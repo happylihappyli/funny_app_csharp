@@ -148,9 +148,9 @@ s_ui.button_init("b2_2","停止",150,500,100,30,"stop_click","");
 
 s_ui.button_init("b2_3","参数",250,500,100,30,"param_click","");
 
-s_ui.Progress_Init("progress0",10,550,700,30);
-s_ui.Progress_Init("progress1",10,600,700,30);
-s_ui.Progress_Init("progress2",10,650,700,30);
+s_ui.progress_init("progress0",10,550,700,30);
+s_ui.progress_init("progress1",10,600,700,30);
+s_ui.progress_init("progress2",10,650,700,30);
 
 s_ui.Show_Form(1000,800);
 

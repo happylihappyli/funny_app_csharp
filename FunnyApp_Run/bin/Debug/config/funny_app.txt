@@ -7,4 +7,9 @@ map_db.js E:/Data/class_funnyai.ini
 ssh_test.js E:/Data/class_funnyai.ini
 tree_test.js|FA_Java\\tree_test_view.js
 test_time.js
-天气预报.js
+:test_if.js 1
+:test_if.js 0
+:test_function.js 1
+:test_function.js 0
+:weather.js 1
+:weather.js 0
