@@ -1,0 +1,9 @@
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\bin\Debug\Treeview Rearrange.exe.config
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\bin\Debug\Treeview Rearrange.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\bin\Debug\Treeview Rearrange.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\FunnyProgram.csprojAssemblyReference.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\Treeview_Rearrange.Form1.resources
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\FunnyProgram.csproj.GenerateResource.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\FunnyProgram.csproj.CoreCompileInputs.cache
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\Treeview Rearrange.exe
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\Treeview Rearrange.pdb
