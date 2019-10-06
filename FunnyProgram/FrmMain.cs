@@ -15,9 +15,6 @@ namespace Treeview_Rearrange
 		private int NodeCount, FolderCount;
 		private string NodeMap;
 		private System.Windows.Forms.TreeView treeView1;
-		private System.Windows.Forms.Button btnAddNode;
-		private System.Windows.Forms.Button btnAddFolder;
-		private System.Windows.Forms.Button btnEnable;
 		private System.ComponentModel.Container components = null;
 		private const int MAPSIZE = 128;
         private TreeView treeView2;
@@ -31,9 +28,6 @@ namespace Treeview_Rearrange
 		private void InitializeComponent()
 		{
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.btnAddNode = new System.Windows.Forms.Button();
-            this.btnAddFolder = new System.Windows.Forms.Button();
-            this.btnEnable = new System.Windows.Forms.Button();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
@@ -41,46 +35,20 @@ namespace Treeview_Rearrange
             // 
             this.treeView1.AllowDrop = true;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView1.Location = new System.Drawing.Point(291, 22);
+            this.treeView1.Font = new System.Drawing.Font("ËÎÌו", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.treeView1.Location = new System.Drawing.Point(245, 22);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(259, 377);
+            this.treeView1.Size = new System.Drawing.Size(520, 466);
             this.treeView1.TabIndex = 0;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            // 
-            // btnAddNode
-            // 
-            this.btnAddNode.Location = new System.Drawing.Point(291, 428);
-            this.btnAddNode.Name = "btnAddNode";
-            this.btnAddNode.Size = new System.Drawing.Size(124, 25);
-            this.btnAddNode.TabIndex = 1;
-            this.btnAddNode.Text = "Add Node";
-            this.btnAddNode.Click += new System.EventHandler(this.btnAddNode_Click);
-            // 
-            // btnAddFolder
-            // 
-            this.btnAddFolder.Location = new System.Drawing.Point(425, 428);
-            this.btnAddFolder.Name = "btnAddFolder";
-            this.btnAddFolder.Size = new System.Drawing.Size(125, 25);
-            this.btnAddFolder.TabIndex = 2;
-            this.btnAddFolder.Text = "Add Folder";
-            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
-            // 
-            // btnEnable
-            // 
-            this.btnEnable.Location = new System.Drawing.Point(291, 463);
-            this.btnEnable.Name = "btnEnable";
-            this.btnEnable.Size = new System.Drawing.Size(259, 25);
-            this.btnEnable.TabIndex = 3;
-            this.btnEnable.Text = "Enable drag drop rearrange support";
-            this.btnEnable.Click += new System.EventHandler(this.btnEnable_Click);
             // 
             // treeView2
             // 
             this.treeView2.AllowDrop = true;
             this.treeView2.Location = new System.Drawing.Point(12, 22);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(259, 466);
+            this.treeView2.Size = new System.Drawing.Size(218, 466);
             this.treeView2.TabIndex = 4;
             this.treeView2.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView2_ItemDrag);
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
@@ -88,13 +56,11 @@ namespace Treeview_Rearrange
             // Form1
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.ClientSize = new System.Drawing.Size(681, 546);
+            this.ClientSize = new System.Drawing.Size(823, 538);
             this.Controls.Add(this.treeView2);
-            this.Controls.Add(this.btnEnable);
-            this.Controls.Add(this.btnAddFolder);
-            this.Controls.Add(this.btnAddNode);
             this.Controls.Add(this.treeView1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FunnyProgram";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -132,13 +98,6 @@ namespace Treeview_Rearrange
             this.treeView2.ItemHeight = this.treeView2.ItemHeight + 3;
             this.treeView2.Indent = this.treeView2.Indent + 3;
 
-            this.btnAddNode_Click(null, EventArgs.Empty);
-			this.btnAddNode_Click(null, EventArgs.Empty);
-			this.btnAddNode_Click(null, EventArgs.Empty);
-			this.btnAddFolder_Click(null, EventArgs.Empty);
-			this.btnAddFolder_Click(null, EventArgs.Empty);
-			this.btnAddFolder_Click(null, EventArgs.Empty);
-			this.btnEnable_Click(null, EventArgs.Empty);
 			
 		}
 
@@ -154,27 +113,8 @@ namespace Treeview_Rearrange
 			base.Dispose( disposing );
 		}
 
-		private void btnAddNode_Click(object sender, System.EventArgs e)
-		{
-			++this.NodeCount;
-			this.treeView1.Nodes.Add(new TreeNode("Node #" + this.NodeCount.ToString(), 1, 1));
-		}
 
-		private void btnAddFolder_Click(object sender, System.EventArgs e)
-		{
-			++this.FolderCount;
-			this.treeView1.Nodes.Add(new TreeNode("Folder #" + this.FolderCount.ToString(), 0, 0));
-		}
-
-		private void btnEnable_Click(object sender, System.EventArgs e)
-		{
-			this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
-			this.treeView1.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView1_DragOver);
-			this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
-			this.treeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView1_ItemDrag);
-			this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
-			this.btnEnable.Enabled = false;
-		}
+         
 
 		private void treeView1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
@@ -574,7 +514,32 @@ namespace Treeview_Rearrange
             ++this.NodeCount;
             pWhile.Nodes.Add(new TreeNode("print", 1, 1));
 
+
+            ++this.NodeCount;
+            TreeNode pIf = new TreeNode("if", 1, 1);
+            this.treeView1.Nodes.Add(pIf);
+            ++this.NodeCount;
+            pIf.Nodes.Add(new TreeNode("print", 1, 1));
+
+
+            ++this.NodeCount;
+            TreeNode pElse = new TreeNode("else", 1, 1);
+            this.treeView1.Nodes.Add(pElse);
+            ++this.NodeCount;
+            pElse.Nodes.Add(new TreeNode("print", 1, 1));
+
+
+
             treeView1.ExpandAll();
+
+
+
+            this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
+            this.treeView1.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView1_DragOver);
+            this.treeView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView1_DragEnter);
+            this.treeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView1_ItemDrag);
+            this.treeView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView1_DragDrop);
+
         }
 
         private void treeView2_ItemDrag(object sender, ItemDragEventArgs e) {
@@ -594,10 +559,12 @@ namespace Treeview_Rearrange
             
             // background
             Color backColor = (GetTopNodeIndex(e.Node) & 1) == 0 ? BackColor : Color.LightBlue;
-            using (Brush b = new SolidBrush(backColor)) {
-                e.Graphics.FillRectangle(b, new Rectangle(0, e.Bounds.Top, ClientSize.Width, e.Bounds.Height));
-            }
-            int tree_height = Get_Node_Height(e.Node);
+            //using (Brush b = new SolidBrush(backColor)) {
+            //    e.Graphics.FillRectangle(b, new Rectangle(0, e.Bounds.Top, ClientSize.Width, e.Bounds.Height));
+            //}
+            int tree_deep = Get_Node_Deep(e.Node);
+            int h= Get_Node_Height(e.Node); 
+            int tree_height =e.Bounds.Height*h;
 
             // icon
             if (e.Node.Nodes.Count > 0) {
@@ -605,25 +572,44 @@ namespace Treeview_Rearrange
                 //e.Graphics.DrawImage(icon, e.Bounds.Left - icon.Width - 3, e.Bounds.Top);
                 e.Graphics.DrawRectangle(
                     new Pen(Color.Blue,5),
-                    e.Bounds.Left+ tree_height*10, e.Bounds.Top,10,10);
+                    e.Bounds.Left+ tree_deep*30, e.Bounds.Top,10,10);
             }
-
-            // text (due to OwnerDrawText mode, indenting of e.Bounds will be correct)
-            TextRenderer.DrawText(e.Graphics, e.Node.Text, Font,
-                new Point(e.Bounds.Left+20*tree_height,e.Bounds.Top), ForeColor);
 
 
             // indicate selection (if not by backColor):
             if ((e.State & TreeNodeStates.Selected) != 0)
                 ControlPaint.DrawFocusRectangle(e.Graphics, e.Bounds);
 
-            e.Graphics.DrawRectangle(new Pen(Color.Red), e.Node.Bounds);
+
+            if (h > 1) {
+
+                e.Graphics.DrawRectangle(new Pen(Color.Red, 3),
+                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
+            } else {
+
+                e.Graphics.FillRectangle(new SolidBrush(Color.LightBlue),
+                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
+            }
+
+            // text (due to OwnerDrawText mode, indenting of e.Bounds will be correct)
+            TextRenderer.DrawText(e.Graphics, e.Node.Text, Font,
+                new Point(e.Bounds.Left + 30+ 40 * tree_deep, e.Bounds.Top+5), ForeColor);
 
         }
 
 
-
         private int Get_Node_Height(TreeNode node) {
+            int count = 1;
+            if (node.IsExpanded) {
+                for (int i = 0; i < node.Nodes.Count; i++) {
+                    count += Get_Node_Height(node.Nodes[i]);
+                }
+            }
+
+            return count;
+        }
+
+        private int Get_Node_Deep(TreeNode node) {
             int count=1;
             while (node.Parent != null) {
                 count += 1;
