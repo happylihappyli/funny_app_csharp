@@ -38,7 +38,7 @@ namespace Treeview_Rearrange
             this.treeView1.Font = new System.Drawing.Font("ËÎÌו", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.treeView1.Location = new System.Drawing.Point(245, 22);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(520, 466);
+            this.treeView1.Size = new System.Drawing.Size(557, 576);
             this.treeView1.TabIndex = 0;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -48,7 +48,7 @@ namespace Treeview_Rearrange
             this.treeView2.AllowDrop = true;
             this.treeView2.Location = new System.Drawing.Point(12, 22);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(218, 466);
+            this.treeView2.Size = new System.Drawing.Size(218, 576);
             this.treeView2.TabIndex = 4;
             this.treeView2.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView2_ItemDrag);
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
@@ -56,7 +56,7 @@ namespace Treeview_Rearrange
             // Form1
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.ClientSize = new System.Drawing.Size(823, 538);
+            this.ClientSize = new System.Drawing.Size(814, 610);
             this.Controls.Add(this.treeView2);
             this.Controls.Add(this.treeView1);
             this.Name = "Form1";
@@ -150,7 +150,7 @@ namespace Treeview_Rearrange
                         MovingNode.Remove();
                     }
 				}
-			}            
+			}
 		}
 
 		private void treeView1_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
@@ -169,7 +169,7 @@ namespace Treeview_Rearrange
 				Graphics g = this.treeView1.CreateGraphics();
                 
 				// Image index of 1 is the non-folder icon
-				if(NodeOver.ImageIndex == 1)
+				if("fold".Equals( NodeOver.Tag)==false)
 				{
 					#region Standard Node
 					if(OffsetY < (NodeOver.Bounds.Height / 2))
@@ -373,18 +373,18 @@ namespace Treeview_Rearrange
 			int RightPos = this.treeView1.Width - 4;
 
 			Point[] LeftTriangle = new Point[5]{
-												   new Point(LeftPos, NodeOver.Bounds.Top - 4),
-												   new Point(LeftPos, NodeOver.Bounds.Top + 4),
-												   new Point(LeftPos + 4, NodeOver.Bounds.Y),
-												   new Point(LeftPos + 4, NodeOver.Bounds.Top - 1),
-												   new Point(LeftPos, NodeOver.Bounds.Top - 5)};
+						new Point(LeftPos, NodeOver.Bounds.Top - 4),
+						new Point(LeftPos, NodeOver.Bounds.Top + 4),
+						new Point(LeftPos + 4, NodeOver.Bounds.Y),
+						new Point(LeftPos + 4, NodeOver.Bounds.Top - 1),
+						new Point(LeftPos, NodeOver.Bounds.Top - 5)};
 
 			Point[] RightTriangle = new Point[5]{
-													new Point(RightPos, NodeOver.Bounds.Top - 4),
-													new Point(RightPos, NodeOver.Bounds.Top + 4),
-													new Point(RightPos - 4, NodeOver.Bounds.Y),
-													new Point(RightPos - 4, NodeOver.Bounds.Top - 1),
-													new Point(RightPos, NodeOver.Bounds.Top - 5)};
+						new Point(RightPos, NodeOver.Bounds.Top - 4),
+						new Point(RightPos, NodeOver.Bounds.Top + 4),
+						new Point(RightPos - 4, NodeOver.Bounds.Y),
+						new Point(RightPos - 4, NodeOver.Bounds.Top - 1),
+						new Point(RightPos, NodeOver.Bounds.Top - 5)};
 
 
 			g.FillPolygon(System.Drawing.Brushes.Black, LeftTriangle);
@@ -400,25 +400,26 @@ namespace Treeview_Rearrange
 			int NodeOverImageWidth = this.treeView1.ImageList.Images[NodeOver.ImageIndex].Size.Width + 8;
 			// Once again, we are not dragging to node over, draw the placeholder using the ParentDragDrop bounds
 			int LeftPos, RightPos;
-			if(ParentDragDrop != null)
-				LeftPos = ParentDragDrop.Bounds.Left - (this.treeView1.ImageList.Images[ParentDragDrop.ImageIndex].Size.Width + 8);
-			else
+			if(ParentDragDrop != null) { 
+				LeftPos = ParentDragDrop.Bounds.Left - (treeView1.ImageList.Images[ParentDragDrop.ImageIndex].Size.Width + 8);
+            } else { 
 				LeftPos = NodeOver.Bounds.Left - NodeOverImageWidth;
-			RightPos = this.treeView1.Width - 4;
+            }
+            RightPos = this.treeView1.Width - 4;
 
 			Point[] LeftTriangle = new Point[5]{
-												   new Point(LeftPos, NodeOver.Bounds.Bottom - 4),
-												   new Point(LeftPos, NodeOver.Bounds.Bottom + 4),
-												   new Point(LeftPos + 4, NodeOver.Bounds.Bottom),
-												   new Point(LeftPos + 4, NodeOver.Bounds.Bottom - 1),
-												   new Point(LeftPos, NodeOver.Bounds.Bottom - 5)};
+					new Point(LeftPos, NodeOver.Bounds.Bottom - 4),
+					new Point(LeftPos, NodeOver.Bounds.Bottom + 4),
+					new Point(LeftPos + 4, NodeOver.Bounds.Bottom),
+					new Point(LeftPos + 4, NodeOver.Bounds.Bottom - 1),
+					new Point(LeftPos, NodeOver.Bounds.Bottom - 5)};
 
 			Point[] RightTriangle = new Point[5]{
-													new Point(RightPos, NodeOver.Bounds.Bottom - 4),
-													new Point(RightPos, NodeOver.Bounds.Bottom + 4),
-													new Point(RightPos - 4, NodeOver.Bounds.Bottom),
-													new Point(RightPos - 4, NodeOver.Bounds.Bottom - 1),
-													new Point(RightPos, NodeOver.Bounds.Bottom - 5)};
+					new Point(RightPos, NodeOver.Bounds.Bottom - 4),
+					new Point(RightPos, NodeOver.Bounds.Bottom + 4),
+					new Point(RightPos - 4, NodeOver.Bounds.Bottom),
+					new Point(RightPos - 4, NodeOver.Bounds.Bottom - 1),
+					new Point(RightPos, NodeOver.Bounds.Bottom - 5)};
 
 
 			g.FillPolygon(System.Drawing.Brushes.Black, LeftTriangle);
@@ -436,18 +437,18 @@ namespace Treeview_Rearrange
 			RightPos = this.treeView1.Width - 4;
 
 			Point[] LeftTriangle = new Point[5]{
-												   new Point(LeftPos, NodeOver.Bounds.Top - 4),
-												   new Point(LeftPos, NodeOver.Bounds.Top + 4),
-												   new Point(LeftPos + 4, NodeOver.Bounds.Y),
-												   new Point(LeftPos + 4, NodeOver.Bounds.Top - 1),
-												   new Point(LeftPos, NodeOver.Bounds.Top - 5)};
+					new Point(LeftPos, NodeOver.Bounds.Top - 4),
+					new Point(LeftPos, NodeOver.Bounds.Top + 4),
+					new Point(LeftPos + 4, NodeOver.Bounds.Y),
+					new Point(LeftPos + 4, NodeOver.Bounds.Top - 1),
+					new Point(LeftPos, NodeOver.Bounds.Top - 5)};
 
 			Point[] RightTriangle = new Point[5]{
-													new Point(RightPos, NodeOver.Bounds.Top - 4),
-													new Point(RightPos, NodeOver.Bounds.Top + 4),
-													new Point(RightPos - 4, NodeOver.Bounds.Y),
-													new Point(RightPos - 4, NodeOver.Bounds.Top - 1),
-													new Point(RightPos, NodeOver.Bounds.Top - 5)};
+					new Point(RightPos, NodeOver.Bounds.Top - 4),
+					new Point(RightPos, NodeOver.Bounds.Top + 4),
+					new Point(RightPos - 4, NodeOver.Bounds.Y),
+					new Point(RightPos - 4, NodeOver.Bounds.Top - 1),
+					new Point(RightPos, NodeOver.Bounds.Top - 5)};
 
 
 			g.FillPolygon(System.Drawing.Brushes.Black, LeftTriangle);
@@ -460,11 +461,11 @@ namespace Treeview_Rearrange
 			Graphics g = this.treeView1.CreateGraphics();
 			int RightPos = NodeOver.Bounds.Right + 6;
 			Point[] RightTriangle = new Point[5]{
-													new Point(RightPos, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) + 4),
-													new Point(RightPos, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) + 4),
-													new Point(RightPos - 4, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2)),
-													new Point(RightPos - 4, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) - 1),
-													new Point(RightPos, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) - 5)};
+				new Point(RightPos, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) + 4),
+				new Point(RightPos, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) + 4),
+				new Point(RightPos - 4, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2)),
+				new Point(RightPos - 4, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) - 1),
+				new Point(RightPos, NodeOver.Bounds.Y + (NodeOver.Bounds.Height / 2) - 5)};
 
 			this.Refresh();
 			g.FillPolygon(System.Drawing.Brushes.Black, RightTriangle);
@@ -499,15 +500,22 @@ namespace Treeview_Rearrange
             ++this.NodeCount;
             this.treeView2.Nodes.Add(new TreeNode("print", 1, 1));
             ++this.NodeCount;
-            this.treeView2.Nodes.Add(new TreeNode("while", 0, 0));
+            TreeNode pWhile = new TreeNode("while", 0, 0);
+            pWhile.Tag = "fold";
+            this.treeView2.Nodes.Add(pWhile);
             ++this.NodeCount;
-            this.treeView2.Nodes.Add(new TreeNode("if", 0, 0));
+            TreeNode pIf = new TreeNode("if", 0, 0);
+            pIf.Tag = "fold";
+            this.treeView2.Nodes.Add(pIf);
             ++this.NodeCount;
-            this.treeView2.Nodes.Add(new TreeNode("else", 0, 0));
+            TreeNode pElse = new TreeNode("else", 0, 0);
+            pElse.Tag = "fold";
+            this.treeView2.Nodes.Add(pElse);
 
 
             ++this.NodeCount;
-            TreeNode pWhile = new TreeNode("while", 1, 1);
+            pWhile = new TreeNode("while", 1, 1);
+            pWhile.Tag = "fold";
             this.treeView1.Nodes.Add(pWhile);
             ++this.NodeCount;
             pWhile.Nodes.Add(new TreeNode("print", 1, 1));
@@ -516,14 +524,16 @@ namespace Treeview_Rearrange
 
 
             ++this.NodeCount;
-            TreeNode pIf = new TreeNode("if", 1, 1);
+            pIf = new TreeNode("if", 1, 1);
+            pIf.Tag = "fold";
             this.treeView1.Nodes.Add(pIf);
             ++this.NodeCount;
             pIf.Nodes.Add(new TreeNode("print", 1, 1));
 
 
             ++this.NodeCount;
-            TreeNode pElse = new TreeNode("else", 1, 1);
+            pElse = new TreeNode("else", 1, 1);
+            pElse.Tag = "fold";
             this.treeView1.Nodes.Add(pElse);
             ++this.NodeCount;
             pElse.Nodes.Add(new TreeNode("print", 1, 1));
@@ -571,8 +581,8 @@ namespace Treeview_Rearrange
                 //Image icon = GetIcon(e.Node.IsExpanded); // TODO: true=down;false:right
                 //e.Graphics.DrawImage(icon, e.Bounds.Left - icon.Width - 3, e.Bounds.Top);
                 e.Graphics.DrawRectangle(
-                    new Pen(Color.Blue,5),
-                    e.Bounds.Left+ tree_deep*30, e.Bounds.Top,10,10);
+                    new Pen(Color.Blue,3),
+                    e.Bounds.Left+ tree_deep*20, e.Bounds.Top,10,10);
             }
 
 
@@ -581,14 +591,18 @@ namespace Treeview_Rearrange
                 ControlPaint.DrawFocusRectangle(e.Graphics, e.Bounds);
 
 
-            if (h > 1) {
+            if ("fold".Equals(e.Node.Tag)) {
 
-                e.Graphics.DrawRectangle(new Pen(Color.Red, 3),
+                e.Graphics.FillRectangle(new SolidBrush(Color.Yellow),
+                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
+                e.Graphics.DrawRectangle(new Pen(Color.Red,3),
                     e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
             } else {
-
                 e.Graphics.FillRectangle(new SolidBrush(Color.LightBlue),
                     e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
+                e.Graphics.DrawRectangle(new Pen(Color.Blue, 3),
+                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
+
             }
 
             // text (due to OwnerDrawText mode, indenting of e.Bounds will be correct)
