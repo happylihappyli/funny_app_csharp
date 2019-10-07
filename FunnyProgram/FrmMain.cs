@@ -86,8 +86,8 @@ namespace Treeview_Rearrange
 			this.FolderCount= 0;
 
 			ImageList TreeviewIL = new ImageList();
-			TreeviewIL.Images.Add(System.Drawing.Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("Treeview_Rearrange.resources.folder.png")));
-			TreeviewIL.Images.Add(System.Drawing.Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("Treeview_Rearrange.resources.node.png")));
+			TreeviewIL.Images.Add(Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("FunnyProgram.resources.folder.png")));
+			TreeviewIL.Images.Add(System.Drawing.Image.FromStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("FunnyProgram.resources.node.png")));
 			this.treeView1.ImageList = TreeviewIL;
             this.treeView2.ImageList = TreeviewIL;
 
@@ -361,10 +361,71 @@ namespace Treeview_Rearrange
 			}
 		}
 
+        private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e) {
+            //e.DrawDefault = true;
+
+            // background
+            Color backColor = (GetTopNodeIndex(e.Node) & 1) == 0 ? BackColor : Color.LightBlue;
+            //using (Brush b = new SolidBrush(backColor)) {
+            //    e.Graphics.FillRectangle(b, new Rectangle(0, e.Bounds.Top, ClientSize.Width, e.Bounds.Height));
+            //}
+            int tree_deep = Get_Node_Deep(e.Node);
+            int h = Get_Node_Height(e.Node);
+            int tree_height = e.Bounds.Height * h;
+
+            // icon
+            if (e.Node.Nodes.Count > 0) {
+                //Image icon = GetIcon(e.Node.IsExpanded); // TODO: true=down;false:right
+                //e.Graphics.DrawImage(icon, e.Bounds.Left - icon.Width - 3, e.Bounds.Top);
+                e.Graphics.DrawRectangle(
+                    new Pen(Color.Blue, 1),
+                    e.Bounds.Left + tree_deep * 25, e.Bounds.Top, 10, 10);
+            }
 
 
-		#region Helper Methods
-		private void DrawLeafTopPlaceholders(TreeNode NodeOver)
+            // indicate selection (if not by backColor):
+            if ((e.State & TreeNodeStates.Selected) != 0)
+                ControlPaint.DrawFocusRectangle(e.Graphics, e.Bounds);
+
+            int x = e.Node.Bounds.Left;
+            int y = e.Node.Bounds.Top;
+            int height = e.Node.Bounds.Height;
+            Point[] points ={
+                    new Point(x,y),
+                    new Point(x+20,y),
+                    new Point(x+20+5,y+5),
+                    new Point(x+20+15,y+5),
+                    new Point(x+20+20,y),
+                    new Point(x+220,y),
+                    new Point(x+220,y+tree_height-2),
+                    new Point(x+20+20,y+tree_height-2),
+                    new Point(x+20+15,y+tree_height-2+5),
+                    new Point(x+20+5,y+tree_height-2+5),
+                    new Point(x+20,y+tree_height-2),
+                    new Point(x,y+tree_height-2)
+                };
+
+            //»­·½¿é
+            if ("fold".Equals(e.Node.Tag)) {
+                //g.DrawPolygon(pen, points);
+                e.Graphics.FillPolygon(new SolidBrush(Color.Yellow), points);
+                e.Graphics.DrawPolygon(new Pen(Color.Red, 1), points);
+            } else {
+                e.Graphics.FillPolygon(new SolidBrush(Color.LightBlue), points);
+                e.Graphics.DrawPolygon(new Pen(Color.Blue, 1), points);
+
+            }
+
+            // text (due to OwnerDrawText mode, indenting of e.Bounds will be correct)
+            TextRenderer.DrawText(e.Graphics, e.Node.Text, Font,
+                new Point(e.Bounds.Left + 60 + 40 * tree_deep, e.Bounds.Top + 8), ForeColor);
+
+        }
+
+
+
+        #region Helper Methods
+        private void DrawLeafTopPlaceholders(TreeNode NodeOver)
 		{
 			Graphics g = this.treeView1.CreateGraphics();
 
@@ -564,54 +625,7 @@ namespace Treeview_Rearrange
 
         }
 
-        private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e) {
-            //e.DrawDefault = true;
-            
-            // background
-            Color backColor = (GetTopNodeIndex(e.Node) & 1) == 0 ? BackColor : Color.LightBlue;
-            //using (Brush b = new SolidBrush(backColor)) {
-            //    e.Graphics.FillRectangle(b, new Rectangle(0, e.Bounds.Top, ClientSize.Width, e.Bounds.Height));
-            //}
-            int tree_deep = Get_Node_Deep(e.Node);
-            int h= Get_Node_Height(e.Node); 
-            int tree_height =e.Bounds.Height*h;
-
-            // icon
-            if (e.Node.Nodes.Count > 0) {
-                //Image icon = GetIcon(e.Node.IsExpanded); // TODO: true=down;false:right
-                //e.Graphics.DrawImage(icon, e.Bounds.Left - icon.Width - 3, e.Bounds.Top);
-                e.Graphics.DrawRectangle(
-                    new Pen(Color.Blue,3),
-                    e.Bounds.Left+ tree_deep*20, e.Bounds.Top,10,10);
-            }
-
-
-            // indicate selection (if not by backColor):
-            if ((e.State & TreeNodeStates.Selected) != 0)
-                ControlPaint.DrawFocusRectangle(e.Graphics, e.Bounds);
-
-
-            if ("fold".Equals(e.Node.Tag)) {
-
-                e.Graphics.FillRectangle(new SolidBrush(Color.Yellow),
-                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
-                e.Graphics.DrawRectangle(new Pen(Color.Red,3),
-                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
-            } else {
-                e.Graphics.FillRectangle(new SolidBrush(Color.LightBlue),
-                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
-                e.Graphics.DrawRectangle(new Pen(Color.Blue, 3),
-                    e.Node.Bounds.Left, e.Node.Bounds.Top, 300, tree_height);
-
-            }
-
-            // text (due to OwnerDrawText mode, indenting of e.Bounds will be correct)
-            TextRenderer.DrawText(e.Graphics, e.Node.Text, Font,
-                new Point(e.Bounds.Left + 30+ 40 * tree_deep, e.Bounds.Top+5), ForeColor);
-
-        }
-
-
+        
         private int Get_Node_Height(TreeNode node) {
             int count = 1;
             if (node.IsExpanded) {

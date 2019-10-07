@@ -7,3 +7,4 @@ E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\bin\Debug\FunnyProgr
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\bin\Debug\FunnyProgram.pdb
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\FunnyProgram.exe
 E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\FunnyProgram.pdb
+E:\CloudStation\Robot5\GitHub\funny_app_csharp\FunnyProgram\obj\Debug\FunnyProgram.Properties.Resources.resources
