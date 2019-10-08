@@ -46,7 +46,7 @@ function file_open(){
 
 function read(strFile){
     s_ui.listbox_clear("txt_upload");
-    s_ui.listbox_from_file("txt_upload",sys.App_Path()+"\\config\\"+strFile);
+    s_ui.listbox_from_file("txt_upload",s_sys.App_Path()+"\\config\\"+strFile);
 }
 
 
@@ -64,7 +64,7 @@ s_ui.button_init("b2_1","保存密码",350,60,100,30,"save_password","");
 
 s_ui.label_init("lb_upload","上传文件：",10,100);
 
-s_ui.text_init("txt_upload",sys.args(1),100,100,500,30);
+s_ui.text_init("txt_upload",s_sys.args(1),100,100,500,30);
 //s_ui.listbox_add("txt_upload",sys.args(1));
 
 
@@ -88,7 +88,7 @@ s_ui.progress_init("progress1",100,500,500,30);
 
 s_ui.Show_Form(700,600);
 
-s_ui.Form_Title("upload："+sys.args(1));
+s_ui.Form_Title("upload："+s_sys.args(1));
 
 read_password("");
 

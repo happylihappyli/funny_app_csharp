@@ -204,6 +204,7 @@
       <DependentUpon>FrmApp.cs</DependentUpon>
     </Compile>
     <Compile Include="Function\C_Index.cs" />
+    <Compile Include="Function\C_TCP.cs" />
     <Compile Include="Function\C_Time.cs" />
     <Compile Include="Function\C_XML.cs" />
     <Compile Include="Function\S_Math.cs" />

@@ -32,7 +32,7 @@ namespace FunnyApp {
 
         public C_UI(FrmApp pFrmApp) {
             pFrmApp.pUI = this;
-            this.pFrmApp = FrmApp;
+            this.pFrmApp = pFrmApp;
         }
 
         public void Set_Title(string strLine) {
@@ -826,12 +826,6 @@ namespace FunnyApp {
             }
         }
 
-
-        [Obsolete("Acception_Button 不推荐，使用 Button_Default(xxx) 代替")]
-        public void acception_button(string control_name) {
-            Button pControl = (Button)Ctrls[control_name];
-            pFrmApp.AcceptButton = pControl;
-        }
 
 
         public void button_default(string control_name) {

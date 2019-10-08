@@ -26,9 +26,10 @@ namespace FunnyApp
             jint.SetValue("s_xml", new C_XML());
             jint.SetValue("s_file", new C_File(pApp));
             jint.SetValue("s_au3", new C_AU3(pApp));
+            jint.SetValue("s_tcp", new C_TCP(pApp));
+
 
             
-
             try
             {
                 jint.Execute(run_codestr1);
