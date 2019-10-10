@@ -352,7 +352,7 @@ s_ui.Menu_Item_Add("Menu1","Tools","File","文件(&S)","file_click","");
 
 
 //其他属性
-s_ui.acception_button("b1_send");
+s_ui.button_default("b1_send");
 s_ui.Show_Form(800,700);
 s_ui.Form_Title("File");
 

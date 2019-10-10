@@ -16,13 +16,14 @@ namespace FunnyApp
         {
             //pApp.tools = new Tools(pApp);
             jint = new Jint.Engine();
+
             jint.SetValue("s_sys", pApp.sys);
-            jint.SetValue("s_ui",new C_UI(pApp));
+            jint.SetValue("s_ui", pApp.pUI);
             jint.SetValue("s_math", new S_Math());
             jint.SetValue("s_string", new C_String());
             jint.SetValue("s_net", new C_Net(pApp));
             jint.SetValue("s_time", new C_Time(pApp));
-            jint.SetValue("s_index", new C_Index(pApp));
+            jint.SetValue("s_index", FrmApp.pIndex);// new C_Index(pApp));
             jint.SetValue("s_xml", new C_XML());
             jint.SetValue("s_file", new C_File(pApp));
             jint.SetValue("s_au3", new C_AU3(pApp));

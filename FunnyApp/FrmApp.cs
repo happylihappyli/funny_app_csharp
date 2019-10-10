@@ -4,6 +4,7 @@ using B_File.Funny;
 using B_IniFile;
 using B_String.Funny;
 using B_TreapVB.TreapVB;
+using FunnyApp.Function;
 using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -32,6 +33,7 @@ namespace FunnyApp
         public C_UI pUI;
         public static Treap<Object> pMap = new Treap<Object>();
         public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
+        public static C_Index pIndex ;
 
         public FrmApp pParent = null;
         public string strFile = "";
@@ -42,6 +44,10 @@ namespace FunnyApp
         {
             InitializeComponent();
             sys = new Tools(this);
+            if (FrmApp.pIndex == null) {
+                FrmApp.pIndex = new C_Index(this);
+            }
+            pUI = new C_UI(this);
         }
 
         private void FrmApp_Load(object sender, EventArgs e)

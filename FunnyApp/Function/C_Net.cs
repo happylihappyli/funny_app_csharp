@@ -300,8 +300,8 @@ namespace FunnyApp {
             }
         }
 
-        public string http_get(string url) {
-            return S_Net.Http(url,"GET","","utf-8");
+        public string http_get(string url,string encode="utf-8") {
+            return S_Net.Http(url,"GET","", encode);
         }
 
 

@@ -193,7 +193,7 @@ s_ui.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
 
 
 //其他属性
-//s_ui.acception_button("b1_send");
+//s_ui.button_default("b1_send");
 s_ui.Show_Form(700,600);
 s_ui.Form_Title("加密收藏夹");
 

@@ -31,6 +31,7 @@ namespace FunnyApp.Function {
         private string callback_init = "";
 
         public C_Index(FrmApp pFrmApp) {
+            //this.pSeg = pFrmApp.pParent.pIndex.pSeg;
             this.pFrmApp = pFrmApp;
         }
 
@@ -78,19 +79,21 @@ namespace FunnyApp.Function {
             return pSeg.Segmentation_List(Content, false);
         }
 
-        public void Add_Document(int ID, string Content) {
-
+        public void Add_Document(string ID, string Content) {
+            if (pSeg==null) {
+                pFrmApp.pUI.msg("pSeg==null");
+            }
             Document doc = new Document();
-            doc.Add(new Field("ID", ID+"", Field.Store.YES, Field.Index.NOT_ANALYZED));
+            doc.Add(new Field("ID", ID, Field.Store.YES, Field.Index.NOT_ANALYZED));
             string strLine = pSeg.Segmentation_List(Content, false);
             doc.Add(new Field("Content", strLine, Field.Store.YES, Field.Index.ANALYZED));
             writer.AddDocument(doc);
         }
 
 
-        public void Remove_Document(int ID) {
+        public void Remove_Document(string ID) {
 
-            writer.DeleteDocuments(new Term("ID",ID+""));
+            writer.DeleteDocuments(new Term("ID",ID));
         }
 
 

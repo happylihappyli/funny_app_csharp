@@ -16,3 +16,4 @@ test_time.js
 :min_mid_max.js 1 E:\Test\step5.txt 0 "0,0.25,0.5,0.75,1"
 :min_mid_max.js 0 E:\Test\step5.txt 0 "0,0.25,0.5,0.75,1"
 :ks.js 1 E:\Test\5442.data 0 1 2
+:mkdir.js 1 E:\test1\test2\test3\

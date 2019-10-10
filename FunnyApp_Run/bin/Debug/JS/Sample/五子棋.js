@@ -272,7 +272,7 @@ s_ui.button_init("b2_2","draw1",10,600,100,30,"draw_test","");
 s_ui.button_init("b2_3","draw2",150,600,100,30,"draw_test2","");
 
 //其他属性
-s_ui.acception_button("b1_send");
+s_ui.button_default("b1_send");
 s_ui.Show_Form(1200,800);
 s_ui.Form_Title("五子棋");
 

@@ -234,7 +234,7 @@ s_ui.panel_add("panel_top","b_capture","left");
 
 
 //其他属性
-//s_ui.acception_button("b_capture");
+//s_ui.button_default("b_capture");
 s_ui.Show_Form(1100,800);
 s_ui.Form_Title("截屏");
 

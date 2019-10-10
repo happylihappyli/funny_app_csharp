@@ -33,47 +33,33 @@ namespace FunnyApp {
             S_File.Recycle(strFile);
         }
 
-        public void save(string strFile, string content) {
-            if (strFile.StartsWith("@")) {
-                strFile = strFile.Replace("@", pFrmApp.sys.Path_JS());
-            }
-            S_File_Text.Write(strFile, content, false, false);
-        }
 
-        public void append(string strFile, string content) {
-            S_File_Text.Write(strFile, content, true, false);
-        }
-
-        public void copy(string strFile,string strFile2,bool bOverWrite) {
-            File.Copy(strFile, strFile2,bOverWrite);
-        }
-
-        [Obsolete("use read(xxx) instead")]
-        public string File_Read(string strFile) {
-            return read(strFile);
-        }
         public string read(string strFile) {
+            return this.read_encode(strFile);
+        }
+
+        public string read_encode(string strFile, string encode = "utf-8") {
             if (strFile.StartsWith("@")) {
                 strFile = strFile.Replace("@", pFrmApp.sys.Path_JS());
             }
 
-            if (S_File.Exists(strFile)) { 
-                return File.ReadAllText(strFile);
+            if (S_File.Exists(strFile)) {
+                return File.ReadAllText(strFile, Encoding.GetEncoding(encode));
             } else {
                 return "";
             }
         }
 
 
-        public string read(string strFile,int Count) {
+        public string read(string strFile, int Count) {
             if (strFile.StartsWith("@")) {
                 strFile = strFile.Replace("@", pFrmApp.sys.Path_JS());
             }
 
             if (S_File.Exists(strFile)) {
                 string strReturn = "";
-                StreamReader pFile=S_File_Text.Read_Begin(strFile);
-                for(int i = 0; i < Count; i++) {
+                StreamReader pFile = S_File_Text.Read_Begin(strFile);
+                for (int i = 0; i < Count; i++) {
                     string strLine = S_File_Text.Read_Line(pFile);
                     if (strLine == null) break;
                     strReturn += strLine + "\n";
@@ -85,6 +71,28 @@ namespace FunnyApp {
                 return "";
             }
         }
+
+
+        public void save_encode(string strFile, string content,string encode="utf-8") {
+            if (strFile.StartsWith("@")) {
+                strFile = strFile.Replace("@", pFrmApp.sys.Path_JS());
+            }
+            S_File_Text.Write(strFile, content, false, false,Encoding.GetEncoding(encode));
+        }
+
+        public void save(string strFile, string content) {
+            this.save_encode(strFile, content);
+        }
+
+        public void append(string strFile, string content) {
+            S_File_Text.Write(strFile, content, true, false);
+        }
+
+        public void copy(string strFile,string strFile2,bool bOverWrite) {
+            File.Copy(strFile, strFile2,bOverWrite);
+        }
+
+
 
         public void Read_Begin(string file,string key) {
             object pReader= S_File_Text.Read_Begin(file);

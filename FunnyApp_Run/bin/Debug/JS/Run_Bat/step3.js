@@ -503,7 +503,7 @@ s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_cl
 
 
 
-s_ui.acception_button("b1_send");
+s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
 s_ui.Form_Title("第3步 字段映射");
 

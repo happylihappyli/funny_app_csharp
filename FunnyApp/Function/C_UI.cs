@@ -573,6 +573,36 @@ namespace FunnyApp {
             return -1;
         }
 
+
+
+        public void checkbox_init(string name,
+            string text,
+            int x, int y,
+            int width, int height) {
+            Point p = new Point(x, y);//定义一个具体的位置  
+            CheckBox pControl = new CheckBox();//实例化一个button  
+            pControl.Name = name;
+            pControl.Text = text;
+            //tag是控件留给用户自己定义的一个数据项,
+            pControl.Location = p;
+            pControl.Size = new Size(width, height);
+            pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.msg("控件已经存在:" + name);
+            }
+        }
+
+
+        public bool checkbox_checked(string control_name) {
+            CheckBox pControl = (CheckBox)Ctrls[control_name];
+            if (pControl != null) {
+                return pControl.Checked;
+            }
+            return false;
+        }
+
         public void listbox_clear(string control_name) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
@@ -660,6 +690,8 @@ namespace FunnyApp {
             return 0;
         }
 
+
+
         
         public void listbox_selected(string control_name, string strIndex) {
             ListBox pControl = (ListBox)Ctrls[control_name];
@@ -686,15 +718,20 @@ namespace FunnyApp {
             return -1;
         }
 
-        public string listbox_item(string control_name, string strIndex) {
+        public string listbox_item(string control_name, int index) {
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
-                int index = Int32.Parse(strIndex);
                 return pControl.Items[index].ToString();
             }
             return "";
         }
 
+        public void listbox_remove(string control_name, int index){// strIndex) {
+            ListBox pControl = (ListBox)Ctrls[control_name];
+            if (pControl != null) {
+                pControl.Items.RemoveAt(index);
+            }
+        }
 
 
         public void button_init(string name, string text,
@@ -1236,6 +1273,8 @@ namespace FunnyApp {
             FrmApp.pTreapFrmApp.insert(strFile,pApp);
 
             pApp.pParent = pFrmApp;
+            //pFrmApp.pIndex = pApp.pIndex;
+
             pApp.Show();
         }
 
@@ -1628,6 +1667,15 @@ namespace FunnyApp {
             pFrmApp.WindowState = FormWindowState.Normal;
         }
 
+
+        public void show_form_pos(int x,int y,int width, int height) {
+            pFrmApp.Width = width;
+            pFrmApp.Height = height;
+            pFrmApp.Left = x;// Screen.PrimaryScreen.WorkingArea.Left + (Screen.PrimaryScreen.WorkingArea.Width - width) / 2;
+            pFrmApp.Top = y;// Screen.PrimaryScreen.WorkingArea.Top + (Screen.PrimaryScreen.WorkingArea.Height - height) / 2;
+            pFrmApp.Show();
+            pFrmApp.WindowState = FormWindowState.Normal;
+        }
 
         public void Notification(string title, string message) {
             pFrmApp.Call_Notifiction(title, message);

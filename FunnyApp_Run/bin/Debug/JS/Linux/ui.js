@@ -105,7 +105,7 @@ s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 //其他属性
-s_ui.acception_button("b1_send");
+s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
 s_ui.Form_Title("Linux");
 

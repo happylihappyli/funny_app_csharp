@@ -187,7 +187,7 @@ s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
 s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
 
 //窗口
-s_ui.acception_button("b_send");
+s_ui.button_default("b_send");
 s_ui.Show_Form(750,600);
 s_ui.Form_Title("加密聊天");
 

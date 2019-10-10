@@ -105,6 +105,6 @@ s_ui.combox_text_set("combox1",a);
 
 
 //其他属性
-s_ui.acception_button("b1_login");
+s_ui.button_default("b1_login");
 s_ui.Show_Form(560,380);
 s_ui.Form_Title("登录");

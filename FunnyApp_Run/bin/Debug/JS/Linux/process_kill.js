@@ -25,6 +25,6 @@ s_ui.button_init("b_save","保存",150,300,100,30,"save_check_click","");
 
 
 //其他属性
-s_ui.acception_button("b_save");
+s_ui.button_default("b_save");
 s_ui.Show_Form(560,380);
 s_ui.Form_Title("删除进程");
