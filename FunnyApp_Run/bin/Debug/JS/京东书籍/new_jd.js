@@ -16,13 +16,10 @@ function init(data){
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
-
-    //s_ui.text_set("txt1",max_id);
 }
 
 function save_click(data){
     var ID=s_ui.text_read("txt1");
-    //s_file.Ini_Save("D:\\Net\\Web\\main.ini","book","max_id",ID);
     s_sys.value_save("ID",ISBN);
     s_sys.value_save("Content",s_ui.text_read("txt_content"));
     s_ui.close();
@@ -37,37 +34,45 @@ function crawl_click(data){
     if (url.startsWith("//")){
         url="https:"+url;
     }
-    //url="https://item.jd.com/12520516.html";
-    //url="https://item.jd.com/12384065.html";
     
     //*
     page=s_net.http_get(url,"gb2312");
     s_file.save_encode(file,page,"utf-8");
     
-    var array=new RegExp('>ISBN：(.*?)<','g').exec(page)
-    ISBN=array[1];
-    array=new RegExp('<title>(.*?)</title>','g').exec(page)
-    var title=array[1];
+    var reg="";
+    var array=new RegExp('>ISBN：(.*?)<','g').exec(page);
+    if (array!=null && array.length>1) ISBN=array[1];
     
-    array=new RegExp('<a data-name="(.*?)" target="_blank" href="//book.jd.com/writer/','g').exec(page)
-    var author=array[1];
+    array=new RegExp('<title>(.*?)</title>','g').exec(page);
+    var title="";
+    if (array!=null && array.length>1) title=array[1];
     
-    array=new RegExp('<img data-img="1" width=".*?" height=".*?" src="(.*?)" ','g').exec(page)
-    var img=array[1];
+    reg='<a data-name="(.*?)" target="_blank" href="//book.jd.com/writer/';
+    array=new RegExp(reg,'g').exec(page)
+    var author;
+    if (array!=null && array.length>1) author=array[1];
     
-    array=new RegExp('<li title="(.*?)" clstag=".*?chubanshe_3">','g').exec(page)
-    var publisher=array[1];
+    reg='<img data-img="1" width=".*?" height=".*?" src="(.*?)"';
+    array=new RegExp(reg,'g').exec(page);
+    var img;
+    if (array!=null && array.length>1) img=array[1];
+    
+    array=new RegExp('<li title="(.*?)" clstag=".*?chubanshe_3">','g').exec(page);
+    var publisher;
+    if (array!=null && array.length>1) publisher=array[1];
     
     
-    
-    var content="{\"isbn\":\""+ISBN+"\",\r\n"+
-                "\"title\":\""+title+"\",\r\n"+
-                "\"author\":\""+author+"\",\r\n"+
-                "\"img\":\""+img+"\",\r\n"+
-                "\"publisher\":\""+publisher+"\",\r\n"+
-                "}\r\n";
-    s_ui.text_set("txt_content",content);
-    
+    if (title!=""){
+        var content="{\"isbn\":\""+ISBN+"\",\r\n"+
+                    "\"title\":\""+title+"\",\r\n"+
+                    "\"author\":\""+author+"\",\r\n"+
+                    "\"img\":\""+img+"\",\r\n"+
+                    "\"publisher\":\""+publisher+"\",\r\n"+
+                    "}\r\n";
+        s_ui.text_set("txt_content",content);
+    }else{
+        s_ui.text_set("txt_content","");
+    }
     
     if (auto=="1"){
         save_click("");

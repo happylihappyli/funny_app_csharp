@@ -39,6 +39,7 @@ namespace FunnyApp
         public string strFile = "";
         public JS pJS = new JS();
         public Tools sys = null;
+        public C_TCP pTCP = null;
 
         public FrmApp()
         {
@@ -48,6 +49,7 @@ namespace FunnyApp
                 FrmApp.pIndex = new C_Index(this);
             }
             pUI = new C_UI(this);
+            pTCP = new C_TCP(this);
         }
 
         private void FrmApp_Load(object sender, EventArgs e)
@@ -225,6 +227,7 @@ namespace FunnyApp
 
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
+            pTCP.close();
             pUI.moue_unhook();
             notifyIcon1.Visible = false;
         }

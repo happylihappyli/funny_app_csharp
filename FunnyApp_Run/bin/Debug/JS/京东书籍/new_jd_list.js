@@ -40,10 +40,16 @@ function crawl_list_click(data){
     var array;
     var regexp=new RegExp('"url":"(\\\\/\\\\/item.jd.com\\\\/(.*?).html)"','g');
     
-    var html="";
     while((array=regexp.exec(page))!=null){
         var url=array[1];
         url=url.replaceAll("\\\\","");
+        s_ui.listbox_add("txt_content",url);
+    }
+    
+    regexp=new RegExp('"(//item.jd.com/(.*?).html)"','g');
+    
+    while((array=regexp.exec(page))!=null){
+        var url=array[1];
         s_ui.listbox_add("txt_content",url);
     }
 }
@@ -65,15 +71,12 @@ function callback_view(data){
         }else{
             s_index.Create_Start(Path_Index,false);
         }
-        //s_ui.msg("Create_Start");
+        
         s_index.Add_Document(id,content);
-        //s_ui.msg("Add_Document");
         s_index.Create_End();
-        //s_ui.msg("Create_End");
         
         s_sys.value_save("ID","");
         s_sys.value_save("Content","");
-        //s_ui.msg("clear");
     }
     
     s_sys.value_save("action","idle");
@@ -85,6 +88,19 @@ function view_click(data){
     
     if (s_ui.listbox_item_size("txt_content")>0){
         var url=s_ui.listbox_item("txt_content",0);
+        
+        var strSplit=url.split("/");
+        var file=strSplit[strSplit.length-1];
+        //s_ui.msg(file);
+        
+        var id=file.split(".")[0];
+        var file2=Path_Data+"\\"+id+".txt";
+        //s_ui.msg(file2);
+        if (s_file.exists(file2)){
+            s_ui.listbox_remove("txt_content",0);
+            s_sys.value_save("action","idle");
+            return ;
+        }
         
         var auto="0";
         if (s_ui.checkbox_checked("ck_auto")) auto="1";

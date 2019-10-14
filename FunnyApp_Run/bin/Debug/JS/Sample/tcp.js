@@ -17,31 +17,31 @@ function read_ini(){
     
 }
 
-function send_msg_click(data){
-    var msg=s_ui.text_read("send_msg")
-    
+function get_token(){
     var url="http://www.funnyai.com/login_get_token_json.php";
     var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
     var md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
     var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
-    
     var result=s_net.http_post(url,data);
+    var token="";
     if (result.indexOf("登录成功")>-1){
         var strSplit=result.split("=");
         token=strSplit[2];
     }
+    return token;
+}
+
+function send_msg_click(data){
+    var msg=s_ui.text_read("send_msg")
     
     var strType="cmd";
     var strLine="";
-    var friend="*";
+    var friend=s_ui.listbox_text("list_friend");
     
     var strMsg2=msg.replaceAll("\"","\\\"");
-    
-    if (token==""){
-        strLine="{\"id\":\""+msg_id+"\","
-            +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
-            +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
-    }else{
+    var token=get_token();
+    msg_id+=1;
+    if (token!=""){
         strLine="{\"id\":\""+msg_id+"\","
             +"\"token\":\""+token+"\","
             +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
@@ -81,6 +81,8 @@ function show_msg(data){
                 case "chat_return":
                     s_ui.text_set("tx_status",msg);
                     break;
+                case "list.all":
+                    s_ui.listbox_add("list_friend",obj.message);
                 default:
                     //s_ui.msg(msg);
                     msg=msg.replaceAll("\n","\r\n");
@@ -99,26 +101,74 @@ function show_msg(data){
     }
 }
 
+function event_connected(data){
+    log_msg+="connected!";
+    s_ui.text_set("txt1",log_msg);
+    
+    var friend="*";
+    msg_id+=1;
+    var token=get_token();
+    if (token!=""){
+        strLine="{\"id\":\""+msg_id+"\","
+            +"\"token\":\""+token+"\","
+            +"\"from\":\""+userName+"\",\"type\":\"login\","
+            +"\"to\":\""+friend+"\",\"message\":\"\"}";
+    }
+    
+    s_tcp.send("m:<s>:"+strLine+":</s>");
+}
+
+
+function friend_list(data){
+    
+    s_ui.listbox_clear("list_friend");
+    s_ui.listbox_add("list_friend","*");
+    var friend="*";
+    msg_id+=1;
+    var token=get_token();
+    if (token!=""){
+        strLine="{\"id\":\""+msg_id+"\","
+            +"\"token\":\""+token+"\","
+            +"\"from\":\""+userName+"\",\"type\":\"friend_list\","
+            +"\"to\":\""+friend+"\",\"message\":\"\"}";
+    }
+    
+    s_tcp.send("m:<s>:"+strLine+":</s>");
+}
+
 function connect_click(data){
     
-    s_tcp.connect("robot6.funnyai.com",6000,userName,"event_msg");
+    s_tcp.connect("robot6.funnyai.com",6000,userName,"event_connected","event_msg");
 }
 
 function clear_click(data){
     log_msg="";
     s_ui.text_set("txt1",log_msg);
-    
 }
 
+
+function friend_change(data){
+    var friend=s_ui.listbox_text("list_friend");
+    if (friend!=""){
+        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
+    }
+}
+
+
 s_ui.button_init("b_send","发送",250,50,100,30,"send_msg_click","");
+s_ui.button_init("b_clear","Clear",350,50,100,30,"clear_click","");
 
 s_ui.text_init("send_msg","ls",10,50,200,50);
 
 s_ui.text_init("tx_status","",10,100,200,50);
 s_ui.button_init("b_connect","连接",250,100,100,30,"connect_click","");
-s_ui.button_init("b_clear","Clear",350,100,100,30,"clear_click","");
+s_ui.button_init("b_friend_list","friend_list",350,100,100,30,"friend_list","");
 
-s_ui.textbox_init("txt1","显示信息：",10,150,500,200);
+
+s_ui.listbox_init("list_friend",10,150,200,300);
+s_ui.listbox_init_event("list_friend","friend_change");
+
+s_ui.textbox_init("txt1","显示信息：",250,150,300,300);
 
 
 s_ui.button_default("b_send");

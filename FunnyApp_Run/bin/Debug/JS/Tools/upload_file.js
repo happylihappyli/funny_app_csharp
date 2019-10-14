@@ -25,13 +25,13 @@ function show_error(data){
 function save_password(data){
     var strPassword=s_ui.text_read("txt1");
     var strLine=s_string.encrypt_public_key("D:/Net/Web/id_rsa.pem.pub",strPassword);
-    s_file.File_Save("D:/Net/Web/password_upload_1.txt",strLine);
+    s_file.save("D:/Net/Web/password_upload_1.txt",strLine);
     
 }
 
 //读取密码
 function read_password(data){
-    var strLine=s_file.File_Read("D:/Net/Web/password_upload_1.txt");
+    var strLine=s_file.read("D:/Net/Web/password_upload_1.txt");
     var strPassword=s_string.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
     s_ui.text_set("txt1",strPassword);
 }

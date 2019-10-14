@@ -18,8 +18,10 @@ namespace FunnyApp.Function {
             this.pFrmApp = pApp;
         }
 
-        public void connect(string ip,int port,
-            string user_name,string call_back_msg) {
+        public void connect(string ip, int port,
+            string user_name,
+            string call_back_connect,
+            string call_back_msg) {
 
             this.user_name = user_name;
             this.call_back_msg = call_back_msg;
@@ -37,11 +39,12 @@ namespace FunnyApp.Function {
 
             if (!socket.Connected) {
                 //MessageBox.Show("Unable to connect to host");
-                //strRetPage = "Unable to connect to host";
+            } else {
+                pFrmApp.Call_Event(call_back_connect, "");
             }
 
-            byte[] outStream = Encoding.UTF8.GetBytes(user_name+ " is joining\r\n");
-            socket.Send(outStream, outStream.Length, 0);
+            //byte[] outStream = Encoding.UTF8.GetBytes(user_name+ " is joining\r\n");
+            //socket.Send(outStream, outStream.Length, 0);
 
             bool bError = false;
             // upload as javascript blob
@@ -70,7 +73,6 @@ namespace FunnyApp.Function {
 
         private void AddMessage(string msg) {
             pFrmApp.Call_Event(this.call_back_msg, msg);
-            //Call_Show(msg);
         }
 
         public void send(string msg) {
@@ -91,6 +93,12 @@ namespace FunnyApp.Function {
                 Console.WriteLine("This Socket has an error.");
             }
 
+        }
+
+        public void close() {
+            if (socket != null) { 
+                socket.Close();
+            }
         }
     }
 }

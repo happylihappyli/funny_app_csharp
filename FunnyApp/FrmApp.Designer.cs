@@ -62,6 +62,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmApp_FormClosing);
             this.Load += new System.EventHandler(this.FrmApp_Load);
             this.Resize += new System.EventHandler(this.FrmApp_Resize);
             this.ResumeLayout(false);

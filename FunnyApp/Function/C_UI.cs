@@ -1256,10 +1256,12 @@ namespace FunnyApp {
         }
 
         public void moue_unhook() {
-            m_GlobalHook.MouseDownExt -= GlobalHookMouseUpExt;
-            m_GlobalHook.KeyPress -= GlobalHookKeyPress;
+            if (m_GlobalHook != null) { 
+                m_GlobalHook.MouseDownExt -= GlobalHookMouseUpExt;
+                m_GlobalHook.KeyPress -= GlobalHookKeyPress;
             
-            m_GlobalHook.Dispose();
+                m_GlobalHook.Dispose();
+            }
         }
 
 
