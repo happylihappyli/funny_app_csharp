@@ -7,7 +7,10 @@ var row_index=0;//第几个字段被点击
 var disk="D:";
 var userName="none";
 var md5="";
+
 var log_msg="";
+var keep_count=1;
+
 var myMap=[];
 var head="";
 var css_head='<html><head>\n'
@@ -16,6 +19,7 @@ var css_head='<html><head>\n'
 +'<body>\n';
 
 [[[..\\data\\common_string.js]]]
+[[[..\\data\\default.js]]]
 
 
 //消息和发送计数器
@@ -26,34 +30,78 @@ function C_Msg(ID,Msg){
 }
 
 
-
-
-var log_msg="";
-var keep_count=1;
 function event_msg(data){
-        s_ui.status_label_show("status_label","event_msg.step1");
-    //s_ui.msg(data);
     data=data.replaceAll("\r\n","\n");
-        s_ui.status_label_show("status_label","event_msg.step2");
-    //s_ui.msg("replaceAll");
     var strSplit=data.split("\n");
-        s_ui.status_label_show("status_label","event_msg.step3");
-    //s_ui.msg("split");
     if (strSplit[0]=="s:keep"){
-        s_ui.status_label_show("status_label","event_msg.step4");
-        //s_ui.text_set("tx_status","keep"+keep_count);
+        s_ui.status_label_show("status_label","keep"+keep_count);
         keep_count++;
-        return　;
     }else if(strSplit[0].indexOf("m:<s>:")==0){
-        s_ui.status_label_show("status_label","event_msg.step5");
         show_msg(data);
-        s_ui.status_label_show("status_label","event_msg.step6");
     }else{
-        log_msg=data+"\r\n"+log_msg;
+        //log_msg=data+"\r\n"+log_msg;
         //s_ui.text_set("txt1",log_msg);
     }
-        s_ui.status_label_show("status_label","event_msg.step7");
 }
+
+
+function show_msg(data){
+    var index1=data.indexOf(":<s>:");
+    var index2=data.indexOf(":</s>");
+    if (index2>index1 && index1>0){
+        while(index2>index1 && index1>0){
+            var json=data.substring(index1+5,index2);
+            var obj=JSON.parse(json);
+            var msg=obj.message;
+            //s_ui.msg(obj.type);
+            switch(obj.type){
+                case "chat_return":
+                    s_ui.status_label_show("status_label",msg);
+                    //s_ui.text_set("tx_status",msg);
+                    break;
+                case "login.ok":
+                    //s_ui.msg(json);
+                    friend_list("");
+                    break;
+                case "list.all":
+                    s_ui.listbox_add("list_friend",obj.message);
+                    break;
+                case "msg":
+                    log_msg=s_time.Time_Now()+" <span style='color:blue;'>"+obj.from+"</span>"
+                            +"<pre>"
+                            +msg+"</pre><br>"+log_msg;
+                    s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
+                        s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
+                    
+                    s_ui.Web_Content("web",css_head+log_msg);
+                    break;
+                default:
+                    //s_ui.msg(msg);
+                    //msg=msg.replaceAll("\n","\r\n");
+                    //log_msg=msg+"\r\n"+log_msg;
+                    //s_ui.text_set("txt1",log_msg);
+                    
+                    log_msg=s_time.Time_Now()+" <span style='color:red;'>"+obj.from+"</span><br>"
+                            +msg+"<br><br>"+log_msg;
+                    s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
+                        s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
+                    
+                    s_ui.Web_Content("web",css_head+log_msg);
+                    
+                    break;
+            }
+            data=data.substring(index2+6);
+            
+            index1=data.indexOf(":<s>:");
+            index2=data.indexOf(":</s>");
+        }
+    }else{
+        log_msg=index1+":"+index2+":";
+        s_ui.status_label_show("status_label",log_msg);
+    }
+}
+
+
 
 function event_chat(data){
     
@@ -236,19 +284,29 @@ function read_ini(){
     md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
     userName=userName2+"/linux_bat_step3";
     
+    
+    s_ui.text_set("txt_user_name",userName);
 }
 
 function friend_list(data){
+    
     s_ui.listbox_clear("list_friend");
     s_ui.listbox_add("list_friend","*");
-    //var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
-    //s_net.Send_Msg("sys_event",strLine);
-    send_msg("list.all","","");
+    var friend="*";
+    msg_id+=1;
+    var token=get_token();
+    if (token!=""){
+        strLine="{\"id\":\""+msg_id+"\","
+            +"\"token\":\""+token+"\","
+            +"\"from\":\""+userName+"\",\"type\":\"friend_list\","
+            +"\"to\":\""+friend+"\",\"message\":\"\"}";
+    }
+    
+    s_tcp.send("m:<s>:"+strLine+":</s>");
 }
 
 function send_msg(strType,friend,msg){
     msg_id+=1;
-    //var msg=s_ui.text_read("send_msg")
     
     var url="http://www.funnyai.com/login_get_token_json.php";
     var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
@@ -282,8 +340,20 @@ function event_connected(data){
     s_ui.status_label_show("status_label","event_connected!");
     s_ui.text_set("txt_info","event_connected");
     s_ui.button_enable("btn_connect","0");
-    friend_list();
     
+    
+    var friend="";
+    msg_id+=1;
+    var token=get_token();
+    if (token!=""){
+        strLine="{\"id\":\""+msg_id+"\","
+            +"\"token\":\""+token+"\","
+            +"\"from\":\""+userName+"\",\"type\":\"login\","
+            +"\"to\":\""+friend+"\",\"message\":\"\"}";
+    }
+    
+    s_tcp.send("m:<s>:"+strLine+":</s>");
+    //friend_list();
 }
 
 function event_disconnected(data){
@@ -293,32 +363,6 @@ function event_disconnected(data){
 }
 
 
-
-function show_msg(data){
-    var index1=data.indexOf(":<s>:");
-    var index2=data.indexOf(":</s>");
-    s_ui.status_label_show("status_label","show_msg.step1");
-    if (index2>index1 && index1>0){
-        s_ui.status_label_show("status_label","show_msg.step2");
-        while(index2>index1 && index1>0){
-            s_ui.status_label_show("status_label","show_msg.step3");
-            var json=data.substring(index1+5,index2);
-            s_ui.status_label_show("status_label","show_msg.step4");
-            event_chat(json);
-            s_ui.status_label_show("status_label","show_msg.step5");
-            data=data.substring(index2+6);
-            
-            s_ui.status_label_show("status_label","show_msg.step6");
-            index1=data.indexOf(":<s>:");
-            s_ui.status_label_show("status_label","show_msg.step7");
-            index2=data.indexOf(":</s>");
-            s_ui.status_label_show("status_label","show_msg.step8");
-        }
-    }else{
-        log_msg=index1+":"+index2+":";//+data+"\r\n"+log_msg;
-        //s_ui.text_set("txt1",log_msg);
-    }
-}
 
 
 function connect_click(data){
@@ -485,7 +529,7 @@ function show_error(data){
 }
 
 s_ui.splitcontainer_init("split",0,0,500,500,"v");
-s_ui.splitcontainer_distance("split",100);
+s_ui.splitcontainer_distance("split",130);
 
 
 s_ui.listbox_init("list_friend",10,60,200,180);
@@ -506,9 +550,6 @@ s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
 
 s_ui.text_init("txt_user_name","000",10,450,100,30);
 s_ui.button_init("btn_connect","连服务器",120,450,90,30,"connect_click","");
-s_ui.text_init("txt_session","000",10,500,200,30);
-
-
 
 s_ui.textbox_init("txt_info","",10,250,200,80);
 
@@ -517,7 +558,6 @@ s_ui.splitcontainer_add("split",0,"list_friend","fill");
 s_ui.splitcontainer_add("split",0,"txt_info","bottom");
 s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
 s_ui.splitcontainer_add("split",0,"btn_connect","bottom");
-s_ui.splitcontainer_add("split",0,"txt_session","bottom");
 
 
 s_ui.Web_Init("web",250,60,450,250);
@@ -560,7 +600,7 @@ s_ui.panel_add("panel2","b_pre","left");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","Menu_File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Menu_Refresh","刷新好友列表(&R)","friend_list","");
+s_ui.Menu_Item_Add("Menu1","File","Menu_Refresh","Friend_List","friend_list","");
 
 s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
@@ -580,4 +620,3 @@ read_ini("");
 data_init("");
 
 connect_click("");
-//check_connected("");

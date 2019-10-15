@@ -2,6 +2,7 @@ var userName="test";
 var disk="D:";
 
 [[[..\\data\\common_string.js]]]
+[[[..\\data\\default.js]]]
 
 var msg_id=1;
 
@@ -17,19 +18,6 @@ function read_ini(){
     
 }
 
-function get_token(){
-    var url="http://www.funnyai.com/login_get_token_json.php";
-    var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    var md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
-    var result=s_net.http_post(url,data);
-    var token="";
-    if (result.indexOf("登录成功")>-1){
-        var strSplit=result.split("=");
-        token=strSplit[2];
-    }
-    return token;
-}
 
 function send_msg_click(data){
     var msg=s_ui.text_read("send_msg")
@@ -80,6 +68,10 @@ function show_msg(data){
             switch(obj.type){
                 case "chat_return":
                     s_ui.text_set("tx_status",msg);
+                    break;
+                case "login.ok":
+                    //s_ui.msg(json);
+                    friend_list("");
                     break;
                 case "list.all":
                     s_ui.listbox_add("list_friend",obj.message);
