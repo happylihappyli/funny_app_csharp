@@ -81,7 +81,7 @@ function show_msg(data){
         case "file_sql":
             if (obj.message=="finished"){
                 
-                log_msg="<b>file_sql "+obj.from+";"+step+"</b><br>"+log_msg;
+                log_msg="<b>finished "+obj.from+";"+step+"</b><br>"+log_msg;
                 s_ui.Web_Content("web",css_head+log_msg);
                 switch (obj.from){
                     case "/root/step3.txt":
@@ -93,7 +93,9 @@ function show_msg(data){
                         break;
                     case "/root/step3_v2.txt":
                         if (step==2){
-                            s_ui.status_label_show("status_label2","/root/step3_v2.txt step2 process_step");
+                            log_msg="<b>process_step "+obj.from+";"+step+"</b><br>"+log_msg;
+                            s_ui.Web_Content("web",css_head+log_msg);
+                            s_ui.status_label_show("status_label","/root/step3_v2.txt step2 process_step");
                             process_step(obj);
                         }else{
                             s_ui.Web_Content("web","多次接收："+step+"="+data);
