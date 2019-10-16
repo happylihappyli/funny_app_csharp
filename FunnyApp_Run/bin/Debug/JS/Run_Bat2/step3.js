@@ -66,7 +66,9 @@ function show_msg(data){
 
     switch(obj.type){
         case "chat_return":
-            s_ui.status_label_show("status_label",msg);
+            log_msg="<b>chat_return:"+obj.oid+"</b><br>"+log_msg;
+            s_ui.Web_Content("web",css_head+log_msg);
+            s_ui.status_label_show("status_label2",msg);
             delete myMap["K"+obj.oid];
             break;
         case "login.ok":
@@ -78,12 +80,23 @@ function show_msg(data){
             break;
         case "file_sql":
             if (obj.message=="finished"){
+                
+                log_msg="<b>file_sql "+obj.from+";"+step+"</b><br>"+log_msg;
+                s_ui.Web_Content("web",css_head+log_msg);
                 switch (obj.from){
                     case "/root/step3.txt":
                         if (step==1){
                             process_step(obj);
                         }else{
-                            s_ui.Web_Content("web","多次接收："+data);
+                            s_ui.Web_Content("web","多次接收："+step+"="+data);
+                        }
+                        break;
+                    case "/root/step3_v2.txt":
+                        if (step==2){
+                            s_ui.status_label_show("status_label2","/root/step3_v2.txt step2 process_step");
+                            process_step(obj);
+                        }else{
+                            s_ui.Web_Content("web","多次接收："+step+"="+data);
                         }
                         break;
                 }
@@ -125,11 +138,10 @@ function process_step(obj){
     
     var line2="";
     if (step<3){
-        s_ui.status_label_show("status_label","step7");
+        s_ui.status_label_show("status_label","step1");
         var file1=s_sys.value_read("file1");
         if (file1=="") file1="E:\\sample1.txt";
-    
-        s_ui.status_label_show("status_label","step10");
+        s_ui.status_label_show("status_label","step2");
         var line=s_file.read(file1,1);
         var strSplit=line.split("|");
         var count=strSplit.length;
@@ -146,16 +158,18 @@ function process_step(obj){
     switch(step){
         case 1:
             cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
+            //s_ui.msg(cmd);
             s_ui.text_set("txt_send",cmd);
             break;
         case 2:
+            s_ui.status_label_show("status_label","step=2");
             cmd="cat /root/step3_2.txt";
             s_ui.text_set("txt_send",cmd);
             break;
         case 3:
             s_ui.datagrid_clear("grid1");
             s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
-            //s_ui.msg(msg);
+            
             var strSplit=msg.split(",");
             for(var i=0;i<strSplit.length;i++){
                 if (strSplit[i]=="0.0"){
@@ -179,8 +193,8 @@ function process_step(obj){
         case 1:
         case 2:
         case 11:
-            send_msg_click();
             step+=1;
+            send_msg_click();
             break;
         default:
             step+=1;
@@ -287,9 +301,9 @@ function static_click(data){
     var cmd=sql("/home/ftp_home"+file2,
         "select "+line+" from t;","v","/root/step3.txt");
     //"file_sql /root/happyli/set_hadoop.ini "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
-    s_ui.msg("s1="+cmd);
+    //s_ui.msg("s1="+cmd);
+    step=1;
     s_ui.text_set("txt_send",cmd);
-    step=0;
     send_msg_click();
 }
 
@@ -344,6 +358,9 @@ function send_msg(strType,friend,msg){
                 myMap["K"+msg_id]=new C_Msg(msg_id,strLine);
                 break;
         }
+        
+        log_msg+="<b>tcp.send:"+strLine+"</b>";
+        s_ui.Web_Content("web",css_head+log_msg);
         s_tcp.send("m:<s>:"+strLine+":</s>");
     }else{
         s_ui.status_label_show("status_label","token==null!");
@@ -389,7 +406,6 @@ function select_old_friend(data){
             s_ui.listbox_select("list_friend",friend);
             if (step==0){
                 friend_return=0;
-                step=1;
                 static_click("");
             }
         }
@@ -424,17 +440,19 @@ function resend_chat_msg(data) {
         var pMsg=myMap[key];
         pMsg.Count+=1;
         if (pMsg.Count<10){
-        }if (pMsg.Count==5){//再发送一次
-            log_msg+="<b>resend"+pMsg.Msg+"</b>";
+            ;
+        }else if (pMsg.Count==5){//再发送一次
+            log_msg+="<b>resend:"+pMsg.Msg+"</b>";
             s_ui.Web_Content("web",css_head+log_msg);
             s_tcp.send("m:<s>:"+pMsg.Msg+":</s>");
         }else{
             var obj=JSON.parse(pMsg.Msg);
             var friend=pMsg.to;
-            log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
+            log_msg=s_time.Time_Now()+" <font color=red>(消息发送失败) </font> <span style='color:gray;'>"
+                    +obj.id+"="+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
             s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
-                s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
+                s_time.Date_Now()+" "+s_time.Time_Now()+" 消息发送失败："+obj.id+"="+obj.message+"\r\n");
             delete myMap["K"+obj.id];
         }
     }
@@ -448,7 +466,7 @@ function send_msg_click(){
     var index=s_ui.listbox_index("list_friend");
     if (index<0){
         s_ui.status_label_show("status_label","请选择好友！!");
-        //s_ui.msg("请选择好友！");
+        s_ui.msg("请选择好友！");
         return ;
     }
     //s_ui.combox_text("combox_head")+" "+
@@ -585,8 +603,10 @@ s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_cl
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
-s_ui.status_label_init("status_label","test",300,30);
+s_ui.status_label_init("status_label","111",100,30);
 s_ui.status_add("status","status_label","left");
+s_ui.status_label_init("status_label2","222",100,30);
+s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
