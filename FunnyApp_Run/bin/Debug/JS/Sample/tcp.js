@@ -5,10 +5,16 @@ var disk="D:";
 [[[..\\data\\default.js]]]
 
 var msg_id=1;
+var myMap=[];
 
+//消息和发送计数器
+function C_Msg(ID,Msg){
+    this.ID=ID;
+    this.Msg=Msg;
+    this.Count=0;
+}
 
 function read_ini(){
-    //s_ui.Combox_Clear("cb_friend");
     var path=s_sys.AppPath();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
@@ -20,7 +26,7 @@ function read_ini(){
 
 
 function send_msg_click(data){
-    var msg=s_ui.text_read("send_msg")
+    var msg=s_ui.text_read("send_msg");
     
     var strType="cmd";
     var strLine="";
@@ -29,11 +35,18 @@ function send_msg_click(data){
     var strMsg2=msg.replaceAll("\"","\\\"");
     var token=get_token();
     msg_id+=1;
-    if (token!=""){
-        strLine="{\"id\":\""+msg_id+"\","
-            +"\"token\":\""+token+"\","
-            +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
-            +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
+    strLine="{\"id\":\""+msg_id+"\","
+        +"\"token\":\""+token+"\","
+        +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
+        +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
+    
+    switch(strType){
+        case "login":
+        case "friend_list":
+            break;
+        default:
+            myMap["K"+msg_id]=new C_Msg(msg_id,strLine);
+            break;
     }
     
     s_tcp.send("m:<s>:"+strLine+":</s>");
@@ -64,19 +77,19 @@ function show_msg(data){
             var json=data.substring(index1+5,index2);
             var obj=JSON.parse(json);
             var msg=obj.message;
-            //s_ui.msg(obj.type);
             switch(obj.type){
                 case "chat_return":
+                    //s_ui.msg(json);
+                    delete myMap["K"+obj.oid];
                     s_ui.text_set("tx_status",msg);
                     break;
                 case "login.ok":
-                    //s_ui.msg(json);
                     friend_list("");
                     break;
                 case "list.all":
                     s_ui.listbox_add("list_friend",obj.message);
+                    break;
                 default:
-                    //s_ui.msg(msg);
                     msg=msg.replaceAll("\n","\r\n");
                     log_msg=msg+"\r\n"+log_msg;
                     s_ui.text_set("txt1",log_msg);

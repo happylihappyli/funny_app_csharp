@@ -1,4 +1,4 @@
-var session_send=0;
+var friend_return=0;
 var msg_id=0;
 var sep=1;
 var step=0;//处理步骤
@@ -31,73 +31,79 @@ function C_Msg(ID,Msg){
 
 
 function event_msg(data){
-    data=data.replaceAll("\r\n","\n");
-    var strSplit=data.split("\n");
-    if (strSplit[0]=="s:keep"){
-        s_ui.status_label_show("status_label","keep"+keep_count);
-        keep_count++;
-    }else if(strSplit[0].indexOf("m:<s>:")==0){
-        show_msg(data);
-    }else{
-        //log_msg=data+"\r\n"+log_msg;
-        //s_ui.text_set("txt1",log_msg);
+    //s_ui.msg(data);
+    while(data!=null && data!=""){
+        if (data.startsWith("s:keep")){
+            s_ui.status_label_show("status_label","keep"+keep_count);
+            keep_count++;
+            var index=data.indexOf("\n");
+            data=data.substring(index+1);
+        }else if(data.startsWith("m:<s>:")){
+            var index1=data.indexOf(":<s>:");
+            var index2=data.indexOf(":</s>");
+            if (index2>index1 && index1>0){
+                var json=data.substring(index1+5,index2);
+                json=json.replaceAll("\\\\","\\\\\\\\");
+                json=json.replaceAll("\\r","\\\\r");
+                json=json.replaceAll("\\n","\\\\n");
+                show_msg(json);
+                data=data.substring(index2+5);
+                var index3=data.indexOf("\n");
+                if (index3>=0) data=data.substring(index3+1);
+            }else{
+                break;
+            }
+        }else{
+            break;
+        }
     }
 }
 
 
 function show_msg(data){
-    var index1=data.indexOf(":<s>:");
-    var index2=data.indexOf(":</s>");
-    if (index2>index1 && index1>0){
-        while(index2>index1 && index1>0){
-            var json=data.substring(index1+5,index2);
-            var obj=JSON.parse(json);
-            var msg=obj.message;
-            //s_ui.msg(obj.type);
-            switch(obj.type){
-                case "chat_return":
-                    s_ui.status_label_show("status_label",msg);
-                    //s_ui.text_set("tx_status",msg);
+    var obj=JSON.parse(data);
+    var msg=obj.message;
+
+    switch(obj.type){
+        case "chat_return":
+            s_ui.status_label_show("status_label",msg);
+            delete myMap["K"+obj.oid];
+            break;
+        case "login.ok":
+            friend_list("");
+            break;
+        case "list.all":
+            s_ui.listbox_add("list_friend",obj.message);
+            friend_return=1;
+            break;
+        case "msg":
+            log_msg=s_time.Time_Now()+" <span style='color:blue;'>"+obj.from+"</span>"
+                    +"<pre>"
+                    +msg+"</pre><br>"+log_msg;
+            s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
+                s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
+            
+            s_ui.Web_Content("web",css_head+log_msg);
+            break;
+        case "status":
+            switch(obj.from){
+                case "progress1":
+                    var strSplit=msg.split(":");
+                    s_ui.progress_show("progress1","100",strSplit[0]);
+                    s_ui.progress_show("progress2","100","100");
                     break;
-                case "login.ok":
-                    //s_ui.msg(json);
-                    friend_list("");
-                    break;
-                case "list.all":
-                    s_ui.listbox_add("list_friend",obj.message);
-                    break;
-                case "msg":
-                    log_msg=s_time.Time_Now()+" <span style='color:blue;'>"+obj.from+"</span>"
-                            +"<pre>"
-                            +msg+"</pre><br>"+log_msg;
-                    s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
-                        s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
-                    
-                    s_ui.Web_Content("web",css_head+log_msg);
-                    break;
-                default:
-                    //s_ui.msg(msg);
-                    //msg=msg.replaceAll("\n","\r\n");
-                    //log_msg=msg+"\r\n"+log_msg;
-                    //s_ui.text_set("txt1",log_msg);
-                    
-                    log_msg=s_time.Time_Now()+" <span style='color:red;'>"+obj.from+"</span><br>"
-                            +msg+"<br><br>"+log_msg;
-                    s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
-                        s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
-                    
-                    s_ui.Web_Content("web",css_head+log_msg);
-                    
+                case "progress2":
+                    var strSplit=msg.split(":");
+                    s_ui.progress_show('progress2', "100",strSplit[0]);
                     break;
             }
-            data=data.substring(index2+6);
-            
-            index1=data.indexOf(":<s>:");
-            index2=data.indexOf(":</s>");
-        }
-    }else{
-        log_msg=index1+":"+index2+":";
-        s_ui.status_label_show("status_label",log_msg);
+            break;
+        default:
+            log_msg=s_time.Time_Now()
+                +"<span style='color:red;'>"+obj.from+"</span><br>"
+                +msg+"<br><br>"+log_msg;
+            s_ui.Web_Content("web",css_head+log_msg);
+            break;
     }
 }
 
@@ -140,14 +146,13 @@ function event_chat(data){
     var line2="";
     if (step<3){
         s_ui.status_label_show("status_label","step7");
-        var file=s_sys.value_read("file1");
-        s_ui.status_label_show("status_label","step8");
-        if (file==null || file==""){
-        s_ui.status_label_show("status_label","step9");
+        var file1=s_sys.value_read("file1");
+        if (file1==null || file1==""){
+            s_ui.status_label_show("status_label","step9");
             return ;
         }
         s_ui.status_label_show("status_label","step10");
-        var line=s_file.read(file,1);
+        var line=s_file.read(file1,1);
         var strSplit=line.split("|");
         var count=strSplit.length;
         
@@ -162,7 +167,7 @@ function event_chat(data){
     var cmd="";
     switch(step){
         case 0:
-            cmd="file_sql "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
+            cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
             s_ui.text_set("txt_send",cmd);
             break;
         case 1:
@@ -206,7 +211,7 @@ function event_chat(data){
 }
 
 function sql(file1,sql,sep,output){
-    var cmd="file_sql "+userName+" "+file1
+    var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" "+file1
         +" 250000 \""+sql+"\" "+sep+" "+output;
     return cmd;
 }
@@ -247,8 +252,9 @@ function data_init(data){
 }
 
 function static_click(data){
-    var file=s_sys.value_read("file1");
-    var line=s_file.read(file,1);
+    var file1=s_sys.value_read("file1");
+    if (file1=="") file1="E:\\sample1.txt";
+    var line=s_file.read(file1,1);
     var strSplit=line.split("|");
     var count=strSplit.length;
     
@@ -261,7 +267,8 @@ function static_click(data){
     }
     
     var file2=s_sys.value_read("file2");
-    var cmd="file_sql "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
+    if (file2=="") file2="/upload/sample1.txt";
+    var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
     
     s_ui.text_set("txt_send",cmd);
     step=0;
@@ -292,33 +299,14 @@ function friend_list(data){
     
     s_ui.listbox_clear("list_friend");
     s_ui.listbox_add("list_friend","*");
-    var friend="*";
-    msg_id+=1;
-    var token=get_token();
-    if (token!=""){
-        strLine="{\"id\":\""+msg_id+"\","
-            +"\"token\":\""+token+"\","
-            +"\"from\":\""+userName+"\",\"type\":\"friend_list\","
-            +"\"to\":\""+friend+"\",\"message\":\"\"}";
-    }
-    
-    s_tcp.send("m:<s>:"+strLine+":</s>");
+
+    send_msg("friend_list","","");
 }
 
 function send_msg(strType,friend,msg){
     msg_id+=1;
     
-    var url="http://www.funnyai.com/login_get_token_json.php";
-    var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    var md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
-    
-    var result=s_net.http_post(url,data);
-    if (result.indexOf("登录成功")>-1){
-        var strSplit=result.split("=");
-        token=strSplit[2];
-    }
-    
+    var token=get_token();
     var strLine="";
     
     var strMsg2=msg.replaceAll("\"","\\\"");
@@ -329,9 +317,20 @@ function send_msg(strType,friend,msg){
             +"\"token\":\""+token+"\","
             +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
             +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
+        
+        switch(strType){
+            case "login":
+            case "friend_list":
+                break;
+            default:
+                myMap["K"+msg_id]=new C_Msg(msg_id,strLine);
+                break;
+        }
+        s_tcp.send("m:<s>:"+strLine+":</s>");
+    }else{
+        s_ui.status_label_show("status_label","token==null!");
     }
     
-    s_tcp.send("m:<s>:"+strLine+":</s>");
 }
 
 
@@ -341,19 +340,7 @@ function event_connected(data){
     s_ui.text_set("txt_info","event_connected");
     s_ui.button_enable("btn_connect","0");
     
-    
-    var friend="";
-    msg_id+=1;
-    var token=get_token();
-    if (token!=""){
-        strLine="{\"id\":\""+msg_id+"\","
-            +"\"token\":\""+token+"\","
-            +"\"from\":\""+userName+"\",\"type\":\"login\","
-            +"\"to\":\""+friend+"\",\"message\":\"\"}";
-    }
-    
-    s_tcp.send("m:<s>:"+strLine+":</s>");
-    //friend_list();
+    send_msg("login","","");
 }
 
 function event_disconnected(data){
@@ -383,6 +370,7 @@ function select_old_friend(data){
             s_ui.text_set("txt_info","选择刚才选择的好友:"+friend);
             s_ui.listbox_select("list_friend",friend);
             if (step==0){
+                friend_return=0;
                 static_click("");
             }
         }
@@ -394,17 +382,10 @@ function check_connected(data){
     s_ui.text_set("txt_info","check_connected...");
     s_time.setTimeout("check_connected",2,"check_connected");
     
-    if (s_net.Socket_Connected()){
-        //friend_list("");
-        
-        if (session_send==1){
-            select_old_friend("");
-            //检查消息是否都发送过去了，没有发送的，再发送一次。
-            resend_chat_msg("");
-        }
-    }else{
-        session_send=0;
-        s_net.Socket_Connect();//如果没有连，会自动连
+    if (friend_return==1){
+        select_old_friend("");
+        //检查消息是否都发送过去了，没有发送的，再发送一次。
+        resend_chat_msg("");
     }
 }
 
@@ -424,7 +405,8 @@ function resend_chat_msg(data) {
         var pMsg=myMap[key];
         if (pMsg.Count<3){
             pMsg.Count+=1;
-            s_net.Send_Msg("chat_event",pMsg.Msg);
+            //s_net.Send_Msg("chat_event",pMsg.Msg);
+            s_tcp.send("m:<s>:"+pMsg.Msg+":</s>");
         }else{
             var obj=JSON.parse(pMsg.Msg);
             var friend=pMsg.to;
@@ -432,7 +414,6 @@ function resend_chat_msg(data) {
                     +obj.message+"<br><br>"+log_msg;
             s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
-                
             
             //s_ui.Web_Content("web",css_head+log_msg);
         }
@@ -446,7 +427,8 @@ function send_msg_click(){
     
     var index=s_ui.listbox_index("list_friend");
     if (index<0){
-        s_ui.msg("请选择好友！");
+        s_ui.status_label_show("status_label","请选择好友！!");
+        //s_ui.msg("请选择好友！");
         return ;
     }
     //s_ui.combox_text("combox_head")+" "+
@@ -454,38 +436,8 @@ function send_msg_click(){
     var friend=s_ui.listbox_text("list_friend");
     var strType="cmd";
     
-    var token="";
     
-    var url="http://www.funnyai.com/login_get_token_json.php";
-    var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    var md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    var data="email="+s_string.urlencode(name)+"&password="+s_string.urlencode(md5);
-    
-    var result=s_net.http_post(url,data);
-    if (result.indexOf("登录成功")>-1){
-        var strSplit=result.split("=");
-        token=strSplit[2];
-    }
-
-
-    var strLine="";
-    
-    var strMsg2=strMsg.replaceAll("\"","\\\"");
-    strMsg2=strMsg2.replaceAll("\n","\\n");
-    if (token!=""){
-        strLine="{\"id\":\""+msg_id+"\","
-            +"\"token\":\""+token+"\","
-            +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
-            +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
-    }
-    
-    s_ui.text_set("txt_info",strLine);
-    
-    myMap["K"+msg_id]=new C_Msg(msg_id,strLine);
-    
-    //strType,friend,msg
     send_msg(strType,friend,strMsg);
-    //s_net.Send_Msg("chat_event",strLine);
     
     
     log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
@@ -535,7 +487,12 @@ s_ui.splitcontainer_distance("split",130);
 s_ui.listbox_init("list_friend",10,60,200,180);
 s_ui.listbox_init_event("list_friend","friend_change");
 
-s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
+
+
+var file1=s_sys.value_read("file1");
+if (file1=="") file1="E:\\sample1.txt";
+//s_ui.msg(file1);
+s_ui.text_init("txt_file",file1,350,450,200,30);
 
 
 //界面
@@ -620,3 +577,7 @@ read_ini("");
 data_init("");
 
 connect_click("");
+
+check_connected("");
+
+

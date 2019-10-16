@@ -209,7 +209,9 @@ namespace FunnyApp {
         }
 
         public string value_read(string key) {
-            return (string)FrmApp.pMap.find("value:" + key);
+            object pObj = FrmApp.pMap.find("value:" + key);
+            if (pObj == null) return "";
+            return (string)pObj;
         }
 
         private string strFile_JS = "";
