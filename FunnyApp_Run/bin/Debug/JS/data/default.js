@@ -1,4 +1,6 @@
 
+var disk="D:";
+
 function get_token(){
     var url="http://www.funnyai.com/login_get_token_json.php";
     var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");

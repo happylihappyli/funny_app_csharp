@@ -1,4 +1,8 @@
 
+
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+
 function Node_Click(data){
     
 }
@@ -6,7 +10,6 @@ function Node_Click(data){
 function modify_click(data){
     var index=parseInt(data);
     var a=s_ui.datagrid_read("grid1",index,1);
-    
     
     s_ui.msg(a);
 }
@@ -30,19 +33,17 @@ function data_init(data){
 }
 
 
-
 function save_click(data){
-    
     var count=s_ui.datagrid_rows("grid1")-1;
     
     var strMap="";
     for (var i=0;i<count;i++){
         strMap+=s_ui.datagrid_read("grid1",i,0)+","
-        +s_ui.datagrid_read("grid1",i,1)+"\n";
+        +s_ui.datagrid_read("grid1",i,1)+"\r\n";
     }
     
     var row_index=s_sys.value_read("row_index");
-    s_file.save("D:\\Net\\Web\\data\\map_c"+row_index+".txt",strMap);
+    s_file.save(disk+"\\Net\\Web\\data\\map_c"+row_index+".txt",strMap);
     s_ui.close();
 }
 

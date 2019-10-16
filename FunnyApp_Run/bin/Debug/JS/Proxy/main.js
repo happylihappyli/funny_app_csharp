@@ -59,7 +59,7 @@ function unset_proxy_click(data){
 s_ui.textbox_init("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,500,90);
 s_ui.combox_init("cb_hosts","149.248.37.214",10,110,200,30);
 s_ui.combox_add("cb_hosts","149.248.37.214");
-s_ui.combox_add("cb_hosts","45.63.52.243");
+s_ui.combox_add("cb_hosts","144.202.83.139");
 
 
 s_ui.button_init("b1","创建key",10,150,200,30,"key_click","0");

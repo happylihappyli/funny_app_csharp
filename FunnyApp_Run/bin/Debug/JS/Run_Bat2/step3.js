@@ -4,7 +4,6 @@ var sep=1;
 var step=0;//处理步骤
 var row_index=0;//第几个字段被点击
 
-var disk="D:";
 var userName="none";
 var md5="";
 
@@ -18,8 +17,8 @@ var css_head='<html><head>\n'
 +'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
 +'<body>\n';
 
-[[[..\\data\\common_string.js]]]
 [[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
 
 
 //消息和发送计数器
@@ -91,7 +90,7 @@ function show_msg(data){
                             s_ui.Web_Content("web","多次接收："+step+"="+data);
                         }
                         break;
-                    case "/root/step3_v2.txt":
+                    case "/root/step3_2.txt":
                         if (step==2){
                             log_msg="<b>process_step "+obj.from+";"+step+"</b><br>"+log_msg;
                             s_ui.Web_Content("web",css_head+log_msg);
@@ -105,9 +104,18 @@ function show_msg(data){
             }
             break;
         case "msg":
-            log_msg=s_time.Time_Now()+" <span style='color:blue;'>"+obj.from+"</span>"
-                    +"<pre>"
-                    +msg+"</pre><br>"+log_msg;
+            switch(obj.return_cmd){
+                case "step:3":
+                case "step:11":
+                case "step:12":
+                    process_step(obj);
+                    break;
+            }
+            log_msg=s_time.Time_Now()
+        +" <span style='color:blue;'>"+obj.from+"</span>"
+        +obj.return_cmd+"<br>"
+        +"<pre>"+msg+"</pre>"
+        +"<br>"+log_msg;
             s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
             
@@ -187,6 +195,7 @@ function process_step(obj){
             s_ui.text_set("txt_send",cmd);
             break;
         case 12:
+            msg=msg.replaceAll("\\\\n","\n");
             s_sys.value_save("map",msg);
             s_ui.Run_JS("Run_Bat2\\step3_map.js");
             break;
@@ -204,41 +213,6 @@ function process_step(obj){
     }
 }
 
-function event_chat(data){
-    
-    s_ui.status_label_show("status_label","step1");
-    var obj=JSON.parse(data);
-    var friend=obj.from;
-    
- 
-    s_ui.status_label_show("status_label","step2");
-    var index=s_ui.listbox_select("list_friend",friend);
-    if (index==-1){
-        //friend_list("");
-        s_ui.listbox_select("list_friend",friend);
-    }
-    s_ui.status_label_show("status_label","step3");
-    var strMsg=s_time.Time_Now()+"<br>"+obj.message;
-    s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
-    
-    s_ui.status_label_show("status_label","step4");
-    var msg=obj.message;
-
-    var msg2=head+"\n"+msg;
-    
-    log_msg=s_time.Time_Now()+" "+friend+" &gt; <span style='color:#aaaaaa;'>"+obj.to+"</span>"
-    +"<br><div><pre>"
-    +msg2+"</pre></div><br><br>\r\n"+log_msg;
-    
-    s_ui.status_label_show("status_label","step5");
-    var id=obj.id;
-    var strLine="{\"from\":\""+userName+"\",\"type\":\"chat_return\",\"to\":\""+obj.from+"\",\"oid\":\""+id+"\",\"message\":\""+id+"\"}";
-    s_net.Send_Msg("sys_event",strLine); //消息返回
-    
-    s_ui.Web_Content("web",css_head+log_msg);
-    s_ui.status_label_show("status_label","step6");
-    
-}
 
 function sql(file1,sql,sep,output){
     var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" "+file1
@@ -248,20 +222,32 @@ function sql(file1,sql,sep,output){
 
 
 function map_click(data){
+    
     var index=parseInt(data);
     row_index=s_ui.datagrid_read("grid1",index,0);
     s_sys.value_save("row_index",row_index);
+    
+    
+    var file=disk+"\\Net\\Web\\data\\map_c"+row_index+".txt";
+    if (s_file.exists(file)){
+        var msg=s_file.read(file);
+        s_sys.value_save("map",msg);
+        s_ui.Run_JS("Run_Bat2\\step3_map.js");
+        return ;
+    }
     
     var type=s_ui.datagrid_read("grid1",index,1);
     //s_ui.msg(type);
     
     var file2=s_sys.value_read("file2");
+    if (file2=="") file2="/upload/sample1.txt";
+    
     var cmd=sql("/home/ftp_home"+file2,
             "select c"+row_index+",count(1) from t group by c"+row_index,
             "v","/root/map_"+row_index+".txt");
     
     s_ui.text_set("txt_send",cmd);
-    step=5;
+    step=11;
     send_msg_click();
     
 }
@@ -334,10 +320,10 @@ function friend_list(data){
     s_ui.listbox_clear("list_friend");
     s_ui.listbox_add("list_friend","*");
 
-    send_msg("friend_list","","");
+    send_msg("friend_list","","","friend_list");
 }
 
-function send_msg(strType,friend,msg){
+function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
     var token=get_token();
@@ -349,6 +335,7 @@ function send_msg(strType,friend,msg){
     if (token!=""){
         strLine="{\"id\":\""+msg_id+"\","
             +"\"token\":\""+token+"\","
+            +"\"return_cmd\":\""+return_cmd+"\","
             +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
             +"\"to\":\""+friend+"\",\"message\":\""+strMsg2+"\"}";
         
@@ -377,7 +364,7 @@ function event_connected(data){
     s_ui.text_set("txt_info","event_connected");
     s_ui.button_enable("btn_connect","0");
     
-    send_msg("login","","");
+    send_msg("login","","","login");
 }
 
 function event_disconnected(data){
@@ -477,7 +464,7 @@ function send_msg_click(){
     var strType="cmd";
     
     
-    send_msg(strType,friend,strMsg);
+    send_msg(strType,friend,strMsg,"step:"+step);
     
     
     log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
