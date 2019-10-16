@@ -76,6 +76,17 @@ function show_msg(data){
             s_ui.listbox_add("list_friend",obj.message);
             friend_return=1;
             break;
+        case "file_sql":
+            if (obj.message=="finished"){
+                switch(step){
+                    case 0:
+                        cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
+                        s_ui.text_set("txt_send",cmd);
+                        step+=1;
+                        break;
+                }
+            }
+            break;
         case "msg":
             log_msg=s_time.Time_Now()+" <span style='color:blue;'>"+obj.from+"</span>"
                     +"<pre>"
