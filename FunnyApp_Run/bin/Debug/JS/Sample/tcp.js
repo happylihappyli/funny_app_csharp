@@ -143,7 +143,8 @@ function friend_list(data){
 
 function connect_click(data){
     
-    s_tcp.connect("robot6.funnyai.com",6000,userName,"event_connected","event_msg");
+    s_tcp.connect("robot6.funnyai.com",6000,userName,
+    "event_connected","event_msg");
 }
 
 function clear_click(data){

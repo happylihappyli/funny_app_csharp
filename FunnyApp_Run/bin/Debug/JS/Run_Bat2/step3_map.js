@@ -19,17 +19,36 @@ function clear_data(data){
 }
 
 function data_init(data){
+    var bRead=false;
+    var row_index=s_sys.value_read("row_index");
+    var file=disk+"\\Net\\Web\\data\\map_c"+row_index+".txt";
+    if (s_file.exists(file)){
+        var msg=s_file.read(file);
+        s_sys.value_save("map",msg);
+        bRead=true;
+    }
+    
     var data=s_sys.value_read("map");
+    data=data.replaceAll("\\r\\n","\n");
+    
     var strSplit=data.split("\n");
     
     s_ui.datagrid_clear("grid1");
     
     s_ui.datagrid_init_column("grid1",2,"数据,映射值");
     for (var i=0;i<strSplit.length;i++){
-        var strSplit2=strSplit[i].split(",");
-        s_ui.datagrid_add_line("grid1",strSplit2[0]+",",",");
+        if (bRead){
+            if (strSplit[i]!=""){
+                s_ui.datagrid_add_line("grid1",strSplit[i],",");
+            }
+        }else{
+            var strSplit2=strSplit[i].split(",");
+            s_ui.datagrid_add_line("grid1",strSplit2[0]+",",",");
+        }
     }
-    //s_ui.datagrid_add_button("grid1","modify","映射","modify_click");
+    /*s_ui.datagrid_add_button(
+        "grid1","modify","映射","modify_click");
+    //*/
 }
 
 

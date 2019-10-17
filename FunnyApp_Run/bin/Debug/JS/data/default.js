@@ -1,6 +1,14 @@
 
 var disk="D:";
 
+//消息和发送计数器
+function C_Msg(ID,Msg){
+    this.ID=ID;
+    this.Msg=Msg;
+    this.Count=0;
+}
+
+
 function get_token(){
     var url="http://www.funnyai.com/login_get_token_json.php";
     var name=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");

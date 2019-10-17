@@ -6,7 +6,6 @@ var row_index=0;//第几个字段被点击
 
 var userName="none";
 var md5="";
-
 var log_msg="";
 var keep_count=1;
 
@@ -19,44 +18,9 @@ var css_head='<html><head>\n'
 
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
 
 
-//消息和发送计数器
-function C_Msg(ID,Msg){
-    this.ID=ID;
-    this.Msg=Msg;
-    this.Count=0;
-}
-
-
-function event_msg(data){
-    //s_ui.msg(data);
-    while(data!=null && data!=""){
-        if (data.startsWith("s:keep")){
-            //s_ui.status_label_show("status_label","keep"+keep_count);
-            keep_count++;
-            var index=data.indexOf("\n");
-            data=data.substring(index+1);
-        }else if(data.startsWith("m:<s>:")){
-            var index1=data.indexOf(":<s>:");
-            var index2=data.indexOf(":</s>");
-            if (index2>index1 && index1>0){
-                var json=data.substring(index1+5,index2);
-                json=json.replaceAll("\\\\","\\\\\\\\");
-                json=json.replaceAll("\\r","\\\\r");
-                json=json.replaceAll("\\n","\\\\n");
-                show_msg(json);
-                data=data.substring(index2+5);
-                var index3=data.indexOf("\n");
-                if (index3>=0) data=data.substring(index3+1);
-            }else{
-                break;
-            }
-        }else{
-            break;
-        }
-    }
-}
 
 
 function show_msg(data){
@@ -348,9 +312,19 @@ function send_msg(strType,friend,msg,return_cmd){
                 break;
         }
         
-        log_msg+="<b>tcp.send:"+strLine+"</b>";
+        log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
+                +msg+"<br><br>"
+                +"<b>tcp.send:"+strLine+"</b>"
+                +log_msg;
+        s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
+            s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
+        
         s_ui.Web_Content("web",css_head+log_msg);
+    
+    
         s_tcp.send("m:<s>:"+strLine+":</s>");
+        
+        
     }else{
         s_ui.status_label_show("status_label","token==null!");
     }
@@ -455,7 +429,7 @@ function send_msg_click(){
     var index=s_ui.listbox_index("list_friend");
     if (index<0){
         s_ui.status_label_show("status_label","请选择好友！!");
-        s_ui.msg("请选择好友！");
+        //s_ui.msg("请选择好友！");
         return ;
     }
     //s_ui.combox_text("combox_head")+" "+
@@ -467,12 +441,6 @@ function send_msg_click(){
     send_msg(strType,friend,strMsg,"step:"+step);
     
     
-    log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
-            +strMsg+"<br><br>"+log_msg;
-    s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
-        s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
-    
-    s_ui.Web_Content("web",css_head+log_msg);
     s_ui.text_set("txt_send","");
     
 }
