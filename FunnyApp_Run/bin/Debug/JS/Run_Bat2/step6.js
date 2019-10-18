@@ -6,7 +6,6 @@ var step=0;//处理步骤
 var row_index=0;//第几个字段被点击
 var fields_count=0;
 
-var disk="D:";
 var userName="none";
 var md5="";
 var log_msg="";
@@ -15,10 +14,6 @@ var keep_count=1;
 
 var myMap=[];
 var head="";
-var css_head='<html><head>\n'
-+'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'
-+'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
-+'<body>\n';
 
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
@@ -87,32 +82,6 @@ function show_msg(data){
             s_ui.listbox_add("list_friend",obj.message);
             friend_return=1;
             break;
-        case "file_sql":
-            if (obj.message=="finished"){
-                
-                log_msg="<b>finished "+obj.from+";"+step+"</b><br>"+log_msg;
-                s_ui.Web_Content("web",css_head+log_msg);
-                switch (obj.from){
-                    case "/root/step3.txt":
-                        if (step==1){
-                            process_step(obj);
-                        }else{
-                            s_ui.Web_Content("web","多次接收："+step+"="+data);
-                        }
-                        break;
-                    case "/root/step3_2.txt":
-                        if (step==2){
-                            log_msg="<b>process_step "+obj.from+";"+step+"</b><br>"+log_msg;
-                            s_ui.Web_Content("web",css_head+log_msg);
-                            s_ui.status_label_show("status_label","/root/step3_v2.txt step2 process_step");
-                            process_step(obj);
-                        }else{
-                            s_ui.Web_Content("web","多次接收："+step+"="+data);
-                        }
-                        break;
-                }
-            }
-            break;
         case "msg":
             //s_ui.msg(obj.return_cmd+"==step:"+step);
             if (obj.return_cmd=="step:"+step){
@@ -172,7 +141,7 @@ function process_step(obj){
         if (step==fields_count){
             s_ui.datagrid_add_checkbox("grid1","modify","选择","modify_click");
         }else{
-            var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step5.txt "+step+" \"0,0.25,0.5,0.75,1\"";
+            var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt "+step+" \"0,0.25,0.5,0.75,1\"";
             
             s_ui.text_set("txt_send",cmd);
             send_msg_click();
@@ -212,16 +181,7 @@ function map_click(data){
     s_sys.value_save("row_index",row_index);
     
     var type=s_ui.datagrid_read("grid1",index,1);
-    //s_ui.msg(type);
     
-    var file2=s_sys.value_read("file2");
-    var cmd=sql("/home/ftp_home"+file2,
-            "select c"+row_index+",count(1) from t group by c"+row_index,
-            "v","/root/map_"+row_index+".txt");
-    
-    s_ui.text_set("txt_send",cmd);
-    step=5;
-    send_msg_click();
     
 }
 
@@ -231,8 +191,6 @@ function static_click(data){
     s_ui.datagrid_clear("grid1");
     s_ui.datagrid_init_column("grid1",8,"字段,avg,方差,0%,25%,50%,75%,100%");
     
-    
-    
     var file1=s_sys.value_read("file1");
     if (file1=="") file1="E:\\sample1.txt";
     
@@ -241,7 +199,7 @@ function static_click(data){
     fields_count=strSplit.length;
     //s_ui.msg(fields_count);
     
-    var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step5.txt 0 \"0,0.25,0.5,0.75,1\"";
+    var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt 0 \"0,0.25,0.5,0.75,1\"";
     
     s_ui.text_set("txt_send",cmd);
     step=0;
@@ -331,7 +289,7 @@ function read_ini(){
     
     var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
     md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    userName=userName2+"/linux_bat_step5";
+    userName=userName2+"/linux_bat_step6";
     
     s_ui.text_set("txt_user_name",userName);
 }
@@ -376,9 +334,6 @@ function send_msg_click(){
     
     
     s_ui.text_set("txt_send","");
-    
-    
-    
 }
 
 function set_status(data){
@@ -423,10 +378,10 @@ function send_msg(strType,friend,msg,return_cmd){
         
         
         log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
-                +strMsg+"<br><br>"+"<b>tcp.send:"+strLine+"</b>"
+                +msg+"<br><br>"+"<b>tcp.send:"+strLine+"</b>"
                 +log_msg;
         s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
-            s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
+            s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
         
         s_ui.Web_Content("web",css_head+log_msg);
     }else{
@@ -529,7 +484,7 @@ s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
-s_ui.Form_Title("v2 第5步 字段统计");
+s_ui.Form_Title("v2 第6步 字段统计");
 
 
 read_ini("");

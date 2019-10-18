@@ -21,6 +21,13 @@ s_ui.text_init("txt_send","ls",380,350,320,30);
 
 s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
 
+//状态栏 开始
+s_ui.status_init("status",0,0,200,30,"bottom");
+s_ui.status_label_init("status_label","111",100,30);
+s_ui.status_add("status","status_label","left");
+s_ui.status_label_init("status_label2","222",100,30);
+s_ui.status_add("status","status_label2","left");
+//状态栏 结束
 
 
 s_ui.text_init("txt_user_name","000",10,450,100,30);

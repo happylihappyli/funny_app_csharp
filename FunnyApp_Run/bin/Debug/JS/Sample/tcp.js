@@ -56,6 +56,8 @@ function send_msg_click(data){
 var log_msg="";
 var keep_count=1;
 function event_msg(data){
+    show_msg(data);
+    /*
     data=data.replaceAll("\r\n","\n");
     var strSplit=data.split("\n");
     if (strSplit[0]=="s:keep"){
@@ -66,7 +68,7 @@ function event_msg(data){
     }else{
         log_msg=data+"\r\n"+log_msg;
         s_ui.text_set("txt1",log_msg);
-    }
+    }*/
 }
 
 function show_msg(data){

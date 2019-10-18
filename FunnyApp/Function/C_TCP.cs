@@ -70,9 +70,45 @@ namespace FunnyApp.Function {
             });
         }
 
+        public int keep_count = 0;
+        public string data_remain = "";
+        private void AddMessage(string data) {
+            data = data_remain + data;
+            data_remain = "";
 
-        private void AddMessage(string msg) {
-            pFrmApp.Call_Event(this.call_back_msg, msg);
+            while (data != null && "".Equals(data) == false) {
+                if (data.StartsWith("s:keep")) {
+                    keep_count = 0;
+                    int index = data.IndexOf("\n");
+                    if (index > 0) {
+                        data = data.Substring(index + 1);
+                    } else {
+                        data_remain = data;
+                        break;
+                    }
+                } else if (data.StartsWith("m:<s>:")) {
+                    int index1 = data.IndexOf(":<s>:");
+                    int index2 = data.IndexOf(":</s>");
+                    if (index2 > index1 && index1 > 0) {
+                        string json = data.Substring(index1 + 5, index2-(index1 + 5));
+
+                        pFrmApp.Call_Event(this.call_back_msg, json);
+
+                        data = data.Substring(index2 + 5);
+                        int index = data.IndexOf("\n");
+                        if (index >= 0) data = data.Substring(index + 1);
+                    } else {
+                        data_remain = data;
+                        break;
+                    }
+                } else {
+                    Console.WriteLine("error=" + data);
+
+                    break;
+                }
+            }
+
+
         }
 
         public void send(string msg) {

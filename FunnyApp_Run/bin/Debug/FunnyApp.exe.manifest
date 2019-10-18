@@ -282,14 +282,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FunnyApp.exe" size="86488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FunnyApp.exe" size="87000">
       <assemblyIdentity name="FunnyApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aDhTTOGC7JajR3g4JzqomUMPK9bBO0KUs0gsTVkqif0=</dsig:DigestValue>
+        <dsig:DigestValue>keUknFZB3AOnaQPZV4ZXzhigs31FMjDizNFbN0T4FtI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

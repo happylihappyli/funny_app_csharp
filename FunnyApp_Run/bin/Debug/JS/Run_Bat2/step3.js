@@ -11,16 +11,11 @@ var keep_count=1;
 
 var myMap=[];
 var head="";
-var css_head='<html><head>\n'
-+'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'
-+'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
-+'<body>\n';
+
 
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
-
-
 
 
 function show_msg(data){
@@ -558,12 +553,15 @@ s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
 //s_ui.Menu_Item_Add("Menu1","Tools","Menu_Upload","上传Map文件","upload_click","");
 
-
+//状态栏 开始
 s_ui.status_init("status",0,0,200,30,"bottom");
 s_ui.status_label_init("status_label","111",100,30);
 s_ui.status_add("status","status_label","left");
 s_ui.status_label_init("status_label2","222",100,30);
 s_ui.status_add("status","status_label2","left");
+//状态栏 结束
+
+
 
 s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);

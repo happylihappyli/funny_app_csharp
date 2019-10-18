@@ -1,4 +1,6 @@
-var disk="D:";
+var friend_return=0;
+var keep_count=0;
+
 var userName="none";
 var md5="";
 var log_msg="";
@@ -6,10 +8,6 @@ var session_send=0;
 var msg_id=0;
 var myMap=[];
 var head="";
-var css_head='<html><head>\n'
-+'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'
-+'<link href="http://www.funnyai.com/Common/css/table.css" type="text/css" rel="stylesheet" />\n'
-+'<body>\n';
 var sep=1;
 
 [[[..\\data\\default.js]]]
@@ -17,15 +15,65 @@ var sep=1;
 [[[..\\data\\tcp.js]]]
 
 
-//消息和发送计数器
-function C_Msg(ID,Msg){
-    this.ID=ID;
-    this.Msg=Msg;
-    this.Count=0;
+[[[event_chat.js]]]
+
+
+
+function show_msg(data){
+    var obj=JSON.parse(data);
+    var msg=obj.message;
+
+    switch(obj.type){
+        case "chat_return":
+            //s_ui.msg("chat_return:"+obj.oid);
+            
+            log_msg="<b>chat_return:"+obj.oid+"</b><br>"+log_msg;
+            s_ui.Web_Content("web",css_head+log_msg);
+            s_ui.status_label_show("status_label","chat_return:"+obj.oid);
+            delete myMap["K"+obj.oid];
+            break;
+        case "login.ok":
+            //s_ui.msg("login.ok friend list");
+            friend_list("login.ok");
+            break;
+        case "list.all":
+            s_ui.listbox_add("list_friend",obj.message);
+            friend_return=1;
+            break;
+        case "file_sql":
+            if (obj.message=="finished"){
+                
+                log_msg="<b>finished "+obj.from+";"+step+"</b><br>"+log_msg;
+                s_ui.Web_Content("web",css_head+log_msg);
+            }
+            break;
+        case "msg":
+            event_chat(data);
+            break;
+        case "status":
+            switch(obj.from){
+                case "progress1":
+                    var strSplit=msg.split(":");
+                    s_ui.progress_show("progress1","100",strSplit[0]);
+                    s_ui.progress_show("progress2","100","100");
+                    break;
+                case "progress2":
+                    var strSplit=msg.split(":");
+                    s_ui.progress_show('progress2', "100",strSplit[0]);
+                    break;
+            }
+            break;
+        default:
+            log_msg=s_time.Time_Now()
+                +"<span style='color:red;'>"+obj.from+"</span><br>"
+                +msg+"<br><br>"+log_msg;
+            s_ui.Web_Content("web",css_head+log_msg);
+            break;
+    }
 }
 
+
 function New_URL(data){
-    //s_ui.msg(data);
     var strSplit=data.split("?");
     var file=strSplit[1];
     switch(strSplit[0]){
@@ -37,8 +85,14 @@ function New_URL(data){
 }
 
 
-[[[event_chat.js]]]
 
+function friend_list(data){
+    //s_ui.msg("friend_list"+data);
+    s_ui.listbox_clear("list_friend");
+    s_ui.listbox_add("list_friend","*");
+
+    send_msg("friend_list","","","friend_list");
+}
 
 //发送消息
 function send_msg_click(){
@@ -52,9 +106,8 @@ function send_msg_click(){
     
     var strMsg=s_ui.text_read("txt_send");
     var friend=s_ui.listbox_text("list_friend");
-    var strType="cmd";
-    
-    send_msg(strType,friend,strMsg,"");
+
+    send_msg("cmd",friend,strMsg,"");
     
     
     s_ui.text_set("txt_send","");
@@ -88,12 +141,14 @@ function send_msg(strType,friend,msg,return_cmd){
         }
         
         log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
-                +strMsg+"<br><br>"+log_msg;
+                +msg+"<br><br>"+log_msg;
         s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
-            s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
+            s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
         
         s_ui.Web_Content("web",css_head+log_msg);
-    
+        
+        //s_ui.msg(strLine);
+        
         s_tcp.send("m:<s>:"+strLine+":</s>");
     }else{
         s_ui.status_label_show("status_label","token==null!");
@@ -133,17 +188,15 @@ function text_keydown(data){
 
 
 function event_connected(data){
+    
+    s_ui.status_label_show("status_label","event_connected!");
     s_ui.text_set("txt_info","event_connected");
     s_ui.button_enable("btn_connect","0");
-    friend_list();
     
+    
+    send_msg("login","","","login");
 }
 
-function event_disconnected(data){
-    s_ui.text_set("txt_info","event_disconnected");
-    s_ui.button_enable("btn_connect","1");
-    s_net.Socket_Connect();
-}
 
 function clear_click(data){
     log_msg="clear\r\n";
@@ -168,32 +221,6 @@ function select_old_friend(data){
     }
 }
 
-
-function event_system(data){
-    var obj=JSON.parse(data);
-    var log_msg2=obj.from+"："+obj.message+"\r\n";
-    s_ui.text_set("txt_info",log_msg2);
-    switch(obj.type){
-        case "chat_return":
-            s_ui.text_set("txt_info","chat_return:"+obj.message);
-            delete myMap["K"+obj.oid];
-            break;
-        case "30s:session":
-            if (obj.from=="system"){
-                session_id=obj.message;
-                s_ui.text_set("txt_session",session_id);  
-                s_ui.text_set("txt_user_name",userName);
-                var friend="*";
-                var strLine="{\"from\":\""+userName+"\",\"type\":\"session\",\"to\":\".\",\"message\":\""+session_id+"\"}";
-                s_net.Send_Msg("sys_event",strLine); //服务器会记录用户名
-                session_send=1;
-            }
-            break;
-        case "list.all":
-            s_ui.listbox_add("list_friend",obj.message);
-            break;
-    }
-}
 
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
@@ -220,12 +247,6 @@ function chat2(data){
     s_ui.Run_JS("加密聊天.js");
 }
 
-function friend_list(data){
-    s_ui.listbox_clear("list_friend");
-    s_ui.listbox_add("list_friend","*");
-    var strLine="{\"from\":\""+userName+"\",\"type\":\"list.all\",\"to\":\"\",\"message\":\"\"}";
-    s_net.Send_Msg("sys_event",strLine);
-}
 
 function set_click(data){
     s_ui.Run_JS("Chat\\setting.js");
@@ -306,9 +327,10 @@ function check_connected(data){
     
     if (friend_return==1){
         select_old_friend("");
-        //检查消息是否都发送过去了，没有发送的，再发送一次。
-        resend_chat_msg("");
     }
+    
+    //检查消息是否都发送过去了，没有发送的，再发送一次。
+    resend_chat_msg("");
 }
 
 
