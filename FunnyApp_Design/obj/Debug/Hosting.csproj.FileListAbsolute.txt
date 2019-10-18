@@ -1,9 +1,0 @@
-C:\Users\happy\Downloads\Download\hosting\csharp\bin\Debug\Hosting.exe.config
-C:\Users\happy\Downloads\Download\hosting\csharp\bin\Debug\Hosting.exe
-C:\Users\happy\Downloads\Download\hosting\csharp\bin\Debug\Hosting.pdb
-C:\Users\happy\Downloads\Download\hosting\csharp\obj\Debug\Hosting.csprojAssemblyReference.cache
-C:\Users\happy\Downloads\Download\hosting\csharp\obj\Debug\Hosting.frmMain.resources
-C:\Users\happy\Downloads\Download\hosting\csharp\obj\Debug\Hosting.csproj.GenerateResource.cache
-C:\Users\happy\Downloads\Download\hosting\csharp\obj\Debug\Hosting.csproj.CoreCompileInputs.cache
-C:\Users\happy\Downloads\Download\hosting\csharp\obj\Debug\Hosting.exe
-C:\Users\happy\Downloads\Download\hosting\csharp\obj\Debug\Hosting.pdb
