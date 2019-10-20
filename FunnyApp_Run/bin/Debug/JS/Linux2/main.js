@@ -27,10 +27,8 @@ function event_msg(data){
     }
     switch(obj.type){
         case "chat_return":
-            //s_ui.msg("chat_return:"+obj.oid);
-            
-            log_msg="<b>chat_return:"+obj.oid+"</b><br>"+log_msg;
-            s_ui.Web_Content("web",css_head+log_msg);
+            //log_msg="<b>chat_return:"+obj.oid+"</b><br>"+log_msg;
+            //s_ui.Web_Content("web",css_head+log_msg);
             s_ui.status_label_show("status_label","chat_return:"+obj.oid);
             delete myMap["K"+obj.oid];
             break;
@@ -51,6 +49,10 @@ function event_msg(data){
             break;
         case "msg":
             event_chat(data);
+            break;
+        case "ai_return":
+            log_msg="<b>ai:"+msg+"</b><br>"+log_msg;
+            s_ui.Web_Content("web",css_head+log_msg);
             break;
         case "read_return":
             break;
@@ -123,6 +125,9 @@ function send_msg_click(){
             s_ui.Web_Content("web",css_head+log_msg);
         
             edit_file(strSplit[1]);
+            break;
+        case "ai":
+            send_msg("ai",friend,strSplit[1],"");
             break;
         default:
             send_msg("cmd",friend,strMsg,"");
