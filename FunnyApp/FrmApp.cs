@@ -5,6 +5,7 @@ using B_IniFile;
 using B_String.Funny;
 using B_TreapVB.TreapVB;
 using FunnyApp.Function;
+using FunnyApp.Function.TCP;
 using FunnyApp.TOOLS.Audio;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -33,27 +34,40 @@ namespace FunnyApp
         public C_UI pUI;
         public static Treap<Object> pMap = new Treap<Object>();
         public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
-        public static C_Index pIndex ;
+        public static C_Index pIndex;
+        public static C_TCP pTCP = null;
 
         public FrmApp pParent = null;
         public string strFile = "";
         public JS pJS = new JS();
-        public Tools sys = null;
-        public C_TCP pTCP = null;
+        public C_SYS sys = null;
 
         public FrmApp()
         {
             InitializeComponent();
-            sys = new Tools(this);
+
+            sys = new C_SYS(this);
+            pUI = new C_UI(this);
+
             if (FrmApp.pIndex == null) {
                 FrmApp.pIndex = new C_Index(this);
             }
-            pUI = new C_UI(this);
-            pTCP = new C_TCP(this);
+
+            if (FrmApp.pTCP == null) {
+                FrmApp.pTCP = new C_TCP();
+            }
+        }
+
+        private void On_TCP_Msg(object sender, TCP_Msg_EventArgs e) {
+            // 真正的事件处理函数
+            //Console.WriteLine("Capture key: {0}", e.Msg);
+            this.Call_Event(e.Event,e.Msg);
         }
 
         private void FrmApp_Load(object sender, EventArgs e)
         {
+            //TCP_Msg_Receiver eventReceiver = new TCP_Msg_Receiver(C_TCP.tcp_sender);
+            
             if ("".Equals(strFile)) {
                 MessageBox.Show("没有设置启动参数");
             } else {
@@ -80,7 +94,16 @@ namespace FunnyApp
             this.notifyIcon1.Visible = true;
         }
 
+
+        public void Hook_TCP_Event() {
+            C_TCP.tcp_sender.TCP_Msg += new TCP_Msg_Sender.TCP_Msg_Handler(this.On_TCP_Msg);
+        }
+
+
+
         delegate void d_Call_Event(string str1, string str2);//创建一个代理
+
+
 
         public void Call_Event(string str1, string str2) {
             if (str1 == null) return;
@@ -227,7 +250,7 @@ namespace FunnyApp
 
         private void FrmApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-            pTCP.close();
+            //pTCP.close();
             pUI.moue_unhook();
             notifyIcon1.Visible = false;
         }

@@ -16,11 +16,14 @@ namespace FunnyApp
         {
             jint = new Jint.Engine();
 
+
+            //静态变量，只有一个
+            jint.SetValue("s_tcp", FrmApp.pTCP);
+            jint.SetValue("s_index", FrmApp.pIndex);// new C_Index(pApp));
+
+            //非静态变量
             jint.SetValue("s_sys", pApp.sys);
             jint.SetValue("s_ui", pApp.pUI);
-            jint.SetValue("s_tcp", pApp.pTCP);
-
-            jint.SetValue("s_index", FrmApp.pIndex);// new C_Index(pApp));
 
             jint.SetValue("s_math", new S_Math());
             jint.SetValue("s_string", new C_String());

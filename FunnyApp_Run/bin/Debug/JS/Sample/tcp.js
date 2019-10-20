@@ -4,8 +4,6 @@ var disk="D:";
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\default.js]]]
 
-var msg_id=1;
-var myMap=[];
 
 //消息和发送计数器
 function C_Msg(ID,Msg){
@@ -56,55 +54,25 @@ function send_msg_click(data){
 var log_msg="";
 var keep_count=1;
 function event_msg(data){
-    show_msg(data);
-    /*
-    data=data.replaceAll("\r\n","\n");
-    var strSplit=data.split("\n");
-    if (strSplit[0]=="s:keep"){
-        s_ui.text_set("tx_status","keep"+keep_count);
-        keep_count++;
-    }else if(strSplit[0].indexOf("m:<s>:")==0){
-        show_msg(data);
-    }else{
-        log_msg=data+"\r\n"+log_msg;
-        s_ui.text_set("txt1",log_msg);
-    }*/
-}
-
-function show_msg(data){
-    var index1=data.indexOf(":<s>:");
-    var index2=data.indexOf(":</s>");
-    if (index2>index1 && index1>0){
-        while(index2>index1 && index1>0){
-            var json=data.substring(index1+5,index2);
-            var obj=JSON.parse(json);
-            var msg=obj.message;
-            switch(obj.type){
-                case "chat_return":
-                    //s_ui.msg(json);
-                    delete myMap["K"+obj.oid];
-                    s_ui.text_set("tx_status",msg);
-                    break;
-                case "login.ok":
-                    friend_list("");
-                    break;
-                case "list.all":
-                    s_ui.listbox_add("list_friend",obj.message);
-                    break;
-                default:
-                    msg=msg.replaceAll("\n","\r\n");
-                    log_msg=msg+"\r\n"+log_msg;
-                    s_ui.text_set("txt1",log_msg);
-                    break;
-            }
-            data=data.substring(index2+6);
-            
-            index1=data.indexOf(":<s>:");
-            index2=data.indexOf(":</s>");
-        }
-    }else{
-        log_msg=index1+":"+index2+":";//+data+"\r\n"+log_msg;
-        s_ui.text_set("txt1",log_msg);
+    var obj=JSON.parse(data);
+    var msg=obj.message;
+    switch(obj.type){
+        case "chat_return":
+            //s_ui.msg(json);
+            delete myMap["K"+obj.oid];
+            s_ui.text_set("tx_status",msg);
+            break;
+        case "login.ok":
+            friend_list("");
+            break;
+        case "list.all":
+            s_ui.listbox_add("list_friend",obj.message);
+            break;
+        default:
+            msg=msg.replaceAll("\n","\r\n");
+            log_msg=msg+"\r\n"+log_msg;
+            s_ui.text_set("txt1",log_msg);
+            break;
     }
 }
 

@@ -427,6 +427,8 @@ s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
 s_ui.Form_Title("v2 第5步 生成step6.txt");
 
+s_sys.tcp_event();
+
 read_ini("");
 
 connect_click("");

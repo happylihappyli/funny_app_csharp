@@ -27,13 +27,22 @@ function clear_data(data){
 function data_init(data){
     s_ui.datagrid_clear("grid1");
     
-    s_ui.datagrid_init_column("grid1",8,"字段,avg,方差,0%,25%,50%,75%,100%");
+    s_ui.datagrid_init_column("grid1",9,"字段,memo,avg,方差,0%,25%,50%,75%,100%");
     s_ui.datagrid_add_line("grid1","1,正在分析...",",");
     
     s_ui.datagrid_add_checkbox("grid1","modify","选择","modify_click");
     //s_ui.datagrid_add_button("grid1","modify","映射","map_click");
 }
 
+
+function modify_click(data){
+    s_ui.msg(data);
+    var index=parseInt(data);
+    var a=s_ui.datagrid_read("grid1",index,9);
+    
+    //s_ui.Run_JS("Run_Bat\\step3_map.js");
+    s_ui.msg(a);
+}
 
 function event_connected(data){
     send_msg("login","","","login");
@@ -83,8 +92,7 @@ function show_msg(data){
             friend_return=1;
             break;
         case "msg":
-            //s_ui.msg(obj.return_cmd+"==step:"+step);
-            if (obj.return_cmd=="step:"+step){
+            if (obj.return_cmd=="step:0"){//+step){
                 process_step(obj);
             }
             log_msg=s_time.Time_Now()
@@ -125,27 +133,16 @@ function process_step(obj){
     var msg=obj.message;
     
     var line2="";
-    //s_ui.msg(fields_count);
     if (step<fields_count){    
         var split_line=msg.split("\n");
         for (var i=0;i<split_line.length;i++){
-            s_ui.datagrid_add_line("grid1",step+","+split_line[i],",");
+            s_ui.datagrid_add_line("grid1",i+",memo,"+split_line[i],",");
         }
         
         s_ui.status_label_show("status_label","process_step:"+step);
         
+        s_ui.datagrid_add_checkbox("grid1","modify","选择","modify_click");
         
-        step+=1;
-        
-        
-        if (step==fields_count){
-            s_ui.datagrid_add_checkbox("grid1","modify","选择","modify_click");
-        }else{
-            var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt "+step+" \"0,0.25,0.5,0.75,1\"";
-            
-            s_ui.text_set("txt_send",cmd);
-            send_msg_click();
-        }
     }
     
 }
@@ -189,7 +186,7 @@ function map_click(data){
 function static_click(data){
 
     s_ui.datagrid_clear("grid1");
-    s_ui.datagrid_init_column("grid1",8,"字段,avg,方差,0%,25%,50%,75%,100%");
+    s_ui.datagrid_init_column("grid1",8,"字段,memo,avg,方差,0%,25%,50%,75%,100%");
     
     var file1=s_sys.value_read("file1");
     if (file1=="") file1="E:\\sample1.txt";
@@ -199,10 +196,10 @@ function static_click(data){
     fields_count=strSplit.length;
     //s_ui.msg(fields_count);
     
-    var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt 0 \"0,0.25,0.5,0.75,1\"";
+    var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt "+fields_count+" \"0,0.25,0.5,0.75,1\"";
     
     s_ui.text_set("txt_send",cmd);
-    step=0;
+    stepstep=0;
     send_msg_click();
 }
 

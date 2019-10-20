@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FunnyApp {
 
-    public partial class Tools {
+    public partial class C_SYS {
         public IScheduler sched = null;
 
         public async void init_alaram() {

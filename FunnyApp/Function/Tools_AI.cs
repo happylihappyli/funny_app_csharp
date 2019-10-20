@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FunnyApp {
-    public partial class Tools {
+    public partial class C_SYS {
 
         public void TTS(string strLine) {
             FunnyApp.baidu_tts.tts(strLine);

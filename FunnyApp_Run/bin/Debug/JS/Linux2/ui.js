@@ -44,7 +44,6 @@ s_ui.splitcontainer_add("split",0,"btn_friend","top");
 s_ui.splitcontainer_add("split",0,"txt_info","bottom");
 s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
 s_ui.splitcontainer_add("split",0,"btn_connect","bottom");
-s_ui.splitcontainer_add("split",0,"txt_session","bottom");
 
 
 s_ui.splitcontainer_add("split",1,"web","fill");
@@ -69,6 +68,9 @@ s_ui.splitcontainer_add("split",1,"panel3","bottom");
 
 s_ui.panel_init("panel4",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel4","bottom");
+
+s_ui.panel_init("panel5",0,0,500,25,"none");
+s_ui.splitcontainer_add("split",1,"panel5","bottom");
 
 s_ui.button_init("btn_ls","目录文件",10,30,100,30,"show_file","ls -al");
 s_ui.panel_add("panel2","btn_ls","left");
@@ -101,6 +103,10 @@ s_ui.panel_add("panel4","btn_file_sql","left");
 
 s_ui.button_init("btn_process_kill","删除进程",10,30,100,30,"process_kill","");
 s_ui.panel_add("panel4","btn_process_kill","left");
+
+
+s_ui.button_init("btn_edit_start","编辑登录提示",10,30,100,30,"cmd_sub","edit /etc/motd");
+s_ui.panel_add("panel5","btn_edit_start","left");
 
 
 s_ui.Menu_Init("Menu1",0,0,800,25);

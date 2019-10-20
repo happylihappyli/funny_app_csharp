@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FunnyApp.Function.TCP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -8,15 +9,21 @@ using System.Threading.Tasks;
 
 namespace FunnyApp.Function {
     public class C_TCP {
+        public static TCP_Msg_Sender tcp_sender = new TCP_Msg_Sender();
 
         Socket socket;
-        FrmApp pFrmApp = null;
+        //FrmApp pFrmApp = null;
         public string user_name = "";
         public string call_back_msg = "";
 
-        public C_TCP(FrmApp pApp) {
-            this.pFrmApp = pApp;
+        public C_TCP(){
         }
+
+
+        public void hook_event(string call_back_msg) {
+            this.call_back_msg = call_back_msg;
+        }
+
 
         public void connect(string ip, int port,
             string user_name,
@@ -28,9 +35,8 @@ namespace FunnyApp.Function {
 
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            // Connects to host using IPEndPoint.
             try {
-                socket.Connect(ip, port);// "robot6.funnyai.com", 6000);
+                socket.Connect(ip, port);
 
             } catch (Exception ex) {
                 AddMessage(ex.ToString());
@@ -38,13 +44,11 @@ namespace FunnyApp.Function {
             }
 
             if (!socket.Connected) {
-                //MessageBox.Show("Unable to connect to host");
             } else {
-                pFrmApp.Call_Event(call_back_connect, "");
+                tcp_sender.Send_Msg(call_back_connect, "");
+                //pFrmApp.Call_Event(call_back_connect, "");
             }
 
-            //byte[] outStream = Encoding.UTF8.GetBytes(user_name+ " is joining\r\n");
-            //socket.Send(outStream, outStream.Length, 0);
 
             bool bError = false;
             // upload as javascript blob
@@ -77,22 +81,15 @@ namespace FunnyApp.Function {
             data_remain = "";
 
             while (data != null && "".Equals(data) == false) {
-                if (data.StartsWith("s:keep")) {
+                if (data.StartsWith("m:<s>:")) {
                     keep_count = 0;
-                    int index = data.IndexOf("\n");
-                    if (index > 0) {
-                        data = data.Substring(index + 1);
-                    } else {
-                        data_remain = data;
-                        break;
-                    }
-                } else if (data.StartsWith("m:<s>:")) {
                     int index1 = data.IndexOf(":<s>:");
                     int index2 = data.IndexOf(":</s>");
                     if (index2 > index1 && index1 > 0) {
                         string json = data.Substring(index1 + 5, index2-(index1 + 5));
 
-                        pFrmApp.Call_Event(this.call_back_msg, json);
+                        tcp_sender.Send_Msg(this.call_back_msg, json);
+                        //pFrmApp.Call_Event(this.call_back_msg, json);
 
                         data = data.Substring(index2 + 5);
                         int index = data.IndexOf("\n");
@@ -103,7 +100,7 @@ namespace FunnyApp.Function {
                     }
                 } else {
                     Console.WriteLine("error=" + data);
-
+                    data_remain = data;
                     break;
                 }
             }
@@ -137,4 +134,41 @@ namespace FunnyApp.Function {
             }
         }
     }
+
+
+    public class TCP_Msg_EventArgs : EventArgs {
+        private string msg;
+        private string strEvent;
+        public TCP_Msg_EventArgs(string strEvent,string msg)
+            : base() {
+            this.strEvent = strEvent;
+            this.msg = msg;
+        }
+
+        public string Event {
+            get {
+                return strEvent;
+            }
+        }
+
+        public string Msg {
+            get {
+                return msg;
+            }
+        }
+    }
+
+
+    
+    
+    //public class MainEntryPoint {
+    //    public static void Main(string[] args) {
+    //        // 实例化一个事件发送器
+    //        TCP_Msg_Sender tcp_sender = new TCP_Msg_Sender();
+    //        // 实例化一个事件接收器
+    //        TCP_Msg_Receiver eventReceiver = new TCP_Msg_Receiver(tcp_sender);
+    //        // 运行
+    //        tcp_sender.Run();
+    //    }
+    //}
 }

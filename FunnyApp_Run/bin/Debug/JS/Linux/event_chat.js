@@ -29,8 +29,9 @@ function event_chat(data){
                     for (var j=0;j<strSplit2.length;j++){
                         var value=strSplit2[j];
                         if (j==8){
-                            msg+="<td>"+value+"</td><td>"
-                            +"<a href='http://file.edit?file="+value+"' target=_blank>编辑</a></td>";
+                            msg+="<td>"+value+"</td>"
+                            +"<td><a href='http://file.edit_group?file="+value+"' target=_blank>编辑组</a></td>"
+                            +"<td><a href='http://file.edit?file="+value+"' target=_blank>编辑</a></td>";
                         }else{
                             msg+="<td>"+value+"</td>";
                         }

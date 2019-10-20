@@ -573,7 +573,17 @@ namespace Jint
                 throw new ArgumentException("Can only invoke functions");
             }
 
-            return callable.Call(JsValue.FromObject(this, thisObj), arguments.Select(x => JsValue.FromObject(this, x)).ToArray());
+            JsValue[] pParam = arguments.Select(x => JsValue.FromObject(this, x)).ToArray();
+            JsValue pValue=JsValue.FromObject(this, thisObj);
+
+            JsValue pReturn = new JsValue() ;
+            try {
+                pReturn = callable.Call(pValue, pParam);
+            } catch (Exception ex) {
+                ex.ToString();
+            }
+
+            return pReturn;
         }
 
         /// <summary>

@@ -1,14 +1,13 @@
 var friend_return=0;
-var keep_count=0;
+//var keep_count=0;
 
 var userName="none";
 var md5="";
 var log_msg="";
 var session_send=0;
-var msg_id=0;
-var myMap=[];
 var head="";
 var sep=1;
+var current_path="/root/happyli";//当前路径
 
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
@@ -19,10 +18,13 @@ var sep=1;
 
 
 
-function show_msg(data){
+function event_msg(data){
     var obj=JSON.parse(data);
     var msg=obj.message;
-
+    
+    if (obj.k=="1"){
+        return ;
+    }
     switch(obj.type){
         case "chat_return":
             //s_ui.msg("chat_return:"+obj.oid);
@@ -50,6 +52,8 @@ function show_msg(data){
         case "msg":
             event_chat(data);
             break;
+        case "read_return":
+            break;
         case "status":
             switch(obj.from){
                 case "progress1":
@@ -65,8 +69,8 @@ function show_msg(data){
             break;
         default:
             log_msg=s_time.Time_Now()
-                +"<span style='color:red;'>"+obj.from+"</span><br>"
-                +msg+"<br><br>"+log_msg;
+                +"<span style='color:red;'>"+data+"</span><br>"
+                +"<br><br>"+log_msg;
             s_ui.Web_Content("web",css_head+log_msg);
             break;
     }
@@ -77,9 +81,13 @@ function New_URL(data){
     var strSplit=data.split("?");
     var file=strSplit[1];
     switch(strSplit[0]){
-        case "http://file.edit/":
+        case "http://file.edit_group/":
             var file2=file.substr(5);
             change_group(file2);
+            break;
+        case "http://file.edit/":
+            var file2=file.substr(5);
+            edit_file(file2);
             break;
     }
 }
@@ -107,11 +115,21 @@ function send_msg_click(){
     var strMsg=s_ui.text_read("txt_send");
     var friend=s_ui.listbox_text("list_friend");
 
-    send_msg("cmd",friend,strMsg,"");
-    
+    var strSplit=strMsg.split(" ");
+    switch(strSplit[0]){
+        case "edit":
+            log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
+                    +strMsg+"<br><br>"+log_msg;
+            s_ui.Web_Content("web",css_head+log_msg);
+        
+            edit_file(strSplit[1]);
+            break;
+        default:
+            send_msg("cmd",friend,strMsg,"");
+            break;
+    }
     
     s_ui.text_set("txt_send","");
-    
 }
 
 
@@ -120,6 +138,18 @@ function send_msg(strType,friend,msg,return_cmd){
     
     var token=get_token();
     var strLine="";
+    var strSplit=msg.split(" ");
+    var cmd=strSplit[0];
+    switch(cmd){
+        case "ls":
+            current_path=strSplit[strSplit.length-1];
+            if (current_path.endsWith("/")){
+                current_path=current_path.substr(0,current_path.length-1);
+            }
+            sep="file_list";//分隔符用第1.1个方案
+            head="<tr><th>权限</th><th>子文件数</th><th>用户</th><th>用户组</th><th>大小</th><th colspan=3>最近修改/查看时间</th><th>名称</th></tr>";
+            break;
+    }
     
     var strMsg2=msg.replaceAll("\"","\\\"");
     strMsg2=strMsg2.replaceAll("\n","\\n");
@@ -146,8 +176,6 @@ function send_msg(strType,friend,msg,return_cmd){
             s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
         
         s_ui.Web_Content("web",css_head+log_msg);
-        
-        //s_ui.msg(strLine);
         
         s_tcp.send("m:<s>:"+strLine+":</s>");
     }else{
@@ -222,18 +250,6 @@ function select_old_friend(data){
 }
 
 
-function read_ini(){
-    //s_ui.Combox_Clear("cb_friend");
-    var path=s_sys.AppPath();
-    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
-    
-    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    userName=userName2+"/linux";
-    
-}
-
-
 function log_click(data){
     s_ui.Run_App(disk+"\\Net\\Web\\log","");
 }
@@ -276,16 +292,22 @@ function show_group(data){
 }
 
 function show_file(data){
-    sep="file_list";//分隔符用第1.1个方案
-    head="<tr><th>权限</th><th>子目录(文件)数</th><th>所属用户</th><th>所属用户组</th><th>大小</th><th colspan=3>最近修改/查看时间</th><th>名称</th></tr>";
-    cmd_sub(data);  
+    s_sys.value_save("cmd","");
+    s_ui.Run_JS_Dialog("Linux2\\ls.js","callback_cmd");
 }
 
 
 function change_group(data){
     s_sys.value_save("file",data);
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\change_own.js","callback_cmd");
+    s_ui.Run_JS_Dialog("Linux2\\change_own.js","callback_cmd");
+}
+
+
+function edit_file(data){
+    s_sys.value_save("file",data);
+    s_sys.value_save("cmd","");
+    s_ui.Run_JS("Linux2\\edit_file.js");
 }
 
 
@@ -314,6 +336,8 @@ function add_user_2_group(data){
 
 function connect_click(data){
     read_ini();
+    s_ui.text_set("txt_user_name",userName);
+    
     s_tcp.connect("robot6.funnyai.com",6000,userName,
     "event_connected","event_msg");
 }
@@ -349,5 +373,7 @@ function process_kill(data){
     s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("Linux\\process_kill.js","callback_cmd");
 }
+
+s_sys.tcp_event();
 
 [[[ui.js]]]
