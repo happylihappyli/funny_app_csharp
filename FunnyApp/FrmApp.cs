@@ -60,14 +60,13 @@ namespace FunnyApp
 
         private void On_TCP_Msg(object sender, TCP_Msg_EventArgs e) {
             // 真正的事件处理函数
-            //Console.WriteLine("Capture key: {0}", e.Msg);
             this.Call_Event(e.Event,e.Msg);
         }
 
+
+
         private void FrmApp_Load(object sender, EventArgs e)
         {
-            //TCP_Msg_Receiver eventReceiver = new TCP_Msg_Receiver(C_TCP.tcp_sender);
-            
             if ("".Equals(strFile)) {
                 MessageBox.Show("没有设置启动参数");
             } else {
@@ -86,8 +85,9 @@ namespace FunnyApp
                 }
                 pJS.Run_Code(this, strCode);
             }
-            //webBrowser1.DocumentText = "<a href='http://t.com/?file=E:/CloudStation/Robot5/私人资料库/Code/Data/1.txt' target=_blank > 打开 </a>< hr > ";
         }
+
+
 
         public void Tray_Show(string url) {
             this.notifyIcon1.Icon = this.Icon = Icon.ExtractAssociatedIcon(url);
@@ -102,9 +102,7 @@ namespace FunnyApp
 
 
         delegate void d_Call_Event(string str1, string str2);//创建一个代理
-
-
-
+        
         public void Call_Event(string str1, string str2) {
             if (str1 == null) return;
             if ("".Equals(str1)) return;
@@ -122,12 +120,9 @@ namespace FunnyApp
                 d_Call_Event a1 = new d_Call_Event(Call_Event);
                 Invoke(a1, new object[] { str1, str2 });
             }
-
         }
 
-
-
-
+        
 
         delegate void d_Call_Notifiction(string title, string message);//创建一个代理
         public void Call_Notifiction(string title, string message) {
@@ -149,7 +144,6 @@ namespace FunnyApp
                 Invoke(a1, new object[] { program, dir });
             }
         }
-
 
 
 
@@ -190,17 +184,11 @@ namespace FunnyApp
             this.callback_Connect = callback_Connect;
             this.callback_DisConnect = callback_DisConnect;
 
-            //url = "ws://robot6.funnyai.com:8000/socket.io/?EIO=2&transport=websocket";
             client = new SocketIO(url); // url to nodejs 
 
             client.OnConnected += Client_OnConnectedAsync;
             client.OnClosed += Client_OnClosedAsync;
-            //socket.Message += SocketMessage;
-            //socket.SocketConnectionClosed += SocketConnectionClosed;
-            //socket.Error += SocketError;
 
-            //socket.op
-            // register for 'connect' event with io server
             client.On("connect", (fn) =>
             {
                 Console.WriteLine("\r\nConnected event...\r\n");
@@ -208,10 +196,6 @@ namespace FunnyApp
 
                 Console.Write("test");
                 Call_Event(callback_Connect, "");
-
-                //// emit Json Serializable object, anonymous types, or strings
-                //Part newPart = new Part() { PartNumber = "K4P2G324EC", Code = "DDR2", Level = 1 };
-                //socket.Emit("partInfo", newPart);
             });
 
             // register for 'update' events - message is a json 'Part' object

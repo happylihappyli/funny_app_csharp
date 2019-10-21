@@ -9,5 +9,6 @@ function read_ini(){
     
     var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
     md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    userName=userName2+"/linux";
+    //userName=userName2+"/linux";
+    return userName2;
 }

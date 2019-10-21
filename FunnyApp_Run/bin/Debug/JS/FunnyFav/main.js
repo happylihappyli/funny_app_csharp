@@ -87,6 +87,7 @@ function New_URL(data){
 
 
 function callback_login(data){
+    //s_ui.msg("step1");
     read_fav();
 }
 
@@ -98,14 +99,22 @@ function callback_edit(data){
 var arraylist=[];
 //读取收藏夹
 function read_fav(){
+    //s_ui.msg("step2");
     var file=s_sys.value_read("file");
-    if (s_file.File_Exists(file)==false){
+    if (s_file.exists(file)==false){
+        s_ui.msg("no file="+file);
         return ;
     }
+    //s_ui.msg("step3");
     arraylist=[];
+    //s_ui.msg("step4");
     var password=s_sys.value_read("password");
+    //s_ui.msg("step5");
+    //s_ui.msg(password);
     var strLines=s_file.read(file);
+    //s_ui.msg(strLines);
     strLines=s_string.AES_Decrypt(strLines,password)
+    //s_ui.msg(strLines);
     
     strLines=strLines.replace("\r","");
     var strSplit = strLines.split('\n');
@@ -197,4 +206,4 @@ s_ui.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
 s_ui.Show_Form(700,600);
 s_ui.Form_Title("加密收藏夹");
 
-s_ui.Run_JS_Dialog("FunnyFav/login.js","callback_login");
+s_ui.Run_JS_Dialog("FunnyFav\\login.js","callback_login");

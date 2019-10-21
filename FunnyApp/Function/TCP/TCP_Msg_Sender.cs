@@ -11,23 +11,8 @@ namespace FunnyApp.Function.TCP {
         // 将创建的委托和特定事件关联,在这里特定的事件为KeyDown
         public event TCP_Msg_Handler TCP_Msg;
 
-        //public void Run() {
-        //    bool finished = false;
-        //    do {
-        //        Console.WriteLine("Input a char");
-        //        string response = Console.ReadLine();
 
-        //        char responseChar = (response == "") ? ' ' : char.ToUpper(response[0]);
-
-        //        // 得到按键信息的参数
-        //        TCP_Msg_EventArgs keyEventArgs = new TCP_Msg_EventArgs(responseChar);
-        //        // 触发事件
-        //        TCP_Msg(this, keyEventArgs);
-
-        //    } while (!finished);
-        //}
-
-        public void Send_Msg(string call_event, string strMsg) {
+        public void Raise_Event(string call_event, string strMsg) {
 
             TCP_Msg_EventArgs pTCP_Msg_Args = new TCP_Msg_EventArgs(call_event,strMsg);
             // 触发事件

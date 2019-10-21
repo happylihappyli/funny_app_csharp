@@ -20,7 +20,7 @@ var head="";
 
 
 
-function show_msg(data){
+function event_msg(data){
     var obj=JSON.parse(data);
     var msg=obj.message;
 
@@ -137,15 +137,8 @@ function next_click(data){
 }
 
 
-function read_ini(){
-    var path=s_sys.AppPath();
-    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
-    
-    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    userName=userName2+"/linux_bat_step5";
-    
-    
+function on_load(){
+    userName=read_ini()+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
 
@@ -293,14 +286,8 @@ function resend_chat_msg(data) {
 function send_msg_click(){
     msg_id+=1;
     
-    var index=s_ui.listbox_index("list_friend");
-    if (index<0){
-        s_ui.status_label_show("status_label","请选择好友！!");
-        //s_ui.msg("请选择好友！");
-        return ;
-    }
     var strMsg=s_ui.text_read("txt_send");
-    var friend=s_ui.listbox_text("list_friend");
+    var friend="robot1";
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");
@@ -340,10 +327,6 @@ s_ui.splitcontainer_init("split",0,0,500,500,"v");
 s_ui.splitcontainer_distance("split",130);
 
 
-s_ui.listbox_init("list_friend",10,60,200,180);
-s_ui.listbox_init_event("list_friend","friend_change");
-
-
 
 var file1=s_sys.value_read("file1");
 if (file1=="") file1="E:\\sample1.txt";
@@ -362,15 +345,10 @@ s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
 
 
 s_ui.text_init("txt_user_name","000",10,450,100,30);
-s_ui.button_init("btn_connect","连服务器",120,450,90,30,"connect_click","");
-
 s_ui.textbox_init("txt_info","",10,250,200,80);
 
-
-s_ui.splitcontainer_add("split",0,"list_friend","fill");
-s_ui.splitcontainer_add("split",0,"txt_info","bottom");
+s_ui.splitcontainer_add("split",0,"txt_info","fill");
 s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
-s_ui.splitcontainer_add("split",0,"btn_connect","bottom");
 
 
 s_ui.Web_Init("web",250,60,450,250);
@@ -429,10 +407,11 @@ s_ui.Form_Title("v2 第5步 生成step6.txt");
 
 s_sys.tcp_event();
 
-read_ini("");
+on_load("");
 
-connect_click("");
+static_click("");
+//connect_click("");
 
-check_connected("");
+//check_connected("");
 
 

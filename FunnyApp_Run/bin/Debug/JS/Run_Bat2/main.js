@@ -20,7 +20,7 @@ var head="";
 
 
 
-function show_msg(data){
+function event_msg(data){
     var obj=JSON.parse(data);
     var msg=obj.message;
 
@@ -68,17 +68,6 @@ function show_msg(data){
             s_ui.Web_Content("web",css_head+log_msg);
             break;
         case "status":
-            switch(obj.from){
-                case "progress1":
-                    var strSplit=msg.split(":");
-                    s_ui.progress_show("progress1","100",strSplit[0]);
-                    s_ui.progress_show("progress2","100","100");
-                    break;
-                case "progress2":
-                    var strSplit=msg.split(":");
-                    s_ui.progress_show('progress2', "100",strSplit[0]);
-                    break;
-            }
             break;
         default:
             log_msg=s_time.Time_Now()
@@ -137,15 +126,8 @@ function next_click(data){
 }
 
 
-function read_ini(){
-    var path=s_sys.AppPath();
-    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
-    
-    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    userName=userName2+"/linux_bat_step5";
-    
-    
+function on_load(){
+    userName=read_ini()+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
 
@@ -193,8 +175,6 @@ function send_msg(strType,friend,msg,return_cmd){
     
     
         s_tcp.send("m:<s>:"+strLine+":</s>");
-        
-        
     }else{
         s_ui.status_label_show("status_label","token==null!");
     }
@@ -363,8 +343,6 @@ s_ui.text_init("txt_file",file1,350,450,200,30);
 
 
 //界面
-//s_ui.datagrid_init("grid1",10,60,650,320);
-
 s_ui.text_init("txt_send","ls",380,350,320,30);
 
 
@@ -391,14 +369,14 @@ s_ui.Web_New_Event("web","New_URL");
 s_ui.panel_init("panel_main",0,0,500,100,"none");
 s_ui.panel_init("panel_main2",0,0,500,100,"none");
 
-s_ui.progress_init("progress2",100,400,500,30);
+//s_ui.progress_init("progress2",100,400,500,30);
 
 s_ui.splitcontainer_add("split",1,"web","fill");
 
 
 s_ui.splitcontainer_add("split",1,"panel_main2","top");
 s_ui.splitcontainer_add("split",1,"panel_main","top");
-s_ui.splitcontainer_add("split",1,"progress2","top");
+//s_ui.splitcontainer_add("split",1,"progress2","top");
 
 s_ui.splitcontainer_add("split",1,"txt_file","top");
 
@@ -456,7 +434,7 @@ s_ui.Form_Title("分析工具2");
 
 s_sys.tcp_event();
 
-read_ini("");
+on_load("");
 
 connect_click("");
 

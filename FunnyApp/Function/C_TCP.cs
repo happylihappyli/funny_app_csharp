@@ -1,4 +1,5 @@
 ﻿using FunnyApp.Function.TCP;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace FunnyApp.Function {
 
             if (!socket.Connected) {
             } else {
-                tcp_sender.Send_Msg(call_back_connect, "");
+                tcp_sender.Raise_Event(call_back_connect, "");
                 //pFrmApp.Call_Event(call_back_connect, "");
             }
 
@@ -87,9 +88,12 @@ namespace FunnyApp.Function {
                     int index2 = data.IndexOf(":</s>");
                     if (index2 > index1 && index1 > 0) {
                         string json = data.Substring(index1 + 5, index2-(index1 + 5));
+                        JObject jObject = JObject.Parse(json);
+                        if (jObject.ContainsKey("k")) {
 
-                        tcp_sender.Send_Msg(this.call_back_msg, json);
-                        //pFrmApp.Call_Event(this.call_back_msg, json);
+                        } else {
+                            tcp_sender.Raise_Event(this.call_back_msg, json);
+                        }
 
                         data = data.Substring(index2 + 5);
                         int index = data.IndexOf("\n");

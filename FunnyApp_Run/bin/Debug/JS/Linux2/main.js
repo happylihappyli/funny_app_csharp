@@ -339,10 +339,13 @@ function add_user_2_group(data){
     s_ui.Run_JS_Dialog("Linux\\user_group.js","callback_cmd");
 }
 
-function connect_click(data){
-    read_ini();
+function on_load(){
+    var a=read_ini();
+    userName=a+"/linux";
     s_ui.text_set("txt_user_name",userName);
-    
+}
+
+function connect_click(data){
     s_tcp.connect("robot6.funnyai.com",6000,userName,
     "event_connected","event_msg");
 }

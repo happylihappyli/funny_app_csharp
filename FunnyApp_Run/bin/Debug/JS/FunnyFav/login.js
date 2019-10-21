@@ -30,19 +30,6 @@ function text_keydown(data){
 }
 
 
-function event_connected(data){
-    s_ui.text_set("txt_info","event_connected");
-    s_ui.button_enable("btn_connect",0);
-    friend_list();
-    
-}
-
-function event_disconnected(data){
-    s_ui.text_set("txt_info","event_disconnected");
-    s_ui.button_enable("btn_connect",1);
-    s_net.Socket_Connect();
-}
-
 function clear_click(data){
     log_msg="clear\r\n";
     s_ui.Web_Content("web",log_msg);

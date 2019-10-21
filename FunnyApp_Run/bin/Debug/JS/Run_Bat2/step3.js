@@ -11,6 +11,7 @@ var keep_count=1;
 
 var myMap=[];
 var head="";
+var friend="robot1";//s_ui.listbox_text("list_friend");
 
 
 [[[..\\data\\default.js]]]
@@ -18,7 +19,7 @@ var head="";
 [[[..\\data\\tcp.js]]]
 
 
-function show_msg(data){
+function event_msg(data){
     var obj=JSON.parse(data);
     var msg=obj.message;
 
@@ -42,23 +43,23 @@ function show_msg(data){
                 log_msg="<b>finished "+obj.from+";"+step+"</b><br>"+log_msg;
                 s_ui.Web_Content("web",css_head+log_msg);
                 switch (obj.from){
-                    case "/root/step3.txt":
-                        if (step==1){
-                            process_step(obj);
-                        }else{
-                            s_ui.Web_Content("web","多次接收："+step+"="+data);
-                        }
-                        break;
-                    case "/root/step3_2.txt":
-                        if (step==2){
-                            log_msg="<b>process_step "+obj.from+";"+step+"</b><br>"+log_msg;
-                            s_ui.Web_Content("web",css_head+log_msg);
-                            s_ui.status_label_show("status_label","/root/step3_v2.txt step2 process_step");
-                            process_step(obj);
-                        }else{
-                            s_ui.Web_Content("web","多次接收："+step+"="+data);
-                        }
-                        break;
+                case "/root/step3.txt":
+                    if (step==1){
+                        process_step(obj);
+                    }else{
+                        s_ui.Web_Content("web","多次接收："+step+"="+data);
+                    }
+                    break;
+                case "/root/step3_2.txt":
+                    if (step==2){
+                        log_msg="<b>process_step "+obj.from+";"+step+"</b><br>"+log_msg;
+                        s_ui.Web_Content("web",css_head+log_msg);
+                        s_ui.status_label_show("status_label","/root/step3_v2.txt step2 process_step");
+                        process_step(obj);
+                    }else{
+                        s_ui.Web_Content("web","多次接收："+step+"="+data);
+                    }
+                    break;
                 }
             }
             break;
@@ -72,8 +73,7 @@ function show_msg(data){
             }
             log_msg=s_time.Time_Now()
         +" <span style='color:blue;'>"+obj.from+"</span>"
-        +obj.return_cmd+"<br>"
-        +"<pre>"+msg+"</pre>"
+        +obj.return_cmd+"<br>"+"<pre>"+msg+"</pre>"
         +"<br>"+log_msg;
             s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
@@ -244,7 +244,6 @@ function static_click(data){
     var file2=s_sys.value_read("file2");
     if (file2=="") file2="/upload/sample1.txt";
     
-    
     var cmd=sql("/home/ftp_home"+file2,
         "select "+line+" from t;","v","/root/step3.txt");
     //"file_sql /root/happyli/set_hadoop.ini "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
@@ -262,15 +261,8 @@ function next_click(data){
 }
 
 
-function read_ini(){
-    var path=s_sys.AppPath();
-    var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
-    
-    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
-    userName=userName2+"/linux_bat_step3";
-    
-    
+function on_load(){
+    userName=read_ini()+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
 
@@ -327,21 +319,6 @@ function send_msg(strType,friend,msg,return_cmd){
 }
 
 
-function event_connected(data){
-    
-    s_ui.status_label_show("status_label","event_connected!");
-    s_ui.text_set("txt_info","event_connected");
-    s_ui.button_enable("btn_connect","0");
-    
-    send_msg("login","","","login");
-}
-
-function event_disconnected(data){
-    s_ui.text_set("txt_info","event_disconnected");
-    s_ui.button_enable("btn_connect","1");
-    s_net.Socket_Connect();
-}
-
 
 
 
@@ -350,37 +327,9 @@ function connect_click(data){
     s_tcp.connect("robot6.funnyai.com",6000,
         userName,"event_connected","event_msg");
     
-    read_ini();
+    on_load();
 }
 
-
-function select_old_friend(data){
-    var friend=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","friend_selected");
-
-    if (friend!=null && friend!=""){
-        var friend2=s_ui.listbox_text("list_friend");
-        if (friend2!=friend){
-            s_ui.text_set("txt_info","选择刚才选择的好友:"+friend);
-            s_ui.listbox_select("list_friend",friend);
-            if (step==0){
-                friend_return=0;
-                static_click("");
-            }
-        }
-    }
-}
-
-//检查是否联网
-function check_connected(data){
-    s_ui.text_set("txt_info","check_connected...");
-    s_time.setTimeout("check_connected",2,"check_connected");
-    
-    if (friend_return==1){
-        select_old_friend("");
-        //检查消息是否都发送过去了，没有发送的，再发送一次。
-        resend_chat_msg("");
-    }
-}
 
 
 
@@ -420,22 +369,15 @@ function resend_chat_msg(data) {
 //发送消息 
 function send_msg_click(){
     msg_id+=1;
-    
-    var index=s_ui.listbox_index("list_friend");
-    if (index<0){
-        s_ui.status_label_show("status_label","请选择好友！!");
-        //s_ui.msg("请选择好友！");
-        return ;
-    }
+    //s_ui.msg("step1");
     //s_ui.combox_text("combox_head")+" "+
     var strMsg=s_ui.text_read("txt_send");
-    var friend=s_ui.listbox_text("list_friend");
     var strType="cmd";
     
-    
+    //s_ui.msg("step2");
     send_msg(strType,friend,strMsg,"step:"+step);
     
-    
+    //s_ui.msg("step3");
     s_ui.text_set("txt_send","");
     
 }
@@ -474,10 +416,6 @@ s_ui.splitcontainer_init("split",0,0,500,500,"v");
 s_ui.splitcontainer_distance("split",130);
 
 
-s_ui.listbox_init("list_friend",10,60,200,180);
-s_ui.listbox_init_event("list_friend","friend_change");
-
-
 
 var file1=s_sys.value_read("file1");
 if (file1=="") file1="E:\\sample1.txt";
@@ -496,15 +434,12 @@ s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
 
 
 s_ui.text_init("txt_user_name","000",10,450,100,30);
-s_ui.button_init("btn_connect","连服务器",120,450,90,30,"connect_click","");
 
 s_ui.textbox_init("txt_info","",10,250,200,80);
 
 
-s_ui.splitcontainer_add("split",0,"list_friend","fill");
-s_ui.splitcontainer_add("split",0,"txt_info","bottom");
+s_ui.splitcontainer_add("split",0,"txt_info","fill");
 s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
-s_ui.splitcontainer_add("split",0,"btn_connect","bottom");
 
 
 s_ui.Web_Init("web",250,60,450,250);
@@ -567,12 +502,16 @@ s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
 s_ui.Form_Title("v2 第3步 字段映射");
 
-read_ini("");
+s_sys.tcp_event();
+
+on_load("");
 
 data_init("");
 
-connect_click("");
+static_click("");
 
-check_connected("");
+//connect_click("");
+
+//check_connected("");
 
 

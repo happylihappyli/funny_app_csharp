@@ -181,7 +181,6 @@ namespace FunnyApp {
                 btn.HeaderText = btn_Text;
                 btn.FalseValue = "0";
                 btn.TrueValue = "1";
-                //btn.DefaultCellStyle.NullValue = btn_Text;
                 pControl.Columns.Add(btn);
             }
         }
@@ -227,7 +226,7 @@ namespace FunnyApp {
                 if (pControl.Rows[index].Cells[column_index].OwningColumn.GetType().Name
                     == "DataGridViewCheckBoxColumn") {
                     DataGridViewCheckBoxCell p = (DataGridViewCheckBoxCell)pControl.Rows[index].Cells[column_index];
-                    if (p.EditingCellFormattedValue.Equals(true)) {
+                    if (p.EditingCellFormattedValue.Equals(true)) { //p.Value == p.TrueValue){// 
                         return "1";
                     } else {
                         return "0";
@@ -243,10 +242,26 @@ namespace FunnyApp {
 
         public void datagrid_set(
             string control_name,
-            int index, int Col, string strText) {
+            int index, int col, string strText) {
             DataGridView pControl = (DataGridView)Ctrls[control_name];
             if (pControl != null) {
-                pControl.Rows[index].Cells[Col].Value = strText;
+                pControl.Rows[index].Cells[col].Value = strText;
+            }
+        }
+
+
+        public void datagrid_set_checkbox(
+            string control_name,
+            int index, int col, string value) {
+            DataGridView pControl = (DataGridView)Ctrls[control_name];
+            if (pControl != null) {
+                DataGridViewCheckBoxCell p = (DataGridViewCheckBoxCell)pControl.Rows[index].Cells[col];
+
+                if ("1".Equals(value)) {
+                    p.Value = p.TrueValue;
+                } else {
+                    p.Value = p.FalseValue;
+                }
             }
         }
 

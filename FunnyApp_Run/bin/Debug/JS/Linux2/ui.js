@@ -122,6 +122,6 @@ s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
 s_ui.Form_Title("Linux");
 
-
+on_load("");
 connect_click("");
 check_connected("");
