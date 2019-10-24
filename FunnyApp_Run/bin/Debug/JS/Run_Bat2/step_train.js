@@ -27,7 +27,7 @@ function event_msg(data){
         case "msg":
             log_msg=s_time.Time_Now()
                 +" <span style='color:blue;'>"+obj.from+"</span>"
-                +obj.return_cmd+"<br>"+"<pre>"+data+"</pre>"
+                +obj.return_cmd+"<br>"+"<pre>"+msg+"</pre>"
                 +"<br>"+log_msg;
             s_ui.Web_Content("web",css_head+log_msg);
             switch(obj.return_cmd){
