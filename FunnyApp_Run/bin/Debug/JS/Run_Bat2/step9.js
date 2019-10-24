@@ -233,7 +233,7 @@ function merge_click(data){
     msg_id+=1;
     var count=s_ui.text_read("txt_bad");
     var step="13";
-    var strMsg="cat /root/train_bad.txt /root/train_good.txt>/root/train.txt";
+    var strMsg="run_js2 /root/happyli/app/merge_good_bad.js 0 /root/train_good.txt /root/train_bad.txt /root/train.txt";
     var friend="robot1";
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
