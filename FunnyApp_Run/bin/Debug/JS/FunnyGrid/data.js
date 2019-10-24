@@ -13,7 +13,7 @@ function data_init1(data){
     s_ui.datagrid_add_line("grid1","6,5",",");
     s_ui.datagrid_add_line("grid1","7,6",",");
 
-    s_ui.datagrid_Add_Button("grid1","modify","修改","modify_click");
+    s_ui.datagrid_add_button("grid1","modify","修改","modify_click");
 }
 
 
@@ -29,7 +29,7 @@ function data_init2(data){
     s_ui.datagrid_add_line("grid1","6,5",",");
     s_ui.datagrid_add_line("grid1","7,6",",");
 
-    s_ui.datagrid_Add_Button("grid1","modify","修改","modify_click");
+    s_ui.datagrid_add_button("grid1","modify","修改","modify_click");
 }
 
 
@@ -42,7 +42,7 @@ function data_init3(data){
     s_ui.datagrid_add_line("grid1","100,80",",");
     s_ui.datagrid_add_line("grid1","80,40",",");
 
-    s_ui.datagrid_Add_Button("grid1","modify","修改","modify_click");
+    s_ui.datagrid_add_button("grid1","modify","修改","modify_click");
 }
 
 

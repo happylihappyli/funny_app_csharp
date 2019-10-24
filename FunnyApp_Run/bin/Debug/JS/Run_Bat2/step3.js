@@ -262,7 +262,7 @@ function next_click(data){
 
 
 function on_load(){
-    userName=read_ini()+"/linux_bat2";
+    userName=sys_read_ini()+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
 
@@ -277,7 +277,7 @@ function friend_list(data){
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
-    var token=get_token();
+    var token=sys_get_token();
     var strLine="";
     
     var strMsg2=msg.replaceAll("\"","\\\"");
@@ -509,9 +509,5 @@ on_load("");
 data_init("");
 
 static_click("");
-
-//connect_click("");
-
-//check_connected("");
 
 

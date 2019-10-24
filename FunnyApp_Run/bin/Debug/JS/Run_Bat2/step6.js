@@ -1,16 +1,11 @@
 var friend_return=0;
 var session_send=0;
-var msg_id=0;
 var sep=1;
 var step=0;//处理步骤
 var row_index=0;//第几个字段被点击
 var fields_count=0;
 
-var userName="none";
-var md5="";
-var log_msg="";
 var keep_count=1;
-
 
 var myMap=[];
 var head="";
@@ -37,28 +32,23 @@ function data_init(data){
 
 function check_click(data){
     var index=parseInt(data);
+    var k=index+1;
     var a=s_ui.datagrid_read("grid1",index,8);
     
     var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    s_file.Ini_Save(file,"main","check"+index,a);
-    
-    
-    s_ui.msg(a);
+    s_file.Ini_Save(file,"selected","check"+k,a);
 }
 
 function save_click(data){
     
-    var index=parseInt(data);
+    var index=parseInt(data)+1;
     var memo=s_ui.datagrid_read("grid1",index,1);
     memo=memo.replaceAll(",","");
     var file=disk+"\\Net\\Web\\Data\\memo.ini";
     s_file.Ini_Save(file,"main","memo"+index,memo);
-    
-    //s_ui.msg(memo);
 }
 
 function event_msg(data){
-    //s_ui.msg(data);
     
     log_msg="<b>data:"+data+"</b><br>"+log_msg;
     s_ui.Web_Content("web",css_head+log_msg);
@@ -72,9 +62,6 @@ function event_msg(data){
             s_ui.Web_Content("web",css_head+log_msg);
             s_ui.status_label_show("status_label2",msg);
             delete myMap["K"+obj.oid];
-            break;
-        case "login.ok":
-            friend_list("");
             break;
         case "msg":
             log_msg=s_time.Time_Now()
@@ -93,8 +80,8 @@ function event_msg(data){
             switch(obj.from){
                 case "progress1":
                     var strSplit=msg.split(":");
-                    s_ui.progress_show("progress1","100",strSplit[0]);
-                    s_ui.progress_show("progress2","100","100");
+                    //s_ui.progress_show("progress1","100",strSplit[0]);
+                    //s_ui.progress_show("progress2","100","100");
                     break;
                 case "progress2":
                     var strSplit=msg.split(":");
@@ -114,25 +101,20 @@ function event_msg(data){
 
 
 function process_step(obj){
-    //s_ui.msg("step1");
     var msg=obj.message;
     
-    //s_ui.msg("step2");
     var line2="";
 
-    //s_ui.msg("step3");
     var split_line=msg.split("\n");
     var file=disk+"\\Net\\Web\\Data\\memo.ini";
     var memo="";
     
-    //s_ui.msg("step4");
     for (var i=0;i<split_line.length;i++){
-        //s_ui.msg("step5");
-        memo=s_file.Ini_Read(file,"main","memo"+i);
-        //s_ui.msg("step6");
-        s_ui.datagrid_add_line("grid1",i+","+memo+","+split_line[i],",");
-        
+        var k=i+1;
+        memo=s_file.Ini_Read(file,"main","memo"+k);
+        s_ui.datagrid_add_line("grid1",k+","+memo+","+split_line[i],",");
     }
+    s_file.Ini_Save(file,"main","count",split_line.length);
     
     s_ui.status_label_show("status_label","process_step:"+step);
     
@@ -140,8 +122,8 @@ function process_step(obj){
     s_ui.datagrid_add_button("grid1","save","保存备注","save_click");
     
     for (var i=0;i<split_line.length;i++){
-        var value=s_file.Ini_Read(file,"main","check"+i);
-        //s_ui.msg(value);
+        var k=i+1;
+        var value=s_file.Ini_Read(file,"selected","check"+k);
         s_ui.datagrid_set_checkbox("grid1",i,8,value);
     }
     
@@ -166,7 +148,7 @@ function friend_change(data){
 
 
 function sql(file1,sql,sep,output){
-    var cmd="file_sql "+userName+" "+file1
+    var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" "+file1
         +" 250000 \""+sql+"\" "+sep+" "+output;
     return cmd;
 }
@@ -184,18 +166,15 @@ function map_click(data){
 
 
 function static_click(data){
-    //s_ui.msg("step1");
     s_ui.datagrid_clear("grid1");
     s_ui.datagrid_init_column("grid1",8,"字段,备注,avg,方差,0%,25%,50%,75%,100%");
     
-    //s_ui.msg("step2");
     var file1=s_sys.value_read("file1");
     if (file1=="") file1="E:\\sample1.txt";
     
     var line=s_file.read(file1,1);
     var strSplit=line.split("|");
     fields_count=strSplit.length;
-    //s_ui.msg(fields_count);
     
     var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt "+fields_count+" \"0,0.25,0.5,0.75,1\"";
     
@@ -210,7 +189,7 @@ function next_click(data){
 }
 
 function on_load(){
-    var a=read_ini();
+    var a=sys_read_ini();
     userName=a+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
@@ -229,8 +208,7 @@ function resend_chat_msg(data) {
             s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
-            
-            //s_ui.Web_Content("web",css_head+log_msg);
+            s_ui.Web_Content("web",css_head+log_msg);
         }
     }
 }
@@ -239,7 +217,6 @@ function resend_chat_msg(data) {
 function send_msg_click(){
     msg_id+=1;
     
-    //s_ui.combox_text("combox_head")+" "+
     var strMsg=s_ui.text_read("txt_send");
     var friend="robot1";
     var strType="cmd";
@@ -266,13 +243,12 @@ function show_error(data){
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
-    var token=get_token();
+    var token=sys_get_token();
     var strLine="";
     
     var strMsg2=msg.replaceAll("\"","\\\"");
     strMsg2=strMsg2.replaceAll("\n","\\n");
     
-    //s_ui.msg(token);
     if (token!=""){
         strLine="{\"id\":\""+msg_id+"\","
             +"\"token\":\""+token+"\","
@@ -305,15 +281,15 @@ function send_msg(strType,friend,msg,return_cmd){
 }
 
 
-s_ui.splitcontainer_init("split",0,0,500,500,"v");
-s_ui.splitcontainer_distance("split",100);
+s_ui.splitcontainer_init("split",0,0,500,500,"h");
+s_ui.splitcontainer_distance("split",50);
 
 
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
 
 
 //界面
-s_ui.datagrid_init("grid1",10,60,650,320);
+s_ui.datagrid_init("grid1",10,60,650,200);
 
 s_ui.text_init("txt_send","ls",380,350,320,30);
 
@@ -322,15 +298,18 @@ s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
 
 
 
-s_ui.text_init("txt_user_name","000",10,450,100,30);
+s_ui.textbox_init("txt_user_name","000",10,450,200,30);
 
 
+s_ui.textbox_init("txt_info","",10,250,300,50);
 
-s_ui.textbox_init("txt_info","",10,250,200,80);
 
+s_ui.panel_init("panel_top1",0,0,500,25,"none");
 
-s_ui.splitcontainer_add("split",0,"txt_info","fill");
-s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
+s_ui.splitcontainer_add("split",0,"panel_top1","fill");
+
+s_ui.panel_add("panel_top1","txt_info","fill");
+s_ui.panel_add("panel_top1","txt_user_name","right");
 
 
 s_ui.Web_Init("web",250,60,450,250);
@@ -338,13 +317,11 @@ s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
 
-s_ui.progress_init("progress1",100,400,500,30);
 s_ui.progress_init("progress2",100,400,500,30);
 
 s_ui.splitcontainer_add("split",1,"web","fill");
 
 s_ui.splitcontainer_add("split",1,"progress2","top");
-s_ui.splitcontainer_add("split",1,"progress1","top");
 
 s_ui.splitcontainer_add("split",1,"grid1","top");
 s_ui.splitcontainer_add("split",1,"txt_file","top");
@@ -362,8 +339,8 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step4");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step6");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step5");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step7");
 
 
 s_ui.panel_add("panel2","b_next","left");
@@ -372,8 +349,6 @@ s_ui.panel_add("panel2","b_pre","left");
 
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","Menu_File","&File");
-s_ui.Menu_Item_Add("Menu1","Menu_File","Menu_Refresh","刷新好友列表(&R)","friend_list","");
 
 s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
@@ -399,6 +374,3 @@ on_load("");
 
 data_init("");
 static_click("");
-
-//connect_click("");
-//check_connected("");

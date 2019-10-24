@@ -14,7 +14,8 @@ namespace FunnyApp.Function.TCP {
 
         public void Raise_Event(string call_event, string strMsg) {
 
-            TCP_Msg_EventArgs pTCP_Msg_Args = new TCP_Msg_EventArgs(call_event,strMsg);
+            TCP_Msg_EventArgs pTCP_Msg_Args = 
+                new TCP_Msg_EventArgs(call_event,strMsg);
             // 触发事件
             TCP_Msg(this, pTCP_Msg_Args);
         }

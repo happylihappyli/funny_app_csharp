@@ -562,7 +562,7 @@ namespace FunnyApp {
 
         public void Tray_Show(string url) {
             if (url.StartsWith("@")) {
-                url = url.Replace("@", pFrmApp.sys.Path_App());
+                url = url.Replace("@", pFrmApp.pSYS.Path_App());
             }
             pFrmApp.Tray_Show(url);
         }
@@ -888,7 +888,7 @@ namespace FunnyApp {
         private void my_textBox_KeyDown(object sender, KeyEventArgs e) {
             TextBox textbox1 = (TextBox)sender;
             Function_Callback p = (Function_Callback)textbox1.Tag;
-            pFrmApp.pJS.jint.Invoke(p.Name, e.KeyCode);
+            pFrmApp.pJS.p_Engine.Invoke(p.Name, e.KeyCode);
             e.Handled = true;
             e.SuppressKeyPress = true;
         }
@@ -1129,7 +1129,7 @@ namespace FunnyApp {
 
         private void my_picturebox_mouse_up(object sender, MouseEventArgs e) {
             PictureBox pBox = (PictureBox)sender;
-            pFrmApp.pJS.jint.Invoke(pBox.Tag.ToString(), new[] { e.X,e.Y});
+            pFrmApp.pJS.p_Engine.Invoke(pBox.Tag.ToString(), new[] { e.X,e.Y});
         }
 
         
@@ -1672,7 +1672,7 @@ namespace FunnyApp {
         private void my_button_Click(object sender, EventArgs e) {
             Button button = (Button)sender;
             Function_Callback p = (Function_Callback)button.Tag;
-            pFrmApp.pJS.jint.Invoke(p.Name, p.Data);
+            pFrmApp.pJS.p_Engine.Invoke(p.Name, p.Data);
         }
 
         public void Show_Form(int width, int height) {

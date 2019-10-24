@@ -46,10 +46,6 @@ namespace FunnyApp {
         }
 
 
-        public void set_time_function(string strFunction) {
-            pFrmApp.time_function = strFunction;
-            pFrmApp.timer1.Enabled = true;
-        }
 
 
         public string power_shell(string cmds) {
@@ -202,7 +198,6 @@ namespace FunnyApp {
             Application.Exit();
         }
 
-
         public void value_save(string key,string value) {
 
             FrmApp.pMap.insert("value:" + key, value);
@@ -252,22 +247,6 @@ namespace FunnyApp {
 
 
         /// <summary>
-        /// AppPath() is Obsolete,Use App_Path()
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete("AppPath() is Obsolete,Use App_Path()")]
-        public string AppPath() {
-            return App_Path();
-        }
-
-
-        [Obsolete("App_Path 已经过时，请用  Path_App() ")]
-        public string App_Path() {
-            return Path_App();
-        }
-
-
-        /// <summary>
         /// 程序启动路径
         /// </summary>
         /// <returns></returns>
@@ -295,8 +274,7 @@ namespace FunnyApp {
             return filePath;
         }
 
-
-
+        
         public void sleep(int iSecond) {
             Thread.Sleep(1000 * iSecond);
         }

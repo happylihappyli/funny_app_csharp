@@ -13,9 +13,15 @@ namespace FunnyApp.Function {
         public static TCP_Msg_Sender tcp_sender = new TCP_Msg_Sender();
 
         Socket socket;
-        //FrmApp pFrmApp = null;
+        private string ip="";
+        private int port=0;
         public string user_name = "";
+        private string call_back_connect = "";
         public string call_back_msg = "";
+        private string call_back_error = "";
+        public int keep_count = 0;
+        public string data_remain = "";
+        public bool b_msg_receive_loop_error = false;
 
         public C_TCP(){
         }
@@ -26,13 +32,19 @@ namespace FunnyApp.Function {
         }
 
 
-        public void connect(string ip, int port,
+        public void connect(
+            string ip, int port,
             string user_name,
             string call_back_connect,
-            string call_back_msg) {
+            string call_back_msg,
+            string call_back_error) {
 
+            this.ip = ip;
+            this.port = port;
             this.user_name = user_name;
+            this.call_back_connect = call_back_connect;
             this.call_back_msg = call_back_msg;
+            this.call_back_error = call_back_error;
 
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -40,21 +52,18 @@ namespace FunnyApp.Function {
                 socket.Connect(ip, port);
 
             } catch (Exception ex) {
-                AddMessage(ex.ToString());
+                Process_Message(ex.ToString());
                 return;
             }
 
-            if (!socket.Connected) {
-            } else {
+            if (socket.Connected){
                 tcp_sender.Raise_Event(call_back_connect, "");
-                //pFrmApp.Call_Event(call_back_connect, "");
             }
 
 
-            bool bError = false;
-            // upload as javascript blob
+            b_msg_receive_loop_error = false;
             Task.Run(() => {
-                while (bError == false) {
+                while (b_msg_receive_loop_error == false) {
                     byte[] message = new byte[4096];
                     int bytes = 0;
                     do {
@@ -62,54 +71,57 @@ namespace FunnyApp.Function {
                             bytes = socket.Receive(message, message.Length, 0);
 
                         } catch (Exception ex) {
-                            bError = true;
-                            AddMessage(ex.ToString());
-                            return;
+                            b_msg_receive_loop_error = true;
+                            //Process_Message(ex.ToString());
+                            tcp_sender.Raise_Event(this.call_back_error, ex.ToString());
+                            return ;
                         }
                     }
                     while (bytes == 0);
 
-                    AddMessage(Encoding.UTF8.GetString(message, 0, bytes));
+                    Process_Message(Encoding.UTF8.GetString(message, 0, bytes));
                     Thread.Sleep(500);
                 }
             });
         }
 
-        public int keep_count = 0;
-        public string data_remain = "";
-        private void AddMessage(string data) {
+        public void check_connect() {
+            keep_count += 1;
+            if (keep_count > 3) {
+                if ("".Equals(this.ip) == false) {
+
+                    S_SYS.beep(1000, 400, 5);
+                    b_msg_receive_loop_error = true;
+                    keep_count = 0;
+                    this.connect(this.ip, this.port, this.user_name,
+                        this.call_back_connect,
+                        this.call_back_msg,
+                        this.call_back_error);
+                }
+            }
+        }
+
+        private void Process_Message(string data) {
             data = data_remain + data;
             data_remain = "";
 
             while (data != null && "".Equals(data) == false) {
-                if (data.StartsWith("m:<s>:")) {
-                    keep_count = 0;
-                    int index1 = data.IndexOf(":<s>:");
-                    int index2 = data.IndexOf(":</s>");
-                    if (index2 > index1 && index1 > 0) {
-                        string json = data.Substring(index1 + 5, index2-(index1 + 5));
-                        JObject jObject = JObject.Parse(json);
-                        if (jObject.ContainsKey("k")) {
-
-                        } else {
-                            tcp_sender.Raise_Event(this.call_back_msg, json);
-                        }
-
-                        data = data.Substring(index2 + 5);
-                        int index = data.IndexOf("\n");
-                        if (index >= 0) data = data.Substring(index + 1);
+                int index1 = data.IndexOf(":<s>:");
+                int index2 = data.IndexOf(":</s>");
+                if (index2 > index1 && index1 > -1) {
+                    string json = data.Substring(index1 + 5, index2-(index1 + 5));
+                    JObject jObject = JObject.Parse(json);
+                    if (jObject.ContainsKey("k")) {
+                        keep_count = 0;
                     } else {
-                        data_remain = data;
-                        break;
+                        tcp_sender.Raise_Event(this.call_back_msg, json);
                     }
+                    data = data.Substring(index2 + 5);
                 } else {
-                    Console.WriteLine("error=" + data);
                     data_remain = data;
                     break;
                 }
             }
-
-
         }
 
         public void send(string msg) {
@@ -162,17 +174,4 @@ namespace FunnyApp.Function {
         }
     }
 
-
-    
-    
-    //public class MainEntryPoint {
-    //    public static void Main(string[] args) {
-    //        // 实例化一个事件发送器
-    //        TCP_Msg_Sender tcp_sender = new TCP_Msg_Sender();
-    //        // 实例化一个事件接收器
-    //        TCP_Msg_Receiver eventReceiver = new TCP_Msg_Receiver(tcp_sender);
-    //        // 运行
-    //        tcp_sender.Run();
-    //    }
-    //}
 }

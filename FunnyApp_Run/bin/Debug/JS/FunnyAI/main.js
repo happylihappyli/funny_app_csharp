@@ -331,9 +331,14 @@ function on_load(){
     s_ui.text_set("txt_user_name",userName);
 }
 
+function event_tcp_error(data){
+    s_ui.msg(data);
+}
+
+
 function connect_click(data){
     s_tcp.connect("robot6.funnyai.com",6000,userName,
-    "event_connected","event_msg");
+    "event_connected","event_msg","event_tcp_error");
 }
 
 
@@ -359,13 +364,17 @@ function restart_ssh(data){
 
 function file_sql_input(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\file_sql_input.js","callback_cmd");
+    s_ui.Run_JS_Dialog("FunnyAI\\file_sql_input.js","callback_cmd");
 }
 
 
 function process_kill(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\process_kill.js","callback_cmd");
+    s_ui.Run_JS_Dialog("FunnyAI\\process_kill.js","callback_cmd");
+}
+
+function post_click(data){
+    s_ui.Run_JS("FunnyAI\\"+data);
 }
 
 s_sys.tcp_event();

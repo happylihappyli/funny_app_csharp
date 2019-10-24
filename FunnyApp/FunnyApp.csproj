@@ -208,10 +208,11 @@
     <Compile Include="Function\C_Time.cs" />
     <Compile Include="Function\C_XML.cs" />
     <Compile Include="Function\S_Math.cs" />
+    <Compile Include="Function\S_SYS.cs" />
     <Compile Include="Function\TCP\TCP_Msg_Receiver.cs" />
     <Compile Include="Function\TCP\TCP_Msg_Sender.cs" />
     <Compile Include="Function_Callback.cs" />
-    <Compile Include="JS.cs" />
+    <Compile Include="JS_Engine.cs" />
     <Compile Include="Class\Msg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,7 +222,6 @@
     <Compile Include="Function\Audio\NAudioRecorder.cs" />
     <Compile Include="Function\C_SYS.cs" />
     <Compile Include="Function\Tools_AI.cs" />
-    <Compile Include="Function\Tools_Alarm.cs" />
     <Compile Include="Function\Tools_Au3.cs" />
     <Compile Include="Function\C_UI.cs" />
     <Compile Include="Function\C_File.cs" />

@@ -32,6 +32,7 @@ function event_msg(data){
             delete myMap["K"+obj.oid];
             break;
         case "login.ok":
+            s_ui.status_label_show("status_label2","login.ok");
             friend_list("");
             break;
         case "list.all":
@@ -127,7 +128,7 @@ function next_click(data){
 
 
 function on_load(){
-    userName=read_ini()+"/linux_bat2";
+    userName=sys_read_ini()+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
 
@@ -142,7 +143,7 @@ function friend_list(data){
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
-    var token=get_token();
+    var token=sys_get_token();
     var strLine="";
     
     var strMsg2=msg.replaceAll("\"","\\\"");
@@ -188,6 +189,7 @@ function event_connected(data){
     s_ui.text_set("txt_info","event_connected");
     s_ui.button_enable("btn_connect","0");
     
+    s_ui.status_label_show("status_label","login!");
     send_msg("login","","","login");
 }
 
@@ -197,13 +199,15 @@ function event_disconnected(data){
     s_net.Socket_Connect();
 }
 
+function event_tcp_error(data){
+    s_ui.msg(data);
+}
 
 function connect_click(data){
     
     s_tcp.connect("robot6.funnyai.com",6000,
-        userName,"event_connected","event_msg");
+        userName,"event_connected","event_msg","event_tcp_error");
     
-    read_ini();
 }
 
 
@@ -368,12 +372,14 @@ s_ui.Web_New_Event("web","New_URL");
 
 s_ui.panel_init("panel_main",0,0,500,100,"none");
 s_ui.panel_init("panel_main2",0,0,500,100,"none");
+s_ui.panel_init("panel_main3",0,0,500,100,"none");
 
 //s_ui.progress_init("progress2",100,400,500,30);
 
 s_ui.splitcontainer_add("split",1,"web","fill");
 
 
+s_ui.splitcontainer_add("split",1,"panel_main3","top");
 s_ui.splitcontainer_add("split",1,"panel_main2","top");
 s_ui.splitcontainer_add("split",1,"panel_main","top");
 //s_ui.splitcontainer_add("split",1,"progress2","top");
@@ -393,26 +399,36 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_bat","批量跑任务",50,50,100,30,"show_tools","Run_Bat2\\bat");
+//s_ui.button_init("b_bat","批量跑任务",50,50,100,30,"show_tools","Run_Bat2\\bat");
 
-s_ui.button_init("b_model_step1","step1",50,100,100,30,"show_tools","Run_Bat2\\step1");
+s_ui.button_init("b_model_step1","1-文件上传",10,100,100,30,"show_tools","Run_Bat2\\step1");
 
-s_ui.button_init("b_model_step2","step2",150,100,100,30,"show_tools","Run_Bat2\\step2");
-s_ui.button_init("b_model_step3","step3",250,100,100,30,"show_tools","Run_Bat2\\step3");
-s_ui.button_init("b_model_step4","step4",350,100,100,30,"show_tools","Run_Bat2\\step4");
-s_ui.button_init("b_model_step5","step5",450,100,100,30,"show_tools","Run_Bat2\\step5");
-s_ui.button_init("b_model_step6","step6",50,150,100,30,"show_tools","Run_Bat2\\step6");
-s_ui.button_init("b_model_step7","step7",150,150,100,30,"show_tools","Run_Bat2\\step7");
+s_ui.button_init("b_model_step2","2-选择文件",10,100,100,30,"show_tools","Run_Bat2\\step2");
+s_ui.button_init("b_model_step3","3-字段映射",10,100,100,30,"show_tools","Run_Bat2\\step3");
+s_ui.button_init("b_model_step4","4-上传映射",10,100,100,30,"show_tools","Run_Bat2\\step4");
+s_ui.button_init("b_model_step5","5-处理文件",10,100,100,30,"show_tools","Run_Bat2\\step5");
 
-s_ui.panel_add("panel_main","b_bat","right");
+s_ui.button_init("b_model_step6","6-选择字段",10,150,100,30,"show_tools","Run_Bat2\\step6");
+s_ui.button_init("b_model_step7","7-好坏样本",10,150,100,30,"show_tools","Run_Bat2\\step7");
+s_ui.button_init("b_model_step8","8-数据分离",10,150,100,30,"show_tools","Run_Bat2\\step8");
+s_ui.button_init("b_model_step9","9-数据抽样",10,150,100,30,"show_tools","Run_Bat2\\step9");
+
+s_ui.button_init("b_model_step11","11-模型训练",10,150,100,30,"show_tools","Run_Bat2\\step_train");
+
+
 s_ui.panel_add("panel_main","b_model_step1","right");
 s_ui.panel_add("panel_main","b_model_step2","right");
 s_ui.panel_add("panel_main","b_model_step3","right");
 s_ui.panel_add("panel_main","b_model_step4","right");
 s_ui.panel_add("panel_main","b_model_step5","right");
+
 s_ui.panel_add("panel_main2","b_model_step6","right");
 s_ui.panel_add("panel_main2","b_model_step7","right");
+s_ui.panel_add("panel_main2","b_model_step8","right");
+s_ui.panel_add("panel_main2","b_model_step9","right");
+s_ui.panel_add("panel_main2","b_model_step10","right");
 
+s_ui.panel_add("panel_main3","b_model_step11","right");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","Menu_File","&File");

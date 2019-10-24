@@ -18,9 +18,17 @@ namespace FunnyApp {
 
             pFrmApp = FrmApp.pTreapFrmApp.find(file);
             if (pFrmApp != null) {
-                pFrmApp.JS_Function("sys_event_alarm", context.JobDetail.Key.Name);
+                string function=pFrmApp.pSYS.value_read("event:time_event");
+
+                if ("sys:check_connect".Equals(context.JobDetail.Key.Name)){
+                    FrmApp.pTCP.check_connect();
+                } else {
+                    //"sys_event_alarm"
+                    pFrmApp.JS_Function(function, context.JobDetail.Key.Name);
+                }
+
             }
-            await Console.Out.WriteLineAsync("HelloJob is executing.");
+            await Console.Out.WriteLineAsync("Alarm_Job is executing.");
         }
 
     }

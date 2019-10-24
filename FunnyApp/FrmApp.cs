@@ -16,22 +16,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
-//using Chromely.Core;
-//using Chromely.Core.Host;
-//using Chromely.Core.Infrastructure;
 
 namespace FunnyApp
 {
     public partial class FrmApp : Form
     {
-        public C_UI pUI;
         public static Treap<Object> pMap = new Treap<Object>();
         public static Treap<FrmApp> pTreapFrmApp = new Treap<FrmApp>();
         public static C_Index pIndex;
@@ -39,15 +32,27 @@ namespace FunnyApp
 
         public FrmApp pParent = null;
         public string strFile = "";
-        public JS pJS = new JS();
-        public C_SYS sys = null;
+
+
+        public JS_Engine pJS;
+
+        public C_UI pUI;
+        public C_SYS pSYS;
+        public C_Time pTime;
 
         public FrmApp()
         {
             InitializeComponent();
 
-            sys = new C_SYS(this);
+
+            pJS = new JS_Engine();
+
+
+            pSYS = new C_SYS(this);
             pUI = new C_UI(this);
+            pTime = new C_Time(this);
+
+
 
             if (FrmApp.pIndex == null) {
                 FrmApp.pIndex = new C_Index(this);
@@ -78,12 +83,16 @@ namespace FunnyApp
                     string strMatch = match.Groups[0].Value;
                     string strFile2=match.Groups[1].Value ;
 
-                    string strPath=this.sys.Path_JS();
+                    string strPath=this.pSYS.Path_JS();
                     string strCode2 = S_File_Text.Read(strPath+"\\"+strFile2);
                     strCode = strCode.Replace(strMatch, strCode2);
 
                 }
                 pJS.Run_Code(this, strCode);
+
+                pTime.init_alaram();
+                //s_time.set_time_function("tickle");
+                pTime.create_alarm_cron("sys:check_connect", "sys:check_connect", "0 */1 * ? * *");
             }
         }
 
@@ -109,7 +118,7 @@ namespace FunnyApp
 
             if (!this.InvokeRequired){
                 try { 
-                    pJS.jint.Invoke(str1, str2);
+                    pJS.p_Engine.Invoke(str1, str2);
                 }
                 catch(Exception ex) {
                     string strHTML=str1+"|" + str2 + "\n" + ex.ToString();
@@ -150,7 +159,7 @@ namespace FunnyApp
         delegate void d_Call_JS_Function(string function, string data);//创建一个代理
         public void JS_Function(string function, string data) {
             if (!this.InvokeRequired) {
-                pJS.jint.Invoke(function, data);
+                pJS.p_Engine.Invoke(function, data);
             } else {
                 d_Call_JS_Function a1 = new d_Call_JS_Function(JS_Function);
                 Invoke(a1, new object[] { function, data });

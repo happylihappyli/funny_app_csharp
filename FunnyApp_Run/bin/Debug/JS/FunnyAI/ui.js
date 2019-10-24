@@ -32,6 +32,11 @@ s_ui.status_add("status","status_label2","left");
 
 s_ui.text_init("txt_user_name","000",10,450,100,30);
 s_ui.button_init("btn_connect","连服务器",120,450,90,30,"connect_click","");
+
+
+s_ui.button_init("btn_post_test","POST",120,450,90,30,"post_click","post_test.js");
+
+
 s_ui.text_init("txt_session","000",10,500,200,30);
 
 
@@ -44,6 +49,7 @@ s_ui.splitcontainer_add("split",0,"btn_friend","top");
 s_ui.splitcontainer_add("split",0,"txt_info","bottom");
 s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
 s_ui.splitcontainer_add("split",0,"btn_connect","bottom");
+s_ui.splitcontainer_add("split",0,"btn_post_test","bottom");
 
 
 s_ui.splitcontainer_add("split",1,"web","fill");
@@ -75,9 +81,9 @@ s_ui.button_init("btn_shanghai_qh","上海的区号",10,30,100,30,"cmd_sub","上
 s_ui.panel_add("panel2","btn_shanghai_qh","left");
 
 
-s_ui.button_init("btn_shimian","什么可以治疗失眠",10,30,150,30,"cmd_sub","什么可以治疗失眠");
+s_ui.button_init("btn_shimian","治疗失眠多梦",10,30,200,30,"cmd_sub","什么可以治疗失眠多梦");
 s_ui.panel_add("panel3","btn_shimian","left");
-s_ui.button_init("btn_quhao_010","什么城市的区号是010",10,30,150,30,"cmd_sub","什么城市的区号是010");
+s_ui.button_init("btn_quhao_010","什么城市的区号是010",10,30,200,30,"cmd_sub","什么城市的区号是010");
 s_ui.panel_add("panel3","btn_quhao_010","left");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);

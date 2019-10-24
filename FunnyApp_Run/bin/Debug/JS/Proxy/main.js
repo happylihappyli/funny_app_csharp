@@ -27,13 +27,13 @@ function set_click(data){
     "  ]\n"+
     "}";
 
-    var path=s_sys.AppPath();
+    var path=s_sys.Path_App();
     s_file.File_Save("D:\\Net\\Web\\set.json",content);
 }
 
 function run_click(data){
 
-    var path=s_sys.AppPath();
+    var path=s_sys.Path_App();
     s_ui.text_set("txt1","D:\\Net\\Web\\main.exe -config D:\\Net\\Web\\set.json");
     s_ui.Run_App("D:\\Net\\Web\\main.exe","-config D:\\Net\\Web\\set.json");
     //s_ui.text_set("txt1",a);

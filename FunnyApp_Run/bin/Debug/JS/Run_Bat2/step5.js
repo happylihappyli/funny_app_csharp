@@ -1,12 +1,9 @@
 var friend_return=0;
-var msg_id=0;
+
 var sep=1;
 var step=0;//处理步骤
 var row_index=0;//第几个字段被点击
 
-var userName="none";
-var md5="";
-var log_msg="";
 var keep_count=1;
 
 var myMap=[];
@@ -138,7 +135,7 @@ function next_click(data){
 
 
 function on_load(){
-    userName=read_ini()+"/linux_bat2";
+    userName=sys_read_ini()+"/linux_bat2";
     s_ui.text_set("txt_user_name",userName);
 }
 
@@ -153,7 +150,7 @@ function friend_list(data){
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
-    var token=get_token();
+    var token=sys_get_token();
     var strLine="";
     
     var strMsg2=msg.replaceAll("\"","\\\"");
@@ -378,8 +375,8 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step2");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step4");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step4");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step6");
 
 
 s_ui.panel_add("panel2","b_next","left");
@@ -410,8 +407,5 @@ s_sys.tcp_event();
 on_load("");
 
 static_click("");
-//connect_click("");
-
-//check_connected("");
 
 

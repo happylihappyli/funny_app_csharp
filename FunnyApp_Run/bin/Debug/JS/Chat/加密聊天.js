@@ -12,7 +12,7 @@ function send_msg_click(){
         return ;
     }
     
-    var path=s_sys.AppPath();
+    var path=s_sys.Path_App();
     var count=parseInt(s_file.Ini_Read(path+"\\config\\friend.ini","items","count"));
     var file="";
     var name="";
@@ -117,7 +117,7 @@ function event_system(data){
 }
 
 function read_ini(){
-    var path=s_sys.AppPath();
+    var path=s_sys.Path_App();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account");
     
