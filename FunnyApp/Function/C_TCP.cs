@@ -89,8 +89,7 @@ namespace FunnyApp.Function {
             keep_count += 1;
             if (keep_count > 3) {
                 if ("".Equals(this.ip) == false) {
-
-                    S_SYS.beep(1000, 400, 5);
+                    S_SYS.beep(1000, 400, 3);
                     b_msg_receive_loop_error = true;
                     keep_count = 0;
                     this.connect(this.ip, this.port, this.user_name,

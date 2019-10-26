@@ -141,7 +141,7 @@ function send_msg_click(){
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
-    var token=get_token();
+    var token=sys_get_token();
     var strLine="";
     var strSplit=msg.split(" ");
     var cmd=strSplit[0];
@@ -240,8 +240,8 @@ function friend_change(data){
     
     var friend=s_ui.listbox_text("list_friend");
     if (friend!=""){
-        //s_sys.value_save("friend_selected",friend);
-        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
+        var file_ini=disk+"\\Net\\Web\\main.ini";
+        s_file.Ini_Save(file_ini,"main","friend_selected",friend);
     }
 }
 
@@ -340,14 +340,14 @@ function add_user_2_group(data){
 }
 
 function on_load(){
-    var a=read_ini();
+    var a=sys_read_ini();
     userName=a+"/linux";
     s_ui.text_set("txt_user_name",userName);
 }
 
 function connect_click(data){
     s_tcp.connect("robot6.funnyai.com",6000,userName,
-    "event_connected","event_msg");
+    "event_connected","event_msg","");
 }
 
 

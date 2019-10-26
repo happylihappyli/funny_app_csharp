@@ -5,7 +5,7 @@ function upload_click(data){
     var file=s_ui.text_read("txt_upload");
     var path=s_ui.combox_text("txt_ftp_path")+"/"+s_file.File_Short_Name(file);
 
-    var hosts=s_ui.text_read("txt_host");
+    var hosts=s_ui.combox_text("cb_host");
     s_net.ftp_upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
 
@@ -33,6 +33,7 @@ function save_password(data){
 function read_password(data){
     var strLine=s_file.read("D:/Net/Web/password_upload_1.txt");
     var strPassword=s_string.decrypt_private_key("D:/Net/Web/id_rsa",strLine);
+    //s_ui.msg(strPassword);
     s_ui.text_set("txt1",strPassword);
 }
 
@@ -51,7 +52,9 @@ function read(strFile){
 
 
 s_ui.label_init("lb_ftp_host","上传路径：",10,200);
-s_ui.text_init("txt_host","robot6.funnyai.com",100,10,500,30);
+s_ui.combox_init("cb_host","robot6.funnyai.com",100,10,500,30);
+s_ui.combox_add("cb_host","robot6.funnyai.com");
+s_ui.combox_add("cb_host","robot5.funnyai.com");
 
 s_ui.label_init("lb_password","FTP密码：",10,70);
 

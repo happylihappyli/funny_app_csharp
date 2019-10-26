@@ -1,4 +1,4 @@
-var friend_return=0;
+
 var msg_id=0;
 var sep=1;
 var step=0;//处理步骤
@@ -57,9 +57,11 @@ function event_msg(data){
                 }
             }
             break;
+        case "status":
         case "msg":
             log_msg=s_time.Time_Now()
         +" <span style='color:blue;'>"+obj.from+"</span>"
+        +obj.type+":"
         +obj.return_cmd+"<br>"
         +"<pre>"+msg+"</pre>"
         +"<br>"+log_msg;
@@ -67,8 +69,6 @@ function event_msg(data){
                 s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
             
             s_ui.Web_Content("web",css_head+log_msg);
-            break;
-        case "status":
             break;
         default:
             log_msg=s_time.Time_Now()
@@ -329,7 +329,10 @@ function show_tools2(data){
     s_ui.Run_JS_Out(data+".js");
 }
 
-
+function clear_click(data){
+    log_msg="";
+    s_ui.Web_Content("web",css_head+log_msg);
+}
 
 s_ui.splitcontainer_init("split",0,0,500,500,"v");
 s_ui.splitcontainer_distance("split",130);
@@ -370,19 +373,19 @@ s_ui.Web_Init("web",250,60,450,150);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
-s_ui.panel_init("panel_main",0,0,500,100,"none");
-s_ui.panel_init("panel_main2",0,0,500,100,"none");
-s_ui.panel_init("panel_main3",0,0,500,100,"none");
+s_ui.panel_init("panel_main",0,0,500,50,"none");
+s_ui.panel_init("panel_main2",0,0,500,50,"none");
+s_ui.panel_init("panel_main3",0,0,500,50,"none");
+s_ui.panel_init("panel_main4",0,0,500,50,"none");
 
-//s_ui.progress_init("progress2",100,400,500,30);
 
 s_ui.splitcontainer_add("split",1,"web","fill");
 
 
+s_ui.splitcontainer_add("split",1,"panel_main4","top");
 s_ui.splitcontainer_add("split",1,"panel_main3","top");
 s_ui.splitcontainer_add("split",1,"panel_main2","top");
 s_ui.splitcontainer_add("split",1,"panel_main","top");
-//s_ui.splitcontainer_add("split",1,"progress2","top");
 
 s_ui.splitcontainer_add("split",1,"txt_file","top");
 
@@ -399,8 +402,6 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-//s_ui.button_init("b_bat","批量跑任务",50,50,100,30,"show_tools","Run_Bat2\\bat");
-
 s_ui.button_init("b_model_step1","1-文件上传",10,100,100,30,"show_tools","Run_Bat2\\step1");
 
 s_ui.button_init("b_model_step2","2-选择文件",10,100,100,30,"show_tools","Run_Bat2\\step2");
@@ -415,6 +416,7 @@ s_ui.button_init("b_model_step9","9-数据抽样",10,150,100,30,"show_tools","Ru
 
 s_ui.button_init("b_model_step11","11-模型训练",10,150,100,30,"show_tools","Run_Bat2\\step_train");
 
+s_ui.button_init("b_model_step21","21-ks计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
 
 s_ui.panel_add("panel_main","b_model_step1","right");
 s_ui.panel_add("panel_main","b_model_step2","right");
@@ -430,12 +432,15 @@ s_ui.panel_add("panel_main2","b_model_step10","right");
 
 s_ui.panel_add("panel_main3","b_model_step11","right");
 
+s_ui.panel_add("panel_main4","b_model_step21","right");
+
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","Menu_File","&File");
 s_ui.Menu_Item_Add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
 
 s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
+s_ui.Menu_Item_Add("Menu1","Tools","Menu_Clear","清空记录","clear_click","");
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");

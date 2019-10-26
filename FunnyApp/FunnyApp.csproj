@@ -209,7 +209,6 @@
     <Compile Include="Function\C_XML.cs" />
     <Compile Include="Function\S_Math.cs" />
     <Compile Include="Function\S_SYS.cs" />
-    <Compile Include="Function\TCP\TCP_Msg_Receiver.cs" />
     <Compile Include="Function\TCP\TCP_Msg_Sender.cs" />
     <Compile Include="Function_Callback.cs" />
     <Compile Include="JS_Engine.cs" />

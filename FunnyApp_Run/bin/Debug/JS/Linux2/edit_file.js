@@ -37,9 +37,13 @@ function event_msg(data){
 
 function save_click(data){
 
-    var token=get_token();
+    var token=sys_get_token();
     var strType="save";
-    var friend="robot1";
+    
+    
+    var file_ini=disk+"\\Net\\Web\\main.ini";
+    var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+    
     var strContent=s_ui.text_read("txt_content");
     strContent=strContent.replaceAll("\"","\\\"");
     strContent=strContent.replaceAll("\\r","\\r");
@@ -57,9 +61,14 @@ function save_click(data){
 }
 
 function read_file(data){
-    var token=get_token();
+    var token=sys_get_token();
     var strType="read";
-    var friend="robot1";
+    
+    
+    var file_ini=disk+"\\Net\\Web\\main.ini";
+    var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+    
+    
     msg_id=10000;
     var strLine="{\"id\":\""+msg_id+"\","
             +"\"token\":\""+token+"\","
@@ -75,6 +84,12 @@ function read_click(data){
     
     var file=s_sys.value_read("file");
     read_file(file);
+}
+
+function on_load(){
+    var a=sys_read_ini();
+    userName=a+"/linux";
+    s_ui.text_set("txt_user_name",userName);
 }
 
 var file=s_sys.value_read("file");
@@ -100,6 +115,6 @@ s_tcp.hook_event("event_msg");
 
 s_sys.tcp_event();
 
-read_ini();
+on_load();
 
 read_file(file);

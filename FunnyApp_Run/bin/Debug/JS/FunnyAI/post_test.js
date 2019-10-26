@@ -158,7 +158,7 @@ function send_msg_click2(){
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
-    var token=get_token();
+    var token=sys_get_token();
     var strLine="";
     var strSplit=msg.split(" ");
     var cmd=strSplit[0];
@@ -292,7 +292,7 @@ function set_click(data){
 
 function cmd_sub(data){
     s_ui.text_set("txt_send",data);
-    send_msg_click();
+    //send_msg_click();
 }
 
 function show_user(data){
@@ -357,7 +357,7 @@ function add_user_2_group(data){
 }
 
 function on_load(){
-    var a=read_ini();
+    var a=sys_read_ini();
     userName=a+"/ai";
     s_ui.text_set("txt_user_name",userName);
 }
