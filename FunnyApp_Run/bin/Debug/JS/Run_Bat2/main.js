@@ -414,9 +414,14 @@ s_ui.button_init("b_model_step7","7-好坏样本",10,150,100,30,"show_tools","Ru
 s_ui.button_init("b_model_step8","8-数据分离",10,150,100,30,"show_tools","Run_Bat2\\step8");
 s_ui.button_init("b_model_step9","9-数据抽样",10,150,100,30,"show_tools","Run_Bat2\\step9");
 
-s_ui.button_init("b_model_step11","11-模型训练",10,150,100,30,"show_tools","Run_Bat2\\step_train");
+s_ui.button_init("b_model_step11","模型训练",10,150,100,30,"show_tools","Run_Bat2\\step_train");
 
-s_ui.button_init("b_model_step21","21-ks计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
+
+s_ui.button_init("b_model_step21","测试样本",10,150,100,30,"show_tools","Run_Bat2\\step_test");
+s_ui.button_init("b_model_step22","lr_test",10,150,100,30,"show_tools","Run_Bat2\\step_lr_test");
+s_ui.button_init("b_model_step23","统计准备",10,150,100,30,"show_tools","Run_Bat2\\step_static_pre");
+s_ui.button_init("b_model_step24","ks计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
+
 
 s_ui.panel_add("panel_main","b_model_step1","right");
 s_ui.panel_add("panel_main","b_model_step2","right");
@@ -433,6 +438,9 @@ s_ui.panel_add("panel_main2","b_model_step10","right");
 s_ui.panel_add("panel_main3","b_model_step11","right");
 
 s_ui.panel_add("panel_main4","b_model_step21","right");
+s_ui.panel_add("panel_main4","b_model_step22","right");
+s_ui.panel_add("panel_main4","b_model_step23","right");
+s_ui.panel_add("panel_main4","b_model_step24","right");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","Menu_File","&File");

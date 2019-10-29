@@ -14,6 +14,7 @@ var head="";
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
@@ -38,8 +39,7 @@ function check_click(data){
     var k=index+1;
     var a=s_ui.datagrid_read("grid1",index,8);
     
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    s_file.Ini_Save(file,"selected","check"+k,a);
+    s_file.Ini_Save(file_memo,"selected","check"+k,a);
 }
 
 function save_click(data){
@@ -47,8 +47,8 @@ function save_click(data){
     var index=parseInt(data)+1;
     var memo=s_ui.datagrid_read("grid1",index,1);
     memo=memo.replaceAll(",","");
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    s_file.Ini_Save(file,"main","memo"+index,memo);
+    
+    s_file.Ini_Save(file_memo,"main","memo"+index,memo);
     
     //s_ui.msg(memo);
 }
@@ -72,7 +72,7 @@ function event_msg(data){
                 +"<br>"+log_msg;
             s_ui.Web_Content("web",css_head+log_msg);
             if (obj.return_cmd=="step:1"){
-                static_bad_click();
+                //static_bad_click();
             }else if (obj.return_cmd=="step:2"){
                 log_msg=s_time.Time_Now()
                     +" <span style='color:blue;'>"+obj.from+"</span>"
@@ -170,25 +170,6 @@ function static_click(data){
     var file2=s_sys.value_read("file2");
     if (file2=="") file2="/upload/sample1.txt";
     
-    var line="";
-    
-    var file_ini=disk+"\\Net\\Web\\Data\\memo.ini";
-
-    for (var i=1;i<=fields_count;i++){
-        
-        var value=s_file.Ini_Read(file_ini,"selected","check"+i);
-        if (value=="1"){
-            var file_map=disk+"\\Net\\Web\\data\\map_c"+i+".txt";
-            if (s_file.exists(file_map)){
-                line+="map(c"+i+",'/home/ftp_home/upload/map/map_c"+i+".txt'),";
-            }else{
-                line+="c"+i+",";
-            }
-        }
-    }
-    if (line.endsWith(",")){
-        line=line.substr(0,line.length-1);
-    }
     
     var strWhere="";
     var y_index=parseInt(s_file.Ini_Read(file_ini,"y","index"));
@@ -199,64 +180,30 @@ function static_click(data){
     strWhere="c"+y_index+compare+good;
     
     
-    var cmd=sql("/home/ftp_home"+file2,
-        "select "+line+" from t where "+strWhere+";",
-        "v","/root/step8_good.txt");
+    var id=s_file.Ini_Read(file_memo,"model","id");
+    
+    
+    var line=s_file.read(file1,1);
+    var strSplit=line.split("|");
+    var fields_count=strSplit.length;
+    var count_field=0;
+    
+    for (var i=1;i<=fields_count;i++){
+        var value=s_file.Ini_Read(file_memo,"selected","check"+i);
+        if (value=="1"){
+            count_field+=1;
+        }
+    }
+            
+            
+    var cmd="/usr/local/bin/python3.7 /root/test_lr.py /root/test.txt "
+            +id+" "+count_field+" /root/test_output.txt";
     
     s_ui.text_set("txt_send",cmd);
     step=1;
     send_msg_click();
 }
 
-function static_bad_click(){
-    var file1=s_sys.value_read("file1");
-    if (file1=="") file1="E:\\sample1.txt";
-    
-    var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
-    fields_count=strSplit.length;
-    
-    
-    var file2=s_sys.value_read("file2");
-    if (file2=="") file2="/upload/sample1.txt";
-    
-    var line="";
-    
-    var file_ini=disk+"\\Net\\Web\\Data\\memo.ini";
-
-    for (var i=1;i<=fields_count;i++){
-        
-        var value=s_file.Ini_Read(file_ini,"selected","check"+i);
-        if (value=="1"){
-            var file_map=disk+"\\Net\\Web\\data\\map_c"+i+".txt";
-            if (s_file.exists(file_map)){
-                line+="map(c"+i+",'/home/ftp_home/upload/map/map_c"+i+".txt'),";
-            }else{
-                line+="c"+i+",";
-            }
-        }
-    }
-    if (line.endsWith(",")){
-        line=line.substr(0,line.length-1);
-    }
-    
-    var strWhere="";
-    var y_index=parseInt(s_file.Ini_Read(file_ini,"y","index"));
-    var c1=s_file.Ini_Read(file_ini,"bad","compare");
-    var bad=s_file.Ini_Read(file_ini,"bad","value");
-    var bad_map=s_file.Ini_Read(file_ini,"bad","map");
-    var compare=get_compare(c1);
-    strWhere="c"+y_index+compare+bad;
-    
-    
-    var cmd=sql("/home/ftp_home"+file2,
-        "select "+line+" from t where "+strWhere+";",
-        "v","/root/step8_bad.txt");
-    
-    s_ui.text_set("txt_send",cmd);
-    step=2;
-    send_msg_click();
-}
 
 function next_click(data){
     s_ui.Run_JS(data+".js");
@@ -440,7 +387,7 @@ s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
-s_ui.Form_Title("v2 第8步 好坏样本分离");
+s_ui.Form_Title("v2 lr_test ");
 
 
 s_sys.tcp_event();
@@ -448,4 +395,5 @@ s_sys.tcp_event();
 on_load("");
 
 data_init("");
+
 static_click("");

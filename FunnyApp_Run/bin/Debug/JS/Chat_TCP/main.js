@@ -49,7 +49,7 @@ function event_msg(data){
             break;
         case "msg":
         
-            send_msg(obj.id,"chat_return",obj.from,"","");
+            s_ui.Notification(obj.from,obj.message);
             event_chat(data);
             break;
         case "ai_return":
@@ -103,7 +103,7 @@ function friend_list(data){
     s_ui.listbox_clear("list_friend");
     s_ui.listbox_add("list_friend","*");
 
-    send_msg("","friend_list","","","friend_list");
+    send_msg("friend_list","","","friend_list");
 }
 
 //发送消息
@@ -119,28 +119,13 @@ function send_msg_click(){
     var strMsg=s_ui.text_read("txt_send");
     var friend=s_ui.listbox_text("list_friend");
 
-    var strSplit=strMsg.split(" ");
-    switch(strSplit[0]){
-        case "edit":
-            log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
-                    +strMsg+"<br><br>"+log_msg;
-            s_ui.Web_Content("web",css_head+log_msg);
-        
-            edit_file(strSplit[1]);
-            break;
-        case "ai":
-            send_msg("","ai",friend,strSplit[1],"");
-            break;
-        default:
-            send_msg("","cmd",friend,strMsg,"");
-            break;
-    }
+    send_msg("msg",friend,strMsg,"");
     
     s_ui.text_set("txt_send","");
 }
 
 
-function send_msg(oid,strType,friend,msg,return_cmd){
+function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
     var token=sys_get_token();
@@ -177,11 +162,12 @@ function send_msg(oid,strType,friend,msg,return_cmd){
                 break;
         }
         
+        if (msg!=""){
         log_msg=s_time.Time_Now()+" 我 &gt; <span style='color:gray;'>"+friend+"</span><br>"
                 +msg+"<br><br>"+log_msg;
         s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
             s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
-        
+        }
         s_ui.Web_Content("web",css_head+log_msg);
         
         s_tcp.send("m:<s>:"+strLine+":</s>");
@@ -229,7 +215,7 @@ function event_connected(data){
     s_ui.button_enable("btn_connect","0");
     
     
-    send_msg("","login","","","login");
+    send_msg("login","","","login");
 }
 
 
@@ -242,8 +228,8 @@ function friend_change(data){
     
     var friend=s_ui.listbox_text("list_friend");
     if (friend!=""){
-        var file_ini=disk+"\\Net\\Web\\main.ini";
-        s_file.Ini_Save(file_ini,"main","friend_selected",friend);
+        //s_sys.value_save("friend_selected",friend);
+        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
     }
 }
 
@@ -343,13 +329,18 @@ function add_user_2_group(data){
 
 function on_load(){
     var a=sys_read_ini();
-    userName=a+"/linux";
+    userName=a+"/chat";
     s_ui.text_set("txt_user_name",userName);
 }
 
+function event_tcp_error(data){
+    s_ui.msg(data);
+}
+
+
 function connect_click(data){
     s_tcp.connect("robot6.funnyai.com",6000,userName,
-    "event_connected","event_msg","");
+    "event_connected","event_msg","event_tcp_error");
 }
 
 
@@ -375,13 +366,17 @@ function restart_ssh(data){
 
 function file_sql_input(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\file_sql_input.js","callback_cmd");
+    s_ui.Run_JS_Dialog("FunnyAI\\file_sql_input.js","callback_cmd");
 }
 
 
 function process_kill(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\process_kill.js","callback_cmd");
+    s_ui.Run_JS_Dialog("FunnyAI\\process_kill.js","callback_cmd");
+}
+
+function post_click(data){
+    s_ui.Run_JS("FunnyAI\\"+data);
 }
 
 s_sys.tcp_event();

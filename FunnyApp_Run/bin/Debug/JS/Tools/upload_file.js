@@ -47,7 +47,7 @@ function file_open(){
 
 function read(strFile){
     s_ui.listbox_clear("txt_upload");
-    s_ui.listbox_from_file("txt_upload",s_sys.App_Path()+"\\config\\"+strFile);
+    s_ui.listbox_from_file("txt_upload",s_sys.Path_App()+"\\config\\"+strFile);
 }
 
 

@@ -15,7 +15,8 @@ var head="";
 [[[..\\data\\tcp.js]]]
 
 
-
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function event_msg(data){
     var obj=JSON.parse(data);
@@ -284,7 +285,6 @@ function send_msg_click(){
     msg_id+=1;
     
     var strMsg=s_ui.text_read("txt_send");
-    var friend="robot1";
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");

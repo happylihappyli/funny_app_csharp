@@ -14,6 +14,8 @@ var head="";
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function clear_data(data){
     s_ui.datagrid_clear("grid1");
@@ -137,14 +139,6 @@ function friend_list(data){
     
 }
 
-function friend_change(data){
-    
-    var friend=s_ui.listbox_text("list_friend");
-    if (friend!=""){
-        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
-    }
-}
-
 
 
 function sql(file1,sql,sep,output){
@@ -218,7 +212,6 @@ function send_msg_click(){
     msg_id+=1;
     
     var strMsg=s_ui.text_read("txt_send");
-    var friend="robot1";
     var strType="cmd";
     
     

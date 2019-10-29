@@ -11,13 +11,14 @@ var keep_count=1;
 
 var myMap=[];
 var head="";
-var friend="robot1";//s_ui.listbox_text("list_friend");
 
 
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function event_msg(data){
     var obj=JSON.parse(data);
@@ -227,12 +228,14 @@ function data_init(data){
 }
 
 function static_click(data){
+    //s_ui.msg("step1");
     var file1=s_sys.value_read("file1");
     if (file1=="") file1="E:\\sample1.txt";
     var line=s_file.read(file1,1);
     var strSplit=line.split("|");
     var count=strSplit.length;
     
+    //s_ui.msg("step2");
     var line="";
     for (var i=1;i<=count;i++){
         line+="isnumeric(c"+i+"),";
@@ -241,13 +244,13 @@ function static_click(data){
         line=line.substr(0,line.length-1);
     }
     
+    //s_ui.msg("step3");
     var file2=s_sys.value_read("file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     var cmd=sql("/home/ftp_home"+file2,
         "select "+line+" from t;","v","/root/step3.txt");
-    //"file_sql /root/happyli/set_hadoop.ini "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
-    //s_ui.msg("s1="+cmd);
+
     step=1;
     s_ui.text_set("txt_send",cmd);
     send_msg_click();

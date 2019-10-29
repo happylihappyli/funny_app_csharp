@@ -46,13 +46,13 @@ function file_open(){
 
 function read(strFile){
     s_ui.listbox_clear("list_upload");
-    s_ui.listbox_from_file("list_upload",s_sys.App_Path()+"\\config\\"+strFile);
+    s_ui.listbox_from_file("list_upload",s_sys.Path_App()+"\\config\\"+strFile);
 }
 
 
 function file_open_config(data){
 
-    s_ui.Run_Cmd("Notepad++.exe "+s_sys.App_Path()+"\\config\\"+data);
+    s_ui.Run_Cmd("Notepad++.exe "+s_sys.Path_App()+"\\config\\"+data);
 }
 
 function wall9(data){
@@ -77,7 +77,7 @@ s_ui.label_init("lb_upload","上传文件：",10,100);
 
 s_ui.listbox_init("list_upload",100,100,500,100);
 
-s_ui.listbox_from_file("list_upload",s_sys.App_Path()+"\\config\\upload.txt");
+s_ui.listbox_from_file("list_upload",s_sys.Path_App()+"\\config\\upload.txt");
 
 
 s_ui.button_init("b_read1","jar",610,100,100,30,"read","upload.txt");

@@ -4,6 +4,9 @@
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function on_load(){
     var a=sys_read_ini();
@@ -70,8 +73,7 @@ function check_click(data){
     var a=s_ui.datagrid_read("grid1",index,1);
     //s_ui.msg(a);
     if (a=="1"){
-        var file=disk+"\\Net\\Web\\Data\\memo.ini";
-        s_file.Ini_Save(file,"y","index",k);
+        s_file.Ini_Save(file_memo,"y","index",k);
     }
 }
 
@@ -86,24 +88,23 @@ function next_click(data){
 }
 
 function read_ini(data){
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
     
-    var c1=s_file.Ini_Read(file,"good","compare");
+    var c1=s_file.Ini_Read(file_memo,"good","compare");
     s_ui.combox_select("combox_good",c1);
     
-    var good=s_file.Ini_Read(file,"good","value");
+    var good=s_file.Ini_Read(file_memo,"good","value");
     s_ui.text_set("txt_good",good);
     
-    var good_map=s_file.Ini_Read(file,"good","map");
+    var good_map=s_file.Ini_Read(file_memo,"good","map");
     s_ui.combox_text_set("combox_good_map",good_map);
     
-    var c2=s_file.Ini_Read(file,"bad","compare");
+    var c2=s_file.Ini_Read(file_memo,"bad","compare");
     s_ui.combox_select("combox_bad",c2);
     
-    var bad=s_file.Ini_Read(file,"bad","value");
+    var bad=s_file.Ini_Read(file_memo,"bad","value");
     s_ui.text_set("txt_bad",bad);
     
-    var bad_map=s_file.Ini_Read(file,"bad","map");
+    var bad_map=s_file.Ini_Read(file_memo,"bad","map");
     s_ui.combox_text_set("combox_bad_map",bad_map);
     
 }
@@ -114,7 +115,6 @@ function static_good_click(data){
     
     var step="2";
     var strMsg="wc -l /root/step8_good.txt";
-    var friend="robot1";
     var strType="cmd";
     
     send_msg(strType,friend,strMsg,"step:"+step);
@@ -161,25 +161,23 @@ function send_msg(strType,friend,msg,return_cmd){
 
 function save_click(data){
     
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    
     var c1=s_ui.combox_index("combox_good");
-    s_file.Ini_Save(file,"good","compare",c1);
+    s_file.Ini_Save(file_memo,"good","compare",c1);
     
     var good=s_ui.text_read("txt_good");
-    s_file.Ini_Save(file,"good","value",good);
+    s_file.Ini_Save(file_memo,"good","value",good);
     
     var good_map=s_ui.combox_text("combox_good_map");
-    s_file.Ini_Save(file,"good","map",good_map);
+    s_file.Ini_Save(file_memo,"good","map",good_map);
     
     var c2=s_ui.combox_index("combox_bad");
-    s_file.Ini_Save(file,"bad","compare",c2);
+    s_file.Ini_Save(file_memo,"bad","compare",c2);
     
     var bad=s_ui.text_read("txt_bad");
-    s_file.Ini_Save(file,"bad","value",bad);
+    s_file.Ini_Save(file_memo,"bad","value",bad);
     
     var bad_map=s_ui.combox_text("combox_bad_map");
-    s_file.Ini_Save(file,"bad","map",bad_map);
+    s_file.Ini_Save(file_memo,"bad","map",bad_map);
     
 }
 
@@ -194,20 +192,18 @@ function train_click(data){
             var line=s_file.read(file1,1);
             var strSplit=line.split("|");
             var fields_count=strSplit.length;
-            //s_ui.msg(fields_count);
-            var count=0;
-            var file=disk+"\\Net\\Web\\Data\\memo.ini";
+            var count_field=0;
             for (var i=1;i<=fields_count;i++){
-                var value=s_file.Ini_Read(file,"selected","check"+i);
+                var value=s_file.Ini_Read(file_memo,"selected","check"+i);
                 if (value=="1"){
-                    count+=1;
+                    count_field+=1;
                 }
             }
-            //s_ui.msg(count);
             var id=s_ui.text_read("model_id");
+            s_file.Ini_Save(file_memo,"model","id",id);
+            
             var step="1";
-            var strMsg="/usr/local/bin/python3.7 /root/train_lr_new_tcp.py /root/train.txt "+id+" "+count;
-            var friend="robot1";
+            var strMsg="/usr/local/bin/python3.7 /root/train_lr_new_tcp.py /root/train.txt "+id+" "+count_field;
             var strType="cmd";
             send_msg(strType,friend,strMsg,"step:"+step);
             s_ui.text_set("txt_send","");
@@ -220,9 +216,9 @@ function train2_click(data){
 
     var fields_count=s_ui.text_read("tx_time");
     var id=s_ui.text_read("model_id");
+                
     var step="2";
     var strMsg="/usr/local/bin/python3.7 /root/train_lr_tcp.py /root/train.txt "+id+" "+fields_count;
-    var friend="robot1";
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");

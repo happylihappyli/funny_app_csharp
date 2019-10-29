@@ -3,9 +3,8 @@
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
-function Node_Click(data){
-    
-}
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function check_click(data){
     var index=parseInt(data);

@@ -50,12 +50,6 @@ function event_msg(data){
                     s_ui.Web_Content("web",css_head+log_msg);
                     break;
                 case "step:11":
-                    get_bad_click("");
-                    break;
-                case "step:12":
-                    merge_click("");
-                    break;
-                case "step:13":
                     log_msg=s_time.Time_Now()
                         +" <span style='color:blue;'>"+obj.from+"</span>"
                         +"<pre style='color:red;'>抽取完毕！</pre>"
@@ -203,31 +197,11 @@ function save_click(data){
     
 }
 
-function get_good_click(data){
-    msg_id+=1;
-    var count=s_ui.text_read("txt_good");
-    var step="11";
-    var strMsg="head -"+count+" /root/step8_good.txt>/root/train_good.txt";
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:"+step);
-    s_ui.text_set("txt_send","");
-}
-
-function get_bad_click(data){
-    msg_id+=1;
-    var count=s_ui.text_read("txt_bad");
-    var step="12";
-    var strMsg="head -"+count+" /root/step8_bad.txt>/root/train_bad.txt";
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:"+step);
-    s_ui.text_set("txt_send","");
-}
-
 function merge_click(data){
     msg_id+=1;
     var count=s_ui.text_read("txt_bad");
-    var step="13";
-    var strMsg="run_js2 /root/happyli/app/merge_good_bad.js 0 /root/train_good.txt /root/train_bad.txt /root/train.txt";
+    var step="11";
+    var strMsg="run_js2 /root/happyli/app/merge_good_bad.js 0 /root/step8_good.txt /root/step8_bad.txt /root/test.txt";
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");
@@ -253,7 +227,7 @@ s_ui.text_init("txt_bad_sum","",200,450,80,30);
 s_ui.label_init("lb_bad2","抽取个数:",300,450);
 s_ui.text_init("txt_bad","",400,450,100,30);
 
-s_ui.button_init("b_get","抽取",510,420,100,55,"get_good_click","");
+s_ui.button_init("b_get","抽取测试样本",510,420,100,55,"merge_click","");
 
 
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
@@ -268,4 +242,5 @@ s_sys.tcp_event();
 on_load();
 
 static_bad_click("");
+
 
