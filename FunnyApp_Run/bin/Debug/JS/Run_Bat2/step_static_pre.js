@@ -81,6 +81,30 @@ function event_msg(data){
                 s_ui.Web_Content("web",css_head+log_msg);
             }
             break;
+        
+        case "file_sql":
+            if (obj.message=="finished"){
+                
+                log_msg="<b>finished "+obj.from+";"+step+"</b><br>"+log_msg;
+                s_ui.Web_Content("web",css_head+log_msg);
+                switch (obj.from){
+                    case "/root/test_output2.txt":
+                        if (step==1){
+                            process_step(obj);
+                        }else{
+                            s_ui.Web_Content("web","多次接收："+step+"="+data);
+                        }
+                        break;
+                    case "/root/data_for_static.txt":
+                        if (step==2){
+                            s_ui.Web_Content("web","预处理完毕，点击下一步ks等统计");
+                        }else{
+                            s_ui.Web_Content("web","多次接收："+step+"="+data);
+                        }
+                        break;
+                }
+            }
+            break;
         case "status":
             switch(obj.from){
                 case "progress1":
@@ -123,7 +147,7 @@ function friend_change(data){
 
 
 
-function sql(file1,sql,sep,output){
+function file_sql(file1,sql,sep,output){
     var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" "+file1
         +" 250000 \""+sql+"\" "+sep+" "+output;
     return cmd;
@@ -195,15 +219,23 @@ function static_click(data){
         }
     }
             
-            
-    var cmd="/usr/local/bin/python3.7 /root/test_lr.py /root/test.txt "
-            +id+" "+count_field+" /root/test_output.txt";
+    var sql="select round(c"+(count_field+2)+"*100),c"+(count_field+1)+" from t;";
+
+    var cmd=file_sql("/root/test_output.txt",sql,",","/root/test_output2.txt");
     
     s_ui.text_set("txt_send",cmd);
     step=1;
     send_msg_click();
 }
 
+function process_step(data){
+    var sql="select c1,sum(c2),count(1)-sum(c2) From t Group by c1";
+    var cmd=file_sql("/root/test_output2.txt",sql,",","/root/data_for_static.txt");
+    
+    s_ui.text_set("txt_send",cmd);
+    step=2;
+    send_msg_click();
+}
 
 function next_click(data){
     s_ui.Run_JS(data+".js");
@@ -363,8 +395,8 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step7");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step9");
+s_ui.button_init("b_pre", "上一步",100,500,200,30,"next_click","Run_Bat2\\step_lr_test");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_ks");
 
 
 s_ui.panel_add("panel2","b_next","left");
