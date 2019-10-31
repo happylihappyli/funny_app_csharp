@@ -1153,6 +1153,21 @@ namespace FunnyApp {
         }
 
 
+
+        public void combox_from_file(string control_name, string file) {
+            ComboBox pControl = (ComboBox)Ctrls[control_name];
+            if (pControl != null) {
+                StreamReader pFile = S_File_Text.Read_Begin(file);
+                string strLine = S_File_Text.Read_Line(pFile);
+                while (strLine != null) {
+                    pControl.Items.Add(strLine);
+                    strLine = S_File_Text.Read_Line(pFile);
+                }
+                S_File_Text.Read_End(pFile);
+            }
+        }
+
+
         public void combox_add(string control_name, string text) {
             ComboBox pControl = (ComboBox)Ctrls[control_name];
             if (pControl != null) {
@@ -1418,7 +1433,7 @@ namespace FunnyApp {
 
 
 
-        public void Control_Dock(string name,
+        public void control_dock(string name,
             string fillType) {
 
             Control pControl = (Control)Ctrls[name];

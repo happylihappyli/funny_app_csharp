@@ -195,14 +195,6 @@ function static_click(data){
     if (file2=="") file2="/upload/sample1.txt";
     
     
-    var strWhere="";
-    var y_index=parseInt(s_file.Ini_Read(file_ini,"y","index"));
-    var c1=s_file.Ini_Read(file_ini,"good","compare");
-    var good=s_file.Ini_Read(file_ini,"good","value");
-    var good_map=s_file.Ini_Read(file_ini,"good","map");
-    var compare=get_compare(c1);
-    strWhere="c"+y_index+compare+good;
-    
     
     var id=s_file.Ini_Read(file_memo,"model","id");
     
@@ -269,19 +261,6 @@ function resend_chat_msg(data) {
     }
 }
 
-//发送消息 
-function send_msg_click(){
-    msg_id+=1;
-    
-    var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    
-    
-    send_msg(strType,friend,strMsg,"step:"+step);
-    
-    
-    s_ui.text_set("txt_send","");
-}
 
 function set_status(data){
     var strSplit=data.split(",");
@@ -295,6 +274,15 @@ function show_error(data){
 }
 
 
+//发送消息 
+function send_msg_click(){
+    var strMsg=s_ui.text_read("txt_send");
+    var strType="cmd";
+    send_msg(strType,friend,strMsg,"step:"+step);
+    s_ui.text_set("txt_send","");
+}
+
+
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
     
@@ -304,7 +292,6 @@ function send_msg(strType,friend,msg,return_cmd){
     var strMsg2=msg.replaceAll("\"","\\\"");
     strMsg2=strMsg2.replaceAll("\n","\\n");
     
-    //s_ui.msg(token);
     if (token!=""){
         strLine="{\"id\":\""+msg_id+"\","
             +"\"token\":\""+token+"\","
@@ -343,16 +330,9 @@ s_ui.splitcontainer_distance("split",50);
 
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
 
-
-//界面
-//s_ui.datagrid_init("grid1",10,60,650,200);
-
 s_ui.text_init("txt_send","ls",380,350,320,30);
 
-
 s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
-
 
 s_ui.textbox_init("txt_user_name","000",10,450,200,30);
 
@@ -379,7 +359,6 @@ s_ui.splitcontainer_add("split",1,"web","fill");
 
 s_ui.splitcontainer_add("split",1,"progress2","top");
 
-//s_ui.splitcontainer_add("split",1,"grid1","top");
 s_ui.splitcontainer_add("split",1,"txt_file","top");
 
 
@@ -419,7 +398,7 @@ s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
 s_ui.Show_Form(800,600);
-s_ui.Form_Title("v2 lr_test ");
+s_ui.Form_Title("v2 统计准备 ");
 
 
 s_sys.tcp_event();

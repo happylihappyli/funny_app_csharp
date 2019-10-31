@@ -6,6 +6,8 @@ function upload_click(data){
     var path=s_ui.combox_text("txt_ftp_path")+"/"+s_file.File_Short_Name(file);
 
     var hosts=s_ui.combox_text("cb_host");
+    hosts=hosts.split("|")[0];
+    s_ui.msg(hosts);
     s_net.ftp_upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
 
@@ -53,8 +55,8 @@ function read(strFile){
 
 s_ui.label_init("lb_ftp_host","上传路径：",10,200);
 s_ui.combox_init("cb_host","robot6.funnyai.com",100,10,500,30);
-s_ui.combox_add("cb_host","robot6.funnyai.com");
-s_ui.combox_add("cb_host","robot5.funnyai.com");
+
+s_ui.combox_from_file("cb_host","D:\\Net\\Web\\hosts.txt");
 
 s_ui.label_init("lb_password","FTP密码：",10,70);
 

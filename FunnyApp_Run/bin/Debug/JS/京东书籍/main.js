@@ -194,8 +194,8 @@ s_ui.Web_Init("web",10,130,700,500);
 s_ui.Web_New_Event("web","New_URL");
 
 
-s_ui.Control_Dock("web","fill");
-//s_ui.Control_Dock("panel_top","top");
+s_ui.control_dock("web","fill");
+//s_ui.control_dock("panel_top","top");
 
 s_ui.panel_init("panel_top",10,10,200,30,"top");
 

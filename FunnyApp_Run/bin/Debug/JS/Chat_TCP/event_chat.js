@@ -7,8 +7,9 @@ function event_chat(data){
     }else{
         var index=s_ui.listbox_select("list_friend",friend);
         if (index==-1){
-            s_ui.msg("no_friend:"+friend);
-            //friend_list("");
+            //s_ui.msg("no_friend:"+friend);
+            s_ui.Notification("no_friend:",friend);
+            friend_list("");
             //s_ui.listbox_select("list_friend",friend);
         }
         var strMsg=s_time.Time_Now()+"<br>"+obj.message;

@@ -364,6 +364,13 @@ function restart_ssh(data){
     cmd_sub(data);
 }
 
+
+function show_antlr(data){
+
+    data="java -jar antlr-4.7.2-complete.jar -Dlanguage=CSharp ECMAScript.g4";
+    cmd_sub(data);
+}
+
 function file_sql_input(data){
     s_sys.value_save("cmd","");
     s_ui.Run_JS_Dialog("FunnyAI\\file_sql_input.js","callback_cmd");

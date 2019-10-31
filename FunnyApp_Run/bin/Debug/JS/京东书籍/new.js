@@ -34,7 +34,7 @@ function save_click(data){
 
 s_ui.textbox_init("txt2","",10,100,600,300);
 s_ui.text_font_size("txt2",18);
-s_ui.Control_Dock("txt2","fill");
+s_ui.control_dock("txt2","fill");
 
 s_ui.panel_init("panel1",0,0,500,25,"top");
 

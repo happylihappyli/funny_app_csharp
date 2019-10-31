@@ -83,7 +83,7 @@ function crawl_click(data){
 
 s_ui.textbox_init("txt_content","",10,100,600,300);
 s_ui.text_font_size("txt_content",18);
-s_ui.Control_Dock("txt_content","fill");
+s_ui.control_dock("txt_content","fill");
 
 s_ui.panel_init("panel1",0,0,500,30,"top");
 s_ui.panel_init("panel2",0,0,500,30,"top");

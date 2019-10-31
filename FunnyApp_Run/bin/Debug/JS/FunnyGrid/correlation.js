@@ -2,14 +2,16 @@
 function Pearson_Correlation(data){
     var count=s_ui.datagrid_rows("grid1")-1;
     var data=new Array(count);
+    s_ui.msg("step1");
     for (var i=0;i<count;i++){
         data[i]= new Array(2);  
         data[i][0]=parseFloat(s_ui.datagrid_read("grid1",i,0));
         data[i][1]=parseFloat(s_ui.datagrid_read("grid1",i,1));
     }
+    s_ui.msg("step2");
     
     var r=Pearson_Correlation_Sub(data);
-
+    s_ui.msg(r);
     s_ui.Web_Content("web1","Pearson相关系数："+r);
 }
 
@@ -36,7 +38,7 @@ function Pearson_Correlation_Sub(data){
         yy_sum+= (data[i][1]-b_avg)*(data[i][1]-b_avg);
     }
     //s_ui.msg(xy_sum+","+xx_sum+","+yy_sum);
-    var r=xy_sum/(sys.Math_sqrt(xx_sum)*sys.Math_sqrt(yy_sum));
+    var r=xy_sum/(s_math.sqrt(xx_sum)*s_math.sqrt(yy_sum));
     return r;
 }
 

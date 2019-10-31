@@ -290,6 +290,12 @@ function send_msg_click(){
     s_ui.text_set("txt_send","");
 }
 
+
+function set_click(data){
+    s_ui.Run_JS("Run_Bat2\\setting.js");
+}
+
+
 function upload_click(data){
     
     var strLine=s_file.File_List_File(disk+"\\Net\\Web\\Data");
@@ -421,6 +427,7 @@ s_ui.button_init("b_model_step21","测试样本",10,150,100,30,"show_tools","Run
 s_ui.button_init("b_model_step22","lr_test",10,150,100,30,"show_tools","Run_Bat2\\step_lr_test");
 s_ui.button_init("b_model_step23","统计准备",10,150,100,30,"show_tools","Run_Bat2\\step_static_pre");
 s_ui.button_init("b_model_step24","ks计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
+s_ui.button_init("b_model_step25","roc",10,150,100,30,"show_tools","Run_Bat2\\step_roc");
 
 
 s_ui.panel_add("panel_main","b_model_step1","right");
@@ -441,6 +448,7 @@ s_ui.panel_add("panel_main4","b_model_step21","right");
 s_ui.panel_add("panel_main4","b_model_step22","right");
 s_ui.panel_add("panel_main4","b_model_step23","right");
 s_ui.panel_add("panel_main4","b_model_step24","right");
+s_ui.panel_add("panel_main4","b_model_step25","right");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","Menu_File","&File");
@@ -449,6 +457,9 @@ s_ui.Menu_Item_Add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list
 s_ui.Menu_Add("Menu1","Tools","&Tools");
 s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
 s_ui.Menu_Item_Add("Menu1","Tools","Menu_Clear","清空记录","clear_click","");
+s_ui.Menu_Item_Add("Menu1","Tools","Menu_Setting","设置","set_click","");
+
+
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");

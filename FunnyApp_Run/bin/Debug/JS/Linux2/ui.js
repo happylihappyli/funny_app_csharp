@@ -109,6 +109,14 @@ s_ui.button_init("btn_edit_start","编辑登录提示",10,30,100,30,"cmd_sub","e
 s_ui.panel_add("panel5","btn_edit_start","left");
 
 
+s_ui.button_init("btn_conda_create","conda create",10,30,100,30,"show_conda_create","");
+s_ui.panel_add("panel5","btn_conda_create","left");
+
+
+s_ui.button_init("btn_antlr","conda create",10,30,100,30,"show_antlr","");
+s_ui.panel_add("panel5","btn_antlr","left");
+
+
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","File","&File");
 s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");

@@ -202,10 +202,10 @@ function train_click(data){
             var id=s_ui.text_read("model_id");
             s_file.Ini_Save(file_memo,"model","id",id);
             
-            var step="1";
-            var strMsg="/usr/local/bin/python3.7 /root/train_lr_new_tcp.py /root/train.txt "+id+" "+count_field;
-            var strType="cmd";
-            send_msg(strType,friend,strMsg,"step:"+step);
+            ///usr/local/bin/python3.7
+            var strMsg="python3 /root/train_lr_new_tcp.py /root/train.txt "+id+" "+count_field;
+            
+            send_msg("cmd",friend,strMsg,"step:1");
             s_ui.text_set("txt_send","");
             break;
     }
@@ -217,10 +217,9 @@ function train2_click(data){
     var fields_count=s_ui.text_read("tx_time");
     var id=s_ui.text_read("model_id");
                 
-    var step="2";
-    var strMsg="/usr/local/bin/python3.7 /root/train_lr_tcp.py /root/train.txt "+id+" "+fields_count;
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:"+step);
+    ///usr/local/bin/python3.7
+    var strMsg="python3 /root/train_lr_tcp.py /root/train.txt "+id+" "+fields_count;
+    send_msg("cmd",friend,strMsg,"step:2");
     s_ui.text_set("txt_send","");
 }
 
@@ -228,6 +227,26 @@ function train2_click(data){
 s_ui.Web_Init("web",10,10,750,300);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
+
+
+s_ui.control_dock("progress2","bottom");
+
+s_ui.panel_init("panel_middle",0,0,300,160,"bottom");
+
+s_ui.panel_init("panel_bottom",0,0,300,100,"bottom");
+
+
+s_ui.button_init("b_pre", "上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
+
+
+s_ui.panel_init("panel_middle_left",0,0,200,100,"left");
+
+s_ui.panel_add("panel_middle","panel_middle_left","left");
+
+s_ui.button_init("b_get","训练",510,320,200,55,"train_click","");
+
+s_ui.panel_add("panel_middle","b_get","right");
 
 
 s_ui.label_init("lb_alg","算法选择:",100,320);
@@ -244,11 +263,33 @@ s_ui.text_init("tx_time","600",200,380,80,30);
 
 s_ui.progress_init("progress2",10,400,750,30);
 
-s_ui.button_init("b_get","训练",510,320,100,55,"train_click","");
+s_ui.panel_add("panel_middle","progress2","bottom");
+
+s_ui.control_dock("web","fill");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
+s_ui.panel_init("panel_middle_left_line1",0,0,200,30,"top");
+s_ui.panel_init("panel_middle_left_line2",0,0,200,30,"top");
+s_ui.panel_init("panel_middle_left_line3",0,0,200,30,"top");
+
+
+s_ui.panel_add("panel_middle_left","panel_middle_left_line1","bottom");
+s_ui.panel_add("panel_middle_left","panel_middle_left_line2","bottom");
+s_ui.panel_add("panel_middle_left","panel_middle_left_line3","bottom");
+
+
+s_ui.panel_add("panel_middle_left_line1","lb_alg","right");
+s_ui.panel_add("panel_middle_left_line1","cb_alg","right");
+
+s_ui.panel_add("panel_middle_left_line2","lb_model","right");
+s_ui.panel_add("panel_middle_left_line2","model_id","right");
+
+s_ui.panel_add("panel_middle_left_line3","lb_time","right");
+s_ui.panel_add("panel_middle_left_line3","tx_time","right");
+
+
+s_ui.panel_add("panel_bottom","b_pre","right");
+s_ui.panel_add("panel_bottom","b_next","right");
 
 
 s_ui.Show_Form(800,600);

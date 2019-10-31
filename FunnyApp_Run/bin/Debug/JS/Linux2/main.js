@@ -1,9 +1,5 @@
 var friend_return=0;
 //var keep_count=0;
-
-var userName="none";
-var md5="";
-var log_msg="";
 var session_send=0;
 var head="";
 var sep=1;
@@ -303,6 +299,10 @@ function show_file(data){
     s_ui.Run_JS_Dialog("Linux2\\ls.js","callback_cmd");
 }
 
+function show_conda_create(data){
+    s_sys.value_save("cmd","");
+    s_ui.Run_JS_Dialog("Linux2\\conda_create.js","callback_cmd");
+}
 
 function change_group(data){
     s_sys.value_save("file",data);
