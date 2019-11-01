@@ -383,11 +383,13 @@ s_ui.panel_init("panel_main",0,0,500,50,"none");
 s_ui.panel_init("panel_main2",0,0,500,50,"none");
 s_ui.panel_init("panel_main3",0,0,500,50,"none");
 s_ui.panel_init("panel_main4",0,0,500,50,"none");
+s_ui.panel_init("panel_main5",0,0,500,50,"none");
 
 
 s_ui.splitcontainer_add("split",1,"web","fill");
 
 
+s_ui.splitcontainer_add("split",1,"panel_main5","top");
 s_ui.splitcontainer_add("split",1,"panel_main4","top");
 s_ui.splitcontainer_add("split",1,"panel_main3","top");
 s_ui.splitcontainer_add("split",1,"panel_main2","top");
@@ -430,6 +432,9 @@ s_ui.button_init("b_model_step24","ks计算",10,150,100,30,"show_tools","Run_Bat
 s_ui.button_init("b_model_step25","roc",10,150,100,30,"show_tools","Run_Bat2\\step_roc");
 
 
+s_ui.button_init("b_model_step31","相关性",10,150,100,30,"show_tools","Run_Bat2\\step_correlation");
+
+
 s_ui.panel_add("panel_main","b_model_step1","right");
 s_ui.panel_add("panel_main","b_model_step2","right");
 s_ui.panel_add("panel_main","b_model_step3","right");
@@ -449,6 +454,9 @@ s_ui.panel_add("panel_main4","b_model_step22","right");
 s_ui.panel_add("panel_main4","b_model_step23","right");
 s_ui.panel_add("panel_main4","b_model_step24","right");
 s_ui.panel_add("panel_main4","b_model_step25","right");
+
+
+s_ui.panel_add("panel_main5","b_model_step31","right");
 
 s_ui.Menu_Init("Menu1",0,0,800,25);
 s_ui.Menu_Add("Menu1","Menu_File","&File");

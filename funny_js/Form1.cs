@@ -17,6 +17,10 @@ namespace funny_js {
 
         private void Form1_Load(object sender, EventArgs e) {
             
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
             string js_script = "var a=1+2*3;";
 
 
@@ -28,7 +32,8 @@ namespace funny_js {
             //}
 
             MyVisitor visitor = new MyVisitor();
-            visitor.Visit(ctx);
+            string result = (string)visitor.Visit(ctx);
+            MessageBox.Show(result);
         }
     }
 }

@@ -7,7 +7,7 @@ function upload_click(data){
 
     var hosts=s_ui.combox_text("cb_host");
     hosts=hosts.split("|")[0];
-    s_ui.msg(hosts);
+    //s_ui.msg(hosts);
     s_net.ftp_upload(hosts,"root",password,"22",file,path,"set_status","show_error");
 }
 

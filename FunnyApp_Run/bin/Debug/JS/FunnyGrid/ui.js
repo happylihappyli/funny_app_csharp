@@ -31,3 +31,4 @@ s_ui.Menu_Item2_Add("Menu1","Calcuate","Other","WOE_IV","WOE_IV","WOE_IV","");
 
 s_ui.Show_Form(800,800);
 s_ui.Form_Title("Funny_Grid");
+

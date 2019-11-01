@@ -254,9 +254,6 @@ function resend_chat_msg(data) {
                     +obj.message+"<br><br>"+log_msg;
             s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
-                
-            
-            //s_ui.Web_Content("web",css_head+log_msg);
         }
     }
 }
