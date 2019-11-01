@@ -5,6 +5,7 @@
 [[[..\\data\\tcp.js]]]
 
 
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
@@ -33,7 +34,7 @@ function event_msg(data){
                 case "step:1":
                     log_msg=s_time.Time_Now()
                         +" <span style='color:blue;'>"+obj.from+"</span>"
-                        +"<br>ks="+msg
+                        +"<br>相关系数="+msg
                         +"<br>"+log_msg;
                     s_ui.Web_Content("web",css_head+log_msg);
                     break;
@@ -123,29 +124,6 @@ function send_msg(strType,friend,msg,return_cmd){
     }
 }
 
-function save_click(data){
-    
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    
-    var c1=s_ui.combox_index("combox_good");
-    s_file.Ini_Save(file,"good","compare",c1);
-    
-    var good=s_ui.text_read("txt_good");
-    s_file.Ini_Save(file,"good","value",good);
-    
-    var good_map=s_ui.combox_text("combox_good_map");
-    s_file.Ini_Save(file,"good","map",good_map);
-    
-    var c2=s_ui.combox_index("combox_bad");
-    s_file.Ini_Save(file,"bad","compare",c2);
-    
-    var bad=s_ui.text_read("txt_bad");
-    s_file.Ini_Save(file,"bad","value",bad);
-    
-    var bad_map=s_ui.combox_text("combox_bad_map");
-    s_file.Ini_Save(file,"bad","map",bad_map);
-    
-}
 
 function static_click(data){
     msg_id+=1;
@@ -157,9 +135,8 @@ function static_click(data){
     var fields_count=strSplit.length;
     //s_ui.msg(fields_count);
     var count=0;
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
     for (var i=1;i<=fields_count;i++){
-        var value=s_file.Ini_Read(file,"selected","check"+i);
+        var value=s_file.Ini_Read(file_memo,"selected","check"+i);
         if (value=="1"){
             count+=1;
         }
@@ -187,7 +164,7 @@ s_ui.label_init("lb_alg","要处理的文件:",100,320);
 s_ui.text_init("txt_file","/root/test.txt",100,360,300,30);
 
 
-s_ui.button_init("b_ks","ks",510,320,100,60,"static_click","");
+s_ui.button_init("b_correlation","相关性",510,320,100,60,"static_click","");
 
 
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
