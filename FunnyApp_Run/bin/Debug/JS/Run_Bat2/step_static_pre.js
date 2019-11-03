@@ -13,6 +13,7 @@ var head="";
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
 
 var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
@@ -183,50 +184,27 @@ function get_compare(index){
 }
 
 function static_click(data){
-    var file1=s_sys.value_read("file1");
-    if (file1=="") file1="E:\\sample1.txt";
-    
-    var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
-    fields_count=strSplit.length;
-    
-    
-    var file2=s_sys.value_read("file2");
-    if (file2=="") file2="/upload/sample1.txt";
-    
-    
     
     var id=s_file.Ini_Read(file_memo,"model","id");
     
+    var count_field=sys_field_count();
     
-    var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
-    var fields_count=strSplit.length;
-    var count_field=0;
     
-    for (var i=1;i<=fields_count;i++){
-        var value=s_file.Ini_Read(file_memo,"selected","check"+i);
-        if (value=="1"){
-            count_field+=1;
-        }
-    }
             
     var sql="select round(c"+(count_field+2)+"*100),c"+(count_field+1)+" from t;";
 
     var cmd=file_sql("/root/test_output.txt",sql,",","/root/test_output2.txt");
     
-    s_ui.text_set("txt_send",cmd);
-    step=1;
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:1");
+    
 }
 
 function process_step(data){
     var sql="select c1,sum(c2),count(1)-sum(c2) From t Group by c1";
     var cmd=file_sql("/root/test_output2.txt",sql,",","/root/data_for_static.txt");
     
-    s_ui.text_set("txt_send",cmd);
-    step=2;
-    send_msg_click();
+    
+    send_msg("cmd",friend,cmd,"step:2");
 }
 
 function next_click(data){
@@ -274,8 +252,7 @@ function show_error(data){
 //发送消息 
 function send_msg_click(){
     var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:"+step);
+    send_msg("cmd",friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");
 }
 

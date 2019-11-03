@@ -422,7 +422,6 @@ s_ui.splitcontainer_distance("split",130);
 
 var file1=s_sys.value_read("file1");
 if (file1=="") file1="E:\\sample1.txt";
-//s_ui.msg(file1);
 s_ui.text_init("txt_file",file1,350,450,200,30);
 
 

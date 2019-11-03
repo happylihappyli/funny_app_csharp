@@ -3,6 +3,7 @@
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
 
 
 var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
@@ -30,6 +31,16 @@ function event_msg(data){
             delete myMap["K"+obj.oid];
             break;
         case "msg":
+
+            if (obj.return_cmd=="matrix"){
+                var strSplit=msg.split("=");
+                var i=parseInt(strSplit[0]);
+                var j=parseInt(strSplit[1]);
+                var value=s_math.round(100*parseFloat(strSplit[2]))/100;
+                s_ui.datagrid_set("grid1",i,j,value);
+                s_ui.datagrid_set("grid1",j,i,value);
+            }
+            
             switch(obj.return_cmd){
                 case "step:1":
                     log_msg=s_time.Time_Now()
@@ -126,45 +137,55 @@ function send_msg(strType,friend,msg,return_cmd){
 
 
 function static_click(data){
-    msg_id+=1;
-    var file1=s_sys.value_read("file1");
-    if (file1=="") file1="E:\\sample1.txt";
-
-    var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
-    var fields_count=strSplit.length;
-    //s_ui.msg(fields_count);
-    var count=0;
-    for (var i=1;i<=fields_count;i++){
-        var value=s_file.Ini_Read(file_memo,"selected","check"+i);
-        if (value=="1"){
-            count+=1;
-        }
+    var count_field=sys_field_count();
+    
+            
+    //s_ui.msg(count_field);
+    var line="";
+    var line_head="";
+    for (var i=0;i<count_field;i++){
+        line+="0,";
+        line_head+="*,";
     }
-    //s_ui.msg(count);
+    //s_ui.msg(line);
+    
+    
+    s_ui.datagrid_clear("grid1");
+    s_ui.datagrid_init_column("grid1",count_field,line_head);
+    
+    
+    for (var i=0;i<count_field;i++){
+        s_ui.datagrid_add_line("grid1",line,",");
+    }
+    
+    for (var i=0;i<count_field;i++){
+        s_ui.datagrid_set("grid1",i,i,"1");
+    }
+    
+    //s_ui.msg("step2");
     var id=s_ui.text_read("model_id");
-    var file="/root/happyli/funny_app.jar /root/happyli/java/funny_app/ks.js";
+    var file="/root/happyli/app/pearson_correlation_matrix.js";
     var file_input=s_ui.text_read("txt_file");
-    var strMsg="run_js2 /root/happyli/app/pearson_correlation.js 0 "+file_input+" 0 1";
-
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:1");
-    s_ui.text_set("txt_send","");
+    var strMsg="run_js2 "+file+" 0 "+file_input+" "+count_field;
+    //s_ui.msg(strMsg);
+    send_msg("cmd",friend,strMsg,"step:1");
+    //s_ui.text_set("txt_send","");
 }
 
 
+s_ui.datagrid_init("grid1",10,10,600,360);
 //界面
-s_ui.Web_Init("web",10,10,750,300);
+s_ui.Web_Init("web",620,10,750,360);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
 
-s_ui.label_init("lb_alg","要处理的文件:",100,320);
+s_ui.label_init("lb_alg","要处理的文件:",10,380);
 
-s_ui.text_init("txt_file","/root/test.txt",100,360,300,30);
+s_ui.text_init("txt_file","/root/test.txt",10,420,300,30);
 
 
-s_ui.button_init("b_correlation","相关性",510,320,100,60,"static_click","");
+s_ui.button_init("b_correlation","相关性",380,380,100,60,"static_click","");
 
 
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
