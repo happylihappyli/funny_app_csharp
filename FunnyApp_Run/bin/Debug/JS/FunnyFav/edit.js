@@ -29,7 +29,7 @@ function text_keydown(data){
 
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
@@ -114,15 +114,15 @@ s_ui.textbox_init("edit1","",10,30,600,390);
 s_ui.button_init("b1_send","制表符",520,450,100,70,"tab_click","");
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
+s_ui.menu_init("Menu1");//,0,0,800,25);
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Save","保存(&S)","save_fav","");
 
 
 
 //其他属性
 //s_ui.button_default("b1_send");
-s_ui.Show_Form(700,600);
+s_ui.show_form(700,600);
 s_ui.Form_Title("加密收藏夹");
 
 read_fav();

@@ -49,7 +49,7 @@ function file_open(){
 
 function read(strFile){
     s_ui.listbox_clear("txt_upload");
-    s_ui.listbox_from_file("txt_upload",s_sys.Path_App()+"\\config\\"+strFile);
+    s_ui.listbox_from_file("txt_upload",s_sys.path_app()+"\\config\\"+strFile);
 }
 
 
@@ -91,7 +91,7 @@ s_ui.textbox_init("txt_error","错误信息：",100,300,500,200);
 
 s_ui.progress_init("progress1",100,500,500,30);
 
-s_ui.Show_Form(700,600);
+s_ui.show_form(700,600);
 
 s_ui.Form_Title("upload："+s_sys.args(1));
 

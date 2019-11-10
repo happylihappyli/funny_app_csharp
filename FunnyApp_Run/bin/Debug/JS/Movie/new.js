@@ -1,4 +1,4 @@
-
+var project_name="Movie";
 var Path_Data ="";
 var Path_Index="";
 var Path_Seg="";
@@ -7,10 +7,10 @@ var max_id=1;
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Seg");
-    max_id  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","max_id");
+    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini",project_name,"Path_Data");
+    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini",project_name,"Path_Index");
+    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini",project_name,"Path_Seg");
+    max_id  =s_file.Ini_Read("D:\\Net\\Web\\main.ini",project_name,"max_id");
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
@@ -25,7 +25,7 @@ function init(data){
 
 function save_click(data){
     var ID=s_ui.text_read("txt1");
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",ID);
+    s_file.Ini_Save("D:\\Net\\Web\\main.ini",project_name,"max_id",ID);
     s_sys.value_save("ID",ID);
     s_sys.value_save("Content",s_ui.text_read("txt2"));
     s_ui.close();
@@ -49,7 +49,7 @@ s_ui.panel_add("panel1","txt1","left");
 
 
 
-s_ui.Show_Form(700,600);
+s_ui.show_form(700,600);
 s_ui.Form_Title("新建文件");
 
 init("");

@@ -255,7 +255,7 @@ s_ui.panel_add("panel_bottom","b_ks","right");
 s_ui.panel_add("panel_bottom","b_pre","right");
 s_ui.panel_add("panel_bottom","b_next","right");
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 ROC曲线");
 
 s_sys.tcp_event();

@@ -84,7 +84,7 @@ s_ui.listbox_add("txt_ftp_path","正在读取...");
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat\\step1");
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat\\step3");
 
-s_ui.Show_Form(860,650);
+s_ui.show_form(860,650);
 
 s_ui.Form_Title("第二步：选择要统计的文件");
 

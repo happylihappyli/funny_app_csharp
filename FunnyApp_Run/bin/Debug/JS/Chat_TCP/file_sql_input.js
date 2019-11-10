@@ -54,5 +54,5 @@ s_ui.button_init("b_save","保存",150,500,100,30,"save_check_click","");
 
 //其他属性
 //s_ui.button_default("b_save");
-s_ui.Show_Form(560,580);
+s_ui.show_form(560,580);
 s_ui.Form_Title("文件SQL查询");

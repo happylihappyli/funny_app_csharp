@@ -53,7 +53,7 @@ s_ui.status_label_init("status_label","test",300,30);
 s_ui.status_add("status","status_label","left");
 
 
-s_ui.Show_Form(600,300);
+s_ui.show_form(600,300);
 
 
 s_ui.Form_Title("分析工具");

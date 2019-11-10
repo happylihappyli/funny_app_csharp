@@ -70,6 +70,12 @@ s_ui.splitcontainer_add("split",1,"panel2","bottom");
 s_ui.panel_init("panel3",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel3","bottom");
 
+s_ui.panel_init("panel4",0,0,500,25,"none");
+s_ui.splitcontainer_add("split",1,"panel4","bottom");
+
+s_ui.panel_init("panel5",0,0,500,25,"none");
+s_ui.splitcontainer_add("split",1,"panel5","bottom");
+
 
 s_ui.button_init("btn_hi","枸杞的功效是",10,30,200,30,"cmd_sub","枸杞的功效是什么？");
 s_ui.panel_add("panel2","btn_hi","left");
@@ -81,8 +87,6 @@ s_ui.button_init("btn_shanghai_qh","上海的区号",10,30,100,30,"cmd_sub","上
 s_ui.panel_add("panel2","btn_shanghai_qh","left");
 
 
-s_ui.button_init("btn_shimian","治疗失眠多梦",10,30,200,30,"cmd_sub","什么可以治疗失眠多梦");
-s_ui.panel_add("panel3","btn_shimian","left");
 s_ui.button_init("btn_quhao_010","区号是010",10,30,200,30,"cmd_sub","什么城市的区号是010");
 s_ui.panel_add("panel3","btn_quhao_010","left");
 s_ui.button_init("btn_guohua","国花是玫瑰",10,30,200,30,"cmd_sub","什么国家的国花是玫瑰");
@@ -90,18 +94,29 @@ s_ui.panel_add("panel3","btn_guohua","left");
 
 
 
+s_ui.button_init("btn_shimian","治疗失眠多梦",10,30,100,30,"cmd_sub","什么可以治疗失眠多梦");
+s_ui.panel_add("panel4","btn_shimian","left");
+s_ui.button_init("btn_bianmi","治疗便秘",10,30,100,30,"cmd_sub","什么可以治疗便秘");
+s_ui.panel_add("panel4","btn_bianmi","left");
+s_ui.button_init("btn_qiyu","治疗气郁",10,30,100,30,"cmd_sub","什么可以治疗气郁");
+s_ui.panel_add("panel4","btn_qiyu","left");
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
+s_ui.button_init("btn_shentong","申通快递查询",10,30,200,30,"cmd_test","申通快递查询");
+s_ui.panel_add("panel5","btn_shentong","left");
+
+
+
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Log","日志(&L)","log_click","");
+s_ui.menu_item_add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 //其他属性
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("js_FunnyAI");
 
 on_load("");

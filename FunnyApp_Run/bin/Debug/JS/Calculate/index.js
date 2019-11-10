@@ -35,7 +35,7 @@ s_ui.button_init("b_cal","=",130,180,30,30,"button_click_cal","=");
 
 s_ui.text_init("txt1","0.0",10,10,200,30);
 
-s_ui.Show_Form(300,300);
+s_ui.show_form(300,300);
 s_ui.Form_Title("计算器");
 
 s_ui.Tray_Show(sys.Path_JS()+"\\main.ico");

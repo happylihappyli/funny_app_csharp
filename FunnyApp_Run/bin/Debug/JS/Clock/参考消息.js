@@ -24,7 +24,7 @@ function data_init(data){
         s_ui.ShowInTask(0);
         s_sys.Exit();
     }else{
-        s_ui.Show_Form(700,500);
+        s_ui.show_form(700,500);
         //s_ui.ShowInTask(0);
         var html=x[0];
         //s_ui.msg();

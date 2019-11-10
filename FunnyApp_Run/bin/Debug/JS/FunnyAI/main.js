@@ -175,6 +175,24 @@ function send_msg(strType,friend,msg,return_cmd){
 }
 
 
+function callback_shentong(data){
+    var id=s_sys.value_read("id");
+    s_ui.msg(id);
+    var url="https://www.kuaidi100.com/query?type=shentong&postid="+id+"&id=1&valicode=&temp="+Math.random()+"&phone=";
+    //        "https://www.kuaidi100.com/query?type=shentong&postid="+id+"&id=1&valicode=&temp=0.48348612898298726&phone=";
+    var ref="https://www.kuaidi100.com/all/st.shtml";
+    var content=s_net.http_get_ref(url,"utf-8",ref);
+    s_ui.Web_Content("web",content);
+    
+    s_ui.msg(a);
+}
+
+function cmd_test(data){
+
+    s_sys.value_save("id","");
+    s_ui.Run_JS_Dialog("FunnyAI\\申通.js","callback_shentong");
+    
+}
 
 function resend_chat_msg(data) {
     for(var key in myMap){

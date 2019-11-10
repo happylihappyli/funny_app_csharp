@@ -30,7 +30,6 @@ function data_init(data){
     s_ui.datagrid_add_line("grid1","1,正在分析...",",");
     
     s_ui.datagrid_add_checkbox("grid1","modify","选择","check_click");
-    //s_ui.datagrid_add_button("grid1","modify","映射","map_click");
 }
 
 
@@ -196,10 +195,7 @@ function static_click(data){
             
     var cmd="/usr/local/bin/python3.7 /root/test_lr_tcp.py /root/test.txt "
             +id+" "+count_field+" /root/test_output.txt";
-    
-    s_ui.text_set("txt_send",cmd);
-    step=1;
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:1");
 }
 
 
@@ -235,19 +231,6 @@ function resend_chat_msg(data) {
     }
 }
 
-//发送消息 
-function send_msg_click(){
-    msg_id+=1;
-    
-    var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    
-    
-    send_msg(strType,friend,strMsg,"step:"+step);
-    
-    
-    s_ui.text_set("txt_send","");
-}
 
 function set_status(data){
     var strSplit=data.split(",");
@@ -310,16 +293,6 @@ s_ui.splitcontainer_distance("split",50);
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
 
 
-//界面
-//s_ui.datagrid_init("grid1",10,60,650,200);
-
-s_ui.text_init("txt_send","ls",380,350,320,30);
-
-
-s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
-
-
 s_ui.textbox_init("txt_user_name","000",10,450,200,30);
 
 
@@ -361,19 +334,12 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step7");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step9");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_test");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_static_pre");
 
 
 s_ui.panel_add("panel2","b_next","left");
 s_ui.panel_add("panel2","b_pre","left");
-
-
-
-s_ui.Menu_Init("Menu1",0,0,800,25);
-
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -384,8 +350,8 @@ s_ui.status_add("status","status_label2","left");
 
 
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
-s_ui.Form_Title("v2 lr_test ");
+s_ui.show_form(800,600);
+s_ui.Form_Title("v2 模型测试lr ");
 
 
 s_sys.tcp_event();

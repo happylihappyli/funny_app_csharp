@@ -83,7 +83,7 @@ s_ui.button_init("b_test","Test",10,50,100,30,"get_notebooks","");
 s_ui.Tree_Init("tree1",10,100,200,380);
     
 s_ui.textbox_init("txt","显示信息：",250,100,300,380);
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("蚂蚁笔记");
 
 read_password("");

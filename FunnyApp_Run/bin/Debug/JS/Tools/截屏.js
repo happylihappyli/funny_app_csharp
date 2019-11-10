@@ -153,7 +153,7 @@ function event_system(data){
 }
 
 function read_ini(){
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
     var userName2=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
@@ -235,7 +235,7 @@ s_ui.panel_add("panel_top","b_capture","left");
 
 //其他属性
 //s_ui.button_default("b_capture");
-s_ui.Show_Form(1100,800);
+s_ui.show_form(1100,800);
 s_ui.Form_Title("截屏");
 
 //s_ui.ShowInTask(0);

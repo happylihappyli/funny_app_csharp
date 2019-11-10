@@ -225,7 +225,7 @@ function next_click(data){
 
 
 function read_ini(){
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
     var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
@@ -493,18 +493,18 @@ s_ui.panel_add("panel2","b_pre","left");
 
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","Menu_File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Menu_Refresh","刷新好友列表(&R)","friend_list","");
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","Menu_File","&File");
+s_ui.menu_item_add("Menu1","File","Menu_Refresh","刷新好友列表(&R)","friend_list","");
 
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
-//s_ui.Menu_Item_Add("Menu1","Tools","Menu_Upload","上传Map文件","upload_click","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
+//s_ui.menu_item_add("Menu1","Tools","Menu_Upload","上传Map文件","upload_click","");
 
 
 
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("第3步 字段映射");
 
 data_init("");

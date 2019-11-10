@@ -53,6 +53,6 @@ s_ui.button_enable("b2",0);
 
 s_ui.Web_Init("web",10,100,700,500);
 
-s_ui.Show_Form(800,680);
+s_ui.show_form(800,680);
 s_ui.Form_Title("全文索引");
 

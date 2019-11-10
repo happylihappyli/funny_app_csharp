@@ -337,16 +337,52 @@ namespace FunnyApp {
             }
         }
 
-        public void Menu_Init(
-            string name,
-            int x, int y,
-            int width, int height) {
+        public void menu2_init(string name) {
+            ContextMenuStrip pControl = new ContextMenuStrip();
+            //pFrmApp.Controls.Add(pControl);//向具体的控件中添加
+            if (Ctrls.Contains(name) == false) {
+                Ctrls.Add(name, pControl);
+            } else {
+                this.msg("控件已经存在:" + name);
+            }
+        }
 
-            Point p = new Point(x, y);//定义一个具体的位置  
-            MenuStrip pControl = new MenuStrip();//实例化一个button  
-            pControl.Name = name;
-            pControl.Location = p;
-            pControl.Size = new Size(width, height);
+
+        public void menu2_add(
+            string control_name,
+            string item,
+            string text,
+            string menu_event,
+            string menu_data) {
+            ContextMenuStrip pControl = (ContextMenuStrip)Ctrls[control_name];
+            if (pControl != null) {
+                ToolStripMenuItem pControl2 = new ToolStripMenuItem();//实例化一个button  
+                pControl2.Name = item;
+                pControl2.Text = text;
+                pControl2.Tag = new Function_Callback(menu_event, menu_data);
+
+                pControl2.Click += new EventHandler(MyMenuItem_Click);
+
+                pControl.Items.Add(pControl2);//向具体的控件中添加
+            }
+        }
+
+
+
+        public void menu2_container(
+            string control_name,
+            string name) {
+            ContextMenuStrip pControl = (ContextMenuStrip)Ctrls[control_name];
+            Control pContainer = (Control)Ctrls[name];
+            if (pControl != null) {
+                pContainer.ContextMenuStrip = pControl;
+            }
+        }
+
+
+
+        public void menu_init(string name) {
+            MenuStrip pControl = new MenuStrip();//实例化
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
             if (Ctrls.Contains(name) == false) {
                 Ctrls.Add(name, pControl);
@@ -355,7 +391,7 @@ namespace FunnyApp {
             }
         }
 
-        public void Menu_Add(
+        public void menu_add(
             string control_name,
             string item,
             string text) {
@@ -368,7 +404,7 @@ namespace FunnyApp {
             }
         }
 
-        public void Menu_Item_Add(
+        public void menu_item_add(
             string menu_name,
             string control_name,
             string item,
@@ -382,7 +418,7 @@ namespace FunnyApp {
                 pControl2.Name = item;
                 pControl2.Text = text;
                 pControl2.Tag = new Function_Callback(menu_event,menu_data);
-                pControl2.Click += new System.EventHandler(MyMenuItem_Click);
+                pControl2.Click += new EventHandler(MyMenuItem_Click);
 
                 pControl.DropDownItems.Add(pControl2);//向具体的控件中添加
                 
@@ -391,7 +427,7 @@ namespace FunnyApp {
 
 
 
-        public void Menu_Item2_Add(
+        public void menu_item2_add(
             string menu_name,
             string control_name,
             string item,
@@ -562,7 +598,7 @@ namespace FunnyApp {
 
         public void Tray_Show(string url) {
             if (url.StartsWith("@")) {
-                url = url.Replace("@", pFrmApp.pSYS.Path_App());
+                url = url.Replace("@", pFrmApp.pSYS.path_app());
             }
             pFrmApp.Tray_Show(url);
         }
@@ -644,12 +680,12 @@ namespace FunnyApp {
 
         public void listbox_init_event(
             string control_name,
-            string event_double_click) {
+            string event_change) {
 
             ListBox pControl = (ListBox)Ctrls[control_name];
             if (pControl != null) {
                 pControl.SelectedIndexChanged += new EventHandler(mylistbox_DoubleClick);
-                pControl.Tag = new Function_Callback(event_double_click, "");
+                pControl.Tag = new Function_Callback(event_change, "");
             }
         }
 
@@ -917,7 +953,7 @@ namespace FunnyApp {
             Point p = new Point(x, y);//定义一个具体的位置  
             PictureBox pControl = new PictureBox();//实例化一个button  
             pControl.Name = name;
-            pControl.BorderStyle = BorderStyle.FixedSingle;
+            pControl.BorderStyle = BorderStyle.None;
             pControl.Location = p;
             pControl.Size = new Size(width, height);
             pFrmApp.Controls.Add(pControl);//向具体的控件中添加
@@ -1091,6 +1127,16 @@ namespace FunnyApp {
         }
         public int screen_height() {
             return Screen.PrimaryScreen.Bounds.Height;
+        }
+
+        public void control_box_set(int ivalue) {
+            if (ivalue == 1) {
+                pFrmApp.ControlBox = true;
+                pFrmApp.FormBorderStyle = FormBorderStyle.Sizable;
+            } else {
+                pFrmApp.ControlBox = false;
+                pFrmApp.FormBorderStyle = FormBorderStyle.None;
+            }
         }
 
         public void picturebox_capture_screen(
@@ -1690,7 +1736,7 @@ namespace FunnyApp {
             pFrmApp.pJS.p_Engine.Invoke(p.Name, p.Data);
         }
 
-        public void Show_Form(int width, int height) {
+        public void show_form(int width, int height) {
             pFrmApp.Width = width;
             pFrmApp.Height = height;
             pFrmApp.Left = Screen.PrimaryScreen.WorkingArea.Left+(Screen.PrimaryScreen.WorkingArea.Width - width) / 2;

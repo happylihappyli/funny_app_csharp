@@ -61,7 +61,7 @@ s_ui.button_init("b2_1","启动目录",300,150,200,30,"start_click","");
 s_ui.textbox_init("txt_error","错误信息：",100,300,500,200);
 
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 
 s_ui.Form_Title("控制面板");
 

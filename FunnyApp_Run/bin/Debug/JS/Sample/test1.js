@@ -26,5 +26,5 @@ function show_distance(){
     s_ui.text_set("txt1","distance=:"+tools.distance(p1, p2));
 }
 
-s_ui.Show_Form(300,300);
+s_ui.show_form(300,300);
 

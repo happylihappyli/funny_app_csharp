@@ -149,7 +149,7 @@ s_ui.panel_add("panel2","txt_url","left");
 
 
 
-s_ui.Show_Form(750,600);
+s_ui.show_form(750,600);
 s_ui.Form_Title("抓取京东书籍");
 
 init("");

@@ -19,7 +19,7 @@ function C_Msg(ID,Msg){
 
 
 function sys_read_ini(){
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     //var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     //s_ui.msg(disk);
     var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");

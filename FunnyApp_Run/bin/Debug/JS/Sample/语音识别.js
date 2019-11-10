@@ -51,7 +51,7 @@ s_ui.button_init("b_read","阅读",200,100,49,46,"b_read_click","");
 s_ui.textbox_init("txt1","点击录制按钮，开始录音，点击停止，开始语音识别！",100,150,300,100);
 s_ui.textbox_init("txt2","AI回复：",100,300,300,100);
 
-s_ui.Show_Form(500,500);
+s_ui.show_form(500,500);
 s_ui.Form_Title("语音识别");
 init();
 

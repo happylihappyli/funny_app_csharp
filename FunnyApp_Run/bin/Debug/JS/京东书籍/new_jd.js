@@ -111,7 +111,7 @@ init("");
 if (auto=="1"){
     crawl_click("");
 }else{
-    s_ui.Show_Form(750,600);
+    s_ui.show_form(750,600);
     s_ui.Form_Title("抓取京东书籍");
 }
 

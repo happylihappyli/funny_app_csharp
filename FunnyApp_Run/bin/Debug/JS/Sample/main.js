@@ -52,7 +52,7 @@ s_ui.status_label_init("status_label","...",300,30);
 s_ui.status_add("status","status_label","left");
 
 
-s_ui.Show_Form(550,360);
+s_ui.show_form(550,360);
 
 
 s_ui.Form_Title("工具大全");

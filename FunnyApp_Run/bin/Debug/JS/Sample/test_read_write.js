@@ -53,6 +53,6 @@ s_ui.button_init("b2","Test",250,50,200,30,"test","");
 
 s_ui.Web_Init("web",10,100,700,500);
 
-s_ui.Show_Form(800,680);
+s_ui.show_form(800,680);
 s_ui.Form_Title("Test Read Write");
 

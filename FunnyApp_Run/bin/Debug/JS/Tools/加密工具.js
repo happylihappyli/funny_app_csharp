@@ -125,7 +125,7 @@ s_ui.textbox_init("txt_error","错误信息：",100,350,500,200);
 
 
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 
 s_ui.Form_Title("加密工具");
 

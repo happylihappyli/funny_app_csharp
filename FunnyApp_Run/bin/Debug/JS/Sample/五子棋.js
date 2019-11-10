@@ -153,7 +153,7 @@ function event_system(data){
 }
 
 function read_ini(){
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
     var userName2=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
@@ -255,12 +255,12 @@ s_ui.text_init("txt_session","000",10,500,200,30);
 s_ui.textbox_init("txt_info","",10,650,250,80);
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Log","日志(&L)","log_click","");
+s_ui.menu_item_add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 
@@ -273,7 +273,7 @@ s_ui.button_init("b2_3","draw2",150,600,100,30,"draw_test2","");
 
 //其他属性
 s_ui.button_default("b1_send");
-s_ui.Show_Form(1200,800);
+s_ui.show_form(1200,800);
 s_ui.Form_Title("五子棋");
 
 //s_ui.ShowInTask(0);

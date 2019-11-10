@@ -14,6 +14,7 @@ var head="";
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
@@ -37,8 +38,7 @@ function check_click(data){
     var k=index+1;
     var a=s_ui.datagrid_read("grid1",index,8);
     
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    s_file.Ini_Save(file,"selected","check"+k,a);
+    s_file.Ini_Save(file_memo,"selected","check"+k,a);
 }
 
 function save_click(data){
@@ -46,14 +46,11 @@ function save_click(data){
     var index=parseInt(data)+1;
     var memo=s_ui.datagrid_read("grid1",index,1);
     memo=memo.replaceAll(",","");
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    s_file.Ini_Save(file,"main","memo"+index,memo);
+    
+    s_file.Ini_Save(file_memo,"main","memo"+index,memo);
 }
 
 function event_msg(data){
-    
-    log_msg="<b>data:"+data+"</b><br>"+log_msg;
-    s_ui.Web_Content("web",css_head+log_msg);
     
     var obj=JSON.parse(data);
     var msg=obj.message;
@@ -66,16 +63,17 @@ function event_msg(data){
             delete myMap["K"+obj.oid];
             break;
         case "msg":
-            log_msg=s_time.Time_Now()
-                +" <span style='color:blue;'>"+obj.from+"</span>"
-                +obj.return_cmd+"<br>"+"<pre>"+data+"</pre>"
-                +"<br>"+log_msg;
-            s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
-                s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
-            
-            s_ui.Web_Content("web",css_head+log_msg);
-            if (obj.return_cmd=="step:0"){
+            if (obj.return_cmd=="step:1"){
                 process_step(obj);
+            }else{
+                switch(obj.from){
+                    case "line":
+                        var i=parseInt(obj.return_cmd);
+                        var k=i+1;
+                        memo=s_file.Ini_Read(file_memo,"main","memo"+k);
+                        s_ui.datagrid_add_line("grid1",k+","+memo+","+msg,",");
+                        break;
+                }
             }
             break;
         case "status":
@@ -103,30 +101,22 @@ function event_msg(data){
 
 
 function process_step(obj){
+    s_ui.progress_show('progress2', "100","100");
     var msg=obj.message;
     
     var line2="";
-
-    var split_line=msg.split("\n");
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    var memo="";
     
-    for (var i=0;i<split_line.length;i++){
-        var k=i+1;
-        memo=s_file.Ini_Read(file,"main","memo"+k);
-        s_ui.datagrid_add_line("grid1",k+","+memo+","+split_line[i],",");
-    }
-    s_file.Ini_Save(file,"main","count",split_line.length);
     
     s_ui.status_label_show("status_label","process_step:"+step);
     
     s_ui.datagrid_add_checkbox("grid1","modify","选择","check_click");
     s_ui.datagrid_add_button("grid1","save","保存备注","save_click");
     
-    for (var i=0;i<split_line.length;i++){
+    for (var i=0;i<fields_count;i++){
         var k=i+1;
-        var value=s_file.Ini_Read(file,"selected","check"+k);
-        s_ui.datagrid_set_checkbox("grid1",i,8,value);
+        var value=s_file.Ini_Read(file_memo,"selected","check"+k);
+        //s_ui.msg(value);
+        s_ui.datagrid_set_checkbox("grid1",i,9,value);
     }
     
 }
@@ -161,7 +151,7 @@ function map_click(data){
 
 function static_click(data){
     s_ui.datagrid_clear("grid1");
-    s_ui.datagrid_init_column("grid1",8,"字段,备注,avg,方差,0%,25%,50%,75%,100%");
+    s_ui.datagrid_init_column("grid1",9,"字段,备注,avg,方差,0%,25%,50%,75%,100%");
     
     var file1=s_sys.value_read("file1");
     if (file1=="") file1="E:\\sample1.txt";
@@ -169,12 +159,11 @@ function static_click(data){
     var line=s_file.read(file1,1);
     var strSplit=line.split("|");
     fields_count=strSplit.length;
+    s_file.Ini_Save(file_memo,"main","count",fields_count);
     
     var cmd="run_js2 /root/happyli/app/min_mid_max.js 0 /root/step6.txt "+fields_count+" \"0,0.25,0.5,0.75,1\"";
     
-    s_ui.text_set("txt_send",cmd);
-    step=0;
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:1");
 }
 
 function next_click(data){
@@ -212,10 +201,7 @@ function send_msg_click(){
     msg_id+=1;
     
     var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    
-    
-    send_msg(strType,friend,strMsg,"step:"+step);
+    send_msg("cmd",friend,strMsg,"step:"+step);
     
     
     s_ui.text_set("txt_send","");
@@ -275,7 +261,7 @@ function send_msg(strType,friend,msg,return_cmd){
 
 
 s_ui.splitcontainer_init("split",0,0,500,500,"h");
-s_ui.splitcontainer_distance("split",50);
+s_ui.splitcontainer_distance("split",30);
 
 
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
@@ -289,10 +275,7 @@ s_ui.text_init("txt_send","ls",380,350,320,30);
 
 s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
 
-
-
 s_ui.textbox_init("txt_user_name","000",10,450,200,30);
-
 
 s_ui.textbox_init("txt_info","",10,250,300,50);
 
@@ -320,7 +303,6 @@ s_ui.splitcontainer_add("split",1,"grid1","top");
 s_ui.splitcontainer_add("split",1,"txt_file","top");
 
 
-
 s_ui.panel_init("panel_top",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel_top","bottom");
 s_ui.panel_add("panel_top","txt_send","fill");
@@ -332,20 +314,12 @@ s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step5");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_woe_iv");
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step7");
 
 
 s_ui.panel_add("panel2","b_next","left");
 s_ui.panel_add("panel2","b_pre","left");
-
-
-
-s_ui.Menu_Init("Menu1",0,0,800,25);
-
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
-
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -355,9 +329,8 @@ s_ui.status_label_init("status_label2","222",100,30);
 s_ui.status_add("status","status_label2","left");
 
 
-
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 第6步 字段统计");
 
 

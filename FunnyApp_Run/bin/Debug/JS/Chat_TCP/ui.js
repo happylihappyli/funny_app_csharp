@@ -91,17 +91,17 @@ s_ui.panel_add("panel3","btn_guohua","left");
 
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
+s_ui.menu_init("Menu1");//,0,0,800,25);
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Log","日志(&L)","log_click","");
+s_ui.menu_item_add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 //其他属性
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("聊天 TCP");
 
 on_load("");

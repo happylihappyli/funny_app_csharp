@@ -90,18 +90,10 @@ function event_msg(data){
                 s_ui.Web_Content("web",css_head+log_msg);
                 switch (obj.from){
                     case "/root/test_output2.txt":
-                        if (step==1){
-                            process_step(obj);
-                        }else{
-                            s_ui.Web_Content("web","多次接收："+step+"="+data);
-                        }
+                        process_step(obj);
                         break;
                     case "/root/data_for_static.txt":
-                        if (step==2){
-                            s_ui.Web_Content("web","预处理完毕，点击下一步ks等统计");
-                        }else{
-                            s_ui.Web_Content("web","多次接收："+step+"="+data);
-                        }
+                        s_ui.Web_Content("web","预处理完毕，点击下一步ks等统计");
                         break;
                 }
             }
@@ -125,24 +117,6 @@ function event_msg(data){
             s_ui.Web_Content("web",css_head+log_msg);
     
             break;
-    }
-}
-
-
-
-function friend_list(data){
-    s_ui.listbox_clear("list_friend");
-    s_ui.listbox_add("list_friend","*");
-
-    send_msg("friend_list","","","friend_list");
-    
-}
-
-function friend_change(data){
-    
-    var friend=s_ui.listbox_text("list_friend");
-    if (friend!=""){
-        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
     }
 }
 
@@ -195,7 +169,7 @@ function static_click(data){
 
     var cmd=file_sql("/root/test_output.txt",sql,",","/root/test_output2.txt");
     
-    send_msg("cmd",friend,cmd,"step:1");
+    send_msg("cmd",friend,cmd,"step_static_pre:1");
     
 }
 
@@ -204,7 +178,7 @@ function process_step(data){
     var cmd=file_sql("/root/test_output2.txt",sql,",","/root/data_for_static.txt");
     
     
-    send_msg("cmd",friend,cmd,"step:2");
+    send_msg("cmd",friend,cmd,"step_static_pre:2");
 }
 
 function next_click(data){
@@ -304,10 +278,6 @@ s_ui.splitcontainer_distance("split",50);
 
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
 
-s_ui.text_init("txt_send","ls",380,350,320,30);
-
-s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
 s_ui.textbox_init("txt_user_name","000",10,450,200,30);
 
 
@@ -356,13 +326,6 @@ s_ui.panel_add("panel2","b_next","left");
 s_ui.panel_add("panel2","b_pre","left");
 
 
-
-s_ui.Menu_Init("Menu1",0,0,800,25);
-
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
-
-
 s_ui.status_init("status",0,0,200,30,"bottom");
 s_ui.status_label_init("status_label","111",100,30);
 s_ui.status_add("status","status_label","left");
@@ -371,7 +334,7 @@ s_ui.status_add("status","status_label2","left");
 
 
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 统计准备 ");
 
 

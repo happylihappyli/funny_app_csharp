@@ -12,7 +12,7 @@ function send_msg_click(){
         return ;
     }
     
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var count=parseInt(s_file.Ini_Read(path+"\\config\\friend.ini","items","count"));
     var file="";
     var name="";
@@ -117,7 +117,7 @@ function event_system(data){
 }
 
 function read_ini(){
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account");
     
@@ -181,14 +181,14 @@ s_ui.textbox_init("txt_info","",250,450,450,80);
 
 
 //菜单
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.menu_init("Menu1");//,0,0,800,25);
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Log","日志(&L)","log_click","");
+s_ui.menu_item_add("Menu1","File","Chat2","加密聊天","chat2","");
 
 //窗口
 s_ui.button_default("b_send");
-s_ui.Show_Form(750,600);
+s_ui.show_form(750,600);
 s_ui.Form_Title("加密聊天");
 
 connect_click("");

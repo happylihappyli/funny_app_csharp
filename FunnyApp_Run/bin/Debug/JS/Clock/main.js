@@ -108,7 +108,7 @@ s_ui.button_init("b1_1","运行",10,200,200,30,"run_click","0");
 s_ui.button_init("b2_1","test",10,250,200,30,"open_web","https://www.funnyai.com/funnyai/list_diary.php");
 
 
-s_ui.Show_Form(700,500);
+s_ui.show_form(700,500);
 
 s_ui.Form_Title("闹钟");
 
@@ -121,5 +121,5 @@ run_click("");
 
 s_ui.Run_JS_Out("Clock\\参考消息.js");
 
-s_ui.Tray_Show(s_sys.Path_JS()+"\\clock2.ico");
+s_ui.Tray_Show(s_sys.path_js()+"\\clock2.ico");
 

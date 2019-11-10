@@ -12,7 +12,7 @@ function show_text2(data){
 
 s_ui.button_init("b_match","匹配",10,10,100,30,"screen_match","hello");
 s_ui.textbox_init("txt","显示信息：",50,50,500,200);
-s_ui.Show_Form(600,400);
+s_ui.show_form(600,400);
 s_ui.Form_Title("写字板");
 
 

@@ -36,7 +36,7 @@ namespace FunnyApp {
 
         public string read_encode(string strFile, string encode = "utf-8") {
             if (strFile.StartsWith("@")) {
-                strFile = strFile.Replace("@", pFrmApp.pSYS.Path_JS());
+                strFile = strFile.Replace("@", pFrmApp.pSYS.path_js());
             }
 
             if (S_File.Exists(strFile)) {
@@ -49,7 +49,7 @@ namespace FunnyApp {
 
         public string read(string strFile, int Count) {
             if (strFile.StartsWith("@")) {
-                strFile = strFile.Replace("@", pFrmApp.pSYS.Path_JS());
+                strFile = strFile.Replace("@", pFrmApp.pSYS.path_js());
             }
 
             if (S_File.Exists(strFile)) {
@@ -71,7 +71,7 @@ namespace FunnyApp {
 
         public void save_encode(string strFile, string content,string encode="utf-8") {
             if (strFile.StartsWith("@")) {
-                strFile = strFile.Replace("@", pFrmApp.pSYS.Path_JS());
+                strFile = strFile.Replace("@", pFrmApp.pSYS.path_js());
             }
             S_File_Text.Write(strFile, content, false, false,Encoding.GetEncoding(encode));
         }

@@ -23,7 +23,7 @@ s_ui.text_init("send_msg","",10,50,200,50);
 
 s_net.Socket_Init("http://robot6.funnyai.com:8000","event_connected","event_chat","","");
 
-s_ui.Show_Form(300,300);
+s_ui.show_form(300,300);
 
 s_ui.Form_Title("socket.io test");
 

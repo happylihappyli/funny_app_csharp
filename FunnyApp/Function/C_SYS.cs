@@ -224,7 +224,7 @@ namespace FunnyApp {
 
         private void call_thread_sub() {
 
-            string strFile = this.Path_JS() + "\\" + strFile_JS;
+            string strFile = this.path_js() + "\\" + strFile_JS;
 
             string strCode = S_File_Text.Read(strFile);
             string pattern = "\\[\\[\\[(.*?\\.js)\\]\\]\\]";
@@ -234,7 +234,7 @@ namespace FunnyApp {
                 string strMatch = match.Groups[0].Value;
                 string strFile2 = match.Groups[1].Value;
 
-                string strPath = this.Path_JS();
+                string strPath = this.path_js();
                 string strCode2 = S_File_Text.Read(strPath + "\\" + strFile2);
                 strCode = strCode.Replace(strMatch, strCode2);
 
@@ -250,12 +250,12 @@ namespace FunnyApp {
         /// 程序启动路径
         /// </summary>
         /// <returns></returns>
-        public string Path_App() {
+        public string path_app() {
             return Application.StartupPath;
         }
 
 
-        public string Path_JS() {
+        public string path_js() {
             string[] strSplit = pFrmApp.strFile.Split('\\');
             string strPath = "";
             for (int i = 0; i < strSplit.Length-1; i++) {

@@ -43,7 +43,6 @@ function event_msg(data){
                 s_ui.Web_Content("web",css_head+log_msg);
                 switch (obj.from){
                     case "/root/step6.txt":
-                        
                         log_msg=s_time.Time_Now()
                     +"<span style='color:red;font-size:18px;'>运行完毕！请点击下一步</span><br>"
                     +"<span style='color:blue;'>"+obj.from+"</span>"
@@ -283,7 +282,6 @@ function resend_chat_msg(data) {
 //发送消息
 function send_msg_click(){
     msg_id+=1;
-    
     var strMsg=s_ui.text_read("txt_send");
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
@@ -298,7 +296,7 @@ function upload_click(data){
     for(var i=0;i<strSplit.length;i++){
         var file=disk+"\\Net\\Web\\Data\\"+strSplit[i];
         var path="/upload/map/"+s_file.File_Short_Name(file);
-        //s_ui.msg(file+","+path);
+        
         s_net.ftp_upload("robot6.funnyai.com","test","test","22",file,path,"set_status","show_error");
     }
     
@@ -327,12 +325,11 @@ s_ui.splitcontainer_distance("split",130);
 
 var file1=s_sys.value_read("file1");
 if (file1=="") file1="E:\\sample1.txt";
-//s_ui.msg(file1);
+
 s_ui.text_init("txt_file",file1,350,450,200,30);
 
 
 //界面
-//s_ui.datagrid_init("grid1",10,60,650,320);
 
 s_ui.text_init("txt_send","ls",380,350,320,30);
 
@@ -376,7 +373,7 @@ s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step4");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step6");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_woe_iv");
 
 
 s_ui.panel_add("panel2","b_next","left");
@@ -384,12 +381,12 @@ s_ui.panel_add("panel2","b_pre","left");
 
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","Menu_File","&File");
-s_ui.Menu_Item_Add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","Menu_File","&File");
+s_ui.menu_item_add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
 
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -399,7 +396,7 @@ s_ui.status_label_init("status_label2","222",100,30);
 s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 第5步 生成step6.txt");
 
 s_sys.tcp_event();

@@ -54,7 +54,7 @@ function WOE_IV(data){
     for (var i=0;i<count;i++){
         var x=(a[i]/sum_a)/(b[i]/sum_b);
         var woe=s_math.ln(x);
-        s_ui.datagrid_Set("grid1",i,2,woe);
+        s_ui.datagrid_set("grid1",i,2,woe);
         
         IV+=((a[i]/sum_a)-(b[i]/sum_b))*woe;
     }

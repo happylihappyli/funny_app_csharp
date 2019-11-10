@@ -152,7 +152,7 @@ s_ui.progress_init("progress0",10,550,700,30);
 s_ui.progress_init("progress1",10,600,700,30);
 s_ui.progress_init("progress2",10,650,700,30);
 
-s_ui.Show_Form(1000,800);
+s_ui.show_form(1000,800);
 
 s_ui.Form_Title("Run_Bat");
 

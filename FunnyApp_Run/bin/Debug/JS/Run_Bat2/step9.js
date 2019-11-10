@@ -260,7 +260,7 @@ s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_train");
 
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 第9步 数据抽样");
 
 s_sys.tcp_event();

@@ -67,10 +67,10 @@ function init_tree(data){
 
 function init_menu(data){
     
-    s_ui.Menu_Init("Menu1",0,0,800,25);
-    s_ui.Menu_Add("Menu1","File","&File");
-    s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-    s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
+    s_ui.menu_init("Menu1");
+    s_ui.menu_add("Menu1","File","&File");
+    s_ui.menu_item_add("Menu1","File","Log","日志(&L)","log_click","");
+    s_ui.menu_item_add("Menu1","File","Chat2","加密聊天","chat2","");
 }
 
 function init_fav(data){
@@ -98,5 +98,5 @@ init_fav("");
 
 //其他属性
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("资源管理器");

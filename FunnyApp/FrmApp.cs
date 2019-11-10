@@ -83,7 +83,7 @@ namespace FunnyApp
                     string strMatch = match.Groups[0].Value;
                     string strFile2=match.Groups[1].Value ;
 
-                    string strPath=this.pSYS.Path_JS();
+                    string strPath=this.pSYS.path_js();
                     string strCode2 = S_File_Text.Read(strPath+"\\"+strFile2);
                     strCode = strCode.Replace(strMatch, strCode2);
 
@@ -94,6 +94,7 @@ namespace FunnyApp
                 //s_time.set_time_function("tickle");
                 pTime.create_alarm_cron("sys:check_connect", "sys:check_connect", "0 */1 * ? * *");
             }
+
         }
 
 
@@ -122,7 +123,7 @@ namespace FunnyApp
                 }
                 catch(Exception ex) {
                     string strHTML=str1+"|" + str2 + "\n" + ex.ToString();
-                    MessageBox.Show(strHTML);
+                    //MessageBox.Show(strHTML);
                     Debug.Print(strHTML);
                 }
             } else{

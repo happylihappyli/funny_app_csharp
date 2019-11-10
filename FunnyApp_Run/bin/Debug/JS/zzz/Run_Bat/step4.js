@@ -105,7 +105,7 @@ s_ui.progress_init("progress1",100,550,500,30);
 s_ui.button_init("b_pre","上一步",100,600,200,30,"next_click","Run_Bat\\step3");
 s_ui.button_init("b_next","2.下一步",350,600,200,30,"next_click","Run_Bat\\step5");
 
-s_ui.Show_Form(860,750);
+s_ui.show_form(860,750);
 
 s_ui.Form_Title("第4步：文件上传");
 

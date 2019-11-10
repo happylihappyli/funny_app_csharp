@@ -20,7 +20,7 @@ s_ui.button_init("b_hook","hook",10,10,100,30,"moue_hook","");
 s_ui.button_init("b_unhook","unhook",10,50,100,30,"moue_hook","");
 
 s_ui.textbox_init("txt","显示信息：",10,100,500,200);
-s_ui.Show_Form(600,400);
+s_ui.show_form(600,400);
 s_ui.Form_Title("mouse hook");
 
 

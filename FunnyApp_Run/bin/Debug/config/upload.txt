@@ -7,3 +7,4 @@ E:\happyli\Jar\server_socket\funny_socket_io_server.jar
 E:\happyli\Jar\funny_app_linux\funny_app.jar
 E:\happyli\Jar\server_class\funny_server_class.jar
 E:\happyli\Jar\file_watch\FunnyWatch.jar
+E:\happyli\Jar\funny_js_robot2\funny_js_robot2.jar

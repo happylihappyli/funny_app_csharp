@@ -276,6 +276,11 @@ function cmd_sub(data){
     send_msg_click();
 }
 
+function cmd_text(data){
+    s_ui.text_set("txt_send",data);
+    //send_msg_click();
+}
+
 function show_user(data){
     sep=2;//分隔符用第2个方案
     head="<tr><th>用户名</th><th>口令</th><th>用户ID</th><th>组ID</th><th>注释性描述</th><th>主目录</th><th>登录Shell</th></tr>";

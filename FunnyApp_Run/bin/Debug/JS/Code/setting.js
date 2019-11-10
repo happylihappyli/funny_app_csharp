@@ -33,5 +33,5 @@ s_ui.button_init("b1_save","保存",150,300,100,30,"save_check_click","");
 
 //其他属性
 s_ui.button_default("b1_save");
-s_ui.Show_Form(560,380);
+s_ui.show_form(560,380);
 s_ui.Form_Title("目录设置");

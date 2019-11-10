@@ -166,37 +166,35 @@ function static_click(data){
     }
     //s_ui.msg(count);
     var id=s_ui.text_read("model_id");
-    var step="1";
     var file="/root/happyli/funny_app.jar /root/happyli/java/funny_app/ks.js";
     var file_input=s_ui.text_read("txt_file");
     var strMsg="java -jar "+file+" "+file_input+" 0 1 2";
 
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:"+step);
+    send_msg("cmd",friend,strMsg,"step:1");
     s_ui.text_set("txt_send","");
 }
 
 
 //界面
-s_ui.Web_Init("web",10,10,750,300);
+s_ui.Web_Init("web",10,10,750,390);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
 
-s_ui.label_init("lb_alg","要处理的文件:",100,320);
+s_ui.label_init("lb_alg","要处理的文件:",100,420);
 
-s_ui.text_init("txt_file","/root/data_for_static.txt",100,360,300,30);
-
-
-s_ui.button_init("b_ks","ks",510,320,100,60,"static_click","");
+s_ui.text_init("txt_file","/root/data_for_static.txt",100,460,300,30);
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
+s_ui.button_init("b_ks","ks",510,420,100,60,"static_click","");
 
 
-s_ui.Show_Form(800,600);
-s_ui.Form_Title("v2 训练模型");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_static_pre");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_roc");
+
+
+s_ui.show_form(800,600);
+s_ui.Form_Title("v2 ks计算");
 
 s_sys.tcp_event();
 

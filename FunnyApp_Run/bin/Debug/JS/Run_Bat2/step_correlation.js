@@ -139,15 +139,12 @@ function send_msg(strType,friend,msg,return_cmd){
 function static_click(data){
     var count_field=sys_field_count();
     
-            
-    //s_ui.msg(count_field);
     var line="";
     var line_head="";
     for (var i=0;i<count_field;i++){
         line+="0,";
         line_head+="*,";
     }
-    //s_ui.msg(line);
     
     
     s_ui.datagrid_clear("grid1");
@@ -192,7 +189,7 @@ s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
 
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 相关性");
 
 s_sys.tcp_event();

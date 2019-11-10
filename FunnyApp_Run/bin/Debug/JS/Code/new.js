@@ -49,7 +49,7 @@ s_ui.panel_add("panel1","txt1","left");
 
 
 
-s_ui.Show_Form(700,600);
+s_ui.show_form(700,600);
 s_ui.Form_Title("新建文件");
 
 init("");

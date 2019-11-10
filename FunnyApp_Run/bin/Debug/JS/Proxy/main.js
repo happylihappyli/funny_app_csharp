@@ -27,13 +27,13 @@ function set_click(data){
     "  ]\n"+
     "}";
 
-    var path=s_sys.Path_App();
-    s_file.File_Save("D:\\Net\\Web\\set.json",content);
+    var path=s_sys.path_app();
+    s_file.save("D:\\Net\\Web\\set.json",content);
 }
 
 function run_click(data){
 
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     s_ui.text_set("txt1","D:\\Net\\Web\\main.exe -config D:\\Net\\Web\\set.json");
     s_ui.Run_App("D:\\Net\\Web\\main.exe","-config D:\\Net\\Web\\set.json");
     //s_ui.text_set("txt1",a);
@@ -57,9 +57,8 @@ function unset_proxy_click(data){
 
 
 s_ui.textbox_init("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,500,90);
-s_ui.combox_init("cb_hosts","149.248.37.214",10,110,200,30);
-s_ui.combox_add("cb_hosts","149.248.37.214");
-s_ui.combox_add("cb_hosts","144.202.83.139");
+s_ui.combox_init("cb_hosts","144.202.65.8",10,110,200,30);
+s_ui.combox_add("cb_hosts","144.202.65.8");
 
 
 s_ui.button_init("b1","创建key",10,150,200,30,"key_click","0");
@@ -73,8 +72,8 @@ s_ui.button_init("b2_3","设置代理(normal)",250,250,200,30,"proxy2_click","0"
 
 s_ui.button_init("b3_1","不用代理",10,300,200,30,"unset_proxy_click","");
 
-s_ui.Show_Form(560,500);
+s_ui.show_form(560,500);
 
 s_ui.Form_Title("科学上网");
 
-s_ui.Tray_Show(s_sys.Path_JS()+"\\proxy.ico");
+s_ui.Tray_Show(s_sys.path_js()+"\\proxy.ico");

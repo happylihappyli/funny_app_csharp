@@ -58,6 +58,7 @@ function event_msg(data){
             }
             break;
         case "status":
+            break;
         case "msg":
             log_msg=s_time.Time_Now()
         +" <span style='color:blue;'>"+obj.from+"</span>"
@@ -417,6 +418,7 @@ s_ui.button_init("b_model_step3","3-字段映射",10,100,100,30,"show_tools","Ru
 s_ui.button_init("b_model_step4","4-上传映射",10,100,100,30,"show_tools","Run_Bat2\\step4");
 s_ui.button_init("b_model_step5","5-处理文件",10,100,100,30,"show_tools","Run_Bat2\\step5");
 
+s_ui.button_init("b_model_step5_5","WOE IV",10,150,100,30,"show_tools","Run_Bat2\\step_woe_iv");
 s_ui.button_init("b_model_step6","6-选择字段",10,150,100,30,"show_tools","Run_Bat2\\step6");
 s_ui.button_init("b_model_step7","7-好坏样本",10,150,100,30,"show_tools","Run_Bat2\\step7");
 s_ui.button_init("b_model_step8","8-数据分离",10,150,100,30,"show_tools","Run_Bat2\\step8");
@@ -426,7 +428,7 @@ s_ui.button_init("b_model_step11","模型训练",10,150,100,30,"show_tools","Run
 
 
 s_ui.button_init("b_model_step21","测试样本",10,150,100,30,"show_tools","Run_Bat2\\step_test");
-s_ui.button_init("b_model_step22","lr_test",10,150,100,30,"show_tools","Run_Bat2\\step_lr_test");
+s_ui.button_init("b_model_step22","模型测试",10,150,100,30,"show_tools","Run_Bat2\\step_lr_test");
 s_ui.button_init("b_model_step23","统计准备",10,150,100,30,"show_tools","Run_Bat2\\step_static_pre");
 s_ui.button_init("b_model_step24","ks计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
 s_ui.button_init("b_model_step25","roc",10,150,100,30,"show_tools","Run_Bat2\\step_roc");
@@ -441,11 +443,11 @@ s_ui.panel_add("panel_main","b_model_step3","right");
 s_ui.panel_add("panel_main","b_model_step4","right");
 s_ui.panel_add("panel_main","b_model_step5","right");
 
+s_ui.panel_add("panel_main2","b_model_step5_5","right");
 s_ui.panel_add("panel_main2","b_model_step6","right");
 s_ui.panel_add("panel_main2","b_model_step7","right");
 s_ui.panel_add("panel_main2","b_model_step8","right");
 s_ui.panel_add("panel_main2","b_model_step9","right");
-s_ui.panel_add("panel_main2","b_model_step10","right");
 
 s_ui.panel_add("panel_main3","b_model_step11","right");
 
@@ -458,16 +460,14 @@ s_ui.panel_add("panel_main4","b_model_step25","right");
 
 s_ui.panel_add("panel_main5","b_model_step31","right");
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","Menu_File","&File");
-s_ui.Menu_Item_Add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","Menu_File","&File");
+s_ui.menu_item_add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
 
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Clear","清空记录","clear_click","");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Setting","设置","set_click","");
-
-
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
+s_ui.menu_item_add("Menu1","Tools","Menu_Clear","清空记录","clear_click","");
+s_ui.menu_item_add("Menu1","Tools","Menu_Setting","设置","set_click","");
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -477,7 +477,7 @@ s_ui.status_label_init("status_label2","222",100,30);
 s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("分析工具2");
 
 s_sys.tcp_event();

@@ -230,12 +230,12 @@ s_ui.text_init("txt_bad","",400,450,100,30);
 s_ui.button_init("b_get","抽取测试样本",510,420,100,55,"merge_click","");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_train");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_train");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_lr_test");
 
 
-s_ui.Show_Form(800,600);
-s_ui.Form_Title("v2 第9步 数据抽样");
+s_ui.show_form(800,600);
+s_ui.Form_Title("v2 测试 数据抽样");
 
 s_sys.tcp_event();
 

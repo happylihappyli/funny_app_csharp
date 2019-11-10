@@ -173,7 +173,7 @@ s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b_send");
 
-s_ui.Show_Form(600,600);
+s_ui.show_form(600,600);
 s_ui.Form_Title("TCP");
 
 s_sys.tcp_event();

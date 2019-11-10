@@ -72,6 +72,9 @@ s_ui.splitcontainer_add("split",1,"panel4","bottom");
 s_ui.panel_init("panel5",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel5","bottom");
 
+s_ui.panel_init("panel6",0,0,500,25,"none");
+s_ui.splitcontainer_add("split",1,"panel6","bottom");
+
 s_ui.button_init("btn_ls","目录文件",10,30,100,30,"show_file","ls -al");
 s_ui.panel_add("panel2","btn_ls","left");
 s_ui.button_init("btn_ps","查看进程",10,30,100,30,"show_ps","ps aux");
@@ -117,17 +120,43 @@ s_ui.button_init("btn_antlr","conda create",10,30,100,30,"show_antlr","");
 s_ui.panel_add("panel5","btn_antlr","left");
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Log","日志(&L)","log_click","");
-s_ui.Menu_Item_Add("Menu1","File","Chat2","加密聊天","chat2","");
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&S)","set_click","");
+s_ui.button_init("btn_openfire","openfire重启",10,30,100,30,"cmd_sub","/etc/init.d/openfire restart");
+s_ui.panel_add("panel5","btn_openfire","left");
+
+s_ui.button_init("btn_prosody_stop","prosody停止",10,30,100,30,"cmd_sub","prosodyctl stop");
+s_ui.panel_add("panel5","btn_prosody_stop","left");
+
+
+s_ui.button_init("btn_net","网络端口查看",10,30,100,30,"cmd_sub","netstat -apn|grep LISTEN");
+s_ui.panel_add("panel6","btn_net","left");
+
+
+
+s_ui.button_init("btn_screen","screen安装",10,30,100,30,"cmd_sub","yum install screen");
+s_ui.panel_add("panel6","btn_screen","left");
+
+
+s_ui.button_init("btn_renew_ssl_crt","更新证书",10,30,100,30,"cmd_sub","/usr/bin/certbot renew --renew-hook \"/opt/lampp/lampp restart\"");
+s_ui.panel_add("panel6","btn_renew_ssl_crt","left");
+
+
+s_ui.button_init("btn_pub_ssh","公钥登录",10,30,100,30,"cmd_text","cat id_rsa.pub>>.ssh/authorized_keys");
+s_ui.panel_add("panel6","btn_pub_ssh","left");
+
+
+
+
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Log","日志(&L)","log_click","");
+s_ui.menu_item_add("Menu1","File","Chat2","加密聊天","chat2","");
+s_ui.menu_add("Menu1","Tools","&Tools");4
+s_ui.menu_item_add("Menu1","Tools","Setting","设置(&S)","set_click","");
 
 
 //其他属性
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("Linux");
 
 on_load("");

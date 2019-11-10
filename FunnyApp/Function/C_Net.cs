@@ -1,4 +1,6 @@
-﻿using B_Net.Funny;
+﻿using agsXMPP;
+using agsXMPP.protocol.client;
+using B_Net.Funny;
 using Newtonsoft.Json.Linq;
 using Renci.SshNet.Sftp;
 using System;
@@ -74,6 +76,28 @@ namespace FunnyApp {
             }
 
             pFrmApp.Call_Event(callback, strReturn);
+        }
+
+
+        XmppClientConnection xmpp ;
+
+        public void xmpp_connect(string hosts,
+            string user,string password,
+            string event_login,string event_msg){
+
+            xmpp = new XmppClientConnection(hosts);
+            xmpp.Open(user,password);
+            xmpp.OnLogin += delegate (object sender) {
+                pFrmApp.Call_Event(event_login, "");
+            };
+            xmpp.OnMessage += delegate (object sender, Message msg) {
+                pFrmApp.Call_Event(event_msg, "");
+            };
+        }
+
+        public void xmpp_send(string user,string msg) {
+            xmpp.Send(new Message(user,
+                    MessageType.chat, msg));
         }
 
 
@@ -304,6 +328,10 @@ namespace FunnyApp {
             return S_Net.Http(url,"GET","", encode);
         }
 
+
+        public string http_get_ref(string url, string encode,string reference) {
+            return S_Net.Http(url, "GET", "", encode, reference);
+        }
 
 
         public string Set_Proxy(string ip, string port) {

@@ -73,7 +73,7 @@ s_ui.datagrid_init("grid1",10,60,650,380);
 s_ui.button_init("b_save","保存",100,450,200,30,"save_click","");
 
 
-s_ui.Show_Form(700,600);
+s_ui.show_form(700,600);
 s_ui.Form_Title("3.map 字段映射文件");
 
 data_init("");

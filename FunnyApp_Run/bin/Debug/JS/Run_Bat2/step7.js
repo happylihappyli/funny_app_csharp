@@ -3,6 +3,7 @@
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
 
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
@@ -12,8 +13,7 @@ function check_click(data){
     var a=s_ui.datagrid_read("grid1",index,1);
     //s_ui.msg(a);
     if (a=="1"){
-        var file=disk+"\\Net\\Web\\Data\\memo.ini";
-        s_file.Ini_Save(file,"y","index",k);
+        s_file.Ini_Save(file_memo,"y","index",k);
     }
 }
 
@@ -56,7 +56,6 @@ function read_ini(data){
     
     var good_map=s_file.Ini_Read(file,"good","map");
     s_ui.combox_text_set("combox_good_map",good_map);
-    
     
     var c2=s_file.Ini_Read(file,"bad","compare");
     s_ui.combox_select("combox_bad",c2);
@@ -140,7 +139,7 @@ s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step8");
 
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 第7步 定义好坏样本");
 
 sys_read_ini("");

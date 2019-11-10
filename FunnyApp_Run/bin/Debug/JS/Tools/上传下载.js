@@ -84,7 +84,7 @@ s_ui.textbox_init("txt_error","错误信息：",100,300,500,200);
 
 s_ui.progress_init("progress1",100,500,500,30);
 
-s_ui.Show_Form(860,600);
+s_ui.show_form(860,600);
 
 s_ui.Form_Title("上传下载");
 

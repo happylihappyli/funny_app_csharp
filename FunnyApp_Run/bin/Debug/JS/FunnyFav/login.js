@@ -39,7 +39,7 @@ function clear_click(data){
 
 function read_ini(){
     //s_ui.Combox_Clear("cb_friend");
-    var path=s_sys.Path_App();
+    var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     userName=s_file.Ini_Read(path+"\\config\\friend.ini","main","account")+"_public";
     
@@ -93,5 +93,5 @@ s_ui.combox_text_set("combox1",a);
 
 //其他属性
 s_ui.button_default("b1_login");
-s_ui.Show_Form(560,380);
+s_ui.show_form(560,380);
 s_ui.Form_Title("登录");

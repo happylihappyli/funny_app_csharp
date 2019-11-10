@@ -175,12 +175,12 @@ s_ui.control_dock("web","fill");
 
 s_ui.panel_init("panel_top",10,10,200,30,"top");
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
-s_ui.Menu_Add("Menu1","File","&File");
-s_ui.Menu_Item_Add("Menu1","File","Edit","编辑(&L)","edit_click","");
-s_ui.Menu_Item_Add("Menu1","File","Save","保存(&S)","save_fav","");
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Setting","设置(&L)","set_click","");
+s_ui.menu_init("Menu1");
+s_ui.menu_add("Menu1","File","&File");
+s_ui.menu_item_add("Menu1","File","Edit","编辑(&L)","edit_click","");
+s_ui.menu_item_add("Menu1","File","Save","保存(&S)","save_fav","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Setting","设置(&L)","set_click","");
 
 
 s_ui.panel_add("panel_top","b_init","left");
@@ -193,7 +193,7 @@ s_ui.panel_add("panel_top","txt1","left");
 s_ui.button_default("b_search");
 
 
-s_ui.Show_Form(800,680);
+s_ui.show_form(800,680);
 s_ui.Form_Title("资源共享（无服务器），电影，磁力链");
 
 init("");

@@ -425,10 +425,10 @@ s_ui.panel_add("panel2","b_pre","left");
 
 
 
-s_ui.Menu_Init("Menu1",0,0,800,25);
+s_ui.menu_init("Menu1");
 
-s_ui.Menu_Add("Menu1","Tools","&Tools");
-s_ui.Menu_Item_Add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
+s_ui.menu_add("Menu1","Tools","&Tools");
+s_ui.menu_item_add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -439,7 +439,7 @@ s_ui.status_add("status","status_label2","left");
 
 
 s_ui.button_default("b1_send");
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 第8步 好坏样本分离");
 
 

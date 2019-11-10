@@ -68,7 +68,7 @@ s_ui.button_init("b2_2","Join左右",650,200,100,30,"run_join","1");
 
 s_ui.button_init("b2_3","Join右左",650,250,100,30,"run_join","0");
 
-s_ui.Show_Form(800,800);
+s_ui.show_form(800,800);
 
 s_ui.Form_Title("参数生成");
 

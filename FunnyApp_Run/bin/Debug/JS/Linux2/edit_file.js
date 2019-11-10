@@ -108,7 +108,7 @@ s_ui.button_init("b1_save","保存",150,550,100,30,"save_click","");
 
 //其他属性
 //s_ui.button_default("b1_save");
-s_ui.Show_Form(560,680);
+s_ui.show_form(560,680);
 s_ui.Form_Title("文件编辑");
 
 s_tcp.hook_event("event_msg");

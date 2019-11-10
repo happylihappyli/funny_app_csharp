@@ -236,8 +236,8 @@ s_ui.panel_init("panel_middle",0,0,300,160,"bottom");
 s_ui.panel_init("panel_bottom",0,0,300,100,"bottom");
 
 
-s_ui.button_init("b_pre", "上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
+s_ui.button_init("b_pre", "上一步",100,500,200,30,"next_click","Run_Bat2\\step9");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_test");
 
 
 s_ui.panel_init("panel_middle_left",0,0,200,100,"left");
@@ -292,7 +292,7 @@ s_ui.panel_add("panel_bottom","b_pre","right");
 s_ui.panel_add("panel_bottom","b_next","right");
 
 
-s_ui.Show_Form(800,600);
+s_ui.show_form(800,600);
 s_ui.Form_Title("v2 训练模型");
 
 s_sys.tcp_event();
