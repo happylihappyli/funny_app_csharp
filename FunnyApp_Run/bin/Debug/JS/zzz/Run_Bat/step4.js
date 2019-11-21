@@ -73,11 +73,11 @@ function callback_ftp_list(data){
 }
 
 function list_file(data){
-    var strLine=s_file.File_List_File("D:\\Net\\Web\\Data");
+    var strLine=s_file.File_List_File(disk+"\\Net\\Web\\Data");
     var strSplit=strLine.split("|");
 
     for(var i=0;i<strSplit.length;i++){
-        var file="D:\\Net\\Web\\Data\\"+strSplit[i];
+        var file=disk+"\\Net\\Web\\Data\\"+strSplit[i];
         s_ui.listbox_add("list_upload",file);
     }
 }

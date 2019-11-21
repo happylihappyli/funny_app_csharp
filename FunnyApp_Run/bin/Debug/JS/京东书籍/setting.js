@@ -8,15 +8,15 @@ function save_check_click(data){
     var path2=s_ui.text_read("path2");
     var path3=s_ui.text_read("path3");
     
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","book","Path_Data",path1);
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","book","Path_Index",path2);
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","book","Path_Seg",path3);
+    s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","book","Path_Data",path1);
+    s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","book","Path_Index",path2);
+    s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","book","Path_Seg",path3);
     s_ui.msg("保存成功！");
 }
 
-var Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Data");
-var Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Index");
-var Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Seg");
+var Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Data");
+var Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Index");
+var Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Seg");
 
 
 s_ui.label_init("lb1","设置代码目录和索引目录",10,30);

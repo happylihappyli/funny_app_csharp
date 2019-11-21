@@ -1,3 +1,13 @@
+
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
 var friend_return=0;
 var session_send=0;
 var sep=1;
@@ -10,12 +20,6 @@ var keep_count=1;
 var myMap=[];
 var head="";
 
-[[[..\\data\\default.js]]]
-[[[..\\data\\common_string.js]]]
-[[[..\\data\\tcp.js]]]
-
-var file_ini=disk+"\\Net\\Web\\main.ini";
-var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 
 function clear_data(data){
@@ -159,7 +163,7 @@ function get_compare(index){
 }
 
 function static_click(data){
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     
     var line=s_file.read(file1,1);
@@ -167,7 +171,7 @@ function static_click(data){
     fields_count=strSplit.length;
     
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     var line="";
@@ -203,13 +207,13 @@ function static_click(data){
         "select "+line+" from t where "+strWhere+";",
         "v","/root/step8_good.txt");
     
-    s_ui.text_set("txt_send",cmd);
     step=1;
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:"+step);
+    
 }
 
 function static_bad_click(){
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     
     var line=s_file.read(file1,1);
@@ -217,7 +221,7 @@ function static_bad_click(){
     fields_count=strSplit.length;
     
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     var line="";
@@ -253,9 +257,8 @@ function static_bad_click(){
         "select "+line+" from t where "+strWhere+";",
         "v","/root/step8_bad.txt");
     
-    s_ui.text_set("txt_send",cmd);
     step=2;
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:"+step);
 }
 
 function next_click(data){
@@ -290,19 +293,6 @@ function resend_chat_msg(data) {
     }
 }
 
-//发送消息 
-function send_msg_click(){
-    msg_id+=1;
-    
-    var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    
-    
-    send_msg(strType,friend,strMsg,"step:"+step);
-    
-    
-    s_ui.text_set("txt_send","");
-}
 
 function set_status(data){
     var strSplit=data.split(",");
@@ -359,20 +349,13 @@ function send_msg(strType,friend,msg,return_cmd){
 
 
 s_ui.splitcontainer_init("split",0,0,500,500,"h");
-s_ui.splitcontainer_distance("split",50);
+s_ui.splitcontainer_distance("split",30);
 
 
 s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
 
 
 //界面
-//s_ui.datagrid_init("grid1",10,60,650,200);
-
-s_ui.text_init("txt_send","ls",380,350,320,30);
-
-
-s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
 
 
 s_ui.textbox_init("txt_user_name","000",10,450,200,30);
@@ -400,19 +383,13 @@ s_ui.splitcontainer_add("split",1,"web","fill");
 
 s_ui.splitcontainer_add("split",1,"progress2","top");
 
-//s_ui.splitcontainer_add("split",1,"grid1","top");
-s_ui.splitcontainer_add("split",1,"txt_file","top");
-
 
 
 s_ui.panel_init("panel_top",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel_top","bottom");
-s_ui.panel_add("panel_top","txt_send","fill");
-
-s_ui.panel_add("panel_top","b1_send","right");
 
 
-s_ui.panel_init("panel2",0,0,500,25,"none");
+s_ui.panel_init("panel2",0,0,500,50,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
 

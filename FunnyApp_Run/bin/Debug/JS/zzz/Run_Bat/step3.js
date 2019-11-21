@@ -96,7 +96,7 @@ function event_chat(data){
     
     var line2="";
     if (step<3){
-        var file=s_sys.value_read("file1");
+        var file=s_file.Ini_Read(file_memo,"main","file1");
         var line=s_file.read(file,1);
         var strSplit=line.split("|");
         var count=strSplit.length;
@@ -170,7 +170,7 @@ function map_click(data){
     var type=s_ui.datagrid_read("grid1",index,1);
     //s_ui.msg(type);
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     var cmd=sql("/home/ftp_home"+file2,
             "select c"+row_index+",count(1) from t group by c"+row_index,
             "v","/root/map_"+row_index+".txt");
@@ -195,7 +195,7 @@ function data_init(data){
 }
 
 function static_click(data){
-    var file=s_sys.value_read("file1");
+    var file=s_file.Ini_Read(file_memo,"main","file1");
     var line=s_file.read(file,1);
     var strSplit=line.split("|");
     var count=strSplit.length;
@@ -208,7 +208,7 @@ function static_click(data){
         line=line.substr(0,line.length-1);
     }
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     var cmd="file_sql "+userName+" /home/ftp_home"+file2+" 250000 \"select "+line+" from t;\" v /root/step3.txt";
     
     s_ui.text_set("txt_send",cmd);
@@ -391,11 +391,11 @@ function send_msg_click(){
 
 function upload_click(data){
     
-    var strLine=s_file.File_List_File("D:\\Net\\Web\\Data");
+    var strLine=s_file.File_List_File(disk+"\\Net\\Web\\Data");
     var strSplit=strLine.split("|");
 
     for(var i=0;i<strSplit.length;i++){
-        var file="D:\\Net\\Web\\Data\\"+strSplit[i];
+        var file=disk+"\\Net\\Web\\Data\\"+strSplit[i];
         var path="/upload/map/"+s_file.File_Short_Name(file);
         //s_ui.msg(file+","+path);
         s_net.ftp_upload("robot6.funnyai.com","test","test","22",file,path,"set_status","show_error");

@@ -1,9 +1,10 @@
 
 var disk="D:";
+
 var userName="none";
 var md5="";
 
-
+var python_bin="/usr/local/bin/python3.7";
 var log_msg="";
 var css_head='<html><head>\n'
 +'<link href="http://www.funnyai.com/Common/css/default.css" type="text/css" rel="stylesheet" />\n'

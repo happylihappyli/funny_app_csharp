@@ -99,7 +99,7 @@ function process_step11(data){
     var index=parseInt(data)+1;
     
     var y_index=s_file.Ini_Read(file_memo,"y","index");
-    var count_field=sys_field_count();
+    var count_field=sys_field_selected();
     var sql="select c"+index+",sum(c"+y_index+"),count(1)-sum(c"+y_index+")"
         +" From t Group By c"+index;
     var output="/root/static_output.txt";

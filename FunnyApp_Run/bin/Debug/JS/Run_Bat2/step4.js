@@ -1,8 +1,17 @@
 
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
+
 var password="test";
 var index=0;
 var flag="uploading";
-
 
 //检查
 function check_upload(data){
@@ -73,11 +82,11 @@ function callback_ftp_list(data){
 }
 
 function list_file(data){
-    var strLine=s_file.File_List_File("D:\\Net\\Web\\Data");
+    var strLine=s_file.File_List_File(disk+"\\Net\\Web\\Data");
     var strSplit=strLine.split("|");
 
     for(var i=0;i<strSplit.length;i++){
-        var file="D:\\Net\\Web\\Data\\"+strSplit[i];
+        var file=disk+"\\Net\\Web\\Data\\"+strSplit[i];
         s_ui.listbox_add("list_upload",file);
     }
 }

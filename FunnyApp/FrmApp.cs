@@ -159,6 +159,10 @@ namespace FunnyApp
 
         delegate void d_Call_JS_Function(string function, string data);//创建一个代理
         public void JS_Function(string function, string data) {
+            if (function.Equals("")) {
+                MessageBox.Show(data);
+                return;
+            }
             if (!this.InvokeRequired) {
                 pJS.p_Engine.Invoke(function, data);
             } else {

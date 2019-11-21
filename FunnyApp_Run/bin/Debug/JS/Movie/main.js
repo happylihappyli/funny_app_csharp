@@ -13,16 +13,24 @@ var Path_Seg="";
 //添加回调函数
 function callback_add(data){
     var id=s_sys.value_read("ID");
+    var name=s_sys.value_read("Name");
+    //s_ui.msg(name);
+    var ID_From_Web=s_sys.value_read("ID_From_Web");
     var content=s_sys.value_read("Content");
 
     if (id!="" && content!=""){
         s_file.save(Path_Data+"\\"+id+".txt",content);
+        
+        var file_ext=Path_Data+"\\"+id+".ini";//保存扩展信息
+        s_file.Ini_Save(file_ext,"main","name",name);
+        s_file.Ini_Save(file_ext,"main","id",ID_From_Web);
+        
         if (id=="1"){
             s_index.Create_Start(Path_Index,true);
         }else{
             s_index.Create_Start(Path_Index,false);
         }
-        s_index.Add_Document(id,content);
+        s_index.Add_Document(id,name+" "+content);
         s_index.Create_End();
         
         s_sys.value_save("ID","");
@@ -33,23 +41,33 @@ function callback_add(data){
 function index_add(data){
     //s_ui.msg(data);
     s_sys.value_save("ID","");
+    s_sys.value_save("Name","");
     s_sys.value_save("Content","");
-    s_ui.Run_JS_Dialog(project_name+"\\new.js","callback_add");
+    s_ui.Run_JS_Dialog(project_name+"\\add.js","callback_add");
 }
 
 
 //添加回调函数
 function callback_edit(data){
     var id=s_sys.value_read("ID");
+    var name=s_sys.value_read("Name");
+    
+    var ID_From_Web=s_sys.value_read("ID_From_Web");
     var content=s_sys.value_read("Content");
 
     if (id!="" && content!=""){
         s_file.save(Path_Data+"\\"+id+".txt",content);
+        
+        var file_ext=Path_Data+"\\"+id+".ini";//保存扩展信息
+        //s_ui.msg(name);
+        s_file.Ini_Save(file_ext,"main","name",name);
+        s_file.Ini_Save(file_ext,"main","id",ID_From_Web);
+        
         s_index.Create_Start(Path_Index,false);
         
         s_index.Remove_Document(id);
         
-        s_index.Add_Document(id,content);
+        s_index.Add_Document(id,name+" "+content);
         s_index.Create_End();
         
         s_sys.value_save("ID","");
@@ -111,6 +129,10 @@ function set_click(data){
     s_ui.Run_JS_Dialog(project_name+"\\setting.js","");
 }
 
+function set_user_click(data){
+    s_ui.Run_JS_Dialog(project_name+"\\setting_user.js","");
+}
+
 function New_URL(data){
     var strSplit=data.split("?");
     var file=strSplit[1];
@@ -155,7 +177,7 @@ function index_init(data){
 }
 
 s_ui.text_init("txt1","",10,30,300,30);
-s_ui.text_font_size("txt1",12);
+s_ui.font_size("txt1",12);
 s_ui.button_init("b_search","搜索",250,30,100,30,"search","");
 s_ui.button_enable("b_search",0);
 
@@ -181,6 +203,7 @@ s_ui.menu_item_add("Menu1","File","Edit","编辑(&L)","edit_click","");
 s_ui.menu_item_add("Menu1","File","Save","保存(&S)","save_fav","");
 s_ui.menu_add("Menu1","Tools","&Tools");
 s_ui.menu_item_add("Menu1","Tools","Setting","设置(&L)","set_click","");
+s_ui.menu_item_add("Menu1","Tools","Setting2","设置账号(&L)","set_user_click","");
 
 
 s_ui.panel_add("panel_top","b_init","left");

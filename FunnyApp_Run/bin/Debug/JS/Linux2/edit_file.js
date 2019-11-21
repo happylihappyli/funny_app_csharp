@@ -1,5 +1,12 @@
 
-var userName="none";
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
+
 var log_msg="";
 
 [[[..\\data\\default.js]]]
@@ -9,7 +16,9 @@ var log_msg="";
 
 function event_msg(data){
     var obj=JSON.parse(data);
+    //s_ui.msg(data);
     var msg=obj.message;
+    //s_ui.msg(msg);
 
     switch(obj.type){
         case "login.ok":
@@ -21,6 +30,7 @@ function event_msg(data){
             friend_return=1;
             break;
         case "read_return":
+            //s_ui.msg(msg);
             s_ui.text_set("txt_content",msg);
             //s_ui.msg(msg);
         case "msg":
@@ -40,8 +50,6 @@ function save_click(data){
     var token=sys_get_token();
     var strType="save";
     
-    
-    var file_ini=disk+"\\Net\\Web\\main.ini";
     var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
     
     var strContent=s_ui.text_read("txt_content");
@@ -64,8 +72,6 @@ function read_file(data){
     var token=sys_get_token();
     var strType="read";
     
-    
-    var file_ini=disk+"\\Net\\Web\\main.ini";
     var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
     
     
@@ -76,7 +82,7 @@ function read_file(data){
             +"\"from\":\""+userName+"\",\"type\":\""+strType+"\","
             +"\"file\":\""+data+"\","
             +"\"to\":\""+friend+"\",\"message\":\"\"}";
-        
+    //s_ui.msg(strLine);
     s_tcp.send("m:<s>:"+strLine+":</s>");
 }
 
@@ -89,7 +95,7 @@ function read_click(data){
 function on_load(){
     var a=sys_read_ini();
     userName=a+"/linux";
-    s_ui.text_set("txt_user_name",userName);
+    //s_ui.text_set("txt_user_name",userName);
 }
 
 var file=s_sys.value_read("file");

@@ -7,10 +7,10 @@ var max_id=1;
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Seg");
-    max_id  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","max_id");
+    Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Data");
+    Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Index");
+    Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Seg");
+    max_id  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","max_id");
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
@@ -32,7 +32,7 @@ function save_click(data){
 
 
 s_ui.textbox_init("txt2","",10,100,600,300);
-s_ui.text_font_size("txt2",18);
+s_ui.font_size("txt2",18);
 s_ui.control_dock("txt2","fill");
 
 s_ui.panel_init("panel1",0,0,500,25,"top");

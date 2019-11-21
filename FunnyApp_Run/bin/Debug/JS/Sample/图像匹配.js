@@ -1,7 +1,7 @@
 //这个功能在窗口写：hello word
 var content="";
 function screen_match(data){
-    content=s_ui.screen_match("D:\\test.bmp");
+    content=s_ui.screen_match(disk+"test.bmp");
     s_ui.text_set("txt",content); 
 }
 

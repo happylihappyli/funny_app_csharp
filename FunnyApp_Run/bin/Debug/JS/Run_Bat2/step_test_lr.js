@@ -1,3 +1,14 @@
+
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
+
 var friend_return=0;
 var session_send=0;
 var sep=1;
@@ -9,48 +20,6 @@ var keep_count=1;
 
 var myMap=[];
 var head="";
-
-[[[..\\data\\default.js]]]
-[[[..\\data\\common_string.js]]]
-[[[..\\data\\tcp.js]]]
-
-var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
-var file_ini=disk+"\\Net\\Web\\main.ini";
-var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
-
-
-function clear_data(data){
-    s_ui.datagrid_clear("grid1");
-}
-
-function data_init(data){
-    s_ui.datagrid_clear("grid1");
-    
-    s_ui.datagrid_init_column("grid1",9,"字段,备注,avg,方差,0%,25%,50%,75%,100%");
-    s_ui.datagrid_add_line("grid1","1,正在分析...",",");
-    
-    s_ui.datagrid_add_checkbox("grid1","modify","选择","check_click");
-}
-
-
-function check_click(data){
-    var index=parseInt(data);
-    var k=index+1;
-    var a=s_ui.datagrid_read("grid1",index,8);
-    
-    s_file.Ini_Save(file_memo,"selected","check"+k,a);
-}
-
-function save_click(data){
-    
-    var index=parseInt(data)+1;
-    var memo=s_ui.datagrid_read("grid1",index,1);
-    memo=memo.replaceAll(",","");
-    
-    s_file.Ini_Save(file_memo,"main","memo"+index,memo);
-    
-    //s_ui.msg(memo);
-}
 
 function event_msg(data){
     
@@ -102,23 +71,6 @@ function event_msg(data){
 
 
 
-function friend_list(data){
-    s_ui.listbox_clear("list_friend");
-    s_ui.listbox_add("list_friend","*");
-
-    send_msg("friend_list","","","friend_list");
-    
-}
-
-function friend_change(data){
-    
-    var friend=s_ui.listbox_text("list_friend");
-    if (friend!=""){
-        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
-    }
-}
-
-
 
 function sql(file1,sql,sep,output){
     var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" "+file1
@@ -126,45 +78,16 @@ function sql(file1,sql,sep,output){
     return cmd;
 }
 
-
-function map_click(data){
-    var index=parseInt(data);
-    row_index=s_ui.datagrid_read("grid1",index,0);
-    s_sys.value_save("row_index",row_index);
-    
-    var type=s_ui.datagrid_read("grid1",index,1);
-    
-    
-}
-
-function get_compare(index){
-    switch(index){
-        case "0":
-            return ">";
-        case "1":
-            return ">=";
-        case "2":
-            return "=";
-        case "3":
-            return "<";
-        case "4":
-            return "<=";
-        case "5":
-            return "<>";
-    }
-    return "";
-}
-
 function static_click(data){
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     
     var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
+    var strSplit=line.split(",");
     fields_count=strSplit.length;
     
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     
@@ -181,7 +104,7 @@ function static_click(data){
     
     
     var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
+    var strSplit=line.split(",");
     var fields_count=strSplit.length;
     var count_field=0;
     
@@ -191,10 +114,11 @@ function static_click(data){
             count_field+=1;
         }
     }
-            
-            
-    var cmd="/usr/local/bin/python3.7 /root/test_lr_tcp.py /root/test.txt "
-            +id+" "+count_field+" /root/test_output.txt";
+    
+    
+    
+    var cmd=python_bin+" /root/test_lr_tcp.py /root/test.txt "
+            +id+" "+count_field+" /root/data/output.txt"; //  /root/test_output.txt
     send_msg("cmd",friend,cmd,"step:1");
 }
 
@@ -286,23 +210,6 @@ function send_msg(strType,friend,msg,return_cmd){
 }
 
 
-s_ui.splitcontainer_init("split",0,0,500,500,"h");
-s_ui.splitcontainer_distance("split",50);
-
-
-s_ui.text_init("txt_file",s_sys.value_read("file"),350,450,200,30);
-
-
-s_ui.textbox_init("txt_user_name","000",10,450,200,30);
-
-
-s_ui.textbox_init("txt_info","",10,250,300,50);
-
-
-s_ui.panel_init("panel_top1",0,0,500,25,"none");
-
-s_ui.splitcontainer_add("split",0,"panel_top1","fill");
-
 s_ui.panel_add("panel_top1","txt_info","fill");
 s_ui.panel_add("panel_top1","txt_user_name","right");
 
@@ -314,32 +221,50 @@ s_ui.Web_New_Event("web","New_URL");
 
 s_ui.progress_init("progress2",100,400,500,30);
 
-s_ui.splitcontainer_add("split",1,"web","fill");
-
-s_ui.splitcontainer_add("split",1,"progress2","top");
-
-//s_ui.splitcontainer_add("split",1,"grid1","top");
-s_ui.splitcontainer_add("split",1,"txt_file","top");
+s_ui.control_dock("web","fill");
+s_ui.control_dock("progress2","top");
 
 
-
-s_ui.panel_init("panel_top",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel_top","bottom");
-s_ui.panel_add("panel_top","txt_send","fill");
-
-s_ui.panel_add("panel_top","b1_send","right");
+s_ui.label_init("lb_model","模型ID:",100,350);
+s_ui.text_init("model_id","1",200,350,160,30);
 
 
-s_ui.panel_init("panel2",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel2","bottom");
+s_ui.font_size("lb_model",18);
+s_ui.font_size("model_id",18);
+
+s_ui.panel_init("panel_middle",0,0,300,160,"bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_test");
+s_ui.panel_init("panel2",0,0,500,50,"bottom");
+
+s_ui.panel_init("panel_middle_left",0,0,560,100,"left");
+
+s_ui.panel_add("panel_middle","panel_middle_left","left");
+
+
+s_ui.panel_init("panel_middle_left_line0",0,0,200,30,"top");
+s_ui.panel_init("panel_middle_left_line1",0,0,200,50,"top");
+s_ui.panel_init("panel_middle_left_line2",0,0,200,50,"top");
+
+
+s_ui.panel_add("panel_middle_left","panel_middle_left_line2","top");
+s_ui.panel_add("panel_middle_left","panel_middle_left_line0","top");
+
+s_ui.panel_add("panel_middle_left_line2","lb_model","right");
+s_ui.panel_add("panel_middle_left_line2","model_id","right");
+
+
+
+s_ui.button_init("b_test","测试",100,500,200,30,"static_click","");
+
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_test_data");
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_static_pre");
 
 
-s_ui.panel_add("panel2","b_next","left");
-s_ui.panel_add("panel2","b_pre","left");
+s_ui.panel_add("panel2","b_test","right");
+s_ui.panel_add("panel2","b_pre","right");
+s_ui.panel_add("panel2","b_next","right");
+
 
 
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -348,10 +273,8 @@ s_ui.status_add("status","status_label","left");
 s_ui.status_label_init("status_label2","222",100,30);
 s_ui.status_add("status","status_label2","left");
 
-
-s_ui.button_default("b1_send");
 s_ui.show_form(800,600);
-s_ui.Form_Title("v2 模型测试lr ");
+s_ui.Form_Title("v2 模型测试 逻辑回归");
 
 
 s_sys.tcp_event();
@@ -360,4 +283,4 @@ on_load("");
 
 data_init("");
 
-static_click("");
+//static_click("");

@@ -15,7 +15,7 @@ function check_myMap() {
             var obj=JSON.parse(pMsg.Msg);
             log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
-            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
+            s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
             s_ui.Web_Content("web",log_msg);
@@ -62,7 +62,7 @@ function login_click(data){
         return ;
     }
 
-    s_file.Ini_Save("D:\\Net\\Web\\funnyfav.ini","main","file",s_ui.combox_text("combox1"));
+    s_file.Ini_Save(disk+"\\Net\\Web\\funnyfav.ini","main","file",s_ui.combox_text("combox1"));
     
     
     s_sys.value_save("password",pass1);
@@ -77,8 +77,8 @@ s_ui.password_init("password1","",10,50,300,30);
 s_ui.password_init("password2","",10,100,300,30);
 s_ui.label_init("lb2","选择收藏夹文件:",10,180);
 
-s_ui.combox_init("combox1","D:\\Net\\Web\\private_url.txt",10,200,300,30);
-s_ui.combox_add("combox1","D:\\Net\\Web\\private_url.txt");
+s_ui.combox_init("combox1",disk+"\\Net\\Web\\private_url.txt",10,200,300,30);
+s_ui.combox_add("combox1",disk+"\\Net\\Web\\private_url.txt");
 
 s_ui.combox_add("combox1","E:\\CloudStation\\Robot5\\happyli\\bak\\private_url.txt");
 
@@ -87,7 +87,7 @@ s_ui.combox_add("combox1","C:\\Net\\Web\\private_url.txt");
 s_ui.button_init("b1_login","登录",10,250,100,30,"login_click","");
 
 
-var a=s_file.Ini_Read("D:\\Net\\Web\\funnyfav.ini","main","file");
+var a=s_file.Ini_Read(disk+"\\Net\\Web\\funnyfav.ini","main","file");
 s_ui.combox_text_set("combox1",a);
 
 

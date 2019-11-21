@@ -1,10 +1,10 @@
 
-
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
 
-
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
@@ -123,55 +123,30 @@ function send_msg(strType,friend,msg,return_cmd){
     }
 }
 
-function save_click(data){
-    
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
-    
-    var c1=s_ui.combox_index("combox_good");
-    s_file.Ini_Save(file,"good","compare",c1);
-    
-    var good=s_ui.text_read("txt_good");
-    s_file.Ini_Save(file,"good","value",good);
-    
-    var good_map=s_ui.combox_text("combox_good_map");
-    s_file.Ini_Save(file,"good","map",good_map);
-    
-    var c2=s_ui.combox_index("combox_bad");
-    s_file.Ini_Save(file,"bad","compare",c2);
-    
-    var bad=s_ui.text_read("txt_bad");
-    s_file.Ini_Save(file,"bad","value",bad);
-    
-    var bad_map=s_ui.combox_text("combox_bad_map");
-    s_file.Ini_Save(file,"bad","map",bad_map);
-    
-}
 
 function static_click(data){
     msg_id+=1;
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
 
     var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
+    var strSplit=line.split(",");
     var fields_count=strSplit.length;
-    //s_ui.msg(fields_count);
+    
     var count=0;
-    var file=disk+"\\Net\\Web\\Data\\memo.ini";
     for (var i=1;i<=fields_count;i++){
-        var value=s_file.Ini_Read(file,"selected","check"+i);
+        var value=s_file.Ini_Read(file_memo,"selected","check"+i);
         if (value=="1"){
             count+=1;
         }
     }
-    //s_ui.msg(count);
+    
     var id=s_ui.text_read("model_id");
     var file="/root/happyli/funny_app.jar /root/happyli/java/funny_app/ks.js";
     var file_input=s_ui.text_read("txt_file");
     var strMsg="java -jar "+file+" "+file_input+" 0 1 2";
 
     send_msg("cmd",friend,strMsg,"step:1");
-    s_ui.text_set("txt_send","");
 }
 
 
@@ -183,14 +158,24 @@ s_ui.Web_New_Event("web","New_URL");
 
 s_ui.label_init("lb_alg","要处理的文件:",100,420);
 
-s_ui.text_init("txt_file","/root/data_for_static.txt",100,460,300,30);
+s_ui.text_init("txt_file","/root/data/data_for_static.txt",100,460,300,30);
 
 
 s_ui.button_init("b_ks","ks",510,420,100,60,"static_click","");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_static_pre");
+
+
+s_ui.panel_init("panel2",0,0,500,50,"bottom");
+
+
+s_ui.button_init("b_pre", "上一步",100,500,200,30,"next_click","Run_Bat2\\step_static_pre");
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_roc");
+
+
+s_ui.panel_add("panel2","b_next","right");
+s_ui.panel_add("panel2","b_pre","right");
+
 
 
 s_ui.show_form(800,600);

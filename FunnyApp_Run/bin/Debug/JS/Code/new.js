@@ -1,4 +1,7 @@
 
+[[[..\\data\\default.js]]]
+
+
 var Path_Data ="";
 var Path_Index="";
 var Path_Seg="";
@@ -7,10 +10,10 @@ var max_id=1;
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Seg");
-    max_id  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","max_id");
+    Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","Path_Data");
+    Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","Path_Index");
+    Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","Path_Seg");
+    max_id  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","max_id");
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
@@ -25,7 +28,7 @@ function init(data){
 
 function save_click(data){
     var ID=s_ui.text_read("txt1");
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",ID);
+    s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","Code","max_id",ID);
     s_sys.value_save("ID",ID);
     s_sys.value_save("Content",s_ui.text_read("txt2"));
     s_ui.close();
@@ -33,7 +36,7 @@ function save_click(data){
 
 
 s_ui.textbox_init("txt2","",10,100,600,300);
-s_ui.text_font_size("txt2",18);
+s_ui.font_size("txt2",18);
 s_ui.control_dock("txt2","fill");
 
 s_ui.panel_init("panel1",0,0,500,25,"top");

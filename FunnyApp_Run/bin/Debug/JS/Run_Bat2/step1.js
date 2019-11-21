@@ -1,5 +1,15 @@
 
-var password="test";
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
+
+var password="123ewq!@#EWQ";
 
 function upload_click(data){
     var file=s_ui.text_read("txt_upload");
@@ -56,11 +66,13 @@ function callback_ftp_list(data){
 function file_open(){
     var strLine=s_file.File_Open();
     s_ui.text_set("txt_upload",strLine);
+    
+    s_sys.value_save("file1",strLine);
+    s_file.Ini_Save(file_memo,"main","file1",strLine);
 }
 
 function next_click(data){
     var file=s_ui.text_read("txt_upload");
-    s_sys.value_save("file1",file);
     s_ui.Run_JS(data+".js");
     s_ui.close();
 }
@@ -93,5 +105,5 @@ s_ui.show_form(860,650);
 
 s_ui.Form_Title("v2 第一步：文件上传");
 
-s_net.ftp_list("robot6.funnyai.com","test","test",22,"/upload","callback_ftp_list");
+//s_net.ftp_list("robot6.funnyai.com","test",password,22,"/upload","callback_ftp_list");
 

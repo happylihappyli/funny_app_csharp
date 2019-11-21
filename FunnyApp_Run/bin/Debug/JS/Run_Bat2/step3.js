@@ -1,11 +1,19 @@
+
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
 var friend_return=0;
 var msg_id=0;
 var sep=1;
 var step=0;//处理步骤
 var row_index=0;//第几个字段被点击
 
-var userName="none";
-var md5="";
 var log_msg="";
 var keep_count=1;
 
@@ -13,17 +21,12 @@ var myMap=[];
 var head="";
 
 
-[[[..\\data\\default.js]]]
-[[[..\\data\\common_string.js]]]
-[[[..\\data\\tcp.js]]]
-
-var file_ini=disk+"\\Net\\Web\\main.ini";
-var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function event_msg(data){
     var obj=JSON.parse(data);
     var msg=obj.message;
-
+    //s_ui.msg(data);
+    
     switch(obj.type){
         case "chat_return":
             log_msg="<b>chat_return:"+obj.oid+"</b><br>"+log_msg;
@@ -71,6 +74,22 @@ function event_msg(data){
                 case "step:12":
                     process_step(obj);
                     break;
+                default:
+                    switch(obj.from){
+                        case "line":
+                            s_ui.datagrid_clear("grid1");
+                            s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
+                            var strSplit=msg.split(",");
+                            for(var i=0;i<strSplit.length;i++){
+                                if (strSplit[i].startsWith("0.0")){
+                                    s_ui.datagrid_add_line("grid1",(i+1)+",数字,"+strSplit[i],",");
+                                }else{
+                                    s_ui.datagrid_add_line("grid1",(i+1)+",字符,"+strSplit[i],",");
+                                }
+                            }
+                            s_ui.datagrid_add_button("grid1","modify","映射","map_click");
+                    }
+                    break;
             }
             log_msg=s_time.Time_Now()
         +" <span style='color:blue;'>"+obj.from+"</span>"
@@ -109,11 +128,11 @@ function process_step(obj){
     var line2="";
     if (step<3){
         s_ui.status_label_show("status_label","step1");
-        var file1=s_sys.value_read("file1");
+        var file1=s_file.Ini_Read(file_memo,"main","file1");
         if (file1=="") file1="E:\\sample1.txt";
         s_ui.status_label_show("status_label","step2");
         var line=s_file.read(file1,1);
-        var strSplit=line.split("|");
+        var strSplit=line.split(",");
         var count=strSplit.length;
         
         for (var i=1;i<=count;i++){
@@ -128,31 +147,30 @@ function process_step(obj){
     switch(step){
         case 1:
             cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
-            //s_ui.msg(cmd);
-            s_ui.text_set("txt_send",cmd);
+            step=2;
+            send_msg("cmd",friend,cmd,"step:2");
             break;
         case 2:
             s_ui.status_label_show("status_label","step=2");
-            cmd="cat /root/step3_2.txt";
-            s_ui.text_set("txt_send",cmd);
+            do_step3("");
             break;
         case 3:
             s_ui.datagrid_clear("grid1");
             s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
-            
             var strSplit=msg.split(",");
             for(var i=0;i<strSplit.length;i++){
-                if (strSplit[i]=="0.0"){
-                    s_ui.datagrid_add_line("grid1",(i+1)+",数字",",");
+                if (strSplit[i].startsWith("0.0")){
+                    s_ui.datagrid_add_line("grid1",(i+1)+",数字,"+strSplit[i],",");
                 }else{
-                    s_ui.datagrid_add_line("grid1",(i+1)+",字符",",");
+                    s_ui.datagrid_add_line("grid1",(i+1)+",字符,"+strSplit[i],",");
                 }
             }
             s_ui.datagrid_add_button("grid1","modify","映射","map_click");
             break;
         case 11:
             cmd="cat /root/map_"+row_index+".txt";
-            s_ui.text_set("txt_send",cmd);
+            step=12;
+            send_msg("cmd",friend,cmd,"step:12");
             break;
         case 12:
             msg=msg.replaceAll("\\\\n","\n");
@@ -160,19 +178,13 @@ function process_step(obj){
             s_ui.Run_JS("Run_Bat2\\step3_map.js");
             break;
     }
-    switch(step){
-        case 1:
-        case 2:
-        case 11:
-            step+=1;
-            send_msg_click();
-            break;
-        default:
-            step+=1;
-            break;
-    }
 }
 
+function do_step3(data){
+    cmd="cat /root/step3_2.txt";
+    step=3
+    send_msg("cmd",friend,cmd,"step:3");
+}
 
 function sql(file1,sql,sep,output){
     var cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" "+file1
@@ -199,16 +211,15 @@ function map_click(data){
     var type=s_ui.datagrid_read("grid1",index,1);
     //s_ui.msg(type);
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     var cmd=sql("/home/ftp_home"+file2,
             "select c"+row_index+",count(1) from t group by c"+row_index,
-            "v","/root/map_"+row_index+".txt");
-    
-    s_ui.text_set("txt_send",cmd);
+            ",","/root/map_"+row_index+".txt");
     step=11;
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:11");
+    
     
 }
 
@@ -222,20 +233,18 @@ function data_init(data){
     s_ui.datagrid_clear("grid1");
     
     s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
-    s_ui.datagrid_add_line("grid1","1,正在分析...",",");
+    s_ui.datagrid_add_line("grid1","1,点击统计按钮！",",");
     
     s_ui.datagrid_add_button("grid1","modify","映射","map_click");
 }
 
 function static_click(data){
-    //s_ui.msg("step1");
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
+    var strSplit=line.split(",");
     var count=strSplit.length;
     
-    //s_ui.msg("step2");
     var line="";
     for (var i=1;i<=count;i++){
         line+="isnumeric(c"+i+"),";
@@ -244,16 +253,16 @@ function static_click(data){
         line=line.substr(0,line.length-1);
     }
     
-    //s_ui.msg("step3");
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
-    var cmd=sql("/home/ftp_home"+file2,
-        "select "+line+" from t;","v","/root/step3.txt");
-
+    //var cmd=sql("/home/ftp_home"+file2,"select "+line+" from t;",",","/root/step3.txt");
+        
+    var cmd="run_js2 /root/happyli/app/field_type.js 0 "+userName+" /home/ftp_home"+file2;
+    
     step=1;
-    s_ui.text_set("txt_send",cmd);
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:1");
+    
 }
 
 
@@ -266,7 +275,9 @@ function next_click(data){
 
 function on_load(){
     userName=sys_read_ini()+"/linux_bat2";
-    s_ui.text_set("txt_user_name",userName);
+    s_ui.status_label_show("status_label",userName);
+        
+    //s_ui.text_set("txt_user_name",userName);
 }
 
 function friend_list(data){
@@ -324,18 +335,6 @@ function send_msg(strType,friend,msg,return_cmd){
 
 
 
-
-function connect_click(data){
-    
-    s_tcp.connect("robot6.funnyai.com",6000,
-        userName,"event_connected","event_msg");
-    
-    on_load();
-}
-
-
-
-
 function friend_change(data){
     
     var friend=s_ui.listbox_text("list_friend");
@@ -369,40 +368,6 @@ function resend_chat_msg(data) {
 }
 
 
-//发送消息 
-function send_msg_click(){
-    msg_id+=1;
-    //s_ui.msg("step1");
-    //s_ui.combox_text("combox_head")+" "+
-    var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    
-    //s_ui.msg("step2");
-    send_msg(strType,friend,strMsg,"step:"+step);
-    
-    //s_ui.msg("step3");
-    s_ui.text_set("txt_send","");
-    
-}
-
-function upload_click(data){
-    
-    var strLine=s_file.File_List_File("D:\\Net\\Web\\Data");
-    var strSplit=strLine.split("|");
-
-    for(var i=0;i<strSplit.length;i++){
-        var file="D:\\Net\\Web\\Data\\"+strSplit[i];
-        var path="/upload/map/"+s_file.File_Short_Name(file);
-        //s_ui.msg(file+","+path);
-        s_net.ftp_upload("robot6.funnyai.com","test","test","22",file,path,"set_status","show_error");
-    }
-    
-    var file=s_ui.text_read("txt_upload");
-    var path="/upload/map/"+s_file.File_Short_Name(file);
-
-    var hosts=s_ui.text_read("txt_host");
-    s_net.ftp_upload(hosts,"test","test","22",file,path,"set_status","show_error");
-}
 
 function set_status(data){
     var strSplit=data.split(",");
@@ -415,80 +380,51 @@ function show_error(data){
     s_ui.text_set("txt_info",log_error);
 }
 
-s_ui.splitcontainer_init("split",0,0,500,500,"v");
-s_ui.splitcontainer_distance("split",130);
-
-
-
-var file1=s_sys.value_read("file1");
-if (file1=="") file1="E:\\sample1.txt";
-s_ui.text_init("txt_file",file1,350,450,200,30);
 
 
 //界面
-s_ui.datagrid_init("grid1",10,60,650,320);
-
-s_ui.text_init("txt_send","ls",380,350,320,30);
-
-
-s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
-
-
-s_ui.text_init("txt_user_name","000",10,450,100,30);
-
-s_ui.textbox_init("txt_info","",10,250,200,80);
-
-
-s_ui.splitcontainer_add("split",0,"txt_info","fill");
-s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
+s_ui.datagrid_init("grid1",10,60,650,120);
 
 
 s_ui.Web_Init("web",250,60,450,250);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
-
-s_ui.progress_init("progress1",100,400,500,30);
 s_ui.progress_init("progress2",100,400,500,30);
 
-s_ui.splitcontainer_add("split",1,"web","fill");
+s_ui.panel_init("panel_content",0,0,500,200,"fill");
 
-s_ui.splitcontainer_add("split",1,"progress2","top");
-s_ui.splitcontainer_add("split",1,"progress1","top");
+s_ui.panel_init("panel1",0,0,500,300,"top");
 
-s_ui.splitcontainer_add("split",1,"grid1","top");
-s_ui.splitcontainer_add("split",1,"txt_file","top");
+s_ui.panel_add("panel1","grid1","fill");
+s_ui.panel_add("panel1","progress1","top");
+s_ui.panel_add("panel1","progress2","top");
 
-
-
-s_ui.panel_init("panel_top",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel_top","bottom");
-s_ui.panel_add("panel_top","txt_send","fill");
-
-s_ui.panel_add("panel_top","b1_send","right");
+s_ui.panel_init("panel2",0,0,500,50,"bottom");
 
 
-s_ui.panel_init("panel2",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel2","bottom");
+s_ui.panel_add("panel_content","web","fill");
 
 
+
+s_ui.button_init("b_static","统计",400,350,200,30,"static_click","");
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step2");
 s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step4");
 
 
-s_ui.panel_add("panel2","b_next","left");
-s_ui.panel_add("panel2","b_pre","left");
+s_ui.panel_add("panel2","b_static","right");
+s_ui.panel_add("panel2","b_pre","right");
+s_ui.panel_add("panel2","b_next","right");
 
 
 
 s_ui.menu_init("Menu1");
 s_ui.menu_add("Menu1","Menu_File","&File");
-s_ui.menu_item_add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
 
 s_ui.menu_add("Menu1","Tools","&Tools");
 s_ui.menu_item_add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
-//s_ui.menu_item_add("Menu1","Tools","Menu_Upload","上传Map文件","upload_click","");
+s_ui.menu_item_add("Menu1","Tools","Menu_Static","最后一步","do_step3","");
+
 
 //状态栏 开始
 s_ui.status_init("status",0,0,200,30,"bottom");
@@ -499,8 +435,6 @@ s_ui.status_add("status","status_label2","left");
 //状态栏 结束
 
 
-
-s_ui.button_default("b1_send");
 s_ui.show_form(800,600);
 s_ui.Form_Title("v2 第3步 字段映射");
 
@@ -510,6 +444,5 @@ on_load("");
 
 data_init("");
 
-static_click("");
 
 

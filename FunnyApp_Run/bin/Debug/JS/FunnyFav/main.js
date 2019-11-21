@@ -62,7 +62,7 @@ function read_ini(){
 
 
 function log_click(data){
-    s_ui.Run_App("D:\\Net\\Web\\log","");
+    s_ui.Run_App(disk+"\\Net\\Web\\log","");
 }
 
 

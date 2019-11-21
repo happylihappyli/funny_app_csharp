@@ -113,9 +113,9 @@ function callback_init(data){
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Seg");
+    Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Data");
+    Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Index");
+    Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Seg");
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
@@ -164,16 +164,16 @@ function index_init(data){
     }
     
     s_index.Create_End();
-    //s_file.Ini_Save("D:\\Net\\Web\\main.ini","book","max_id",max_id+"");
+    //s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","book","max_id",max_id+"");
     s_ui.msg("索引生成成功！");
 }
 
 
 //词库初始化
-s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
+s_index.Init_Seg(disk+"Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
 
 s_ui.text_init("txt1","",10,30,300,30);
-s_ui.text_font_size("txt1",12);
+s_ui.font_size("txt1",12);
 s_ui.button_init("b_search","搜索",250,30,100,30,"search","");
 s_ui.button_enable("b_search",0);
 

@@ -1,11 +1,11 @@
 
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+
+
 var Path_Data ="";
 var Path_Index="";
 var Path_Seg="";
-
-
-[[[..\\data\\common_string.js]]]
-
 
 
 //添加回调函数
@@ -32,7 +32,7 @@ function index_add(data){
     //s_ui.msg(data);
     s_sys.value_save("ID","");
     s_sys.value_save("Content","");
-    s_ui.Run_JS_Dialog("Code/new.js","callback_add");
+    s_ui.Run_JS_Dialog("Code\\new.js","callback_add");
 }
 
 
@@ -57,7 +57,7 @@ function callback_edit(data){
 
 function index_edit(data){
     s_sys.value_save("ID",data);
-    s_ui.Run_JS_Dialog("Code/edit.js","callback_edit");
+    s_ui.Run_JS_Dialog("Code\\edit.js","callback_edit");
 }
 
 
@@ -93,9 +93,9 @@ function callback_init(data){
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","Code","Path_Seg");
+    Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","Path_Data");
+    Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","Path_Index");
+    Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","Code","Path_Seg");
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
@@ -144,16 +144,16 @@ function index_init(data){
     }
     
     s_index.Create_End();
-    s_file.Ini_Save("D:\\Net\\Web\\main.ini","Code","max_id",max_id+"");
+    s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","Code","max_id",max_id+"");
     s_ui.msg("索引生成成功！");
 }
 
 
 //词库初始化
-s_index.Init_Seg("D:\\Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
+s_index.Init_Seg(disk+"Funny\\FunnyAI\\Data\\Dic\\Segmentation","callback_init");
 
 s_ui.text_init("txt1","",10,30,300,30);
-s_ui.text_font_size("txt1",12);
+s_ui.font_size("txt1",12);
 s_ui.button_init("b_search","搜索",250,30,100,30,"search","");
 s_ui.button_enable("b_search",0);
 

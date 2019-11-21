@@ -1,6 +1,6 @@
 
-var file1=s_sys.value_read("file1");// s_ui.text_read("txt_file2");
-var file2=s_sys.value_read("file2");//s_ui.text_read("txt_file3");
+var file1=s_sys.value_read("file1");
+var file2=s_sys.value_read("file2");
 
 var key="test";
 var step=1024;

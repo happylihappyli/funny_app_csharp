@@ -1,13 +1,12 @@
 
-
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
 
 var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
-
 
 
 function on_load(){
@@ -53,8 +52,8 @@ function event_msg(data){
                     break;
                 default:
                     log_msg=s_time.Time_Now()
-                        +" <span style='color:blue;'>"+obj.from+"</span>"
-                        +obj.return_cmd+"<br>"+"<pre>"+msg+"</pre>"
+                        +"<span style='color:blue;'>"+obj.from+"</span>"
+                        +"<br>"+"<pre>"+msg+"</pre>"
                         +"<br>"+log_msg;
                     s_ui.Web_Content("web",css_head+log_msg);
                     break;
@@ -179,7 +178,7 @@ function file_sql(file1,sql,sep,output){
 
 
 function static_click(data){
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     
     var line=s_file.read(file1,1);
@@ -187,7 +186,7 @@ function static_click(data){
     var fields_count=strSplit.length;
     
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     var id=s_file.Ini_Read(file_memo,"model","id");
@@ -204,10 +203,10 @@ function static_click(data){
             count_field+=1;
         }
     }
-            
-    var sql="select c"+(count_field+2)+",c"+(count_field+1)+" from t;";
+    
+    var sql="Select c2,c1 From t;";
 
-    var cmd=file_sql("/root/test_output.txt",sql,",","/root/roc_data.txt");
+    var cmd=file_sql("/root/data/output.txt",sql,",","/root/data/roc_data.txt");
     
     
     send_msg("cmd",friend,cmd,"step:1");
@@ -215,7 +214,7 @@ function static_click(data){
 
 
 function process_step2(obj){
-    var cmd="/usr/local/bin/python3.7 /root/python/draw_roc.py /root/roc_data.txt";
+    var cmd=python_bin+" /root/python/draw_roc.py /root/data/roc_data.txt";
     
     send_msg("cmd",friend,cmd,"step:2");
 }
@@ -241,13 +240,16 @@ s_ui.Web_New_Event("web","New_URL");
 
 s_ui.progress_init("progress2",100,320,500,30);
 
+
+s_ui.control_dock("progress2","top");
+
 s_ui.button_init("b_ks","ROC曲线",310,360,200,60,"static_click","");
 
-s_ui.panel_init("panel_bottom",0,0,300,100,"bottom");
+s_ui.panel_init("panel_bottom",0,0,300,50,"bottom");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_ks");
+s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step_correlation");
 
 s_ui.control_dock("web","fill");
 

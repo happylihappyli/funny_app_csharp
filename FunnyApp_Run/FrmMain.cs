@@ -132,5 +132,31 @@ namespace FunnyApp_Run {
 
             FileAssociations.SetAssociation(".js", "JSFile", "funny_app File", Application.StartupPath + "\\FunnyApp.exe");//, Application.StartupPath + "\\FunnyApp.exe");
         }
+
+        private void button3_Click(object sender, EventArgs e) {
+            if (listBox1.SelectedItem == null) {
+                MessageBox.Show("请选择一个节点！");
+                return;
+            }
+            C_File pFile = (C_File)listBox1.SelectedItem;
+            string strLine = pFile.File;
+
+            string strFile = Application.StartupPath + "\\JS\\" + strLine;
+            S_SYS.RunFile(strFile);
+
+            //if (S_File.Exists(strFile) == false) {
+            //    strLine = pFile.File;
+            //    if (strLine.StartsWith("/")) {
+            //        strLine = strLine.Substring(1) + "\\main.js";
+            //    }
+            //    strFile = Application.StartupPath + "\\JS\\" + strLine;
+            //}
+            //System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            //proc.StartInfo.FileName = textBox1.Text;
+            //proc.StartInfo.Arguments = strFile;
+
+            //proc.StartInfo.UseShellExecute = true;
+            //proc.Start();
+        }
     }
 }

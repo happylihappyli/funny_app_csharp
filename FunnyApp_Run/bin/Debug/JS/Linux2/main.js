@@ -1,14 +1,16 @@
+
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+
+
+
 var friend_return=0;
 //var keep_count=0;
 var session_send=0;
 var head="";
 var sep=1;
 var current_path="/root/happyli";//当前路径
-
-[[[..\\data\\default.js]]]
-[[[..\\data\\common_string.js]]]
-[[[..\\data\\tcp.js]]]
-
 
 [[[event_chat.js]]]
 
@@ -333,17 +335,17 @@ function callback_cmd(data){
 
 function new_user(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\new_user.js","callback_cmd");
+    s_ui.Run_JS_Dialog("Linux2\\new_user.js","callback_cmd");
 }
 
 function new_group(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\new_group.js","callback_cmd");
+    s_ui.Run_JS_Dialog("Linux2\\new_group.js","callback_cmd");
 }
 
 function add_user_2_group(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\user_group.js","callback_cmd");
+    s_ui.Run_JS_Dialog("Linux2\\user_group.js","callback_cmd");
 }
 
 function on_load(){
@@ -357,6 +359,10 @@ function connect_click(data){
     "event_connected","event_msg","");
 }
 
+
+function show_antlr(data){
+    
+}
 
 
 //检查是否联网
@@ -380,13 +386,13 @@ function restart_ssh(data){
 
 function file_sql_input(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\file_sql_input.js","callback_cmd");
+    s_ui.Run_JS_Dialog("Linux2\\file_sql_input.js","callback_cmd");
 }
 
 
 function process_kill(data){
     s_sys.value_save("cmd","");
-    s_ui.Run_JS_Dialog("Linux\\process_kill.js","callback_cmd");
+    s_ui.Run_JS_Dialog("Linux2\\process_kill.js","callback_cmd");
 }
 
 s_sys.tcp_event();

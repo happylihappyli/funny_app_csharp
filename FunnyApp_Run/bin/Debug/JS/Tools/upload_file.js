@@ -1,4 +1,5 @@
 
+[[[..\\data\\default.js]]]
 //按钮点击
 function upload_click(data){
     var password=s_ui.text_read("txt1");
@@ -56,7 +57,7 @@ function read(strFile){
 s_ui.label_init("lb_ftp_host","上传路径：",10,200);
 s_ui.combox_init("cb_host","robot6.funnyai.com",100,10,500,30);
 
-s_ui.combox_from_file("cb_host","D:\\Net\\Web\\hosts.txt");
+s_ui.combox_from_file("cb_host",disk+"\\Net\\Web\\hosts.txt");
 
 s_ui.label_init("lb_password","FTP密码：",10,70);
 

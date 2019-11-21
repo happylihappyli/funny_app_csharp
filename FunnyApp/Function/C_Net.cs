@@ -91,7 +91,18 @@ namespace FunnyApp {
                 pFrmApp.Call_Event(event_login, "");
             };
             xmpp.OnMessage += delegate (object sender, Message msg) {
-                pFrmApp.Call_Event(event_msg, "");
+                string from=msg.From;
+                string to = msg.To;
+
+                try {
+                    JObject jObject = new JObject();
+                    jObject["from"] = from;
+                    jObject["body"] = msg.Body;
+
+                    pFrmApp.Call_Event(event_msg, jObject.ToString());
+                } catch(Exception ex) {
+                    ex.ToString();
+                }
             };
         }
 

@@ -1,5 +1,7 @@
-function sys_field_count(){
-    var file1=s_sys.value_read("file1");
+var fields_count=0;
+
+function sys_field_selected(){
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     
     var line=s_file.read(file1,1);

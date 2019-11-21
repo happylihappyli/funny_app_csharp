@@ -137,7 +137,7 @@ function send_msg(strType,friend,msg,return_cmd){
 
 
 function static_click(data){
-    var count_field=sys_field_count();
+    var count_field=sys_field_selected();
     
     var line="";
     var line_head="";
@@ -179,14 +179,14 @@ s_ui.Web_New_Event("web","New_URL");
 
 s_ui.label_init("lb_alg","要处理的文件:",10,380);
 
-s_ui.text_init("txt_file","/root/test.txt",10,420,300,30);
+s_ui.text_init("txt_file","/root/data/train.txt",10,420,300,30);
 
 
 s_ui.button_init("b_correlation","相关性",380,380,100,60,"static_click","");
 
 
-s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step8");
-s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
+s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step_roc");
+//s_ui.button_init("b_next","下一步",350,500,200,30,"next_click","Run_Bat2\\step10");
 
 
 s_ui.show_form(800,600);

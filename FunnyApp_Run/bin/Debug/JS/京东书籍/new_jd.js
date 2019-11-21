@@ -9,9 +9,9 @@ var ISBN="";
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Seg");
+    Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Data");
+    Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Index");
+    Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Seg");
     
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
@@ -28,7 +28,7 @@ function save_click(data){
 
 function crawl_click(data){
     var page="";
-    var file="d:\\view.txt";
+    var file=disk+"view.txt";
 
     var url=s_ui.text_read("txt_url");
     if (url.startsWith("//")){
@@ -82,7 +82,7 @@ function crawl_click(data){
 
 
 s_ui.textbox_init("txt_content","",10,100,600,300);
-s_ui.text_font_size("txt_content",18);
+s_ui.font_size("txt_content",18);
 s_ui.control_dock("txt_content","fill");
 
 s_ui.panel_init("panel1",0,0,500,30,"top");
@@ -96,7 +96,7 @@ s_ui.button_init("b_save","保存",250,30,200,30,"save_click","");
 s_ui.button_init("b_crawl","抓",250,30,100,30,"crawl_click","");
 
 
-s_ui.text_font_size("txt_url",12);
+s_ui.font_size("txt_url",12);
 
 s_ui.panel_add("panel1","b_save","left");
 

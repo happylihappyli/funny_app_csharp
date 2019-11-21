@@ -1,23 +1,24 @@
 
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
+
 var msg_id=0;
 var sep=1;
 var step=0;//处理步骤
 var row_index=0;//第几个字段被点击
 
-var userName="none";
-var md5="";
 var log_msg="";
 var keep_count=1;
 
 var myMap=[];
 var head="";
-
-
-[[[..\\data\\default.js]]]
-[[[..\\data\\common_string.js]]]
-[[[..\\data\\tcp.js]]]
-
-
 
 
 function event_msg(data){
@@ -38,24 +39,6 @@ function event_msg(data){
         case "list.all":
             s_ui.listbox_add("list_friend",obj.message);
             friend_return=1;
-            break;
-        case "file_sql":
-            if (obj.message=="finished"){
-                
-                log_msg="<b>finished "+obj.from+";"+step+"</b><br>"+log_msg;
-                s_ui.Web_Content("web",css_head+log_msg);
-                switch (obj.from){
-                    case "/root/step6.txt":
-                        
-                        log_msg=s_time.Time_Now()
-                    +"<span style='color:red;font-size:18px;'>运行完毕！请点击下一步</span><br>"
-                    +"<span style='color:blue;'>"+obj.from+"</span>"
-                    +"<pre>"+msg+"</pre>"
-                    +"<br>"+log_msg;
-                        s_ui.Web_Content("web",css_head+log_msg);
-                        break;
-                }
-            }
             break;
         case "status":
             break;
@@ -88,37 +71,6 @@ function sql(file1,sql,sep,output){
     return cmd;
 }
 
-
-function static_click(data){
-    var file1=s_sys.value_read("file1");
-    if (file1=="") file1="E:\\sample1.txt";
-    var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
-    var count=strSplit.length;
-    
-    var line="";
-    for (var i=1;i<=count;i++){
-        var file_map=disk+"\\Net\\Web\\data\\map_c"+i+".txt";
-        if (s_file.exists(file_map)){
-            line+="map(c"+i+",'/home/ftp_home/upload/map/map_c"+i+".txt'),";
-        }else{
-            line+="c"+i+",";
-        }
-    }
-    if (line.endsWith(",")){
-        line=line.substr(0,line.length-1);
-    }
-    
-    var file2=s_sys.value_read("file2");
-    if (file2=="") file2="/upload/sample1.txt";
-    
-    
-    var cmd=sql("/home/ftp_home"+file2,
-        "select "+line+" from t;","v","/root/step6.txt");
-    step=1;
-    s_ui.text_set("txt_send",cmd);
-    send_msg_click();
-}
 
 
 function next_click(data){
@@ -293,7 +245,7 @@ function send_msg_click(){
 
 
 function set_click(data){
-    s_ui.Run_JS("Run_Bat2\\setting.js");
+    s_ui.Run_JS("Run_Bat2\\setting_user.js");
 }
 
 
@@ -332,6 +284,50 @@ function show_tools(data){
     s_ui.Run_JS(data+".js");
 }
 
+function show_train(data){
+    
+    var alg=s_ui.combox_text("cb_alg");
+    switch(alg){
+        case "GBDT":
+            s_ui.Run_JS("Run_Bat2\\step_train_gbdt.js");
+            break;
+        case "随机森林":
+            s_ui.Run_JS("Run_Bat2\\step_train_rf.js");
+            break;
+        case "逻辑回归":
+            s_ui.Run_JS("Run_Bat2\\step_train_lr.js");
+            break;
+        case "KNN":
+            
+            s_ui.Run_JS("Run_Bat2\\step_train_knn.js");
+            break;
+    }
+    
+}
+
+
+function show_test(data){
+    
+    var alg=s_ui.combox_text("cb_alg");
+    switch(alg){
+        case "GBDT":
+            s_ui.Run_JS("Run_Bat2\\step_test_gbdt.js");
+            break;
+        case "随机森林":
+            s_ui.Run_JS("Run_Bat2\\step_test_rf.js");
+            break;
+        case "逻辑回归":
+            s_ui.Run_JS("Run_Bat2\\step_test_lr.js");
+            break;
+        case "KNN":
+            
+            s_ui.Run_JS("Run_Bat2\\step_test_knn.js");
+            break;
+    }
+    
+}
+
+
 function show_tools2(data){
     s_ui.Run_JS_Out(data+".js");
 }
@@ -350,10 +346,10 @@ s_ui.listbox_init_event("list_friend","friend_change");
 
 
 
-var file1=s_sys.value_read("file1");
+var file1=s_file.Ini_Read(file_memo,"main","file1");
 if (file1=="") file1="E:\\sample1.txt";
 //s_ui.msg(file1);
-s_ui.text_init("txt_file",file1,350,450,200,30);
+//s_ui.text_init("txt_file",file1,350,450,200,30);
 
 
 //界面
@@ -380,7 +376,9 @@ s_ui.Web_Init("web",250,60,450,150);
 s_ui.Web_Content("web","接收到信息");
 s_ui.Web_New_Event("web","New_URL");
 
-s_ui.panel_init("panel_main",0,0,500,50,"none");
+
+s_ui.panel_init("panel_main0",0,0,500,50,"none");
+s_ui.panel_init("panel_main1",0,0,500,50,"none");
 s_ui.panel_init("panel_main2",0,0,500,50,"none");
 s_ui.panel_init("panel_main3",0,0,500,50,"none");
 s_ui.panel_init("panel_main4",0,0,500,50,"none");
@@ -389,68 +387,86 @@ s_ui.panel_init("panel_main5",0,0,500,50,"none");
 
 s_ui.splitcontainer_add("split",1,"web","fill");
 
-
 s_ui.splitcontainer_add("split",1,"panel_main5","top");
 s_ui.splitcontainer_add("split",1,"panel_main4","top");
 s_ui.splitcontainer_add("split",1,"panel_main3","top");
 s_ui.splitcontainer_add("split",1,"panel_main2","top");
-s_ui.splitcontainer_add("split",1,"panel_main","top");
-
-s_ui.splitcontainer_add("split",1,"txt_file","top");
-
-
+s_ui.splitcontainer_add("split",1,"panel_main1","top");
+s_ui.splitcontainer_add("split",1,"panel_main0","top");
 
 s_ui.panel_init("panel_top",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel_top","bottom");
-s_ui.panel_add("panel_top","txt_send","fill");
+s_ui.panel_init("panel_bottom",0,0,500,25,"none");
 
-s_ui.panel_add("panel_top","b1_send","right");
 
+///////////////////////////////////////////
+s_ui.label_init("lb_alg","算法选择:",100,320);
+s_ui.combox_init("cb_alg","逻辑回归",200,320,160,30);
+s_ui.combox_add("cb_alg","逻辑回归");
+s_ui.combox_add("cb_alg","GBDT");
+s_ui.combox_add("cb_alg","随机森林");
+s_ui.combox_add("cb_alg","KNN");
+
+s_ui.panel_add("panel_top","lb_alg","right");
+s_ui.panel_add("panel_top","cb_alg","right");
+
+///////////////////////////////////////////
+s_ui.splitcontainer_add("split",1,"panel_top","top");
+s_ui.splitcontainer_add("split",1,"panel_bottom","bottom");
+s_ui.panel_add("panel_bottom","txt_send","fill");
+s_ui.panel_add("panel_bottom","b1_send","right");
 
 s_ui.panel_init("panel2",0,0,500,25,"none");
 s_ui.splitcontainer_add("split",1,"panel2","bottom");
 
+///////////////////////////////////////////
+s_ui.button_init("b_model_step31","相关性",10,150,100,30,"show_tools","Run_Bat2\\step_correlation");
 
+
+///////////////////////////////////////////
+s_ui.button_init("b_model_step_split","分隔符转化",10,100,100,30,"show_tools","Run_Bat2\\step_split");
+s_ui.button_init("b_model_step_head","文件头处理",10,100,100,30,"show_tools","Run_Bat2\\step_head");
+s_ui.panel_add("panel_main0","b_model_step_split","right");
+s_ui.panel_add("panel_main0","b_model_step_head","right");
+
+
+///////////////////////////////////////////
 s_ui.button_init("b_model_step1","1-文件上传",10,100,100,30,"show_tools","Run_Bat2\\step1");
-
 s_ui.button_init("b_model_step2","2-选择文件",10,100,100,30,"show_tools","Run_Bat2\\step2");
 s_ui.button_init("b_model_step3","3-字段映射",10,100,100,30,"show_tools","Run_Bat2\\step3");
 s_ui.button_init("b_model_step4","4-上传映射",10,100,100,30,"show_tools","Run_Bat2\\step4");
 s_ui.button_init("b_model_step5","5-处理文件",10,100,100,30,"show_tools","Run_Bat2\\step5");
+s_ui.panel_add("panel_main1","b_model_step1","right");
+s_ui.panel_add("panel_main1","b_model_step2","right");
+s_ui.panel_add("panel_main1","b_model_step3","right");
+s_ui.panel_add("panel_main1","b_model_step4","right");
+s_ui.panel_add("panel_main1","b_model_step5","right");
 
+
+///////////////////////////////////////////
 s_ui.button_init("b_model_step5_5","WOE IV",10,150,100,30,"show_tools","Run_Bat2\\step_woe_iv");
 s_ui.button_init("b_model_step6","6-选择字段",10,150,100,30,"show_tools","Run_Bat2\\step6");
 s_ui.button_init("b_model_step7","7-好坏样本",10,150,100,30,"show_tools","Run_Bat2\\step7");
 s_ui.button_init("b_model_step8","8-数据分离",10,150,100,30,"show_tools","Run_Bat2\\step8");
 s_ui.button_init("b_model_step9","9-数据抽样",10,150,100,30,"show_tools","Run_Bat2\\step9");
-
-s_ui.button_init("b_model_step11","模型训练",10,150,100,30,"show_tools","Run_Bat2\\step_train");
-
-
-s_ui.button_init("b_model_step21","测试样本",10,150,100,30,"show_tools","Run_Bat2\\step_test");
-s_ui.button_init("b_model_step22","模型测试",10,150,100,30,"show_tools","Run_Bat2\\step_lr_test");
-s_ui.button_init("b_model_step23","统计准备",10,150,100,30,"show_tools","Run_Bat2\\step_static_pre");
-s_ui.button_init("b_model_step24","ks计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
-s_ui.button_init("b_model_step25","roc",10,150,100,30,"show_tools","Run_Bat2\\step_roc");
-
-
-s_ui.button_init("b_model_step31","相关性",10,150,100,30,"show_tools","Run_Bat2\\step_correlation");
-
-
-s_ui.panel_add("panel_main","b_model_step1","right");
-s_ui.panel_add("panel_main","b_model_step2","right");
-s_ui.panel_add("panel_main","b_model_step3","right");
-s_ui.panel_add("panel_main","b_model_step4","right");
-s_ui.panel_add("panel_main","b_model_step5","right");
-
 s_ui.panel_add("panel_main2","b_model_step5_5","right");
 s_ui.panel_add("panel_main2","b_model_step6","right");
 s_ui.panel_add("panel_main2","b_model_step7","right");
 s_ui.panel_add("panel_main2","b_model_step8","right");
 s_ui.panel_add("panel_main2","b_model_step9","right");
 
-s_ui.panel_add("panel_main3","b_model_step11","right");
 
+///////////////////////////////////////////
+s_ui.button_init("b_model_step_train","模型训练",10,150,100,30,"show_train","");
+s_ui.panel_add("panel_main3","b_model_step_train","right");
+
+
+
+///////////////////////////////////////////
+s_ui.button_init("b_model_step21","测试样本",10,150,100,30,"show_tools","Run_Bat2\\step_test_data");
+s_ui.button_init("b_model_step22","模型测试",10,150,100,30,"show_test","");
+s_ui.button_init("b_model_step23","统计准备",10,150,100,30,"show_tools","Run_Bat2\\step_static_pre");
+s_ui.button_init("b_model_step24","KS计算",10,150,100,30,"show_tools","Run_Bat2\\step_ks");
+s_ui.button_init("b_model_step25","ROC",10,150,100,30,"show_tools","Run_Bat2\\step_roc");
 s_ui.panel_add("panel_main4","b_model_step21","right");
 s_ui.panel_add("panel_main4","b_model_step22","right");
 s_ui.panel_add("panel_main4","b_model_step23","right");
@@ -458,17 +474,22 @@ s_ui.panel_add("panel_main4","b_model_step24","right");
 s_ui.panel_add("panel_main4","b_model_step25","right");
 
 
+///////////////////////////////////////////
 s_ui.panel_add("panel_main5","b_model_step31","right");
 
+
+
+///////////////////////////////////////////
 s_ui.menu_init("Menu1");
 s_ui.menu_add("Menu1","Menu_File","&File");
 s_ui.menu_item_add("Menu1","Menu_File","Menu_Refresh","Friend_List","friend_list","");
 
 s_ui.menu_add("Menu1","Tools","&Tools");
-s_ui.menu_item_add("Menu1","Tools","Menu_Static","重新统计分析","static_click","");
 s_ui.menu_item_add("Menu1","Tools","Menu_Clear","清空记录","clear_click","");
 s_ui.menu_item_add("Menu1","Tools","Menu_Setting","设置","set_click","");
 
+
+///////////////////////////////////////////
 
 s_ui.status_init("status",0,0,200,30,"bottom");
 s_ui.status_label_init("status_label","111",100,30);
@@ -478,7 +499,7 @@ s_ui.status_add("status","status_label2","left");
 
 s_ui.button_default("b1_send");
 s_ui.show_form(800,600);
-s_ui.Form_Title("分析工具2");
+s_ui.Form_Title("分析工具 v2");
 
 s_sys.tcp_event();
 

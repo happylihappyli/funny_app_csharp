@@ -89,20 +89,36 @@ namespace FunnyApp {
         }
 
 
+        public void write_begin(string key, string file,bool bAppend) {
+            object pWriter = S_File_Text.Write_Begin(file, bAppend);
+            FrmApp.pMap.insert(key, pWriter);
+        }
 
-        public void Read_Begin(string file,string key) {
+        public void write_line(string key,string strLine) {
+
+            StreamWriter pWriter = (StreamWriter)FrmApp.pMap.find(key);
+            S_File_Text.Write_Line(pWriter, strLine);
+        }
+
+        public void write_end(string key) {
+            StreamWriter pWriter = (StreamWriter)FrmApp.pMap.find(key);
+            S_File_Text.Write_End(pWriter);
+        }
+
+
+        public void read_begin(string key, string file) {
             object pReader= S_File_Text.Read_Begin(file);
             FrmApp.pMap.insert(key, pReader);
         }
 
-        public string Read_Line(string key) {
+        public string read_line(string key) {
 
             StreamReader pReader = (StreamReader)FrmApp.pMap.find(key);
             string strLine= S_File_Text.Read_Line(pReader);
             return strLine;
         }
 
-        public void Read_End(string key) {
+        public void read_end(string key) {
 
             StreamReader pReader = (StreamReader)FrmApp.pMap.find(key);
             S_File_Text.Read_End(pReader);

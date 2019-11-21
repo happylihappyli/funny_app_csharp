@@ -87,7 +87,7 @@ function resend_chat_msg(data) {
             var friend=pMsg.to;
             log_msg=s_time.Time_Now()+" <font color=red>(消息没有发送) </font> <span style='color:gray;'>"+obj.to+"</span><br>"
                     +obj.message+"<br><br>"+log_msg;
-            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
+            s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
                 s_time.Date_Now()+" "+s_time.Time_Now()+" 消息丢失："+obj.message+"\r\n");
                 
             s_ui.Web_Content("web",log_msg);
@@ -158,7 +158,7 @@ function event_chat(data){
                 s_ui.listbox_select("list_friend",friend);
             }
             var strMsg=s_time.Time_Now()+" "+obj.message;
-            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
+            s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
             log_msg=s_time.Time_Now()+" "+friend+" &gt; <span style='color:#aaaaaa;'>"+obj.to+"</span> <font color=blue><br>"
             +obj.message+"</font><br><br>\r\n"+log_msg;
             
@@ -201,7 +201,7 @@ function event_system(data){
             s_ui.text_set("txt_info2","chat_return id="+obj.old_id+" .pos:"+index);
             delete chat_msgs["K"+obj.old_id];
             
-            var file1=s_sys.value_read("file1");
+            var file1=s_file.Ini_Read(file_memo,"main","file1");
             var friend=s_sys.value_read("friend");
             var strSplit=file1.split("\\");
             var file_short=strSplit[strSplit.length-1];
@@ -237,8 +237,8 @@ function read_ini(){
     var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
-    var userName2=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","md5");
+    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
+    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
     userName=userName2+"/public";
     
     
@@ -259,7 +259,7 @@ function connect_click(data){
 }
 
 function log_click(data){
-    s_ui.Run_App("D:\\Net\\Web\\log","");
+    s_ui.Run_App(disk+"\\Net\\Web\\log","");
 }
 
 

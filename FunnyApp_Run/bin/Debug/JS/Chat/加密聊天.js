@@ -39,7 +39,7 @@ function send_msg_click(){
     
     
     log_msg=s_time.Time_Now()+" "+strMsg+"\r\n\r\n"+log_msg;
-    s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",
+    s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",
         s_time.Date_Now()+" "+s_time.Time_Now()+" "+strMsg+"\r\n");
     s_ui.text_set("txt1",log_msg);
     s_ui.text_set("txt_send","");
@@ -77,14 +77,14 @@ function event_chat(data){
     if (obj.type=="encrypt"){
         if (obj.to==userName){
             var strMsg=s_time.Time_Now()+" "+s_string.decrypt_private_key("D:/Net/Web/id_rsa",obj.message);
-            s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
+            s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
             log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
         }else{
             //log_msg="to="+obj.to+"\r\n"+"\r\n"+log_msg;
         }
     }else{
         //var strMsg=s_time.Time_Now()+" "+obj.message;
-        //s_file.append("D:\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
+        //s_file.append(disk+"\\Net\\Web\\log\\"+friend+".txt",s_time.Date_Now()+" "+strMsg+"\r\n");
         //log_msg=strMsg+"\r\n"+"\r\n"+log_msg;
     }
     
@@ -140,7 +140,7 @@ function connect_click(data){
 }
 
 function log_click(data){
-    s_ui.Run_App("D:\\Net\\Web\\log","");
+    s_ui.Run_App(disk+"\\Net\\Web\\log","");
 }
 
 

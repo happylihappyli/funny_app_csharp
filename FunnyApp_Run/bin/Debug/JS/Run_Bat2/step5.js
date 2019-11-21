@@ -1,3 +1,14 @@
+
+[[[..\\data\\default.js]]]
+[[[..\\data\\common_string.js]]]
+[[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
+
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
+var file_ini=disk+"\\Net\\Web\\main.ini";
+var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
+
+
 var friend_return=0;
 
 var sep=1;
@@ -9,14 +20,6 @@ var keep_count=1;
 var myMap=[];
 var head="";
 
-
-[[[..\\data\\default.js]]]
-[[[..\\data\\common_string.js]]]
-[[[..\\data\\tcp.js]]]
-
-
-var file_ini=disk+"\\Net\\Web\\main.ini";
-var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
 function event_msg(data){
     var obj=JSON.parse(data);
@@ -55,12 +58,10 @@ function event_msg(data){
             break;
         case "msg":
             log_msg=s_time.Time_Now()
-        +" <span style='color:blue;'>"+obj.from+"</span>"
-        +obj.return_cmd+"<br>"
-        +"<pre>"+msg+"</pre>"
-        +"<br>"+log_msg;
-            s_file.append(disk+"\\Net\\Web\\log\\"+obj.from+".txt",
-                s_time.Date_Now()+" "+s_time.Time_Now()+" "+msg+"\r\n");
+                +" <span style='color:blue;'>"+obj.from+"</span>"
+                +obj.return_cmd+"<br>"
+                +"<pre>"+msg+"</pre>"
+                +"<br>"+log_msg;
             
             s_ui.Web_Content("web",css_head+log_msg);
             break;
@@ -96,10 +97,10 @@ function sql(file1,sql,sep,output){
 
 
 function static_click(data){
-    var file1=s_sys.value_read("file1");
+    var file1=s_file.Ini_Read(file_memo,"main","file1");
     if (file1=="") file1="E:\\sample1.txt";
     var line=s_file.read(file1,1);
-    var strSplit=line.split("|");
+    var strSplit=line.split(",");
     var count=strSplit.length;
     
     var line="";
@@ -115,15 +116,14 @@ function static_click(data){
         line=line.substr(0,line.length-1);
     }
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     if (file2=="") file2="/upload/sample1.txt";
     
     
     var cmd=sql("/home/ftp_home"+file2,
-        "select "+line+" from t;","v","/root/step6.txt");
+        "select "+line+" from t;",",","/root/step6.txt");
     step=1;
-    s_ui.text_set("txt_send",cmd);
-    send_msg_click();
+    send_msg("cmd",friend,cmd,"step:1");
 }
 
 
@@ -136,16 +136,11 @@ function next_click(data){
 
 function on_load(){
     userName=sys_read_ini()+"/linux_bat2";
-    s_ui.text_set("txt_user_name",userName);
+    s_ui.status_label_show("status_label",userName);
+    //s_ui.text_set("txt_user_name",userName);
 }
 
-function friend_list(data){
-    
-    s_ui.listbox_clear("list_friend");
-    s_ui.listbox_add("list_friend","*");
 
-    send_msg("friend_list","","","friend_list");
-}
 
 function send_msg(strType,friend,msg,return_cmd){
     msg_id+=1;
@@ -192,68 +187,6 @@ function send_msg(strType,friend,msg,return_cmd){
 }
 
 
-function event_connected(data){
-    
-    s_ui.status_label_show("status_label","event_connected!");
-    s_ui.text_set("txt_info","event_connected");
-    s_ui.button_enable("btn_connect","0");
-    
-    send_msg("login","","","login");
-}
-
-function event_disconnected(data){
-    s_ui.text_set("txt_info","event_disconnected");
-    s_ui.button_enable("btn_connect","1");
-    s_net.Socket_Connect();
-}
-
-
-function connect_click(data){
-    
-    s_tcp.connect("robot6.funnyai.com",6000,
-        userName,"event_connected","event_msg");
-    
-    read_ini();
-}
-
-
-function select_old_friend(data){
-    var friend=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","friend_selected");
-
-    if (friend!=null && friend!=""){
-        var friend2=s_ui.listbox_text("list_friend");
-        if (friend2!=friend){
-            s_ui.text_set("txt_info","选择刚才选择的好友:"+friend);
-            s_ui.listbox_select("list_friend",friend);
-            if (step==0){
-                friend_return=0;
-                static_click("");
-            }
-        }
-    }
-}
-
-//检查是否联网
-function check_connected(data){
-    s_ui.text_set("txt_info","check_connected...");
-    s_time.setTimeout("check_connected",2,"check_connected");
-    
-    if (friend_return==1){
-        select_old_friend("");
-        //检查消息是否都发送过去了，没有发送的，再发送一次。
-        resend_chat_msg("");
-    }
-}
-
-
-function friend_change(data){
-    
-    var friend=s_ui.listbox_text("list_friend");
-    if (friend!=""){
-        //s_sys.value_save("friend_selected",friend);
-        s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","main","friend_selected",friend);
-    }
-}
 
 function resend_chat_msg(data) {
     for(var key in myMap){
@@ -283,15 +216,14 @@ function resend_chat_msg(data) {
 function send_msg_click(){
     msg_id+=1;
     var strMsg=s_ui.text_read("txt_send");
-    var strType="cmd";
-    send_msg(strType,friend,strMsg,"step:"+step);
+    send_msg("cmd",friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");
 }
 
 function upload_click(data){
     
     var strLine=s_file.File_List_File(disk+"\\Net\\Web\\Data");
-    var strSplit=strLine.split("|");
+    var strSplit=strLine.split(",");
 
     for(var i=0;i<strSplit.length;i++){
         var file=disk+"\\Net\\Web\\Data\\"+strSplit[i];
@@ -318,31 +250,15 @@ function show_error(data){
     s_ui.text_set("txt_info",log_error);
 }
 
-s_ui.splitcontainer_init("split",0,0,500,500,"v");
-s_ui.splitcontainer_distance("split",130);
 
 
-
-var file1=s_sys.value_read("file1");
+var file1=s_file.Ini_Read(file_memo,"main","file1");
 if (file1=="") file1="E:\\sample1.txt";
 
 s_ui.text_init("txt_file",file1,350,450,200,30);
 
 
 //界面
-
-s_ui.text_init("txt_send","ls",380,350,320,30);
-
-
-s_ui.button_init("b1_send","发送",600,400,100,30,"send_msg_click","");
-
-
-
-s_ui.text_init("txt_user_name","000",10,450,100,30);
-s_ui.textbox_init("txt_info","",10,250,200,80);
-
-s_ui.splitcontainer_add("split",0,"txt_info","fill");
-s_ui.splitcontainer_add("split",0,"txt_user_name","bottom");
 
 
 s_ui.Web_Init("web",250,60,450,250);
@@ -352,24 +268,15 @@ s_ui.Web_New_Event("web","New_URL");
 
 s_ui.progress_init("progress2",100,400,500,30);
 
-s_ui.splitcontainer_add("split",1,"web","fill");
-
-s_ui.splitcontainer_add("split",1,"progress2","top");
-
-//s_ui.splitcontainer_add("split",1,"grid1","top");
-s_ui.splitcontainer_add("split",1,"txt_file","top");
+s_ui.control_dock("web","fill");
 
 
-
-s_ui.panel_init("panel_top",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel_top","bottom");
-s_ui.panel_add("panel_top","txt_send","fill");
-
-s_ui.panel_add("panel_top","b1_send","right");
+s_ui.panel_init("panel_top",0,0,500,60,"top");
+s_ui.panel_add("panel_top","txt_file","top");
+s_ui.panel_add("panel_top","progress2","top");
 
 
-s_ui.panel_init("panel2",0,0,500,25,"none");
-s_ui.splitcontainer_add("split",1,"panel2","bottom");
+s_ui.panel_init("panel2",0,0,500,25,"bottom");
 
 
 s_ui.button_init("b_pre","上一步",100,500,200,30,"next_click","Run_Bat2\\step4");

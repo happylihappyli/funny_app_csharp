@@ -1,9 +1,10 @@
 
-
 [[[..\\data\\default.js]]]
 [[[..\\data\\common_string.js]]]
 [[[..\\data\\tcp.js]]]
+[[[..\\data\\run_bat_common.js]]]
 
+var file_memo=disk+"\\Net\\Web\\Data\\memo.ini";
 var file_ini=disk+"\\Net\\Web\\main.ini";
 var friend=s_file.Ini_Read(file_ini,"main","friend_selected");
 
@@ -227,7 +228,7 @@ function merge_click(data){
     msg_id+=1;
     var count=s_ui.text_read("txt_bad");
     var step="13";
-    var strMsg="run_js2 /root/happyli/app/merge_good_bad.js 0 /root/train_good.txt /root/train_bad.txt /root/train.txt";
+    var strMsg="run_js2 /root/happyli/app/merge_good_bad.js 0 /root/train_good.txt /root/train_bad.txt /root/data/train.txt";
     var strType="cmd";
     send_msg(strType,friend,strMsg,"step:"+step);
     s_ui.text_set("txt_send","");

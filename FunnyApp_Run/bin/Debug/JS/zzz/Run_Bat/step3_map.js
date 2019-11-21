@@ -42,7 +42,7 @@ function save_click(data){
     }
     
     var row_index=s_sys.value_read("row_index");
-    s_file.save("D:\\Net\\Web\\data\\map_c"+row_index+".txt",strMap);
+    s_file.save(disk+"\\Net\\Web\\data\\map_c"+row_index+".txt",strMap);
     s_ui.close();
 }
 

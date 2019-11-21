@@ -7,9 +7,9 @@ var Path_Seg="";
 
 function init(data){
     
-    Path_Data =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Data");
-    Path_Index=s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Index");
-    Path_Seg  =s_file.Ini_Read("D:\\Net\\Web\\main.ini","book","Path_Seg");
+    Path_Data =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Data");
+    Path_Index=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Index");
+    Path_Seg  =s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","book","Path_Seg");
     if (Path_Data=="" || Path_Index=="" || Path_Seg==""){
         set_click("");
     }
@@ -17,7 +17,7 @@ function init(data){
 
 function save_click(data){
     var ID=s_ui.text_read("txt1");
-    //s_file.Ini_Save("D:\\Net\\Web\\main.ini","book","max_id",ID);
+    //s_file.Ini_Save(disk+"\\Net\\Web\\main.ini","book","max_id",ID);
     s_sys.value_save("ID",ID);
     s_sys.value_save("Content",s_ui.text_read("txt_content"));
     s_ui.close();
@@ -25,7 +25,7 @@ function save_click(data){
 
 function crawl_list_click(data){
     var page="";
-    var file="d:\\list.txt";
+    var file=disk+"list.txt";
 
     var url=s_ui.text_read("txt_url");
     
@@ -139,7 +139,7 @@ s_ui.button_init("b_crawl_list","抓List",250,30,100,30,"crawl_list_click","");
 s_ui.button_init("b_crawl","View",250,30,100,30,"view_click","");
 
 
-s_ui.text_font_size("txt_url",12);
+s_ui.font_size("txt_url",12);
 
 s_ui.panel_add("panel1","ck_auto","left");
 

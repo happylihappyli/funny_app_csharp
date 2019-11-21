@@ -197,7 +197,7 @@ function event_system(data){
             delete chat_msgs[obj.message];
             
             
-            var file1=s_sys.value_read("file1");
+            var file1=s_file.Ini_Read(file_memo,"main","file1");
             var friend=s_sys.value_read("friend");
             var strSplit=file1.split("\\");
             var file_short=strSplit[strSplit.length-1];
@@ -237,7 +237,7 @@ function connect_click(data){
 }
 
 function log_click(data){
-    s_ui.Run_App("D:\\Net\\Web\\log","");
+    s_ui.Run_App(disk+"\\Net\\Web\\log","");
 }
 
 
@@ -271,8 +271,8 @@ function read_ini(){
     var path=s_sys.path_app();
     var strCount=s_file.Ini_Read(path+"\\config\\friend.ini","items","count");
     
-    var userName2=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","account");
-    md5=s_file.Ini_Read("D:\\Net\\Web\\main.ini","main","md5");
+    var userName2=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","account");
+    md5=s_file.Ini_Read(disk+"\\Net\\Web\\main.ini","main","md5");
     userName=userName2+"/public";
     
 }

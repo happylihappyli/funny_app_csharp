@@ -1696,8 +1696,8 @@ namespace FunnyApp {
 
 
 
-        public void text_font_size(string control_name, float iSize) {
-            TextBox pControl = (TextBox)Ctrls[control_name];
+        public void font_size(string control_name, float iSize) {
+            Control pControl = (Control)Ctrls[control_name];
             if (pControl != null) {
                 pControl.Font = new Font("宋体", iSize, FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 

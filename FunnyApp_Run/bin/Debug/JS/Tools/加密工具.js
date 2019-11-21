@@ -26,7 +26,7 @@ function file_pem(){
     
     show_error(result);
     
-    //s_ui.Run_App("explorer.exe","D:\\Net\\Web\\public\\");
+    //s_ui.Run_App("explorer.exe",disk+"\\Net\\Web\\public\\");
 }
 
 function file_pem_private(){

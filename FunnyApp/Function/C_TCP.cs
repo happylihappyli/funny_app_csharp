@@ -109,6 +109,7 @@ namespace FunnyApp.Function {
                 int index2 = data.IndexOf(":</s>");
                 if (index2 > index1 && index1 > -1) {
                     string json = data.Substring(index1 + 5, index2-(index1 + 5));
+
                     JObject jObject = JObject.Parse(json);
                     if (jObject.ContainsKey("k")) {
                         keep_count = 0;

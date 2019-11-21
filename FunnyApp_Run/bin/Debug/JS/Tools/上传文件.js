@@ -1,12 +1,13 @@
 
 //按钮点击
 function upload_click(data){
+    var user=s_ui.text_read("txt_user");
     var password=s_ui.text_read("txt1");
     var file=s_ui.text_read("txt_upload");//s_ui.listbox_text("list_upload");
     var path=s_ui.combox_text("txt_ftp_path")+"/"+s_file.File_Short_Name(file);
 
     var hosts=s_ui.text_read("txt_host");
-    s_net.ftp_upload(hosts,"root",password,"22",file,path,"set_status","show_error");
+    s_net.ftp_upload(hosts,user,password,"22",file,path,"set_status","show_error");
 }
 
 function set_status(data){
@@ -59,6 +60,9 @@ function wall9(data){
     s_ui.text_set("txt_host","80.240.30.201");
 }
 
+function jrx(data){
+    s_ui.text_set("txt_host","172.16.101.13");
+}
 
 function listbox_change(data){
     
@@ -66,9 +70,18 @@ function listbox_change(data){
     s_ui.text_set("txt_upload",file);
 }
 
-s_ui.text_init("txt_host","robot6.funnyai.com",100,10,300,30);
+s_ui.text_init("txt_host","robot6.funnyai.com",100,10,500,30);
 
-s_ui.button_init("wall9","wall9",450,10,100,30,"wall9","");
+s_ui.button_init("wall9","wall9",610,10,100,30,"wall9","");
+
+s_ui.button_init("jrx","jrx",710,10,100,30,"jrx","");
+
+
+
+s_ui.label_init("lb_name","用户名：",10,39);
+
+s_ui.text_init("txt_user","root",100,35,100,30);
+
 
 s_ui.label_init("lb_password","FTP密码：",10,70);
 
@@ -111,7 +124,7 @@ s_ui.textbox_init("txt_error","错误信息：",100,300,500,200);
 
 s_ui.progress_init("progress1",100,550,500,30);
 
-s_ui.show_form(800,700);
+s_ui.show_form(860,700);
 
 s_ui.Form_Title("上传文件");
 

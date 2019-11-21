@@ -1,7 +1,10 @@
+
+[[[..\\data\\default.js]]]
+
 function key_click(data){
     s_ui.msg("一会打开程序，请按两个回车，自动关闭窗口");
-    s_ui.Run_App("C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe"," -m PEM -t rsa -b 2048 -C test -f D:/Net/Web/id_rsa");
-    s_ui.text_set("txt1","把这个文件 D:\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
+    s_ui.Run_App("C:\\Windows\\System32\\OpenSSH\\ssh-keygen.exe"," -m PEM -t rsa -b 2048 -C test -f "+disk+"/Net/Web/id_rsa");
+    s_ui.text_set("txt1","把这个文件 "+disk+"\\Net\\Web\\id_rsa.pub 发到服务器，让管理员设置");
 }
 
 function set_click(data){
@@ -9,7 +12,7 @@ function set_click(data){
     var hosts=s_ui.combox_text("cb_hosts");
     //s_ui.text_set("txt1",path1);
     var content="{\n"+
-    "  \"id_rsa\": \"D:/Net/Web/id_rsa\",\n"+
+    "  \"id_rsa\": \""+disk+"/Net/Web/id_rsa\",\n"+
     "  \"local_smart\": \":1315\",\n"+
     "  \"local_normal\": \":1316\",\n"+
     "  \"remote\": \"ssh://root@"+hosts+":22\",\n"+
@@ -28,14 +31,14 @@ function set_click(data){
     "}";
 
     var path=s_sys.path_app();
-    s_file.save("D:\\Net\\Web\\set.json",content);
+    s_file.save(disk+"\\Net\\Web\\set.json",content);
 }
 
 function run_click(data){
 
     var path=s_sys.path_app();
-    s_ui.text_set("txt1","D:\\Net\\Web\\main.exe -config D:\\Net\\Web\\set.json");
-    s_ui.Run_App("D:\\Net\\Web\\main.exe","-config D:\\Net\\Web\\set.json");
+    s_ui.text_set("txt1",disk+"\\Net\\Web\\main.exe -config "+disk+"\\Net\\Web\\set.json");
+    s_ui.Run_App(disk+"\\Net\\Web\\main.exe","-config "+disk+"\\Net\\Web\\set.json");
     //s_ui.text_set("txt1",a);
     
 }
@@ -56,7 +59,7 @@ function unset_proxy_click(data){
 
 
 
-s_ui.textbox_init("txt1","先创建目录 \n D:\\Net\\Web\\ \n 然后点击下面按钮",10,10,500,90);
+s_ui.textbox_init("txt1","先创建目录 \n "+disk+"\\Net\\Web\\ \n 然后点击下面按钮",10,10,500,90);
 s_ui.combox_init("cb_hosts","144.202.65.8",10,110,200,30);
 s_ui.combox_add("cb_hosts","144.202.65.8");
 

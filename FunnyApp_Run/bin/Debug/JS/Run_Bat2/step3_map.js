@@ -37,13 +37,13 @@ function data_init(data){
     
     s_ui.datagrid_init_column("grid1",2,"数据,映射值");
     for (var i=0;i<strSplit.length;i++){
-        if (bRead){
-            if (strSplit[i]!=""){
+        if (strSplit[i]!=""){
+            if (bRead){
                 s_ui.datagrid_add_line("grid1",strSplit[i],",");
+            }else{
+                var strSplit2=strSplit[i].split(",");
+                s_ui.datagrid_add_line("grid1",strSplit2[0]+",",",");
             }
-        }else{
-            var strSplit2=strSplit[i].split(",");
-            s_ui.datagrid_add_line("grid1",strSplit2[0]+",",",");
         }
     }
     /*s_ui.datagrid_add_button(

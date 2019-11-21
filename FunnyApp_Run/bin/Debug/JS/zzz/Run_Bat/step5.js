@@ -93,7 +93,7 @@ function map_click(data){
     var type=s_ui.datagrid_read("grid1",index,1);
     //s_ui.msg(type);
     
-    var file2=s_sys.value_read("file2");
+    var file2=s_file.Ini_Read(file_memo,"main","file2");
     var cmd=sql("/home/ftp_home"+file2,
             "select c"+row_index+",count(1) from t group by c"+row_index,
             "v","/root/map_"+row_index+".txt");
@@ -110,7 +110,7 @@ function static_click(data){
     s_ui.datagrid_clear("grid1");
     s_ui.datagrid_init_column("grid1",8,"字段,avg,方差,0%,25%,50%,75%,100%");
     
-    var file=s_sys.value_read("file1");
+    var file=s_file.Ini_Read(file_memo,"main","file1");
     var line=s_file.read(file,1);
     var strSplit=line.split("|");
     fields_count=strSplit.length;

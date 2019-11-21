@@ -112,11 +112,15 @@ s_ui.button_init("btn_edit_start","编辑登录提示",10,30,100,30,"cmd_sub","e
 s_ui.panel_add("panel5","btn_edit_start","left");
 
 
+
+s_ui.button_init("btn_edit_set","编辑配置文件",10,30,100,30,"cmd_sub","edit /root/happyli/set_hadoop.ini");
+s_ui.panel_add("panel5","btn_edit_set","left");
+
 s_ui.button_init("btn_conda_create","conda create",10,30,100,30,"show_conda_create","");
 s_ui.panel_add("panel5","btn_conda_create","left");
 
 
-s_ui.button_init("btn_antlr","conda create",10,30,100,30,"show_antlr","");
+s_ui.button_init("btn_antlr","show_antlr",10,30,100,30,"show_antlr","");
 s_ui.panel_add("panel5","btn_antlr","left");
 
 
@@ -143,6 +147,10 @@ s_ui.panel_add("panel6","btn_renew_ssl_crt","left");
 s_ui.button_init("btn_pub_ssh","公钥登录",10,30,100,30,"cmd_text","cat id_rsa.pub>>.ssh/authorized_keys");
 s_ui.panel_add("panel6","btn_pub_ssh","left");
 
+
+
+s_ui.button_init("btn_time_zone","时区设置",10,30,100,30,"cmd_text","cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtim");
+s_ui.panel_add("panel6","btn_time_zone","left");
 
 
 

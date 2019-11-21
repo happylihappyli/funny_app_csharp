@@ -26,7 +26,7 @@ function file_pem(){
     
     show_error(result);
     
-    //s_ui.Run_App("explorer.exe","D:\\Net\\Web\\public\\");
+    //s_ui.Run_App("explorer.exe",disk+"\\Net\\Web\\public\\");
 }
 
 function file_pem_private(){
@@ -115,8 +115,8 @@ function callback_file_decrypt2(data){
 }
 
 function file_decrypt2(data){
-    //var file1=s_sys.value_read("file1");// s_ui.text_read("txt_file2");
-    //var file2=s_sys.value_read("file2");//s_ui.text_read("txt_file3");
+    //var file1=s_file.Ini_Read(file_memo,"main","file1");// s_ui.text_read("txt_file2");
+    //var file2=s_file.Ini_Read(file_memo,"main","file2");//s_ui.text_read("txt_file3");
     s_sys.value_save("file1",s_ui.text_read("txt_file2"));
     s_sys.value_save("file2",s_ui.text_read("txt_file3"));
     s_sys.call_thread("sub.decrypt.js","callback_file_decrypt2");
@@ -124,7 +124,7 @@ function file_decrypt2(data){
 
 s_ui.label_init("lb_file","要加密的文件：",10,10);
 
-s_ui.text_init("txt_file1","D:\\蜡笔小新_高清版 (263).flv",100,10,500,30);
+s_ui.text_init("txt_file1",disk+"蜡笔小新_高清版 (263).flv",100,10,500,30);
 s_ui.button_init("b2_1","选择文件",100,50,200,30,"file_open","");
 
 
@@ -138,11 +138,11 @@ s_ui.text_init("txt_file_private",disk+"/Net/Web/id_rsa",100,150,500,30);
 
 
 s_ui.label_init("lb_output","输出文件：",10,200);
-s_ui.text_init("txt_file2","D:\\蜡笔小新_高清版 (263)_encrypt.flv",100,200,500,30);
+s_ui.text_init("txt_file2",disk+"蜡笔小新_高清版 (263)_encrypt.flv",100,200,500,30);
 
 
 s_ui.label_init("lb_output2","输出文件2：",10,250);
-s_ui.text_init("txt_file3","D:\\蜡笔小新_高清版 (263)_new.flv",100,250,500,30);
+s_ui.text_init("txt_file3",disk+"蜡笔小新_高清版 (263)_new.flv",100,250,500,30);
 
 
 s_ui.button_init("b3_1","加密",100,300,100,30,"file_encrypt2","");
