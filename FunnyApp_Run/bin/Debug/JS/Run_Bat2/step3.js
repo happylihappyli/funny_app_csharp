@@ -145,28 +145,6 @@ function process_step(obj){
     
     var cmd="";
     switch(step){
-        case 1:
-            cmd="file_sql /root/happyli/set_hadoop.ini "+userName+" /root/step3.txt 250000 \"select "+line2+" from t;\" , /root/step3_2.txt";
-            step=2;
-            send_msg("cmd",friend,cmd,"step:2");
-            break;
-        case 2:
-            s_ui.status_label_show("status_label","step=2");
-            do_step3("");
-            break;
-        case 3:
-            s_ui.datagrid_clear("grid1");
-            s_ui.datagrid_init_column("grid1",3,"字段,类型,C");
-            var strSplit=msg.split(",");
-            for(var i=0;i<strSplit.length;i++){
-                if (strSplit[i].startsWith("0.0")){
-                    s_ui.datagrid_add_line("grid1",(i+1)+",数字,"+strSplit[i],",");
-                }else{
-                    s_ui.datagrid_add_line("grid1",(i+1)+",字符,"+strSplit[i],",");
-                }
-            }
-            s_ui.datagrid_add_button("grid1","modify","映射","map_click");
-            break;
         case 11:
             cmd="cat /root/map_"+row_index+".txt";
             step=12;
@@ -397,7 +375,6 @@ s_ui.panel_init("panel_content",0,0,500,200,"fill");
 s_ui.panel_init("panel1",0,0,500,300,"top");
 
 s_ui.panel_add("panel1","grid1","fill");
-s_ui.panel_add("panel1","progress1","top");
 s_ui.panel_add("panel1","progress2","top");
 
 s_ui.panel_init("panel2",0,0,500,50,"bottom");
